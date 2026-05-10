@@ -31,6 +31,12 @@ shootout_margin  = 0.5
 home_field_adv   = 0.5
 min_games        = 15
 
+# Re-process the most recent N ranking_ids (game-days) on every run so late-
+# arriving ESPN data is absorbed. Without this, a cron firing mid-day caches
+# that day's snapshot and never re-ranks it even when more games for the
+# same day land hours later.
+RECOMPUTE_TAIL_DAYS = 7
+
 # ============================================================
 # ERA + DATA SOURCE CONFIG
 # ============================================================
@@ -445,9 +451,17 @@ def run_pipeline(scrape=True):
 
     try:
         cobi_df = pd.read_csv('cobi_ratings.csv.gz')
-        max_ranked = int(cobi_df['ranking_id'].max())
-        min_ranked = int(cobi_df['ranking_id'].min())
-        print(f"Existing ratings: ranking_ids {min_ranked} → {max_ranked}")
+        all_ids = sorted(cobi_df['ranking_id'].unique())
+        if len(all_ids) > RECOMPUTE_TAIL_DAYS:
+            tail_threshold = all_ids[-RECOMPUTE_TAIL_DAYS]
+            n_dropped = int((cobi_df['ranking_id'] >= tail_threshold).sum())
+            cobi_df = cobi_df[cobi_df['ranking_id'] < tail_threshold].copy()
+            print(f"  Re-processing tail {RECOMPUTE_TAIL_DAYS} game-days "
+                  f"({n_dropped:,} rows dropped from cache for late-arriving-data refresh)")
+        max_ranked = int(cobi_df['ranking_id'].max()) if not cobi_df.empty else -1
+        min_ranked = int(cobi_df['ranking_id'].min()) if not cobi_df.empty else -1
+        if max_ranked >= 0:
+            print(f"Existing ratings: ranking_ids {min_ranked} → {max_ranked}")
     except FileNotFoundError:
         cobi_df = pd.DataFrame(columns=[
             'ranking_id', 'ranking_date', 'season', 'name', 'rating', 'rank', 'games_played'
