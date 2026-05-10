@@ -232,11 +232,23 @@ def _score_for_trophy(year, trophy_label, champ, runner_up):
                       for _, r in legs.iterrows())
         r_goals = sum(int(r['home_score']) if r['home_team'] == runner_up else int(r['away_score'])
                       for _, r in legs.iterrows())
-        return f'{c_goals}-{r_goals}'
+        score = f'{c_goals}-{r_goals}'
+        if c_goals == r_goals:
+            sw = legs.iloc[-1].get('shootout_winner')
+            if pd.notna(sw) and str(sw).strip():
+                score += ' (pen)'
+        return score
     last = pair.iloc[-1]
     if last['home_team'] == champ:
-        return f'{int(last["home_score"])}-{int(last["away_score"])}'
-    return f'{int(last["away_score"])}-{int(last["home_score"])}'
+        c_score, r_score = int(last['home_score']), int(last['away_score'])
+    else:
+        c_score, r_score = int(last['away_score']), int(last['home_score'])
+    score = f'{c_score}-{r_score}'
+    if c_score == r_score:
+        sw = last.get('shootout_winner')
+        if pd.notna(sw) and str(sw).strip():
+            score += ' (pen)'
+    return score
 
 HONOR_KEY = {
     'MLS Cup':           'MLS Cup',
