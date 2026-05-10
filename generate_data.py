@@ -14,6 +14,28 @@ from datetime import date, datetime, timezone
 os.makedirs('docs/data/teams', exist_ok=True)
 os.makedirs('docs/data/seasons', exist_ok=True)
 
+# ── Same-franchise rebrand aliases (must match cobi.py) ─────────────────────
+# Defensive layer in case generate_data.py runs against a CSV that didn't
+# go through cobi.py's normalization. Keep in sync with cobi.py's map.
+MLS_TEAM_ALIASES = {
+    'Chicago Fire':                   'Chicago Fire FC',
+    'Columbus Crew SC':               'Columbus Crew',
+    'NY/NJ MetroStars':               'Red Bull New York',
+    'MetroStars':                     'Red Bull New York',
+    'New York Red Bulls':             'Red Bull New York',
+    'Kansas City Wiz':                'Sporting Kansas City',
+    'Kansas City Wizards':            'Sporting Kansas City',
+    'Dallas Burn':                    'FC Dallas',
+    'Montreal Impact':                'CF Montréal',
+}
+
+
+def canonical_team(name):
+    if name is None or (isinstance(name, float) and pd.isna(name)):
+        return name
+    return MLS_TEAM_ALIASES.get(name, name)
+
+
 # ── MLS Eastern/Western Conference history ──────────────────────────────────
 # Per-(team, year) conference assignment. Each entry is a list of inclusive
 # (start_year, end_year, conf) ranges; 9999 means "ongoing". Historical aliases
@@ -24,12 +46,10 @@ MLS_CONFERENCE_HISTORY = {
     'Austin FC':                 [(2021, 9999, 'West')],
     'CF Montréal':               [(2012, 9999, 'East')],
     'Charlotte FC':              [(2022, 9999, 'East')],
-    'Chicago Fire':              [(1998, 2001, 'West'), (2002, 9999, 'East')],
     'Chicago Fire FC':           [(1998, 2001, 'West'), (2002, 9999, 'East')],
     'Chivas USA':                [(2005, 2014, 'West')],
     'Colorado Rapids':           [(1996, 9999, 'West')],
     'Columbus Crew':             [(1996, 9999, 'East')],
-    'Columbus Crew SC':          [(1996, 9999, 'East')],
     'D.C. United':               [(1996, 9999, 'East')],
     'FC Cincinnati':             [(2019, 9999, 'East')],
     'FC Dallas':                 [(1996, 9999, 'West')],
@@ -83,6 +103,8 @@ df = pd.read_csv('cobi_ratings_final.csv')
 df['date'] = pd.to_datetime(df['date']).dt.date
 df['last_match_date'] = pd.to_datetime(df['last_match_date'], errors='coerce').dt.date
 df['season'] = df['season'].astype(str)
+# Defensive normalization (cobi.py should already have done this)
+df['team'] = df['team'].map(canonical_team)
 df['conference'] = df.apply(lambda r: conference_for(r['team'], r['season']), axis=1)
 
 
@@ -105,9 +127,22 @@ games_raw = pd.read_csv('all_club_games.csv', parse_dates=['date'])
 games_raw['home_score'] = pd.to_numeric(games_raw['home_score'], errors='coerce')
 games_raw['away_score'] = pd.to_numeric(games_raw['away_score'], errors='coerce')
 games_raw = games_raw.dropna(subset=['home_score', 'away_score']).copy()
+# Defensive normalization (cobi.py should already have done this)
+games_raw['home_team'] = games_raw['home_team'].map(canonical_team)
+games_raw['away_team'] = games_raw['away_team'].map(canonical_team)
+if 'shootout_winner' in games_raw.columns:
+    games_raw['shootout_winner'] = games_raw['shootout_winner'].map(canonical_team)
 games_raw['snap_season'] = games_raw['date'].dt.year.astype(str)
 
 games_lg = games_raw[games_raw['competition'] == 'MLS'].copy()
+
+# Teams that played at least one MLS league game in each calendar year.
+# Used to filter snapshots so a defunct team's stale rating doesn't linger
+# (e.g., Miami Fusion folded after 2001 → no 2002 games → drop from 2002
+# snapshots even if their 2001 games are still in the rolling window).
+teams_by_season = {}
+for s, sg in games_lg.groupby('snap_season'):
+    teams_by_season[str(s)] = set(sg['home_team']).union(set(sg['away_team']))
 
 
 # ── Regular season vs playoff partition ─────────────────────────────────────
@@ -494,16 +529,31 @@ all_seasons = sorted(df['season'].unique(), reverse=True)
 
 for season in all_seasons:
     sdf = df[df['season'] == season].copy()
+    # Filter to teams that actually played in this season — drops defunct
+    # franchises whose stale rating is still in the rolling window (e.g.,
+    # Miami Fusion folded after 2001, would otherwise appear in early-2002
+    # snapshots until their 2001 games age out of the 200-game-day window).
+    active = teams_by_season.get(str(season), set())
+    if active:
+        sdf = sdf[sdf['team'].isin(active)]
     sdf = sdf.sort_values(['date', 'rank'])
 
     snaps = []
     for snap_date, gdf in sdf.groupby('date'):
         gdf = gdf.sort_values('rank')
+        # Re-rank within the snapshot since filtering may have left gaps
+        gdf = gdf.reset_index(drop=True)
+        gdf['snap_rank'] = gdf['rating'].rank(ascending=False, method='min').astype(int)
+        gdf['snap_conf_rank'] = (
+            gdf.groupby('conference')['rating']
+            .rank(ascending=False, method='min')
+            .astype(int)
+        )
         teams = []
         for _, r in gdf.iterrows():
             teams.append({
-                'rank':              int(r['rank']),
-                'conf_rank':         int(r['conf_rank']),
+                'rank':              int(r['snap_rank']),
+                'conf_rank':         int(r['snap_conf_rank']),
                 'team':              r['team'],
                 'conference':        clean(r['conference']),
                 'rating':            round(float(r['rating']), 3),

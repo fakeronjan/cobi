@@ -46,6 +46,36 @@ ESPN_COMPETITIONS = [
 
 LEAGUE_COMPETITIONS = {'MLS'}  # the only rated competition
 
+# Same-franchise rebrands → consolidate to one canonical name so a team's
+# rating is continuous across name changes. Relocations are NOT aliased
+# (San Jose → Houston was a move, not a rename — they remain distinct).
+# Forward-looking entries cover names that don't currently appear in our
+# scrape window (2002+) but would matter if older data is added.
+MLS_TEAM_ALIASES = {
+    # Chicago franchise (1998+)
+    'Chicago Fire':                   'Chicago Fire FC',
+    # Columbus franchise (1996+)
+    'Columbus Crew SC':               'Columbus Crew',
+    # NY/NJ franchise (1996+) — no-ops on current data, future-proofing
+    'NY/NJ MetroStars':               'Red Bull New York',
+    'MetroStars':                     'Red Bull New York',
+    'New York Red Bulls':             'Red Bull New York',
+    # Kansas City franchise (1996+)
+    'Kansas City Wiz':                'Sporting Kansas City',
+    'Kansas City Wizards':            'Sporting Kansas City',
+    # Dallas franchise (1996+)
+    'Dallas Burn':                    'FC Dallas',
+    # Montreal franchise (2012+)
+    'Montreal Impact':                'CF Montréal',
+}
+
+
+def canonical_team(name):
+    if name is None:
+        return name
+    return MLS_TEAM_ALIASES.get(name, name)
+
+
 _today = date.today()
 CURRENT_YEAR = _today.year
 
@@ -139,8 +169,8 @@ def espn_extract_matches(payload, competition_label, league_match_flag):
             'season':          _season_for_match(competition_label, match_date),
             'competition':     competition_label,
             'league_match':    league_match_flag,
-            'home_team':       (home.get('team') or {}).get('displayName') or '',
-            'away_team':       (away.get('team') or {}).get('displayName') or '',
+            'home_team':       canonical_team((home.get('team') or {}).get('displayName') or ''),
+            'away_team':       canonical_team((away.get('team') or {}).get('displayName') or ''),
             'home_score':      home_score,
             'away_score':      away_score,
             'home_pen':        home_pen,
@@ -250,8 +280,19 @@ def run_pipeline(scrape=True):
     # on-disk CSV ends up MLS-only regardless of whether we re-scraped.
     pre_count = len(df)
     df = df[df['competition'] == 'MLS'].copy()
-    if len(df) != pre_count:
-        print(f"  filtered {pre_count - len(df):,} non-MLS rows from on-disk data")
+    # Apply same-franchise alias map so rebrands (Chicago Fire → Chicago Fire
+    # FC, Columbus Crew SC → Columbus Crew) become one continuous team in the
+    # ratings. Both load-time AND scrape-time normalize, so the on-disk CSV
+    # converges to canonical names.
+    pre_home = df['home_team'].copy()
+    df['home_team'] = df['home_team'].map(lambda n: canonical_team(n))
+    df['away_team'] = df['away_team'].map(lambda n: canonical_team(n))
+    n_renamed = (pre_home != df['home_team']).sum()
+    if len(df) != pre_count or n_renamed > 0:
+        if len(df) != pre_count:
+            print(f"  filtered {pre_count - len(df):,} non-MLS rows from on-disk data")
+        if n_renamed > 0:
+            print(f"  normalized {n_renamed:,} home_team names via MLS_TEAM_ALIASES")
         df.to_csv('all_club_games.csv', index=False)
     df['date'] = pd.to_datetime(df['date'])
     df.sort_values('date', inplace=True, kind='stable')

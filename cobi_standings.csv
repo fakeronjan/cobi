@@ -4,7 +4,7 @@ season,competition,team,gp,w,d,l,gf,ga,gd,pts
 1996,MLS,D.C. United,36,20,0,16,72,62,10,60
 1996,MLS,FC Dallas,34,18,0,16,59,55,4,54
 1996,MLS,Sporting Kansas City,35,18,0,17,71,71,0,54
-1996,MLS,Columbus Crew SC,35,16,0,19,66,72,-6,48
+1996,MLS,Columbus Crew,35,16,0,19,66,72,-6,48
 1996,MLS,San Jose Earthquakes,35,16,0,19,54,60,-6,48
 1996,MLS,Red Bull New York,34,15,0,19,49,53,-4,45
 1996,MLS,New England Revolution,32,15,0,17,49,58,-9,45
@@ -13,7 +13,7 @@ season,competition,team,gp,w,d,l,gf,ga,gd,pts
 1997,MLS,Sporting Kansas City,34,21,0,13,66,59,7,63
 1997,MLS,Colorado Rapids,37,18,0,19,62,67,-5,54
 1997,MLS,FC Dallas,35,17,0,18,62,54,8,51
-1997,MLS,Columbus Crew SC,36,17,0,19,51,50,1,51
+1997,MLS,Columbus Crew,36,17,0,19,51,50,1,51
 1997,MLS,Tampa Bay Mutiny,34,17,0,17,59,66,-7,51
 1997,MLS,LA Galaxy,33,16,0,17,57,51,6,48
 1997,MLS,New England Revolution,33,15,0,18,45,61,-16,45
@@ -21,8 +21,8 @@ season,competition,team,gp,w,d,l,gf,ga,gd,pts
 1997,MLS,San Jose Earthquakes,32,12,0,20,58,65,-7,36
 1998,MLS,D.C. United,37,27,0,10,90,58,32,81
 1998,MLS,LA Galaxy,35,26,0,9,96,50,46,78
-1998,MLS,Chicago Fire,36,24,0,12,70,47,23,72
-1998,MLS,Columbus Crew SC,36,17,0,19,76,71,5,51
+1998,MLS,Chicago Fire FC,36,24,0,12,70,47,23,72
+1998,MLS,Columbus Crew,36,17,0,19,76,71,5,51
 1998,MLS,Colorado Rapids,34,16,0,18,65,74,-9,48
 1998,MLS,Red Bull New York,33,15,0,18,60,68,-8,45
 1998,MLS,Miami Fusion,33,15,0,18,52,70,-18,45
@@ -33,10 +33,10 @@ season,competition,team,gp,w,d,l,gf,ga,gd,pts
 1998,MLS,New England Revolution,32,11,0,21,55,70,-15,33
 1999,MLS,D.C. United,37,27,0,10,82,52,30,81
 1999,MLS,LA Galaxy,37,24,0,13,62,37,25,72
-1999,MLS,Columbus Crew SC,37,22,0,15,64,50,14,66
+1999,MLS,Columbus Crew,37,22,0,15,64,50,14,66
 1999,MLS,FC Dallas,37,21,0,16,64,53,11,63
 1999,MLS,Colorado Rapids,34,20,0,14,44,47,-3,60
-1999,MLS,Chicago Fire,35,19,0,16,61,46,15,57
+1999,MLS,Chicago Fire FC,35,19,0,16,61,46,15,57
 1999,MLS,San Jose Earthquakes,32,19,0,13,58,52,6,57
 1999,MLS,Tampa Bay Mutiny,34,14,0,20,56,61,-5,42
 1999,MLS,Miami Fusion,33,13,0,20,47,65,-18,39
@@ -44,7 +44,7 @@ season,competition,team,gp,w,d,l,gf,ga,gd,pts
 1999,MLS,Sporting Kansas City,32,8,0,24,35,59,-24,24
 1999,MLS,Red Bull New York,32,7,0,25,35,69,-34,21
 2000,MLS,Sporting Kansas City,38,20,11,7,53,31,22,71
-2000,MLS,Chicago Fire,39,21,6,12,82,59,23,69
+2000,MLS,Chicago Fire FC,39,21,6,12,82,59,23,69
 2000,MLS,Red Bull New York,36,19,3,14,70,63,7,60
 2000,MLS,LA Galaxy,36,16,9,11,53,40,13,57
 2000,MLS,Tampa Bay Mutiny,34,16,4,14,64,56,8,52
@@ -52,15 +52,15 @@ season,competition,team,gp,w,d,l,gf,ga,gd,pts
 2000,MLS,FC Dallas,33,14,4,15,55,56,-1,46
 2000,MLS,Colorado Rapids,35,13,5,17,45,63,-18,44
 2000,MLS,Miami Fusion,32,12,5,15,54,56,-2,41
-2000,MLS,Columbus Crew SC,32,11,5,16,48,58,-10,38
+2000,MLS,Columbus Crew,32,11,5,16,48,58,-10,38
 2000,MLS,D.C. United,32,8,6,18,44,63,-19,30
 2000,MLS,San Jose Earthquakes,32,7,8,17,35,50,-15,29
 2001,MLS,Miami Fusion,31,19,5,7,62,44,18,62
-2001,MLS,Chicago Fire,31,18,7,6,56,32,24,61
+2001,MLS,Chicago Fire FC,31,18,7,6,56,32,24,61
 2001,MLS,San Jose Earthquakes,30,16,6,8,57,31,26,54
 2001,MLS,LA Galaxy,30,15,7,8,58,44,14,52
 2001,MLS,Red Bull New York,29,14,4,11,45,40,5,46
-2001,MLS,Columbus Crew SC,28,13,6,9,50,42,8,45
+2001,MLS,Columbus Crew,28,13,6,9,50,42,8,45
 2001,MLS,Sporting Kansas City,30,12,3,15,37,57,-20,39
 2001,MLS,FC Dallas,29,10,6,13,49,52,-3,36
 2001,MLS,New England Revolution,27,7,6,14,35,52,-17,27
