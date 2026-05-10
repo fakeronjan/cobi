@@ -291,7 +291,7 @@
     <select id="date-type-select">
       <option value="all">All dates</option>
       <option value="eor">End of regular season</option>
-      <option value="eos">End of postseason</option>
+      <option value="eos">End of playoffs</option>
     </select>
   </div>
   <div id="chart-wrap" style="display:none">
@@ -326,7 +326,7 @@ let teamCache         = {};
 // 'regular_season' (rating frozen on Decision Day, before playoffs).
 let goatMode = 'postseason';
 const GOAT_MODE_OPTIONS = [
-  { value: 'postseason',     label: 'Postseason' },
+  { value: 'postseason',     label: 'Playoffs' },
   { value: 'regular_season', label: 'Regular Season' },
 ];
 
@@ -846,14 +846,14 @@ function renderChampions() {
 
   const note = isShield
     ? `<p class="data-note">Supporters' Shield = best regular-season points total. Ties broken by wins, then GD, then GF. <em>Rating shown is end-of-regular-season — frozen on Decision Day, before playoffs.</em> Pre-2000 standings come from era-accurate Wikipedia totals — MLS used a no-draws shootout format then (regulation W = 3 pts, shootout W = 1 pt).</p>`
-    : `<p class="data-note">MLS Cup = playoff bracket champion. <em>Rating shown is end-of-postseason — includes the Cup run.</em></p>`;
+    : `<p class="data-note">MLS Cup = playoff bracket champion. <em>Rating shown is end-of-playoffs — includes the Cup run.</em></p>`;
 
   const scoreCol = isShield ? '' :
     `<th class="divider-col" style="text-align:center;font-size:10px;width:52px">Score</th>`;
 
   const ratingLabel = isShield
     ? `Rating<br><span style="font-weight:400;color:#888;font-size:10px">(Regular Season)</span>`
-    : `Rating<br><span style="font-weight:400;color:#888;font-size:10px">(Postseason)</span>`;
+    : `Rating<br><span style="font-weight:400;color:#888;font-size:10px">(Playoffs)</span>`;
 
   document.getElementById('history-table-wrap').innerHTML = `
     ${note}
@@ -924,8 +924,8 @@ function renderGoat() {
     .map((t, i) => ({ ...t, rank: i + 1 }));
   if (goatConf !== 'all') teams = teams.filter(t => t.conference === goatConf);
 
-  const sortLabel = isReg ? 'Regular Season' : 'Postseason';
-  const altLabel  = isReg ? 'Postseason'     : 'Regular Season';
+  const sortLabel = isReg ? 'Regular Season' : 'Playoffs';
+  const altLabel  = isReg ? 'Playoffs'       : 'Regular Season';
 
   const rows = teams.map(t => {
     const sortVal = t[sortKey];
@@ -947,7 +947,7 @@ function renderGoat() {
     `Top 50 by <strong>${sortLabel.toLowerCase()}</strong> rating · Eligibility requires winning Supporters' Shield or MLS Cup that year. ` +
     (isReg
       ? `<em>Regular-season rating freezes on Decision Day — Shield winners aren't penalized for early playoff exits.</em>`
-      : `<em>Postseason rating includes the playoff run — rewards teams that peaked in the bracket.</em>`);
+      : `<em>End-of-playoffs rating includes the Cup run — rewards teams that peaked in the bracket.</em>`);
 
   document.getElementById('goat-table-wrap').innerHTML = `
     <table>

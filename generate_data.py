@@ -836,9 +836,9 @@ for season in all_seasons:
         # in-progress seasons before playoffs start), prefer the EOS label
         # since it reflects the actual final state for the season.
         if snap_is_eos:
-            snap_label = 'End of Postseason'
+            snap_label = 'End of playoffs'
         elif snap_is_eors:
-            snap_label = 'End of Regular Season'
+            snap_label = 'End of regular season'
         else:
             snap_label = None
         snaps.append({
