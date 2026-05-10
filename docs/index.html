@@ -191,8 +191,9 @@
     white-space: nowrap;
   }
   .finish-champion { background: #c8a84b; color: #1a6b8a; }
+  .finish-shield   { background: #c8a84b; color: #1a6b8a; }
   .finish-runner   { background: #ddd; color: #444; }
-  .finish-treble   { background: linear-gradient(90deg, #c8a84b 0%, #d4af37 50%, #b8860b 100%); color: #1a1a1a; font-weight: 700; box-shadow: 0 0 4px rgba(212, 175, 55, 0.5); }
+  .finish-double   { background: linear-gradient(90deg, #c8a84b 0%, #d4af37 50%, #b8860b 100%); color: #1a1a1a; font-weight: 700; box-shadow: 0 0 4px rgba(212, 175, 55, 0.5); }
   .conf-pill       { background: #f4f4f4; color: #555; border: 1px solid #e8e8e8; }
 
   .last-match-cell {
@@ -266,7 +267,7 @@
 <nav>
   <button class="active" data-tab="standings">Standings</button>
   <button data-tab="team-summary">Team Summary</button>
-  <button data-tab="league-history">MLS Cup</button>
+  <button data-tab="league-history">Champions</button>
   <button data-tab="goat">GOAT Table</button>
 </nav>
 
@@ -298,15 +299,16 @@
   <div id="team-table-wrap"><p class="loading">Select a team above.</p></div>
 </div>
 
-<!-- ── MLS CUP ──────────────────────────────────────────────────────────── -->
+<!-- ── CHAMPIONS ────────────────────────────────────────────────────────── -->
 <div id="league-history" class="tab">
-  <div id="history-table-wrap"><p class="loading">Loading MLS Cup history...</p></div>
+  <div class="league-pills" id="history-trophy-pills"></div>
+  <div id="history-table-wrap"><p class="loading">Loading champions...</p></div>
 </div>
 
 <!-- ── GOAT TABLE ───────────────────────────────────────────────────────── -->
 <div id="goat" class="tab">
   <div class="league-pills" id="goat-conf-pills"></div>
-  <p class="data-note">Top 50 single-season ratings · Eligibility requires winning MLS Cup that year.</p>
+  <p class="data-note">Top 50 single-season ratings · Eligibility requires winning Supporters' Shield or MLS Cup that year.</p>
   <div id="goat-table-wrap"><p class="loading">Loading GOAT table...</p></div>
 </div>
 
@@ -371,12 +373,21 @@ function confBadge(conf) {
   return `<span class="finish-badge conf-pill">${conf}</span>`;
 }
 
-// Render MLS Cup honor badge for a team row. `t.mls_cup_finish` is
-// 'Champion' / 'Runner-Up' / ''.
+// Render MLS honors. Same team winning Shield + Cup → single "Double 👑"
+// badge with gold-gradient styling, mirroring ZIDANE's Treble. Otherwise
+// show each trophy independently (🏆 for Cup, 🛡️ for Shield).
 function finishBadge(t) {
-  if (t.mls_cup_finish === 'Champion')  return `<span class="finish-badge finish-champion">MLS Cup 🏆</span>`;
-  if (t.mls_cup_finish === 'Runner-Up') return `<span class="finish-badge finish-runner">MLS Cup 🥈</span>`;
-  return '';
+  const cup    = t.mls_cup_finish;
+  const shield = t.supporters_shield_finish;
+  if (cup === 'Champion' && shield === 'Champion') {
+    return `<span class="finish-badge finish-double">Double 👑</span>`;
+  }
+  const bits = [];
+  if (cup === 'Champion')         bits.push(`<span class="finish-badge finish-champion">MLS Cup 🏆</span>`);
+  else if (cup === 'Runner-Up')   bits.push(`<span class="finish-badge finish-runner">MLS Cup 🥈</span>`);
+  if (shield === 'Champion')      bits.push(`<span class="finish-badge finish-shield">Shield 🛡️</span>`);
+  else if (shield === 'Runner-Up') bits.push(`<span class="finish-badge finish-runner">Shield 🥈</span>`);
+  return bits.join(' ');
 }
 
 function resultClass(match, isStale) {
@@ -690,30 +701,47 @@ document.getElementById('team-select').addEventListener('change', e => {
 document.getElementById('season-select').addEventListener('change', renderTeamTable);
 document.getElementById('date-type-select').addEventListener('change', renderTeamTable);
 
-// ── MLS Cup ──────────────────────────────────────────────────────────────────
-// championsData has a single 'MLS Cup' key → list of {season, champion,
-// runner_up, final_score} entries (newest first). Single-game final played
-// late Nov/Dec each year.
+// ── Champions ────────────────────────────────────────────────────────────────
+// championsData is keyed by trophy label → list of {season, champion, runner_up,
+// final_score}. Two trophies tracked: MLS Cup (single-game playoff final) and
+// Supporters' Shield (best regular-season points; "score" = pts vs pts).
 let championsData = null;
+let historyTrophy = 'MLS Cup';
+
+const TROPHY_OPTIONS = [
+  { value: 'MLS Cup',           label: '🏆 MLS Cup' },
+  { value: 'Supporters Shield', label: '🛡️ Supporters\' Shield' },
+];
 
 async function loadChampions() {
   try {
     const res = await fetch(`${BASE}/champions.json`);
     championsData = await res.json();
-    renderMlsCup();
+    renderChampions();
   } catch(e) {
     document.getElementById('history-table-wrap').innerHTML =
-      `<p class="error">Could not load MLS Cup history.</p>`;
+      `<p class="error">Could not load champions.</p>`;
   }
 }
 
-function renderMlsCup() {
+function renderChampions() {
   if (!championsData) return;
-  const entries = (championsData['MLS Cup'] || []);
+  const entries = (championsData[historyTrophy] || []);
   if (!entries.length) {
     document.getElementById('history-table-wrap').innerHTML =
-      `<p class="loading">No MLS Cup data yet.</p>`;
+      `<p class="loading">No data for this trophy yet.</p>`;
     return;
+  }
+
+  // Show "Double 👑" badge on the row when the team also won the OTHER trophy
+  // that year (Cup table shows it on Shield-also-Champion rows; Shield table
+  // shows it on Cup-also-Champion rows). Plain trophy is implicit — no badge.
+  function rowHonor(t) {
+    if (!t) return '';
+    if (t.mls_cup_finish === 'Champion' && t.supporters_shield_finish === 'Champion') {
+      return ' <span class="finish-badge finish-double">Double 👑</span>';
+    }
+    return '';
   }
 
   function teamCell(t, bg) {
@@ -722,7 +750,7 @@ function renderMlsCup() {
     const ovrRank  = t.rank      != null ? `${t.rank}`          : '-';
     const confRank = t.conf_rank != null ? `${t.conf_rank}`     : '-';
     return `
-      <td class="${bg} team-cell" style="white-space:nowrap">${t.team}</td>
+      <td class="${bg} team-cell" style="white-space:nowrap">${t.team}${rowHonor(t)}</td>
       <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${ovrRank}</td>
       <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${confRank}</td>
       <td class="${bg} rating-cell" style="font-variant-numeric:tabular-nums">${rating}</td>
@@ -731,7 +759,7 @@ function renderMlsCup() {
 
   const rows = entries.map(e => {
     const divCell = e.final_score
-      ? `<td class="divider-col" style="text-align:center;font-size:11px;font-weight:600;white-space:nowrap;width:52px;padding:0 4px">${e.final_score}</td>`
+      ? `<td class="divider-col" style="text-align:center;font-size:11px;font-weight:600;white-space:nowrap;width:64px;padding:0 4px">${e.final_score}</td>`
       : `<td class="divider-col"></td>`;
     return `<tr>
       <td class="season-cell">${e.season}</td>
@@ -741,7 +769,13 @@ function renderMlsCup() {
     </tr>`;
   }).join('');
 
+  const scoreLabel = historyTrophy === 'Supporters Shield' ? 'Pts' : 'Score';
+  const note = historyTrophy === 'Supporters Shield'
+    ? `<p class="data-note">Supporters' Shield = best regular-season points total. Score column shows champion's points vs runner-up's at end of regular season; ties broken by wins, then GD, then GF.</p>`
+    : '';
+
   document.getElementById('history-table-wrap').innerHTML = `
+    ${note}
     <table>
       <thead><tr>
         <th>Season</th>
@@ -750,7 +784,7 @@ function renderMlsCup() {
         <th class="col-champ col-hide-mobile">CONF #</th>
         <th class="col-champ">Rating</th>
         <th class="col-champ col-hide-mobile">W-D-L (Pts)</th>
-        <th class="divider-col" style="text-align:center;font-size:10px;width:52px">Score</th>
+        <th class="divider-col" style="text-align:center;font-size:10px;width:64px">${scoreLabel}</th>
         <th class="col-ru">Runner-Up</th>
         <th class="col-ru col-hide-mobile">OVR #</th>
         <th class="col-ru col-hide-mobile">CONF #</th>
@@ -759,6 +793,25 @@ function renderMlsCup() {
       </tr></thead>
       <tbody>${rows}</tbody>
     </table>`;
+}
+
+function buildTrophyPills() {
+  const wrap = document.getElementById('history-trophy-pills');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  TROPHY_OPTIONS.forEach(o => {
+    const b = document.createElement('button');
+    b.innerHTML = o.label;
+    b.dataset.value = o.value;
+    if (o.value === historyTrophy) b.classList.add('active');
+    b.addEventListener('click', () => {
+      wrap.querySelectorAll('button').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      historyTrophy = o.value;
+      renderChampions();
+    });
+    wrap.appendChild(b);
+  });
 }
 
 
@@ -816,6 +869,7 @@ buildConfPills('goat-conf-pills', goatConf, v => {
   goatConf = v;
   renderGoat();
 });
+buildTrophyPills();
 initStandings();
 loadTeamsIndex();
 loadChampions();

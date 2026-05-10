@@ -469,6 +469,78 @@ def run_pipeline(scrape=True):
             trophy_records.append({'year': str(y), 'team': champ, 'honor': 'MLS Cup Champion'})
             trophy_records.append({'year': str(y), 'team': ru,    'honor': 'MLS Cup Runner-Up'})
 
+    # Supporters' Shield: best regular-season point total. Decision Day =
+    # the last date in Sept-Nov with >= 6 MLS games (the simultaneous
+    # final-weekend pattern); anything after is playoffs. Gated 7 days
+    # past Decision Day so an in-progress final weekend doesn't crown early.
+    def _regular_season_end_date(season_games):
+        """Return the date of Decision Day (regular-season finale) or None."""
+        if season_games.empty:
+            return None
+        # Restrict to Sept-Nov to skip mid-season busy days
+        late = season_games[
+            (season_games['date'].dt.month >= 9) &
+            (season_games['date'].dt.month <= 11)
+        ]
+        if late.empty:
+            return season_games['date'].dt.date.max()
+        daily = late.groupby(late['date'].dt.date).size()
+        big_days = daily[daily >= 6]
+        return big_days.index.max() if not big_days.empty else daily.idxmax()
+
+    def _points(row, team):
+        """3 for win (incl. shootout), 1 for draw, 0 for loss."""
+        h, a = row['home_team'], row['away_team']
+        hs, as_ = row['home_score'], row['away_score']
+        if hs > as_:
+            return 3 if team == h else 0
+        if as_ > hs:
+            return 3 if team == a else 0
+        sw = row.get('shootout_winner')
+        if pd.notna(sw) and sw:
+            return 3 if sw == team else 0
+        return 1
+
+    if not mls_df.empty:
+        for y, g in mls_df.groupby(mls_df['date'].dt.year):
+            ds_date = _regular_season_end_date(g)
+            if ds_date is None:
+                continue
+            if (date.today() - ds_date).days < 7:
+                continue
+            reg = g[g['date'].dt.date <= ds_date]
+            if reg.empty:
+                continue
+            # Per-team running totals: points, wins, goal differential, goals for.
+            # MLS Shield tiebreakers: pts → wins → GD → GF.
+            stats = {}  # team → [pts, wins, gd, gf]
+            for _, r in reg.iterrows():
+                h, a, hs, as_ = r['home_team'], r['away_team'], r['home_score'], r['away_score']
+                sw = r.get('shootout_winner')
+                for team, gf, ga in ((h, hs, as_), (a, as_, hs)):
+                    s = stats.setdefault(team, [0, 0, 0, 0])
+                    s[2] += gf - ga
+                    s[3] += gf
+                    if gf > ga:
+                        s[0] += 3; s[1] += 1
+                    elif gf < ga:
+                        pass
+                    elif pd.notna(sw) and sw == team:
+                        s[0] += 3; s[1] += 1
+                    elif pd.notna(sw) and sw:
+                        pass
+                    else:
+                        s[0] += 1
+            ranked = sorted(stats.items(),
+                            key=lambda kv: (kv[1][0], kv[1][1], kv[1][2], kv[1][3]),
+                            reverse=True)
+            if len(ranked) < 2:
+                continue
+            champ, _ = ranked[0]
+            ru,    _ = ranked[1]
+            trophy_records.append({'year': str(y), 'team': champ, 'honor': "Supporters Shield Champion"})
+            trophy_records.append({'year': str(y), 'team': ru,    'honor': "Supporters Shield Runner-Up"})
+
     trophy_df = pd.DataFrame(trophy_records) if trophy_records else \
                 pd.DataFrame(columns=['year', 'team', 'honor'])
     trophy_df.to_csv('cobi_trophies.csv', index=False)
@@ -505,21 +577,26 @@ def run_pipeline(scrape=True):
     final_df['is_game_day'] = np.where(final_df['date'] == final_df['last_match_date'], 1, 0)
     final_df.rename(columns={'name': 'team'}, inplace=True)
 
-    # MLS Cup honor column ('Champion'/'Runner-Up'/'').
-    sub = trophy_df[trophy_df['honor'].str.startswith('MLS Cup')].copy()
-    if sub.empty:
-        final_df['mls_cup_finish'] = ''
-    else:
-        sub['mls_cup_finish'] = sub['honor'].str.replace('MLS Cup ', '', regex=False)
-        sub = sub[['year', 'team', 'mls_cup_finish']].rename(columns={'year': 'season'})
+    # Honor columns ('Champion'/'Runner-Up'/'').
+    HONOR_COLS = {
+        'MLS Cup':           'mls_cup_finish',
+        'Supporters Shield': 'supporters_shield_finish',
+    }
+    for honor_label, col in HONOR_COLS.items():
+        sub = trophy_df[trophy_df['honor'].str.startswith(honor_label)].copy()
+        if sub.empty:
+            final_df[col] = ''
+            continue
+        sub[col] = sub['honor'].str.replace(f'{honor_label} ', '', regex=False)
+        sub = sub[['year', 'team', col]].rename(columns={'year': 'season'})
         final_df = pd.merge(final_df, sub, on=['season', 'team'], how='left')
-        final_df['mls_cup_finish'] = final_df['mls_cup_finish'].fillna('')
+        final_df[col] = final_df[col].fillna('')
 
     final_df = final_df[[
         'ranking_id', 'date', 'season', 'team',
         'rating', 'rank', 'games_played',
         'last_match_date', 'last_match', 'is_game_day', 'most_recent',
-        'mls_cup_finish',
+        'mls_cup_finish', 'supporters_shield_finish',
     ]]
     final_df.sort_values(['ranking_id', 'rank'], inplace=True)
     final_df.drop_duplicates(keep='first', inplace=True)

@@ -209,7 +209,8 @@ standings_data = {
             'games_played':        int(r['games_played']),
             'last_match':          clean(r['last_match']),
             'last_match_date':     clean(r['last_match_date']),
-            'mls_cup_finish':      clean(r.get('mls_cup_finish', '')),
+            'mls_cup_finish':            clean(r.get('mls_cup_finish', '')),
+            'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
         }
         for _, r in latest.iterrows()
     ],
@@ -228,13 +229,14 @@ eoy_lookup = {}
 for (team, season), grp in df.groupby(['team', 'season']):
     last = grp.sort_values('date').iloc[-1]
     eoy_lookup[(team, str(season))] = {
-        'team':                 team,
-        'conference':           clean(last['conference']),
-        'rating':               round(float(last['rating']), 3),
-        'rank':                 int(last['rank']),
-        'conf_rank':            int(last['conf_rank']),
-        'record':               record_as_of(team, str(season), str(last['date'])),
-        'mls_cup_finish':       clean(last.get('mls_cup_finish', '')),
+        'team':                       team,
+        'conference':                 clean(last['conference']),
+        'rating':                     round(float(last['rating']), 3),
+        'rank':                       int(last['rank']),
+        'conf_rank':                  int(last['conf_rank']),
+        'record':                     record_as_of(team, str(season), str(last['date'])),
+        'mls_cup_finish':             clean(last.get('mls_cup_finish', '')),
+        'supporters_shield_finish':   clean(last.get('supporters_shield_finish', '')),
     }
 
 
@@ -264,9 +266,53 @@ def _mls_cup_score(year, champ, runner_up):
     return score
 
 
-mls_cup_entries = []
+def _shield_score(year, champ, runner_up):
+    """Shield 'score' = champion's regular-season points vs runner-up's.
+    Mirrors cobi.py's Shield detection logic — Decision Day filter, MLS games
+    only, 3 for win incl. shootout, 1 for draw."""
+    y = int(year)
+    g = games_raw.copy()
+    g['year'] = g['date'].dt.year
+    mls_y = g[(g['competition'] == 'MLS') & (g['year'] == y)]
+    if mls_y.empty:
+        return ''
+    late = mls_y[(mls_y['date'].dt.month >= 9) & (mls_y['date'].dt.month <= 11)]
+    if late.empty:
+        ds_date = mls_y['date'].dt.date.max()
+    else:
+        daily = late.groupby(late['date'].dt.date).size()
+        big = daily[daily >= 6]
+        ds_date = big.index.max() if not big.empty else daily.idxmax()
+    reg = mls_y[mls_y['date'].dt.date <= ds_date]
+
+    def _team_pts(t):
+        pts = 0
+        for _, r in reg.iterrows():
+            if r['home_team'] == t:
+                gf, ga = int(r['home_score']), int(r['away_score'])
+            elif r['away_team'] == t:
+                gf, ga = int(r['away_score']), int(r['home_score'])
+            else:
+                continue
+            sw = r.get('shootout_winner')
+            if gf > ga or (gf == ga and pd.notna(sw) and sw == t):
+                pts += 3
+            elif gf == ga and not (pd.notna(sw) and sw):
+                pts += 1
+        return pts
+
+    return f'{_team_pts(champ)}-{_team_pts(runner_up)} pts'
+
+
+CHAMPIONS_TROPHIES = [
+    ('MLS Cup',           _mls_cup_score),
+    ('Supporters Shield', _shield_score),
+]
+
+champions_by_trophy = {label: [] for label, _ in CHAMPIONS_TROPHIES}
+
 for (year, label), grp in trophies.groupby(['year', trophies['honor'].str.replace(' Champion', '', regex=False).str.replace(' Runner-Up', '', regex=False)]):
-    if label != 'MLS Cup':
+    if label not in champions_by_trophy:
         continue
     champ_row = grp[grp['honor'].str.endswith('Champion')]
     ru_row    = grp[grp['honor'].str.endswith('Runner-Up')]
@@ -279,22 +325,24 @@ for (year, label), grp in trophies.groupby(['year', trophies['honor'].str.replac
     if champion is None:
         champion = {'team': champ_team, 'conference': '', 'rating': None,
                     'rank': None, 'conf_rank': None, 'record': '0-0-0',
-                    'mls_cup_finish': 'Champion'}
+                    'mls_cup_finish': '', 'supporters_shield_finish': ''}
     if runner_up is None:
         runner_up = {'team': ru_team, 'conference': '', 'rating': None,
                      'rank': None, 'conf_rank': None, 'record': '0-0-0',
-                     'mls_cup_finish': 'Runner-Up'}
-    mls_cup_entries.append({
+                     'mls_cup_finish': '', 'supporters_shield_finish': ''}
+    score_fn = dict(CHAMPIONS_TROPHIES)[label]
+    champions_by_trophy[label].append({
         'season':      str(year),
         'champion':    champion,
         'runner_up':   runner_up,
-        'final_score': _mls_cup_score(year, champ_team, ru_team),
+        'final_score': score_fn(year, champ_team, ru_team),
     })
 
-mls_cup_entries.sort(key=lambda e: e['season'], reverse=True)
+for label in champions_by_trophy:
+    champions_by_trophy[label].sort(key=lambda e: e['season'], reverse=True)
 
 with open('docs/data/champions.json', 'w') as f:
-    json.dump({'MLS Cup': mls_cup_entries}, f, separators=(',', ':'))
+    json.dump(champions_by_trophy, f, separators=(',', ':'))
 
 
 # ── 3. GOAT table ────────────────────────────────────────────────────────────
@@ -302,7 +350,11 @@ with open('docs/data/champions.json', 'w') as f:
 # automatically since uncrowned years won't be included.
 print("Writing goat_teams.json...")
 eos = df[df['is_end_of_season'] == 1].copy()
-eos = eos[eos.get('mls_cup_finish', '') == 'Champion']
+won_a_trophy = (
+    (eos.get('mls_cup_finish', '') == 'Champion') |
+    (eos.get('supporters_shield_finish', '') == 'Champion')
+)
+eos = eos[won_a_trophy]
 eos = eos.sort_values('rating', ascending=False).head(50).reset_index(drop=True)
 
 final_record_lookup = {}
@@ -311,13 +363,14 @@ for (t, s), grp in team_persp.groupby(['team', 'snap_season']):
 
 goat_data = [
     {
-        'rank':                i + 1,
-        'team':                r['team'],
-        'season':              r['season'],
-        'conference':          clean(r['conference']),
-        'rating':              round(float(r['rating']), 3),
-        'record':              final_record_lookup.get((r['team'], r['season']), '0-0-0'),
-        'mls_cup_finish':      clean(r.get('mls_cup_finish', '')),
+        'rank':                       i + 1,
+        'team':                       r['team'],
+        'season':                     r['season'],
+        'conference':                 clean(r['conference']),
+        'rating':                     round(float(r['rating']), 3),
+        'record':                     final_record_lookup.get((r['team'], r['season']), '0-0-0'),
+        'mls_cup_finish':             clean(r.get('mls_cup_finish', '')),
+        'supporters_shield_finish':   clean(r.get('supporters_shield_finish', '')),
     }
     for i, (_, r) in enumerate(eos.iterrows())
 ]
@@ -352,7 +405,8 @@ for team in all_teams:
                 'is_end_of_season':  int(r['is_end_of_season']),
                 'record':            record_as_of(team, str(season), str(r['date'])),
                 'last_match':        clean(r['last_match']),
-                'mls_cup_finish':    clean(r.get('mls_cup_finish', '')),
+                'mls_cup_finish':            clean(r.get('mls_cup_finish', '')),
+                'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
             }
             for _, r in sdf.sort_values('date').iterrows()
         ]
@@ -388,7 +442,8 @@ for season in all_seasons:
                 'record':            record_as_of(r['team'], season, str(snap_date)),
                 'last_match':        clean(r['last_match']),
                 'last_match_date':   clean(r['last_match_date']),
-                'mls_cup_finish':    clean(r.get('mls_cup_finish', '')),
+                'mls_cup_finish':            clean(r.get('mls_cup_finish', '')),
+                'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
             })
         snaps.append({
             'date':              str(snap_date),
