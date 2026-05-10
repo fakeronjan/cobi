@@ -514,6 +514,20 @@ def run_pipeline(scrape=True):
     # the last date in Sept-Nov with >= 6 MLS games (the simultaneous
     # final-weekend pattern); anything after is playoffs. Gated 7 days
     # past Decision Day so an in-progress final weekend doesn't crown early.
+    #
+    # 1996-1999 OVERRIDE: MLS used a no-draws shootout format in those years
+    # (regulation W = 3 pts, shootout W = 1 pt, L = 0). Our gap-fill source
+    # (footballcsv) folded shootout outcomes into regulation results, so we
+    # cannot reconstruct era-accurate points from the games CSV. Hard-code
+    # the historically correct Shield winners + runners-up to avoid
+    # publishing wrong trophies. Once a better-quality source for that era
+    # is integrated, this block can be removed.
+    SHIELD_OVERRIDES = {
+        1996: ('Tampa Bay Mutiny',     'LA Galaxy'),
+        1997: ('D.C. United',          'Sporting Kansas City'),
+        1998: ('LA Galaxy',            'D.C. United'),
+        1999: ('D.C. United',          'LA Galaxy'),
+    }
     def _regular_season_end_date(season_games):
         """Return the date of Decision Day (regular-season finale) or None."""
         if season_games.empty:
@@ -544,6 +558,12 @@ def run_pipeline(scrape=True):
 
     if not mls_df.empty:
         for y, g in mls_df.groupby(mls_df['date'].dt.year):
+            year_int = int(y)
+            if year_int in SHIELD_OVERRIDES:
+                champ, ru = SHIELD_OVERRIDES[year_int]
+                trophy_records.append({'year': str(y), 'team': champ, 'honor': "Supporters Shield Champion"})
+                trophy_records.append({'year': str(y), 'team': ru,    'honor': "Supporters Shield Runner-Up"})
+                continue
             ds_date = _regular_season_end_date(g)
             if ds_date is None:
                 continue

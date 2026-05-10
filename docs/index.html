@@ -534,7 +534,18 @@ function renderStandings() {
   document.getElementById('standings-count').textContent =
     `${teams.length} team${teams.length !== 1 ? 's' : ''}`;
 
+  // 1996-1999 had no draws — tied games went to a 35-yard run-in shootout,
+  // and the era's points formula was 3 reg-W + 1 SOW + 0 L. Our gap-fill
+  // source folded shootout outcomes into regulation results, so we can't
+  // reconstruct era-accurate points or split SOW from W. Surface that here.
+  const seasonYear = parseInt(currentSeasonData.season);
+  const isShootoutEra = seasonYear >= 1996 && seasonYear <= 1999;
+  const eraNote = isShootoutEra
+    ? `<p class="data-note">MLS 1996–1999 had no draws — tied games were decided by a 35-yard run-in shootout. Era points were 3 for a regulation win, 1 for a shootout win, 0 for a loss. Our pre-2000 source folded shootout outcomes into regulation results, so records here show all wins as W and points are computed using the modern formula.</p>`
+    : '';
+
   document.getElementById('standings-table-wrap').innerHTML = `
+    ${eraNote}
     <table>
       <thead><tr>
         <th>OVR #</th><th class="col-hide-mobile">CONF #</th>
@@ -810,7 +821,7 @@ function renderChampions() {
   }).join('');
 
   const note = isShield
-    ? `<p class="data-note">Supporters' Shield = best regular-season points total. Ties broken by wins, then GD, then GF.</p>`
+    ? `<p class="data-note">Supporters' Shield = best regular-season points total. Ties broken by wins, then GD, then GF. <em>Note: 1996–1999 winners are hard-coded to the historical record — MLS used a no-draws shootout format then (regulation W = 3 pts, shootout W = 1 pt) and our gap-fill source doesn't preserve the distinction.</em></p>`
     : '';
 
   const scoreCol = isShield ? '' :
