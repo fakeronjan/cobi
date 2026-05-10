@@ -272,12 +272,12 @@ for (year, label), grp in trophies.groupby(['year', trophies['honor'].str.replac
         # Team didn't pass min_games filter — fall back to a minimal record
         if champion is None:
             champion = {'team': champ_team, 'league': '', 'rating': None, 'rank': None,
-                        'lg_rank': None, 'record': '—', 'mls_cup_finish': '',
+                        'lg_rank': None, 'record': '0-0-0', 'mls_cup_finish': '',
                         'apertura_finish': '', 'clausura_finish': '',
                         'ccl_finish': '', 'leagues_cup_finish': ''}
         if runner_up is None:
             runner_up = {'team': ru_team, 'league': '', 'rating': None, 'rank': None,
-                         'lg_rank': None, 'record': '—', 'mls_cup_finish': '',
+                         'lg_rank': None, 'record': '0-0-0', 'mls_cup_finish': '',
                          'apertura_finish': '', 'clausura_finish': '',
                          'ccl_finish': '', 'leagues_cup_finish': ''}
     champions_by_trophy[label].append({
@@ -324,7 +324,7 @@ goat_data = [
         'season':              r['season'],
         'league':              clean(r['league']),
         'rating':              round(float(r['rating']), 3),
-        'record':              final_record_lookup.get((r['team'], r['season']), '—'),
+        'record':              final_record_lookup.get((r['team'], r['season']), '0-0-0'),
         'mls_cup_finish':      clean(r.get('mls_cup_finish', '')),
         'apertura_finish':     clean(r.get('liga_mx_apertura_finish', '')),
         'clausura_finish':     clean(r.get('liga_mx_clausura_finish', '')),
