@@ -414,12 +414,45 @@ df['is_end_of_season'] = df.apply(
     axis=1
 )
 
+# End-of-regular-season snapshot per season: last ranking_id whose date is
+# on or before that year's Decision Day. Used by the GOAT table and the
+# Shield row of the Champions tab so Shield form isn't dragged down by a
+# team's playoff exit. Pre-playoff seasons or missing Decision Day fall
+# back to EOS.
+df['_date_only'] = pd.to_datetime(df['date']).dt.date
+season_last_reg_snap = {}
+for season, sub in df.groupby('season'):
+    y = int(season)
+    dd = _decision_day_by_year.get(y)
+    if dd is None:
+        season_last_reg_snap[season] = sub['ranking_id'].max()
+        continue
+    eligible = sub[sub['_date_only'] <= dd]
+    season_last_reg_snap[season] = (
+        eligible['ranking_id'].max() if not eligible.empty else sub['ranking_id'].max()
+    )
+df['is_end_of_regular_season'] = df.apply(
+    lambda r: 1 if r['ranking_id'] == season_last_reg_snap.get(r['season']) else 0,
+    axis=1
+)
+eors_rating_lookup = {
+    (r['team'], r['season']): float(r['rating'])
+    for _, r in df[df['is_end_of_regular_season'] == 1].iterrows()
+}
+df.drop(columns=['_date_only'], inplace=True)
+
 # Per-team conference rank within each snapshot (rank within East / West)
 df['conf_rank'] = (
     df.groupby(['ranking_id', 'conference'])['rating']
     .rank(ascending=False, method='min')
     .astype(int)
 )
+
+# EORS rank/conf_rank lookups (now that conf_rank exists)
+eors_rank_lookup = {
+    (r['team'], r['season']): (int(r['rank']), int(r['conf_rank']))
+    for _, r in df[df['is_end_of_regular_season'] == 1].iterrows()
+}
 
 latest_id = int(df['ranking_id'].max())
 latest = df[df['ranking_id'] == latest_id].sort_values('rank').copy()
@@ -517,13 +550,19 @@ for (team, season), grp in df.groupby(['team', 'season']):
     # wins (treating them all as regulation Ws → 3 pts each).
     reg_rec = early_record(team, str(season)) or \
               regular_record_as_of(team, str(season), str(last['date']))
+    eors_rating = eors_rating_lookup.get((team, str(season)))
+    eors_ranks  = eors_rank_lookup.get((team, str(season)))
     eoy_lookup[(team, str(season))] = {
         'team':                       team,
         'display_name':               display_name(team, str(season)),
         'conference':                 clean(last['conference']),
         'rating':                     round(float(last['rating']), 3),
+        'rating_postseason':          round(float(last['rating']), 3),
+        'rating_regular_season':      round(float(eors_rating), 3) if eors_rating is not None else None,
         'rank':                       int(last['rank']),
         'conf_rank':                  int(last['conf_rank']),
+        'rank_regular_season':        eors_ranks[0] if eors_ranks else None,
+        'conf_rank_regular_season':   eors_ranks[1] if eors_ranks else None,
         'regular_record':             reg_rec,
         'playoff_record':             playoff_record_as_of(team, str(season), str(last['date'])),
         'mls_cup_finish':             clean(last.get('mls_cup_finish', '')),
@@ -649,31 +688,33 @@ won_a_trophy = (
     (eos.get('mls_cup_finish', '') == 'Champion') |
     (eos.get('supporters_shield_finish', '') == 'Champion')
 )
-eos = eos[won_a_trophy]
-eos = eos.sort_values('rating', ascending=False).head(50).reset_index(drop=True)
+eos = eos[won_a_trophy].sort_values('rating', ascending=False).reset_index(drop=True)
 
 final_reg_lookup = {(t, s): grp.sort_values('date').iloc[-1]['record']
                     for (t, s), grp in reg.groupby(['team', 'snap_season'])}
 final_po_lookup  = {(t, s): grp.sort_values('date').iloc[-1]['record']
                     for (t, s), grp in po.groupby(['team', 'snap_season'])}
 
-goat_data = [
-    {
-        'rank':                       i + 1,
+# Emit every trophy winner with BOTH ratings; the frontend toggles
+# between sort-by-postseason and sort-by-regular-season and slices to
+# top 50 from the active sort.
+goat_data = []
+for _, r in eos.iterrows():
+    eors_rating = eors_rating_lookup.get((r['team'], r['season']))
+    goat_data.append({
         'team':                       r['team'],
         'display_name':               display_name(r['team'], r['season']),
         'season':                     r['season'],
         'conference':                 clean(r['conference']),
-        'rating':                     round(float(r['rating']), 3),
+        'rating_postseason':          round(float(r['rating']), 3),
+        'rating_regular_season':      round(float(eors_rating), 3) if eors_rating is not None else None,
         'regular_record':             early_record(r['team'], r['season']) or
                                       final_reg_lookup.get((r['team'], r['season']), '0-0-0'),
         'playoff_record':             final_po_lookup.get((r['team'], r['season']), ''),
         'mls_cup_finish':             clean(r.get('mls_cup_finish', '')),
         'supporters_shield_finish':   clean(r.get('supporters_shield_finish', '')),
         'mls_cup_conf_finalist':      is_cup_conf_finalist(r['team'], r['season']),
-    }
-    for i, (_, r) in enumerate(eos.iterrows())
-]
+    })
 with open('docs/data/goat_teams.json', 'w') as f:
     json.dump(goat_data, f, separators=(',', ':'))
 

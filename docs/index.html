@@ -307,8 +307,9 @@
 
 <!-- ── GOAT TABLE ───────────────────────────────────────────────────────── -->
 <div id="goat" class="tab">
+  <div class="league-pills" id="goat-mode-pills"></div>
   <div class="league-pills" id="goat-conf-pills"></div>
-  <p class="data-note">Top 50 single-season ratings · Eligibility requires winning Supporters' Shield or MLS Cup that year.</p>
+  <p class="data-note" id="goat-note">Top 50 single-season ratings · Eligibility requires winning Supporters' Shield or MLS Cup that year.</p>
   <div id="goat-table-wrap"><p class="loading">Loading GOAT table...</p></div>
 </div>
 
@@ -319,6 +320,14 @@ let currentSnapshot   = null;
 let goatData          = null;
 let teamsIndex        = null;
 let teamCache         = {};
+
+// GOAT rating mode: 'postseason' (full season including Cup run) vs
+// 'regular_season' (rating frozen on Decision Day, before playoffs).
+let goatMode = 'postseason';
+const GOAT_MODE_OPTIONS = [
+  { value: 'postseason',     label: 'Postseason' },
+  { value: 'regular_season', label: 'Regular Season' },
+];
 
 // Conference filter pillbox (shared across Standings / TS / GOAT)
 const CONFERENCES = ['East', 'West'];
@@ -794,13 +803,20 @@ function renderChampions() {
   }
 
   const isShield = historyTrophy === 'Supporters Shield';
+  // Shield should be graded on regular-season form (frozen on Decision
+  // Day) so a team's R1 playoff exit doesn't drag down their Shield-era
+  // rating. MLS Cup uses end-of-postseason rating — playoff form matters.
+  const ratingKey   = isShield ? 'rating_regular_season'    : 'rating';
+  const rankKey     = isShield ? 'rank_regular_season'      : 'rank';
+  const confRankKey = isShield ? 'conf_rank_regular_season' : 'conf_rank';
 
   function teamCell(t, bg) {
     const cols = isShield ? 4 : 5;
     if (!t) return `<td class="${bg}" colspan="${cols}">-</td>`;
-    const rating   = t.rating    != null ? t.rating.toFixed(2)  : '-';
-    const ovrRank  = t.rank      != null ? `${t.rank}`          : '-';
-    const confRank = t.conf_rank != null ? `${t.conf_rank}`     : '-';
+    const ratingVal = t[ratingKey];
+    const rating   = ratingVal != null ? ratingVal.toFixed(2)    : '-';
+    const ovrRank  = t[rankKey]     != null ? `${t[rankKey]}`     : '-';
+    const confRank = t[confRankKey] != null ? `${t[confRankKey]}` : '-';
     return `
       <td class="${bg} team-cell" style="white-space:nowrap">${t.display_name || t.team}${rowHonor(t)}</td>
       <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${ovrRank}</td>
@@ -827,11 +843,15 @@ function renderChampions() {
   }).join('');
 
   const note = isShield
-    ? `<p class="data-note">Supporters' Shield = best regular-season points total. Ties broken by wins, then GD, then GF. <em>Pre-2000 standings come from era-accurate Wikipedia totals — MLS used a no-draws shootout format then (regulation W = 3 pts, shootout W = 1 pt).</em></p>`
-    : '';
+    ? `<p class="data-note">Supporters' Shield = best regular-season points total. Ties broken by wins, then GD, then GF. <em>Rating shown is end-of-regular-season — frozen on Decision Day, before playoffs.</em> Pre-2000 standings come from era-accurate Wikipedia totals — MLS used a no-draws shootout format then (regulation W = 3 pts, shootout W = 1 pt).</p>`
+    : `<p class="data-note">MLS Cup = playoff bracket champion. <em>Rating shown is end-of-postseason — includes the Cup run.</em></p>`;
 
   const scoreCol = isShield ? '' :
     `<th class="divider-col" style="text-align:center;font-size:10px;width:52px">Score</th>`;
+
+  const ratingLabel = isShield
+    ? `Rating<br><span style="font-weight:400;color:#888;font-size:10px">(End of Reg. Season)</span>`
+    : `Rating<br><span style="font-weight:400;color:#888;font-size:10px">(End of Postseason)</span>`;
 
   document.getElementById('history-table-wrap').innerHTML = `
     ${note}
@@ -841,13 +861,13 @@ function renderChampions() {
         <th class="col-champ">Champion</th>
         <th class="col-champ col-hide-mobile">OVR #</th>
         <th class="col-champ col-hide-mobile">CONF #</th>
-        <th class="col-champ">Rating</th>
+        <th class="col-champ">${ratingLabel}</th>
         <th class="col-champ col-hide-mobile">W-D-L (Pts)</th>
         ${scoreCol}
         <th class="col-ru">Runner-Up</th>
         <th class="col-ru col-hide-mobile">OVR #</th>
         <th class="col-ru col-hide-mobile">CONF #</th>
-        <th class="col-ru">Rating</th>
+        <th class="col-ru">${ratingLabel}</th>
         <th class="col-ru col-hide-mobile">W-D-L (Pts)</th>
       </tr></thead>
       <tbody>${rows}</tbody>
@@ -888,18 +908,44 @@ async function loadGoat() {
 
 function renderGoat() {
   if (!goatData) return;
-  let teams = goatData;
+  const isReg = goatMode === 'regular_season';
+  const sortKey = isReg ? 'rating_regular_season' : 'rating_postseason';
+  const altKey  = isReg ? 'rating_postseason'     : 'rating_regular_season';
+
+  // Sort all trophy winners by the active rating, drop nulls (in-progress
+  // seasons), take top 50, then apply conference filter for display.
+  let teams = goatData
+    .filter(t => t[sortKey] != null)
+    .slice()
+    .sort((a, b) => b[sortKey] - a[sortKey])
+    .slice(0, 50)
+    .map((t, i) => ({ ...t, rank: i + 1 }));
   if (goatConf !== 'all') teams = teams.filter(t => t.conference === goatConf);
 
-  const rows = teams.map(t => `<tr>
-    <td class="rank-cell">${t.rank}</td>
-    <td style="text-align:center;white-space:nowrap">${t.season}</td>
-    <td class="team-cell">${t.display_name || t.team}</td>
-    <td>${confBadge(t.conference, t.mls_cup_conf_finalist)}</td>
-    <td>${ratingBar(t.rating)}</td>
-    <td style="font-variant-numeric:tabular-nums;white-space:nowrap" class="col-hide-mobile">${fmtRecordStacked(t.regular_record, t.playoff_record)}</td>
-    <td class="col-hide-mobile" style="font-size:11px">${finishBadge(t)}</td>
-  </tr>`).join('');
+  const sortLabel = isReg ? 'Regular Season' : 'Postseason';
+  const altLabel  = isReg ? 'Postseason'     : 'Regular Season';
+
+  const rows = teams.map(t => {
+    const sortVal = t[sortKey];
+    const altVal  = t[altKey];
+    const altDisp = altVal != null ? altVal.toFixed(2) : '-';
+    return `<tr>
+      <td class="rank-cell">${t.rank}</td>
+      <td style="text-align:center;white-space:nowrap">${t.season}</td>
+      <td class="team-cell">${t.display_name || t.team}</td>
+      <td>${confBadge(t.conference, t.mls_cup_conf_finalist)}</td>
+      <td>${ratingBar(sortVal)}</td>
+      <td class="col-hide-mobile" style="font-variant-numeric:tabular-nums;text-align:center;color:#888;font-size:0.9em">${altDisp}</td>
+      <td style="font-variant-numeric:tabular-nums;white-space:nowrap" class="col-hide-mobile">${fmtRecordStacked(t.regular_record, t.playoff_record)}</td>
+      <td class="col-hide-mobile" style="font-size:11px">${finishBadge(t)}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('goat-note').innerHTML =
+    `Top 50 by <strong>${sortLabel.toLowerCase()}</strong> rating · Eligibility requires winning Supporters' Shield or MLS Cup that year. ` +
+    (isReg
+      ? `<em>Regular-season rating freezes on Decision Day — Shield winners aren't penalized for early playoff exits.</em>`
+      : `<em>Postseason rating includes the playoff run — rewards teams that peaked in the bracket.</em>`);
 
   document.getElementById('goat-table-wrap').innerHTML = `
     <table>
@@ -907,7 +953,8 @@ function renderGoat() {
         <th style="text-align:center">All time rank</th>
         <th style="text-align:center">Season</th>
         <th>Team</th><th>Conf</th>
-        <th>Rating</th>
+        <th>Rating<br><span style="font-weight:400;color:#888;font-size:10px">(${sortLabel})</span></th>
+        <th class="col-hide-mobile" style="text-align:center"><span style="font-weight:400;color:#888;font-size:10px">${altLabel}</span></th>
         <th class="col-hide-mobile">W-D-L (Pts)</th>
         <th class="col-hide-mobile">Honors</th>
       </tr></thead>
@@ -928,6 +975,26 @@ buildConfPills('goat-conf-pills', goatConf, v => {
   goatConf = v;
   renderGoat();
 });
+
+(function buildGoatModePills() {
+  const wrap = document.getElementById('goat-mode-pills');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  GOAT_MODE_OPTIONS.forEach(o => {
+    const b = document.createElement('button');
+    b.textContent = o.label;
+    b.dataset.value = o.value;
+    if (o.value === goatMode) b.classList.add('active');
+    b.addEventListener('click', () => {
+      wrap.querySelectorAll('button').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      goatMode = o.value;
+      renderGoat();
+    });
+    wrap.appendChild(b);
+  });
+})();
+
 buildTrophyPills();
 initStandings();
 loadTeamsIndex();
