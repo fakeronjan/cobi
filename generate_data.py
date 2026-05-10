@@ -843,10 +843,13 @@ for season in all_seasons:
                   f, separators=(',', ':'))
 
 df_dates = pd.to_datetime(df['date'])
+# first_date / last_date describe the underlying GAME data, not surviving
+# rating snapshots — the min_games filter shaves the first few weeks of
+# each team's history off the rated output, but those games still happened.
 seasons_index = {
     'seasons':      all_seasons,
-    'first_date':   str(df_dates.min().date()),
-    'last_date':    str(df_dates.max().date()),
+    'first_date':   str(games_lg['date'].min().date()),
+    'last_date':    str(games_lg['date'].max().date()),
     'generated_at': datetime.now(timezone.utc).isoformat(timespec='seconds'),
 }
 with open('docs/data/seasons_index.json', 'w') as f:
