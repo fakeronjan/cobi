@@ -36,6 +36,56 @@ def canonical_team(name):
     return MLS_TEAM_ALIASES.get(name, name)
 
 
+# ── Era-aware display names ─────────────────────────────────────────────────
+# The rating system uses canonical team names for franchise continuity, but
+# historical UI views should show what the team was actually called at the
+# time. Maps canonical → list of (start_year, end_year_inclusive, display_name)
+# ranges. 9999 = ongoing. Includes corrections where ESPN's scrape uses the
+# modern name anachronistically (Houston Dynamo FC was just "Houston Dynamo"
+# until 2020; San Jose Earthquakes were "San Jose Clash" 1996-1999, etc.).
+MLS_TEAM_DISPLAY_HISTORY = {
+    'Chicago Fire FC':      [(1998, 2019, 'Chicago Fire'),
+                             (2020, 9999, 'Chicago Fire FC')],
+    'Columbus Crew':        [(1996, 2014, 'Columbus Crew'),
+                             (2015, 2020, 'Columbus Crew SC'),
+                             (2021, 9999, 'Columbus Crew')],
+    'CF Montréal':          [(2012, 2020, 'Montreal Impact'),
+                             (2021, 9999, 'CF Montréal')],
+    'FC Dallas':            [(1996, 2004, 'Dallas Burn'),
+                             (2005, 9999, 'FC Dallas')],
+    'Houston Dynamo FC':    [(2006, 2019, 'Houston Dynamo'),
+                             (2020, 9999, 'Houston Dynamo FC')],
+    'Red Bull New York':    [(1996, 1997, 'NY/NJ MetroStars'),
+                             (1998, 2005, 'MetroStars'),
+                             (2006, 9999, 'Red Bull New York')],
+    'San Jose Earthquakes': [(1996, 1999, 'San Jose Clash'),
+                             (2000, 9999, 'San Jose Earthquakes')],
+    'Sporting Kansas City': [(1996, 1996, 'Kansas City Wiz'),
+                             (1997, 2010, 'Kansas City Wizards'),
+                             (2011, 9999, 'Sporting Kansas City')],
+}
+
+
+def display_name(canonical, year):
+    """Era-appropriate display name for the given canonical team and year."""
+    history = MLS_TEAM_DISPLAY_HISTORY.get(canonical)
+    if not history:
+        return canonical
+    y = int(year)
+    for start, end, name in history:
+        if start <= y <= end:
+            return name
+    return canonical
+
+
+def current_display_name(canonical):
+    """The team's most recent display name (used for dropdowns / latest snapshot)."""
+    history = MLS_TEAM_DISPLAY_HISTORY.get(canonical)
+    if not history:
+        return canonical
+    return history[-1][2]
+
+
 # ── MLS Eastern/Western Conference history ──────────────────────────────────
 # Per-(team, year) conference assignment. Each entry is a list of inclusive
 # (start_year, end_year, conf) ranges; 9999 means "ongoing". Historical aliases
@@ -301,6 +351,7 @@ standings_data = {
             'rank':                int(r['rank']),
             'conf_rank':           int(r['conf_rank']),
             'team':                r['team'],
+            'display_name':        display_name(r['team'], r['season']),
             'conference':          clean(r['conference']),
             'rating':              round(float(r['rating']), 3),
             'regular_record':      cur_reg.get(r['team'], '0-0-0'),
@@ -329,6 +380,7 @@ for (team, season), grp in df.groupby(['team', 'season']):
     last = grp.sort_values('date').iloc[-1]
     eoy_lookup[(team, str(season))] = {
         'team':                       team,
+        'display_name':               display_name(team, str(season)),
         'conference':                 clean(last['conference']),
         'rating':                     round(float(last['rating']), 3),
         'rank':                       int(last['rank']),
@@ -423,12 +475,16 @@ for (year, label), grp in trophies.groupby(['year', trophies['honor'].str.replac
     champion  = eoy_lookup.get((champ_team, str(year)))
     runner_up = eoy_lookup.get((ru_team, str(year)))
     if champion is None:
-        champion = {'team': champ_team, 'conference': '', 'rating': None,
-                    'rank': None, 'conf_rank': None, 'regular_record': '0-0-0', 'playoff_record': '',
+        champion = {'team': champ_team, 'display_name': display_name(champ_team, str(year)),
+                    'conference': '', 'rating': None,
+                    'rank': None, 'conf_rank': None,
+                    'regular_record': '0-0-0', 'playoff_record': '',
                     'mls_cup_finish': '', 'supporters_shield_finish': ''}
     if runner_up is None:
-        runner_up = {'team': ru_team, 'conference': '', 'rating': None,
-                     'rank': None, 'conf_rank': None, 'regular_record': '0-0-0', 'playoff_record': '',
+        runner_up = {'team': ru_team, 'display_name': display_name(ru_team, str(year)),
+                     'conference': '', 'rating': None,
+                     'rank': None, 'conf_rank': None,
+                    'regular_record': '0-0-0', 'playoff_record': '',
                      'mls_cup_finish': '', 'supporters_shield_finish': ''}
     score_fn = dict(CHAMPIONS_TROPHIES)[label]
     champions_by_trophy[label].append({
@@ -466,6 +522,7 @@ goat_data = [
     {
         'rank':                       i + 1,
         'team':                       r['team'],
+        'display_name':               display_name(r['team'], r['season']),
         'season':                     r['season'],
         'conference':                 clean(r['conference']),
         'rating':                     round(float(r['rating']), 3),
@@ -494,13 +551,15 @@ for team in all_teams:
         continue
     conference = current_conference(team)
     team_slug = slug(team)
-    teams_index.append({'name': team, 'conference': conference, 'slug': team_slug})
+    teams_index.append({'name': team, 'display_name': current_display_name(team),
+                        'conference': conference, 'slug': team_slug})
 
     seasons = {}
     for season, sdf in tdf.groupby('season'):
         seasons[str(season)] = [
             {
                 'date':              str(r['date']),
+                'display_name':      display_name(team, str(season)),
                 'rating':            round(float(r['rating']), 3),
                 'rank':              int(r['rank']),
                 'conf_rank':         int(r['conf_rank']),
@@ -555,6 +614,7 @@ for season in all_seasons:
                 'rank':              int(r['snap_rank']),
                 'conf_rank':         int(r['snap_conf_rank']),
                 'team':              r['team'],
+                'display_name':      display_name(r['team'], season),
                 'conference':        clean(r['conference']),
                 'rating':            round(float(r['rating']), 3),
                 'regular_record':    regular_record_as_of(r['team'], season, str(snap_date)),

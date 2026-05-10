@@ -519,7 +519,7 @@ function renderStandings() {
     return `<tr>
       <td class="rank-cell">${t.rank}</td>
       <td class="rank-cell col-hide-mobile">${t.conf_rank != null ? t.conf_rank : '-'}</td>
-      <td class="team-cell">${t.team}</td>
+      <td class="team-cell">${t.display_name || t.team}</td>
       <td>${confBadge(t.conference, t.mls_cup_finish)}</td>
       <td style="font-variant-numeric:tabular-nums;white-space:nowrap">${fmtRecordStacked(t.regular_record, t.playoff_record)}</td>
       <td>${ratingBar(t.rating)}</td>
@@ -771,7 +771,7 @@ function renderChampions() {
     const ovrRank  = t.rank      != null ? `${t.rank}`          : '-';
     const confRank = t.conf_rank != null ? `${t.conf_rank}`     : '-';
     return `
-      <td class="${bg} team-cell" style="white-space:nowrap">${t.team}${rowHonor(t)}</td>
+      <td class="${bg} team-cell" style="white-space:nowrap">${t.display_name || t.team}${rowHonor(t)}</td>
       <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${ovrRank}</td>
       <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${confRank}</td>
       <td class="${bg} rating-cell" style="font-variant-numeric:tabular-nums">${rating}</td>
@@ -863,7 +863,7 @@ function renderGoat() {
   const rows = teams.map(t => `<tr>
     <td class="rank-cell">${t.rank}</td>
     <td style="text-align:center;white-space:nowrap">${t.season}</td>
-    <td class="team-cell">${t.team}</td>
+    <td class="team-cell">${t.display_name || t.team}</td>
     <td>${confBadge(t.conference, t.mls_cup_finish)}</td>
     <td>${ratingBar(t.rating)}</td>
     <td style="font-variant-numeric:tabular-nums;white-space:nowrap" class="col-hide-mobile">${fmtRecordStacked(t.regular_record, t.playoff_record)}</td>
