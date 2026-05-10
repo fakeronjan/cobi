@@ -361,6 +361,18 @@ function fmtRecord(rec) {
   return `${rec} <span style="color:#888;font-size:0.85em">(${pts})</span>`;
 }
 
+// Stacked record: regular-season W-D-L (Pts) on top, playoff W-L below in
+// dimmed smaller type. Mirrors NBA2/LOBO/DILLON/SALAAM. Playoff line is
+// hidden when the team hasn't entered playoffs yet (record empty or 0-0).
+function fmtRecordStacked(reg, playoff) {
+  const top = fmtRecord(reg);
+  if (!playoff) return top;
+  const m = playoff.match(/^(\d+)-(\d+)$/);
+  const hasPlayoffs = m && (parseInt(m[1]) + parseInt(m[2]) > 0);
+  if (!hasPlayoffs) return top;
+  return `${top}<div style="font-size:10px;color:#888;font-weight:400;line-height:1.2">${playoff} playoff</div>`;
+}
+
 function abbrevComp(str) {
   // Strip the trailing "(MLS)" qualifier — redundant now that all games
   // are MLS. Kept as a hook for future cross-competition expansions.
@@ -368,21 +380,25 @@ function abbrevComp(str) {
   return str.replace(/\s*\(MLS\)\s*$/, '');
 }
 
-function confBadge(conf) {
+function confBadge(conf, mlsCupFinish) {
   if (!conf) return '';
+  // MLS Cup is always East vs West, so making the final = winning your
+  // conference. Gold trophy badge for both Champion and Runner-Up.
+  if (mlsCupFinish === 'Champion' || mlsCupFinish === 'Runner-Up') {
+    return `<span class="finish-badge finish-champion" title="${conf} Conference Champion">${conf} 🏆</span>`;
+  }
   return `<span class="finish-badge conf-pill">${conf}</span>`;
 }
 
-// Render MLS honors. Same team winning Shield + Cup → single "Double 👑"
-// badge with gold-gradient styling, mirroring ZIDANE's Treble. Otherwise
-// show each trophy independently (🏆 for Cup, 🛡️ for Shield).
+// Render MLS honors. Doubles (Cup + Shield same team) get a gold-gradient
+// "DOUBLE 👑" badge ALONGSIDE both individual trophy badges — celebrate
+// the rare achievement, mirroring ZIDANE's Treble pattern.
 function finishBadge(t) {
   const cup    = t.mls_cup_finish;
   const shield = t.supporters_shield_finish;
-  if (cup === 'Champion' && shield === 'Champion') {
-    return `<span class="finish-badge finish-double">Double 👑</span>`;
-  }
+  const isDouble = cup === 'Champion' && shield === 'Champion';
   const bits = [];
+  if (isDouble) bits.push(`<span class="finish-badge finish-double">DOUBLE 👑</span>`);
   if (cup === 'Champion')         bits.push(`<span class="finish-badge finish-champion">MLS Cup 🏆</span>`);
   else if (cup === 'Runner-Up')   bits.push(`<span class="finish-badge finish-runner">MLS Cup 🥈</span>`);
   if (shield === 'Champion')      bits.push(`<span class="finish-badge finish-shield">Shield 🛡️</span>`);
@@ -504,8 +520,8 @@ function renderStandings() {
       <td class="rank-cell">${t.rank}</td>
       <td class="rank-cell col-hide-mobile">${t.conf_rank != null ? t.conf_rank : '-'}</td>
       <td class="team-cell">${t.team}</td>
-      <td>${confBadge(t.conference)}</td>
-      <td style="font-variant-numeric:tabular-nums;white-space:nowrap">${fmtRecord(t.record)}</td>
+      <td>${confBadge(t.conference, t.mls_cup_finish)}</td>
+      <td style="font-variant-numeric:tabular-nums;white-space:nowrap">${fmtRecordStacked(t.regular_record, t.playoff_record)}</td>
       <td>${ratingBar(t.rating)}</td>
       <td class="last-match-cell">
         <span class="${resultClass(t.last_match, isStale)}">${abbrevComp(displayMatch(t.last_match)) || '-'}</span>
@@ -615,11 +631,11 @@ function renderTeamTable() {
     <td class="last-match-cell">
       <span class="${resultClass(g.last_match)}">${abbrevComp(displayMatch(g.last_match)) || '-'}</span>
     </td>
-    <td style="font-variant-numeric:tabular-nums;white-space:nowrap">${fmtRecord(g.record)}</td>
+    <td style="font-variant-numeric:tabular-nums;white-space:nowrap">${fmtRecordStacked(g.regular_record, g.playoff_record)}</td>
     <td class="rank-cell">${g.rank}</td>
     <td class="rank-cell col-hide-mobile">${g.conf_rank != null ? g.conf_rank : '-'}</td>
     <td>${ratingBar(g.rating)}</td>
-    <td class="col-hide-mobile" style="font-size:11px">${confBadge(data.conference)}</td>
+    <td class="col-hide-mobile" style="font-size:11px">${confBadge(data.conference, g.mls_cup_finish)}</td>
     <td class="col-hide-mobile" style="font-size:11px">${finishBadge(g)}</td>
   </tr>`).join('');
 
@@ -733,19 +749,24 @@ function renderChampions() {
     return;
   }
 
-  // Show "Double 👑" badge on the row when the team also won the OTHER trophy
-  // that year (Cup table shows it on Shield-also-Champion rows; Shield table
-  // shows it on Cup-also-Champion rows). Plain trophy is implicit — no badge.
+  // For Doubles, celebrate with DOUBLE 👑 + the OTHER trophy badge inline
+  // next to the team name. Current trophy is implicit (it's the table header),
+  // so no need to repeat it here.
   function rowHonor(t) {
     if (!t) return '';
-    if (t.mls_cup_finish === 'Champion' && t.supporters_shield_finish === 'Champion') {
-      return ' <span class="finish-badge finish-double">Double 👑</span>';
-    }
-    return '';
+    const isDouble = t.mls_cup_finish === 'Champion' && t.supporters_shield_finish === 'Champion';
+    if (!isDouble) return '';
+    const other = (historyTrophy === 'MLS Cup')
+      ? '<span class="finish-badge finish-shield">Shield 🛡️</span>'
+      : '<span class="finish-badge finish-champion">MLS Cup 🏆</span>';
+    return ` <span class="finish-badge finish-double">DOUBLE 👑</span> ${other}`;
   }
 
+  const isShield = historyTrophy === 'Supporters Shield';
+
   function teamCell(t, bg) {
-    if (!t) return `<td class="${bg}" colspan="5">-</td>`;
+    const cols = isShield ? 4 : 5;
+    if (!t) return `<td class="${bg}" colspan="${cols}">-</td>`;
     const rating   = t.rating    != null ? t.rating.toFixed(2)  : '-';
     const ovrRank  = t.rank      != null ? `${t.rank}`          : '-';
     const confRank = t.conf_rank != null ? `${t.conf_rank}`     : '-';
@@ -754,13 +775,18 @@ function renderChampions() {
       <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${ovrRank}</td>
       <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${confRank}</td>
       <td class="${bg} rating-cell" style="font-variant-numeric:tabular-nums">${rating}</td>
-      <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap">${fmtRecord(t.record)}</td>`;
+      <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap">${fmtRecordStacked(t.regular_record, t.playoff_record)}</td>`;
   }
 
   const rows = entries.map(e => {
-    const divCell = e.final_score
-      ? `<td class="divider-col" style="text-align:center;font-size:11px;font-weight:600;white-space:nowrap;width:64px;padding:0 4px">${e.final_score}</td>`
-      : `<td class="divider-col"></td>`;
+    // Shield view drops the Score divider column entirely — points are
+    // already visible in the W-D-L (Pts) column. MLS Cup keeps it (e.g.,
+    // "3-1" or "3-3 (pen)").
+    const divCell = isShield
+      ? ''
+      : (e.final_score
+          ? `<td class="divider-col" style="text-align:center;font-size:11px;font-weight:600;white-space:nowrap;width:52px;padding:0 4px">${e.final_score}</td>`
+          : `<td class="divider-col"></td>`);
     return `<tr>
       <td class="season-cell">${e.season}</td>
       ${teamCell(e.champion,  'col-champ')}
@@ -769,10 +795,12 @@ function renderChampions() {
     </tr>`;
   }).join('');
 
-  const scoreLabel = historyTrophy === 'Supporters Shield' ? 'Pts' : 'Score';
-  const note = historyTrophy === 'Supporters Shield'
-    ? `<p class="data-note">Supporters' Shield = best regular-season points total. Score column shows champion's points vs runner-up's at end of regular season; ties broken by wins, then GD, then GF.</p>`
+  const note = isShield
+    ? `<p class="data-note">Supporters' Shield = best regular-season points total. Ties broken by wins, then GD, then GF.</p>`
     : '';
+
+  const scoreCol = isShield ? '' :
+    `<th class="divider-col" style="text-align:center;font-size:10px;width:52px">Score</th>`;
 
   document.getElementById('history-table-wrap').innerHTML = `
     ${note}
@@ -784,7 +812,7 @@ function renderChampions() {
         <th class="col-champ col-hide-mobile">CONF #</th>
         <th class="col-champ">Rating</th>
         <th class="col-champ col-hide-mobile">W-D-L (Pts)</th>
-        <th class="divider-col" style="text-align:center;font-size:10px;width:64px">${scoreLabel}</th>
+        ${scoreCol}
         <th class="col-ru">Runner-Up</th>
         <th class="col-ru col-hide-mobile">OVR #</th>
         <th class="col-ru col-hide-mobile">CONF #</th>
@@ -836,9 +864,9 @@ function renderGoat() {
     <td class="rank-cell">${t.rank}</td>
     <td style="text-align:center;white-space:nowrap">${t.season}</td>
     <td class="team-cell">${t.team}</td>
-    <td>${confBadge(t.conference)}</td>
+    <td>${confBadge(t.conference, t.mls_cup_finish)}</td>
     <td>${ratingBar(t.rating)}</td>
-    <td style="font-variant-numeric:tabular-nums;white-space:nowrap" class="col-hide-mobile">${fmtRecord(t.record)}</td>
+    <td style="font-variant-numeric:tabular-nums;white-space:nowrap" class="col-hide-mobile">${fmtRecordStacked(t.regular_record, t.playoff_record)}</td>
     <td class="col-hide-mobile" style="font-size:11px">${finishBadge(t)}</td>
   </tr>`).join('');
 
