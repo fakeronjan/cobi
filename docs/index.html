@@ -763,7 +763,10 @@ document.getElementById('season-select').addEventListener('change', renderTeamTa
 document.getElementById('date-type-select').addEventListener('change', renderTeamTable);
 
 // ── Champions ────────────────────────────────────────────────────────────────
-let championsData = null;  // [{year, mls_cup, apertura, clausura, ccl, leagues_cup}]
+// championsData is a dict keyed by trophy label → list of {season, champion,
+// runner_up, final_score} entries (newest first). Renders ZIDANE-style head-
+// to-head table comparing champion vs runner-up with rating + record.
+let championsData = null;
 
 async function loadChampions() {
   try {
@@ -775,38 +778,92 @@ async function loadChampions() {
   }
 }
 
-const TROPHY_LABELS = {
+// Pill value → key in championsData
+const TROPHY_KEY_MAP = {
   mls_cup:     'MLS Cup',
   apertura:    'Liga MX Apertura',
   clausura:    'Liga MX Clausura',
-  ccl:         'CONCACAF Champions',
+  ccl:         'CONCACAF CL',
   leagues_cup: 'Leagues Cup',
 };
 
 function renderLeagueHistory(trophy) {
   if (!championsData || !trophy) return;
-  // Filter years that actually have a champion for this trophy
-  const entries = championsData
-    .filter(c => c[trophy])
-    .sort((a, b) => b.year.localeCompare(a.year));   // newest first
-
+  const key = TROPHY_KEY_MAP[trophy];
+  const entries = (championsData[key] || []);
   if (!entries.length) {
     document.getElementById('history-table-wrap').innerHTML =
       `<p class="loading">No data for this competition.</p>`;
     return;
   }
 
-  const rows = entries.map(e => `<tr>
-    <td class="season-cell">${e.year}</td>
-    <td class="col-champ team-cell" style="white-space:nowrap">${e[trophy]} <span class="finish-badge finish-champion">🏆</span></td>
-  </tr>`).join('');
+  // Honor badges on the team rows. We skip the trophy this table is *about*
+  // (it's implicit in context) and show only secondary honors that team
+  // earned the same year — e.g., a team that won MLS Cup AND Leagues Cup.
+  function honorBadges(t, currentKey) {
+    const bits = [];
+    const add = (val, label, isCurrent) => {
+      if (isCurrent) return;
+      if (val === 'Champion')  bits.push(`<span class="finish-badge finish-champion">${label} 🏆</span>`);
+      if (val === 'Runner-Up') bits.push(`<span class="finish-badge finish-runner">${label} 🥈</span>`);
+    };
+    add(t.mls_cup_finish,     'MLS Cup',      currentKey === 'MLS Cup');
+    add(t.apertura_finish,    'Apertura',     currentKey === 'Liga MX Apertura');
+    add(t.clausura_finish,    'Clausura',     currentKey === 'Liga MX Clausura');
+    add(t.ccl_finish,         'CCL',          currentKey === 'CONCACAF CL');
+    add(t.leagues_cup_finish, 'Leagues Cup',  currentKey === 'Leagues Cup');
+    return bits.join(' ');
+  }
+
+  function teamCell(t, bg) {
+    if (!t) return `<td class="${bg}" colspan="5">-</td>`;
+    const honors  = honorBadges(t, key);
+    const rating  = t.rating  != null ? t.rating.toFixed(2) : '-';
+    const ovrRank = t.rank    != null ? `${t.rank}` : '-';
+    const lgRank  = t.lg_rank != null ? `${t.lg_rank}` : '-';
+    return `
+      <td class="${bg} team-cell" style="white-space:nowrap">${t.team}${honors ? ' ' + honors : ''}</td>
+      <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${ovrRank}</td>
+      <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${lgRank}</td>
+      <td class="${bg} rating-cell" style="font-variant-numeric:tabular-nums">${rating}</td>
+      <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap">${fmtRecord(t.record)}</td>`;
+  }
+
+  const rows = entries.map(e => {
+    const divCell = e.final_score
+      ? `<td class="divider-col" style="text-align:center;font-size:11px;font-weight:600;white-space:nowrap;width:52px;padding:0 4px">${e.final_score}</td>`
+      : `<td class="divider-col"></td>`;
+    return `<tr>
+      <td class="season-cell">${e.season}</td>
+      ${teamCell(e.champion,  'col-champ')}
+      ${divCell}
+      ${teamCell(e.runner_up, 'col-ru')}
+    </tr>`;
+  }).join('');
+
+  let note = '';
+  if (key === 'CONCACAF CL') {
+    note = `<p class="data-note">2-leg final pre-2024, single-game from 2024 onward (Champions Cup reformat). Score = aggregate or single-game result.</p>`;
+  } else if (key === 'Liga MX Apertura' || key === 'Liga MX Clausura') {
+    note = `<p class="data-note">Liguilla 2-leg final. Score = aggregate; ties broken by away goals or shootout.</p>`;
+  }
 
   document.getElementById('history-table-wrap').innerHTML = `
-    <p class="data-note">${TROPHY_LABELS[trophy]} champions by year.</p>
+    ${note}
     <table>
       <thead><tr>
-        <th>Year</th>
+        <th>Season</th>
         <th class="col-champ">Champion</th>
+        <th class="col-champ col-hide-mobile">OVR #</th>
+        <th class="col-champ col-hide-mobile">LG #</th>
+        <th class="col-champ">Rating</th>
+        <th class="col-champ col-hide-mobile">LG W-D-L (Pts)</th>
+        <th class="divider-col" style="text-align:center;font-size:10px;width:52px">Score</th>
+        <th class="col-ru">Runner-Up</th>
+        <th class="col-ru col-hide-mobile">OVR #</th>
+        <th class="col-ru col-hide-mobile">LG #</th>
+        <th class="col-ru">Rating</th>
+        <th class="col-ru col-hide-mobile">LG W-D-L (Pts)</th>
       </tr></thead>
       <tbody>${rows}</tbody>
     </table>`;

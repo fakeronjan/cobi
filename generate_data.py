@@ -173,31 +173,114 @@ with open('docs/data/current_standings.json', 'w') as f:
 
 
 # ── 2. Champions table ───────────────────────────────────────────────────────
+# Rich per-trophy view modeled on ZIDANE's champions.json: dict keyed by
+# trophy label, each value a list of {season, champion: {…full team data…},
+# runner_up: {…}, final_score} entries. Frontend renders this as a head-to-
+# head table comparing champion vs runner-up at end of season.
 print("Writing champions.json...")
 trophies = pd.read_csv('cobi_trophies.csv')
-champions_by_year = {}
-for _, t in trophies[trophies['honor'].str.endswith('Champion')].iterrows():
-    y = str(t['year'])
-    champions_by_year.setdefault(y, {})
-    if t['honor'].startswith('MLS Cup'):              champions_by_year[y]['mls_cup'] = t['team']
-    elif t['honor'].startswith('Liga MX Apertura'):   champions_by_year[y]['apertura'] = t['team']
-    elif t['honor'].startswith('Liga MX Clausura'):   champions_by_year[y]['clausura'] = t['team']
-    elif t['honor'].startswith('CONCACAF CL'):        champions_by_year[y]['ccl'] = t['team']
-    elif t['honor'].startswith('Leagues Cup'):        champions_by_year[y]['leagues_cup'] = t['team']
 
-champs_list = []
-for y in sorted(champions_by_year.keys()):
-    e = champions_by_year[y]
-    champs_list.append({
-        'year': y,
-        'mls_cup':     e.get('mls_cup', ''),
-        'apertura':    e.get('apertura', ''),
-        'clausura':    e.get('clausura', ''),
-        'ccl':         e.get('ccl', ''),
-        'leagues_cup': e.get('leagues_cup', ''),
+# End-of-year snapshot per (team, season) — supplies rating/rank/lg_rank/record
+eoy_lookup = {}
+for (team, season), grp in df.groupby(['team', 'season']):
+    last = grp.sort_values('date').iloc[-1]
+    eoy_lookup[(team, str(season))] = {
+        'team':                 team,
+        'league':               clean(last['league']),
+        'rating':               round(float(last['rating']), 3),
+        'rank':                 int(last['rank']),
+        'lg_rank':              int(last['lg_rank']),
+        'record':               record_as_of(team, str(season), str(last['date'])),
+        'mls_cup_finish':       clean(last.get('mls_cup_finish', '')),
+        'apertura_finish':      clean(last.get('liga_mx_apertura_finish', '')),
+        'clausura_finish':      clean(last.get('liga_mx_clausura_finish', '')),
+        'ccl_finish':           clean(last.get('ccl_finish', '')),
+        'leagues_cup_finish':   clean(last.get('leagues_cup_finish', '')),
+    }
+
+# Final-score lookup — per (year, trophy_label, champ, runner_up) figures
+# the score of the actual championship match. Single-game trophies use the
+# raw score of the final; 2-leg trophies use the aggregate.
+def _score_for_trophy(year, trophy_label, champ, runner_up):
+    y = int(year)
+    # Filter master games to the relevant competition + year + (if Liga MX) half
+    g = games_raw.copy()
+    g['year'] = g['date'].dt.year
+    if trophy_label == 'MLS Cup':
+        sub = g[(g['competition'] == 'MLS') & (g['year'] == y)]
+    elif trophy_label == 'Liga MX Apertura':
+        sub = g[(g['competition'] == 'Liga MX') & (g['year'] == y) & (g['date'].dt.month >= 7)]
+    elif trophy_label == 'Liga MX Clausura':
+        sub = g[(g['competition'] == 'Liga MX') & (g['year'] == y) & (g['date'].dt.month < 7)]
+    elif trophy_label == 'CONCACAF CL':
+        sub = g[(g['competition'] == 'CONCACAF CL') & (g['year'] == y)]
+    elif trophy_label == 'Leagues Cup':
+        sub = g[(g['competition'] == 'Leagues Cup') & (g['year'] == y)]
+    else:
+        return ''
+    pair = sub[
+        ((sub['home_team'] == champ) & (sub['away_team'] == runner_up)) |
+        ((sub['home_team'] == runner_up) & (sub['away_team'] == champ))
+    ].sort_values('date')
+    if pair.empty:
+        return ''
+    is_2leg = trophy_label in ('Liga MX Apertura', 'Liga MX Clausura') or \
+              (trophy_label == 'CONCACAF CL' and y < 2024)
+    if is_2leg and len(pair) >= 2:
+        legs = pair.tail(2)
+        c_goals = sum(int(r['home_score']) if r['home_team'] == champ else int(r['away_score'])
+                      for _, r in legs.iterrows())
+        r_goals = sum(int(r['home_score']) if r['home_team'] == runner_up else int(r['away_score'])
+                      for _, r in legs.iterrows())
+        return f'{c_goals}-{r_goals}'
+    last = pair.iloc[-1]
+    if last['home_team'] == champ:
+        return f'{int(last["home_score"])}-{int(last["away_score"])}'
+    return f'{int(last["away_score"])}-{int(last["home_score"])}'
+
+HONOR_KEY = {
+    'MLS Cup':           'MLS Cup',
+    'Liga MX Apertura':  'Liga MX Apertura',
+    'Liga MX Clausura':  'Liga MX Clausura',
+    'CONCACAF CL':       'CONCACAF CL',
+    'Leagues Cup':       'Leagues Cup',
+}
+champions_by_trophy = {label: [] for label in HONOR_KEY}
+
+for (year, label), grp in trophies.groupby(['year', trophies['honor'].str.replace(' Champion', '', regex=False).str.replace(' Runner-Up', '', regex=False)]):
+    champ_row = grp[grp['honor'].str.endswith('Champion')]
+    ru_row    = grp[grp['honor'].str.endswith('Runner-Up')]
+    if champ_row.empty or ru_row.empty:
+        continue
+    champ_team = champ_row.iloc[0]['team']
+    ru_team    = ru_row.iloc[0]['team']
+    champion  = eoy_lookup.get((champ_team, str(year)))
+    runner_up = eoy_lookup.get((ru_team, str(year)))
+    if champion is None or runner_up is None:
+        # Team didn't pass min_games filter — fall back to a minimal record
+        if champion is None:
+            champion = {'team': champ_team, 'league': '', 'rating': None, 'rank': None,
+                        'lg_rank': None, 'record': '—', 'mls_cup_finish': '',
+                        'apertura_finish': '', 'clausura_finish': '',
+                        'ccl_finish': '', 'leagues_cup_finish': ''}
+        if runner_up is None:
+            runner_up = {'team': ru_team, 'league': '', 'rating': None, 'rank': None,
+                         'lg_rank': None, 'record': '—', 'mls_cup_finish': '',
+                         'apertura_finish': '', 'clausura_finish': '',
+                         'ccl_finish': '', 'leagues_cup_finish': ''}
+    champions_by_trophy[label].append({
+        'season':      str(year),
+        'champion':    champion,
+        'runner_up':   runner_up,
+        'final_score': _score_for_trophy(year, label, champ_team, ru_team),
     })
+
+# Sort each trophy's entries by season (newest first, like ZIDANE)
+for label in champions_by_trophy:
+    champions_by_trophy[label].sort(key=lambda e: e['season'], reverse=True)
+
 with open('docs/data/champions.json', 'w') as f:
-    json.dump(champs_list, f, separators=(',', ':'))
+    json.dump(champions_by_trophy, f, separators=(',', ':'))
 
 
 # ── 3. GOAT table ────────────────────────────────────────────────────────────
