@@ -572,7 +572,12 @@ function populateTeams() {
   filtered.forEach(t => {
     const opt = document.createElement('option');
     opt.value = t.slug;
-    opt.textContent = t.name;
+    // For franchises that have changed names in the same market, append
+    // the prior names in parens so search-by-typing finds them too.
+    const priors = (t.historical_names || []);
+    opt.textContent = priors.length
+      ? `${t.name} (${priors.join(' / ')})`
+      : t.name;
     sel.appendChild(opt);
   });
   sel.disabled = false;
@@ -624,10 +629,18 @@ function renderTeamTable() {
   // Chart
   drawChart(rows, seasonFilter);
 
-  // Table (reverse chronological)
-  const tableRows = [...rows].reverse().map(g => `<tr>
+  // Table (reverse chronological). For franchises that have changed names,
+  // show the era name beneath the year when it differs from the current
+  // canonical (the page's identity). Stays out of the way for modern teams.
+  const canonical = data.team;
+  const tableRows = [...rows].reverse().map(g => {
+    const era = (g.display_name && g.display_name !== canonical) ? g.display_name : '';
+    const seasonCell = era
+      ? `${g.season}<div style="font-size:10px;color:#999;font-style:italic;line-height:1.2">${era}</div>`
+      : g.season;
+    return `<tr>
     <td style="white-space:nowrap;color:#888;font-size:12px">${g.date}</td>
-    <td style="font-size:11px;color:#555">${g.season}</td>
+    <td style="font-size:11px;color:#555">${seasonCell}</td>
     <td class="last-match-cell">
       <span class="${resultClass(g.last_match)}">${abbrevComp(displayMatch(g.last_match)) || '-'}</span>
     </td>
@@ -637,7 +650,8 @@ function renderTeamTable() {
     <td>${ratingBar(g.rating)}</td>
     <td class="col-hide-mobile" style="font-size:11px">${confBadge(data.conference, g.mls_cup_finish)}</td>
     <td class="col-hide-mobile" style="font-size:11px">${finishBadge(g)}</td>
-  </tr>`).join('');
+  </tr>`;
+  }).join('');
 
   document.getElementById('team-table-wrap').innerHTML = `
     <table>

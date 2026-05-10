@@ -86,6 +86,24 @@ def current_display_name(canonical):
     return history[-1][2]
 
 
+def historical_display_names(canonical):
+    """List of distinct prior display names (most recent first), excluding
+    the current name. Used to show "(MetroStars / NY/NJ MetroStars)" hint
+    in the Team Summary dropdown."""
+    history = MLS_TEAM_DISPLAY_HISTORY.get(canonical)
+    if not history:
+        return []
+    current = history[-1][2]
+    seen = {current}
+    out = []
+    # Walk newest → oldest (excluding current which is the last entry)
+    for _, _, name in reversed(history[:-1]):
+        if name not in seen:
+            out.append(name)
+            seen.add(name)
+    return out
+
+
 # ── MLS Eastern/Western Conference history ──────────────────────────────────
 # Per-(team, year) conference assignment. Each entry is a list of inclusive
 # (start_year, end_year, conf) ranges; 9999 means "ongoing". Historical aliases
@@ -552,6 +570,7 @@ for team in all_teams:
     conference = current_conference(team)
     team_slug = slug(team)
     teams_index.append({'name': team, 'display_name': current_display_name(team),
+                        'historical_names': historical_display_names(team),
                         'conference': conference, 'slug': team_slug})
 
     seasons = {}
