@@ -370,7 +370,7 @@ function fmtRecordStacked(reg, playoff) {
   const m = playoff.match(/^(\d+)-(\d+)$/);
   const hasPlayoffs = m && (parseInt(m[1]) + parseInt(m[2]) > 0);
   if (!hasPlayoffs) return top;
-  return `${top}<div style="font-size:10px;color:#888;font-weight:400;line-height:1.2">${playoff} playoff</div>`;
+  return `${top}<div style="font-size:10px;color:#888;font-weight:400;line-height:1.2">${playoff}</div>`;
 }
 
 function abbrevComp(str) {
