@@ -721,7 +721,11 @@ with open('docs/data/goat_teams.json', 'w') as f:
 
 # ── 4. Per-team JSON files ───────────────────────────────────────────────────
 print("Writing per-team JSON files...")
-game_days = df[(df['is_game_day'] == 1) | (df['is_end_of_season'] == 1)].copy()
+game_days = df[
+    (df['is_game_day'] == 1) |
+    (df['is_end_of_season'] == 1) |
+    (df['is_end_of_regular_season'] == 1)
+].copy()
 game_days = game_days.sort_values(['team', 'season', 'date'])
 
 all_teams = sorted(df['team'].unique())
@@ -747,7 +751,8 @@ for team in all_teams:
                 'rating':            round(float(r['rating']), 3),
                 'rank':              int(r['rank']),
                 'conf_rank':         int(r['conf_rank']),
-                'is_end_of_season':  int(r['is_end_of_season']),
+                'is_end_of_season':         int(r['is_end_of_season']),
+                'is_end_of_regular_season': int(r['is_end_of_regular_season']),
                 'regular_record':    (early_record(team, str(season)) if int(r['is_end_of_season']) == 1 else None)
                                      or regular_record_as_of(team, str(season), str(r['date'])),
                 'playoff_record':    playoff_record_as_of(team, str(season), str(r['date'])),
@@ -794,7 +799,8 @@ for season in all_seasons:
             .rank(ascending=False, method='min')
             .astype(int)
         )
-        snap_is_eos = int(gdf['is_end_of_season'].max()) == 1
+        snap_is_eos  = int(gdf['is_end_of_season'].max()) == 1
+        snap_is_eors = int(gdf['is_end_of_regular_season'].max()) == 1
         teams = []
         for _, r in gdf.iterrows():
             reg_rec = (early_record(r['team'], season) if snap_is_eos else None) \
@@ -814,11 +820,22 @@ for season in all_seasons:
                 'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
                 'mls_cup_conf_finalist':     is_cup_conf_finalist(r['team'], season),
             })
+        # If the snapshot is BOTH EORS and EOS (rare — mid-1990s seasons
+        # that ended on Decision Day with no playoff round in our data, or
+        # in-progress seasons before playoffs start), prefer the EOS label
+        # since it reflects the actual final state for the season.
+        if snap_is_eos:
+            snap_label = 'End of Postseason'
+        elif snap_is_eors:
+            snap_label = 'End of Regular Season'
+        else:
+            snap_label = None
         snaps.append({
-            'date':              str(snap_date),
-            'label':             None,
-            'is_end_of_season':  int(gdf['is_end_of_season'].max()),
-            'teams':             teams,
+            'date':                     str(snap_date),
+            'label':                    snap_label,
+            'is_end_of_season':         int(gdf['is_end_of_season'].max()),
+            'is_end_of_regular_season': int(gdf['is_end_of_regular_season'].max()),
+            'teams':                    teams,
         })
 
     with open(f'docs/data/seasons/{season}.json', 'w') as f:

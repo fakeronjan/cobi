@@ -290,7 +290,8 @@
     <select id="season-select"><option value="all">All Seasons</option></select>
     <select id="date-type-select">
       <option value="all">All dates</option>
-      <option value="eos">End of season</option>
+      <option value="eor">End of regular season</option>
+      <option value="eos">End of postseason</option>
     </select>
   </div>
   <div id="chart-wrap" style="display:none">
@@ -650,7 +651,8 @@ function renderTeamTable() {
     if (seasonFilter !== 'all' && s !== seasonFilter) return;
     data.seasons[s].forEach(g => rows.push({...g, season: s}));
   });
-  if (dateType === 'eos') rows = rows.filter(g => g.is_end_of_season === 1);
+  if (dateType === 'eor') rows = rows.filter(g => g.is_end_of_regular_season === 1);
+  else if (dateType === 'eos') rows = rows.filter(g => g.is_end_of_season === 1);
 
   // Chart
   drawChart(rows, seasonFilter);
@@ -850,8 +852,8 @@ function renderChampions() {
     `<th class="divider-col" style="text-align:center;font-size:10px;width:52px">Score</th>`;
 
   const ratingLabel = isShield
-    ? `Rating<br><span style="font-weight:400;color:#888;font-size:10px">(End of Reg. Season)</span>`
-    : `Rating<br><span style="font-weight:400;color:#888;font-size:10px">(End of Postseason)</span>`;
+    ? `Rating<br><span style="font-weight:400;color:#888;font-size:10px">(Regular Season)</span>`
+    : `Rating<br><span style="font-weight:400;color:#888;font-size:10px">(Postseason)</span>`;
 
   document.getElementById('history-table-wrap').innerHTML = `
     ${note}
