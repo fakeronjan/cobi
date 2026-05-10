@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>COBI — North American Club Soccer Power Rankings</title>
+<title>COBI — MLS Power Rankings</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -147,18 +147,6 @@
     text-align: center;
   }
   .team-cell { font-weight: 600; }
-  .league-badge {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 3px;
-    letter-spacing: 0.3px;
-    white-space: nowrap;
-  }
-  .badge-MLS        { background: #1a1a3e; color: #fff; }
-  .badge-LigaMX     { background: #006847; color: #fff; }
-  .badge-Other      { background: #555; color: #fff; }
 
   .rating-cell {
     font-weight: 700;
@@ -268,9 +256,9 @@
 <body>
 
 <header>
-  <h1>COBI 🇺🇸🇲🇽⚽</h1>
-  <p class="subtitle">North American Club Soccer Power Rankings · Alpha</p>
-  <p class="model-note">MLS + Liga MX, calibrated through CONCACAF Champions League and Leagues Cup. Considers strength of opponent, margin of result, and recency. ~0.5 = contender; ~1.5+ = elite; ~2.0+ = generational (León 2019 = 2.06).</p>
+  <h1>COBI 🇺🇸⚽</h1>
+  <p class="subtitle">MLS Power Rankings · Alpha</p>
+  <p class="model-note">MLS, calibrated through MLS Cup playoffs. Considers strength of opponent, margin of result, and recency. ~0.4+ = contender; ~0.7+ = elite; ~1.0+ = generational (Inter Miami 2025 = 1.05).</p>
   <p class="updated" id="last-updated">Loading...</p>
   <p class="updated" id="last-refreshed" style="font-size:11px;color:#999;margin-top:-4px"></p>
 </header>
@@ -278,13 +266,13 @@
 <nav>
   <button class="active" data-tab="standings">Standings</button>
   <button data-tab="team-summary">Team Summary</button>
-  <button data-tab="league-history">Champions</button>
+  <button data-tab="league-history">MLS Cup</button>
   <button data-tab="goat">GOAT Table</button>
 </nav>
 
 <!-- ── STANDINGS ────────────────────────────────────────────────────────── -->
 <div id="standings" class="tab active">
-  <div class="league-pills" id="standings-league-pills"></div>
+  <div class="league-pills" id="standings-conf-pills"></div>
   <div class="controls">
     <select id="season-filter"></select>
     <select id="date-filter" style="min-width:200px"></select>
@@ -295,7 +283,7 @@
 
 <!-- ── TEAM SUMMARY ─────────────────────────────────────────────────────── -->
 <div id="team-summary" class="tab">
-  <div class="league-pills" id="ts-league-pills"></div>
+  <div class="league-pills" id="ts-conf-pills"></div>
   <div class="controls">
     <select id="team-select" disabled><option value="">— Select a team —</option></select>
     <select id="season-select"><option value="all">All Seasons</option></select>
@@ -310,17 +298,15 @@
   <div id="team-table-wrap"><p class="loading">Select a team above.</p></div>
 </div>
 
-<!-- ── LEAGUE HISTORY ────────────────────────────────────────────────────── -->
+<!-- ── MLS CUP ──────────────────────────────────────────────────────────── -->
 <div id="league-history" class="tab">
-  <div class="league-pills" id="history-domestic-pills" style="margin-bottom:6px"></div>
-  <div class="league-pills" id="history-uefa-pills"></div>
-  <div id="history-table-wrap"><p class="loading">Select a competition above.</p></div>
+  <div id="history-table-wrap"><p class="loading">Loading MLS Cup history...</p></div>
 </div>
 
 <!-- ── GOAT TABLE ───────────────────────────────────────────────────────── -->
 <div id="goat" class="tab">
-  <div class="league-pills" id="goat-league-pills"></div>
-  <p class="data-note">Top 50 single-season ratings · Eligibility requires winning at least one trophy that year (MLS Cup, Liga MX Apertura/Clausura, CONCACAF Champions League, or Leagues Cup).</p>
+  <div class="league-pills" id="goat-conf-pills"></div>
+  <p class="data-note">Top 50 single-season ratings · Eligibility requires winning MLS Cup that year.</p>
   <div id="goat-table-wrap"><p class="loading">Loading GOAT table...</p></div>
 </div>
 
@@ -332,54 +318,29 @@ let goatData          = null;
 let teamsIndex        = null;
 let teamCache         = {};
 
-// Pill state (replaces league-filter / league-select / goat-league-filter / history-league-filter dropdowns)
-let standingsLeague = 'all';
-let tsLeague        = '';
-let goatLeague      = 'all';
-let historyComp     = '';   // current Champions/League-History selection
+// Conference filter pillbox (shared across Standings / TS / GOAT)
+const CONFERENCES = ['East', 'West'];
+let standingsConf = 'all';
+let tsConf        = 'all';
+let goatConf      = 'all';
 
-const LEAGUE_OPTIONS = [
-  { value: 'MLS',     label: '🇺🇸 MLS'     },
-  { value: 'Liga MX', label: '🇲🇽 Liga MX' },
-];
-const TROPHY_OPTIONS = [
-  { value: 'mls_cup',     label: '🏆 MLS Cup'              },
-  { value: 'apertura',    label: '🏆 Liga MX Apertura'     },
-  { value: 'clausura',    label: '🏆 Liga MX Clausura'     },
-  { value: 'ccl',         label: '🏆 CONCACAF Champions'   },
-  { value: 'leagues_cup', label: '🏆 Leagues Cup'          },
-];
-
-// Reusable pill builder. Builds buttons from `opts` array of {value, label}.
-// `current` highlights one as active; `onSelect(value)` fires on click. If
-// `clearSiblings` is set to a list of other container IDs, clicking will
-// also clear active state in those siblings (used for Champions tab where
-// domestic + UEFA pill rows share a single "current selection").
-function buildLeaguePillsFromOpts(containerId, opts, current, onSelect, clearSiblings) {
+function buildConfPills(containerId, current, onSelect) {
   const wrap = document.getElementById(containerId);
+  if (!wrap) return;
   wrap.innerHTML = '';
+  const opts = [{ value: 'all', label: 'All' }, ...CONFERENCES.map(c => ({ value: c, label: c }))];
   opts.forEach(o => {
     const b = document.createElement('button');
-    b.innerHTML = o.label;
+    b.textContent = o.label;
     b.dataset.value = o.value;
     if (o.value === current) b.classList.add('active');
     b.addEventListener('click', () => {
       wrap.querySelectorAll('button').forEach(x => x.classList.remove('active'));
-      (clearSiblings || []).forEach(sid => {
-        document.querySelectorAll(`#${sid} button`).forEach(x => x.classList.remove('active'));
-      });
       b.classList.add('active');
       onSelect(o.value);
     });
     wrap.appendChild(b);
   });
-}
-
-function buildLeaguePills(containerId, includeAll, current, onSelect) {
-  const opts = includeAll
-    ? [{ value: 'all', label: 'All Leagues' }, ...LEAGUE_OPTIONS]
-    : LEAGUE_OPTIONS;
-  buildLeaguePillsFromOpts(containerId, opts, current, onSelect);
 }
 
 // ── Utilities ───────────────────────────────────────────────────────────────
@@ -399,43 +360,23 @@ function fmtRecord(rec) {
 }
 
 function abbrevComp(str) {
-  if (!str) return str;
-  return str
-    .replace(/\bCONCACAF Champions League\b/g, 'CCL')
-    .replace(/\bLeagues Cup\b/g, 'LC');
+  // Strip the trailing "(MLS)" qualifier — redundant now that all games
+  // are MLS. Kept as a hook for future cross-competition expansions.
+  if (!str) return '';
+  return str.replace(/\s*\(MLS\)\s*$/, '');
 }
 
-const _LEAGUE_BADGE_CLS = {
-  'MLS':     'badge-MLS',
-  'Liga MX': 'badge-LigaMX',
-};
-const _LEAGUE_BADGE_LABEL = {
-  'MLS':     '🇺🇸 MLS',
-  'Liga MX': '🇲🇽 Liga MX',
-};
-
-function leagueBadge(league) {
-  if (!league) return '';
-  const cls = _LEAGUE_BADGE_CLS[league] || 'badge-Other';
-  const label = _LEAGUE_BADGE_LABEL[league] || league;
-  return `<span class="league-badge ${cls}">${label}</span>`;
+function confBadge(conf) {
+  if (!conf) return '';
+  return `<span class="finish-badge conf-pill">${conf}</span>`;
 }
 
-// Render trophy badges for a row from COBI's 5 finish columns. `t` is a team
-// row dict; reads mls_cup_finish, apertura_finish, clausura_finish,
-// ccl_finish, leagues_cup_finish. Each can be 'Champion' / 'Runner-Up' / ''.
+// Render MLS Cup honor badge for a team row. `t.mls_cup_finish` is
+// 'Champion' / 'Runner-Up' / ''.
 function finishBadge(t) {
-  const bits = [];
-  const add = (val, label) => {
-    if (val === 'Champion')  bits.push(`<span class="finish-badge finish-champion">${label} 🏆</span>`);
-    if (val === 'Runner-Up') bits.push(`<span class="finish-badge finish-runner">${label} 🥈</span>`);
-  };
-  add(t.mls_cup_finish,     'MLS Cup');
-  add(t.apertura_finish,    'Apertura');
-  add(t.clausura_finish,    'Clausura');
-  add(t.ccl_finish,         'CCL');
-  add(t.leagues_cup_finish, 'Leagues Cup');
-  return bits.join(' ');
+  if (t.mls_cup_finish === 'Champion')  return `<span class="finish-badge finish-champion">MLS Cup 🏆</span>`;
+  if (t.mls_cup_finish === 'Runner-Up') return `<span class="finish-badge finish-runner">MLS Cup 🥈</span>`;
+  return '';
 }
 
 function resultClass(match, isStale) {
@@ -448,7 +389,7 @@ function resultClass(match, isStale) {
   return '';
 }
 
-const BAR_MIN = -2.0, BAR_MAX = 2.0, BAR_RANGE = 4.0;
+const BAR_MIN = -1.5, BAR_MAX = 1.5, BAR_RANGE = 3.0;
 
 function ratingBar(rating) {
   const clipped = Math.max(BAR_MIN, Math.min(BAR_MAX, rating));
@@ -538,31 +479,21 @@ function selectSnapshot(date) {
 
 function renderStandings() {
   if (!currentSnapshot) return;
-  const league = standingsLeague;
-
-  // Compute LG rank: position within each league (teams already sorted by OVR rank)
-  const lgRankMap = {};
-  const lgCounter = {};
-  currentSnapshot.teams.forEach(t => {
-    lgCounter[t.league] = (lgCounter[t.league] || 0) + 1;
-    lgRankMap[t.team] = lgCounter[t.league];
-  });
 
   let teams = currentSnapshot.teams;
-  if (league !== 'all') teams = teams.filter(t => t.league === league);
+  if (standingsConf !== 'all') teams = teams.filter(t => t.conference === standingsConf);
 
   const snaps = currentSeasonData.snapshots;
   const idx = snaps.findIndex(s => s.date === currentSnapshot.date);
   const prevDate = idx > 0 ? snaps[idx - 1].date : null;
 
   const rows = teams.map(t => {
-    const lgRank = lgRankMap[t.team] || '—';
     const isStale = !!(prevDate && t.last_match_date && t.last_match_date <= prevDate);
     return `<tr>
       <td class="rank-cell">${t.rank}</td>
-      <td class="rank-cell col-hide-mobile">${lgRank}</td>
+      <td class="rank-cell col-hide-mobile">${t.conf_rank != null ? t.conf_rank : '-'}</td>
       <td class="team-cell">${t.team}</td>
-      <td>${leagueBadge(t.league)}</td>
+      <td>${confBadge(t.conference)}</td>
       <td style="font-variant-numeric:tabular-nums;white-space:nowrap">${fmtRecord(t.record)}</td>
       <td>${ratingBar(t.rating)}</td>
       <td class="last-match-cell">
@@ -579,8 +510,8 @@ function renderStandings() {
   document.getElementById('standings-table-wrap').innerHTML = `
     <table>
       <thead><tr>
-        <th>OVR #</th><th class="col-hide-mobile">LG #</th>
-        <th>Team</th><th>League</th><th>LEAGUE W-D-L (Pts)</th><th>Rating</th>
+        <th>OVR #</th><th class="col-hide-mobile">CONF #</th>
+        <th>Team</th><th>Conf</th><th>W-D-L (Pts)</th><th>Rating</th>
         <th>Last Match</th>
         <th class="col-hide-mobile">Date</th>
         <th class="col-hide-mobile">Honors</th>
@@ -591,27 +522,27 @@ function renderStandings() {
 
 document.getElementById('season-filter').addEventListener('change', e => loadSeason(e.target.value));
 document.getElementById('date-filter').addEventListener('change', e => selectSnapshot(e.target.value));
-buildLeaguePills('standings-league-pills', true, standingsLeague, v => {
-  standingsLeague = v;
-  renderStandings();
-});
 
 // ── Team Summary ─────────────────────────────────────────────────────────────
 async function loadTeamsIndex() {
   try {
     const res = await fetch(`${BASE}/teams_index.json`);
     teamsIndex = await res.json();
+    populateTeams();
   } catch(e) {
     document.getElementById('team-select').innerHTML =
       '<option>Could not load teams</option>';
   }
 }
 
-function populateTeams(league) {
+function populateTeams() {
   const sel = document.getElementById('team-select');
   sel.innerHTML = '<option value="">— Select a team —</option>';
-  if (!league || !teamsIndex) { sel.disabled = true; return; }
-  teamsIndex.filter(t => t.league === league).forEach(t => {
+  if (!teamsIndex) { sel.disabled = true; return; }
+  const filtered = (tsConf === 'all')
+    ? teamsIndex
+    : teamsIndex.filter(t => t.conference === tsConf);
+  filtered.forEach(t => {
     const opt = document.createElement('option');
     opt.value = t.slug;
     opt.textContent = t.name;
@@ -619,16 +550,6 @@ function populateTeams(league) {
   });
   sel.disabled = false;
 }
-
-buildLeaguePills('ts-league-pills', false, tsLeague, v => {
-  tsLeague = v;
-  populateTeams(v);
-  document.getElementById('chart-wrap').style.display = 'none';
-  document.getElementById('team-table-wrap').innerHTML =
-    '<p class="loading">Select a team above.</p>';
-  document.getElementById('season-select').innerHTML =
-    '<option value="all">All Seasons</option>';
-});
 
 async function loadTeam(slug) {
   if (!slug) return;
@@ -685,9 +606,9 @@ function renderTeamTable() {
     </td>
     <td style="font-variant-numeric:tabular-nums;white-space:nowrap">${fmtRecord(g.record)}</td>
     <td class="rank-cell">${g.rank}</td>
-    <td class="rank-cell col-hide-mobile">${g.lg_rank != null ? g.lg_rank : '—'}</td>
+    <td class="rank-cell col-hide-mobile">${g.conf_rank != null ? g.conf_rank : '-'}</td>
     <td>${ratingBar(g.rating)}</td>
-    <td class="col-hide-mobile" style="font-size:11px">${leagueBadge(data.league)}</td>
+    <td class="col-hide-mobile" style="font-size:11px">${confBadge(data.conference)}</td>
     <td class="col-hide-mobile" style="font-size:11px">${finishBadge(g)}</td>
   </tr>`).join('');
 
@@ -695,10 +616,10 @@ function renderTeamTable() {
     <table>
       <thead><tr>
         <th>Date</th><th>Season</th><th>Last Match</th>
-        <th>LEAGUE W-D-L (Pts)</th>
-        <th>OVR #</th><th class="col-hide-mobile">LG #</th>
+        <th>W-D-L (Pts)</th>
+        <th>OVR #</th><th class="col-hide-mobile">CONF #</th>
         <th>Rating</th>
-        <th class="col-hide-mobile">League</th>
+        <th class="col-hide-mobile">Conf</th>
         <th class="col-hide-mobile">Honors</th>
       </tr></thead>
       <tbody>${tableRows}</tbody>
@@ -715,7 +636,7 @@ function drawChart(rows, seasonFilter) {
   const H = 180;
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
 
-  const CHART_MIN = -2.5, CHART_MAX = 2.5;
+  const CHART_MIN = -1.5, CHART_MAX = 1.5;
   const CTOP = 10, CBOT = 152;   // chart area; 152..178 reserved for x-axis
 
   const px = (i) => (i / (rows.length - 1)) * (W - 20) + 10;
@@ -769,69 +690,41 @@ document.getElementById('team-select').addEventListener('change', e => {
 document.getElementById('season-select').addEventListener('change', renderTeamTable);
 document.getElementById('date-type-select').addEventListener('change', renderTeamTable);
 
-// ── Champions ────────────────────────────────────────────────────────────────
-// championsData is a dict keyed by trophy label → list of {season, champion,
-// runner_up, final_score} entries (newest first). Renders ZIDANE-style head-
-// to-head table comparing champion vs runner-up with rating + record.
+// ── MLS Cup ──────────────────────────────────────────────────────────────────
+// championsData has a single 'MLS Cup' key → list of {season, champion,
+// runner_up, final_score} entries (newest first). Single-game final played
+// late Nov/Dec each year.
 let championsData = null;
 
 async function loadChampions() {
   try {
     const res = await fetch(`${BASE}/champions.json`);
     championsData = await res.json();
+    renderMlsCup();
   } catch(e) {
     document.getElementById('history-table-wrap').innerHTML =
-      `<p class="error">Could not load champions.</p>`;
+      `<p class="error">Could not load MLS Cup history.</p>`;
   }
 }
 
-// Pill value → key in championsData
-const TROPHY_KEY_MAP = {
-  mls_cup:     'MLS Cup',
-  apertura:    'Liga MX Apertura',
-  clausura:    'Liga MX Clausura',
-  ccl:         'CONCACAF CL',
-  leagues_cup: 'Leagues Cup',
-};
-
-function renderLeagueHistory(trophy) {
-  if (!championsData || !trophy) return;
-  const key = TROPHY_KEY_MAP[trophy];
-  const entries = (championsData[key] || []);
+function renderMlsCup() {
+  if (!championsData) return;
+  const entries = (championsData['MLS Cup'] || []);
   if (!entries.length) {
     document.getElementById('history-table-wrap').innerHTML =
-      `<p class="loading">No data for this competition.</p>`;
+      `<p class="loading">No MLS Cup data yet.</p>`;
     return;
-  }
-
-  // Honor badges on the team rows. We skip the trophy this table is *about*
-  // (it's implicit in context) and show only secondary honors that team
-  // earned the same year — e.g., a team that won MLS Cup AND Leagues Cup.
-  function honorBadges(t, currentKey) {
-    const bits = [];
-    const add = (val, label, isCurrent) => {
-      if (isCurrent) return;
-      if (val === 'Champion')  bits.push(`<span class="finish-badge finish-champion">${label} 🏆</span>`);
-      if (val === 'Runner-Up') bits.push(`<span class="finish-badge finish-runner">${label} 🥈</span>`);
-    };
-    add(t.mls_cup_finish,     'MLS Cup',      currentKey === 'MLS Cup');
-    add(t.apertura_finish,    'Apertura',     currentKey === 'Liga MX Apertura');
-    add(t.clausura_finish,    'Clausura',     currentKey === 'Liga MX Clausura');
-    add(t.ccl_finish,         'CCL',          currentKey === 'CONCACAF CL');
-    add(t.leagues_cup_finish, 'Leagues Cup',  currentKey === 'Leagues Cup');
-    return bits.join(' ');
   }
 
   function teamCell(t, bg) {
     if (!t) return `<td class="${bg}" colspan="5">-</td>`;
-    const honors  = honorBadges(t, key);
-    const rating  = t.rating  != null ? t.rating.toFixed(2) : '-';
-    const ovrRank = t.rank    != null ? `${t.rank}` : '-';
-    const lgRank  = t.lg_rank != null ? `${t.lg_rank}` : '-';
+    const rating   = t.rating    != null ? t.rating.toFixed(2)  : '-';
+    const ovrRank  = t.rank      != null ? `${t.rank}`          : '-';
+    const confRank = t.conf_rank != null ? `${t.conf_rank}`     : '-';
     return `
-      <td class="${bg} team-cell" style="white-space:nowrap">${t.team}${honors ? ' ' + honors : ''}</td>
+      <td class="${bg} team-cell" style="white-space:nowrap">${t.team}</td>
       <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${ovrRank}</td>
-      <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${lgRank}</td>
+      <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${confRank}</td>
       <td class="${bg} rating-cell" style="font-variant-numeric:tabular-nums">${rating}</td>
       <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap">${fmtRecord(t.record)}</td>`;
   }
@@ -848,29 +741,21 @@ function renderLeagueHistory(trophy) {
     </tr>`;
   }).join('');
 
-  let note = '';
-  if (key === 'CONCACAF CL') {
-    note = `<p class="data-note">2-leg final pre-2024, single-game from 2024 onward (Champions Cup reformat). Score = aggregate or single-game result.</p>`;
-  } else if (key === 'Liga MX Apertura' || key === 'Liga MX Clausura') {
-    note = `<p class="data-note">Liguilla 2-leg final. Score = aggregate; ties broken by away goals or shootout.</p>`;
-  }
-
   document.getElementById('history-table-wrap').innerHTML = `
-    ${note}
     <table>
       <thead><tr>
         <th>Season</th>
         <th class="col-champ">Champion</th>
         <th class="col-champ col-hide-mobile">OVR #</th>
-        <th class="col-champ col-hide-mobile">LG #</th>
+        <th class="col-champ col-hide-mobile">CONF #</th>
         <th class="col-champ">Rating</th>
-        <th class="col-champ col-hide-mobile">LG W-D-L (Pts)</th>
+        <th class="col-champ col-hide-mobile">W-D-L (Pts)</th>
         <th class="divider-col" style="text-align:center;font-size:10px;width:52px">Score</th>
         <th class="col-ru">Runner-Up</th>
         <th class="col-ru col-hide-mobile">OVR #</th>
-        <th class="col-ru col-hide-mobile">LG #</th>
+        <th class="col-ru col-hide-mobile">CONF #</th>
         <th class="col-ru">Rating</th>
-        <th class="col-ru col-hide-mobile">LG W-D-L (Pts)</th>
+        <th class="col-ru col-hide-mobile">W-D-L (Pts)</th>
       </tr></thead>
       <tbody>${rows}</tbody>
     </table>`;
@@ -892,13 +777,13 @@ async function loadGoat() {
 function renderGoat() {
   if (!goatData) return;
   let teams = goatData;
-  if (goatLeague !== 'all') teams = teams.filter(t => t.league === goatLeague);
+  if (goatConf !== 'all') teams = teams.filter(t => t.conference === goatConf);
 
   const rows = teams.map(t => `<tr>
     <td class="rank-cell">${t.rank}</td>
     <td style="text-align:center;white-space:nowrap">${t.season}</td>
     <td class="team-cell">${t.team}</td>
-    <td>${leagueBadge(t.league)}</td>
+    <td>${confBadge(t.conference)}</td>
     <td>${ratingBar(t.rating)}</td>
     <td style="font-variant-numeric:tabular-nums;white-space:nowrap" class="col-hide-mobile">${fmtRecord(t.record)}</td>
     <td class="col-hide-mobile" style="font-size:11px">${finishBadge(t)}</td>
@@ -909,9 +794,9 @@ function renderGoat() {
       <thead><tr>
         <th style="text-align:center">All time rank</th>
         <th style="text-align:center">Season</th>
-        <th>Team</th><th>League</th>
+        <th>Team</th><th>Conf</th>
         <th>Rating</th>
-        <th class="col-hide-mobile">LG W-D-L (Pts)</th>
+        <th class="col-hide-mobile">W-D-L (Pts)</th>
         <th class="col-hide-mobile">Honors</th>
       </tr></thead>
       <tbody>${rows}</tbody>
@@ -919,17 +804,18 @@ function renderGoat() {
 }
 
 // ── Init ─────────────────────────────────────────────────────────────────────
-buildLeaguePills('goat-league-pills', true, goatLeague, v => {
-  goatLeague = v;
+buildConfPills('standings-conf-pills', standingsConf, v => {
+  standingsConf = v;
+  renderStandings();
+});
+buildConfPills('ts-conf-pills', tsConf, v => {
+  tsConf = v;
+  populateTeams();
+});
+buildConfPills('goat-conf-pills', goatConf, v => {
+  goatConf = v;
   renderGoat();
 });
-// Champions tab — single row of trophy pills
-buildLeaguePillsFromOpts('history-domestic-pills', TROPHY_OPTIONS, historyComp, v => {
-  historyComp = v;
-  renderLeagueHistory(v);
-});
-// Hide the now-unused second pill row
-document.getElementById('history-uefa-pills').style.display = 'none';
 initStandings();
 loadTeamsIndex();
 loadChampions();
