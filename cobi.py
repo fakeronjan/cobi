@@ -33,7 +33,11 @@ window_game_days = 100   # ~1 MLS season; tighter than ZIDANE/MESSI on
 margin_cap       = 4
 shootout_margin  = 0.5
 home_field_adv   = 0.5
-min_games        = 15
+min_games        = 5    # Threshold for inclusion in final standings.
+                          # Set to 5 because Massey ratings are stable enough
+                          # by then; legacy 15 nuked the first ~6 weeks of
+                          # 1996 (only KC had 15+ games until late June) and
+                          # Inter Miami's entire 2020 pre-October.
 
 # Re-process the most recent N ranking_ids (game-days) on every run so late-
 # arriving ESPN data is absorbed. Without this, a cron firing mid-day caches
