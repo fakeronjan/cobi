@@ -1,0 +1,5 @@
+pandas
+numpy<2
+requests
+beautifulsoup4
+rankit==0.2

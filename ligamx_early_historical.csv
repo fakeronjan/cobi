@@ -1,0 +1,177 @@
+date,season,competition,league_match,home_team,away_team,home_score,away_score,home_pen,away_pen,penalties,shootout_winner,neutral,venue,event_id,stage
+1996-11-27,1996-97,Liga MX,True,León,Toros Neza,1,2,,,False,,False,,wiki-mx-1996-97-1996-11-27-León-Toros Neza,Liguilla
+1996-12-01,1996-97,Liga MX,True,Toros Neza,León,2,1,,,False,,False,,wiki-mx-1996-97-1996-12-01-Toros Neza-León,Liguilla
+1996-11-27,1996-97,Liga MX,True,Monterrey,Atlas F.C.,1,5,,,False,,False,,wiki-mx-1996-97-1996-11-27-Monterrey-Atlas F.C.,Liguilla
+1996-11-30,1996-97,Liga MX,True,Atlas,Monterrey,1,2,,,False,,False,,wiki-mx-1996-97-1996-11-30-Atlas-Monterrey,Liguilla
+1996-12-04,1996-97,Liga MX,True,Toros Neza,Atlante,4,0,,,False,,False,,wiki-mx-1996-97-1996-12-04-Toros Neza-Atlante,Liguilla
+1996-12-07,1996-97,Liga MX,True,Atlante,Toros Neza,2,5,,,False,,False,,wiki-mx-1996-97-1996-12-07-Atlante-Toros Neza,Liguilla
+1996-12-04,1996-97,Liga MX,True,Atlas F.C.,Santos Laguna,1,1,,,False,,False,,wiki-mx-1996-97-1996-12-04-Atlas F.C.-Santos Laguna,Liguilla
+1996-12-08,1996-97,Liga MX,True,Santos Laguna,Atlas,3,1,,,False,,False,,wiki-mx-1996-97-1996-12-08-Santos Laguna-Atlas,Liguilla
+1996-12-04,1996-97,Liga MX,True,Necaxa,Guadalajara,2,0,,,False,,False,,wiki-mx-1996-97-1996-12-04-Necaxa-Guadalajara,Liguilla
+1996-12-08,1996-97,Liga MX,True,Guadalajara,Necaxa,2,1,,,False,,False,,wiki-mx-1996-97-1996-12-08-Guadalajara-Necaxa,Liguilla
+1996-12-04,1996-97,Liga MX,True,Toluca,Club Puebla,1,2,,,False,,False,,wiki-mx-1996-97-1996-12-04-Toluca-Club Puebla,Liguilla
+1996-12-07,1996-97,Liga MX,True,Club Puebla,Toluca,0,0,,,False,,False,,wiki-mx-1996-97-1996-12-07-Club Puebla-Toluca,Liguilla
+1996-12-11,1996-97,Liga MX,True,Toros Neza,Santos Laguna,0,2,,,False,,False,,wiki-mx-1996-97-1996-12-11-Toros Neza-Santos Laguna,Liguilla
+1996-12-15,1996-97,Liga MX,True,Santos Laguna,Toros Neza,3,2,,,False,,False,,wiki-mx-1996-97-1996-12-15-Santos Laguna-Toros Neza,Liguilla
+1996-12-11,1996-97,Liga MX,True,Necaxa,Club Puebla,3,2,,,False,,False,,wiki-mx-1996-97-1996-12-11-Necaxa-Club Puebla,Liguilla
+1996-12-15,1996-97,Liga MX,True,Club Puebla,Necaxa,1,4,,,False,,False,,wiki-mx-1996-97-1996-12-15-Club Puebla-Necaxa,Liguilla
+1996-12-19,1996-97,Liga MX,True,Necaxa,Santos Laguna,1,0,,,False,,False,,wiki-mx-1996-97-1996-12-19-Necaxa-Santos Laguna,Liguilla
+1996-12-22,1996-97,Liga MX,True,Santos Laguna,Necaxa,4,2,,,False,,False,,wiki-mx-1996-97-1996-12-22-Santos Laguna-Necaxa,Liguilla
+1997-05-07,1996-97,Liga MX,True,Tecos F.C.,Atlético Morelia,2,0,,,False,,False,,wiki-mx-1996-97-1997-05-07-Tecos F.C.-Atlético Morelia,Liguilla
+1997-05-11,1996-97,Liga MX,True,Atlético Morelia,Tecos F.C.,4,0,,,False,,False,,wiki-mx-1996-97-1997-05-11-Atlético Morelia-Tecos F.C.,Liguilla
+1997-05-14,1996-97,Liga MX,True,Santos Laguna,Guadalajara,1,1,,,False,,False,,wiki-mx-1996-97-1997-05-14-Santos Laguna-Guadalajara,Liguilla
+1997-05-18,1996-97,Liga MX,True,Guadalajara,Santos Laguna,5,0,,,False,,False,,wiki-mx-1996-97-1997-05-18-Guadalajara-Santos Laguna,Liguilla
+1997-05-14,1996-97,Liga MX,True,Atlético Morelia,América,1,0,,,False,,False,,wiki-mx-1996-97-1997-05-14-Atlético Morelia-América,Liguilla
+1997-05-17,1996-97,Liga MX,True,América,Atlético Morelia,1,3,,,False,,False,,wiki-mx-1996-97-1997-05-17-América-Atlético Morelia,Liguilla
+1997-05-15,1996-97,Liga MX,True,Pumas UNAM,Toros Neza,1,3,,,False,,False,,wiki-mx-1996-97-1997-05-15-Pumas UNAM-Toros Neza,Liguilla
+1997-05-18,1996-97,Liga MX,True,Toros Neza,Pumas UNAM,1,2,,,False,,False,,wiki-mx-1996-97-1997-05-18-Toros Neza-Pumas UNAM,Liguilla
+1997-05-14,1996-97,Liga MX,True,Atlante,Necaxa,2,0,,,False,,False,,wiki-mx-1996-97-1997-05-14-Atlante-Necaxa,Liguilla
+1997-05-18,1996-97,Liga MX,True,Necaxa,Atlante,3,1,,,False,,False,,wiki-mx-1996-97-1997-05-18-Necaxa-Atlante,Liguilla
+1997-05-22,1996-97,Liga MX,True,Atlético Morelia,Guadalajara,1,0,,,False,,False,,wiki-mx-1996-97-1997-05-22-Atlético Morelia-Guadalajara,Liguilla
+1997-05-25,1996-97,Liga MX,True,Guadalajara,Atlético Morelia,1,0,,,False,,False,,wiki-mx-1996-97-1997-05-25-Guadalajara-Atlético Morelia,Liguilla
+1997-05-22,1996-97,Liga MX,True,Necaxa,Toros Neza,2,1,,,False,,False,,wiki-mx-1996-97-1997-05-22-Necaxa-Toros Neza,Liguilla
+1997-05-25,1996-97,Liga MX,True,Toros Neza,Necaxa,3,1,,,False,,False,,wiki-mx-1996-97-1997-05-25-Toros Neza-Necaxa,Liguilla
+1997-05-29,1996-97,Liga MX,True,Toros Neza,Guadalajara,1,1,,,False,,False,,wiki-mx-1996-97-1997-05-29-Toros Neza-Guadalajara,Liguilla
+1997-06-01,1996-97,Liga MX,True,Guadalajara,Toros Neza,6,1,,,False,,False,,wiki-mx-1996-97-1997-06-01-Guadalajara-Toros Neza,Liguilla
+1997-11-20,1997-98,Liga MX,True,Toros Neza,León,1,0,,,False,,False,,wiki-mx-1997-98-1997-11-20-Toros Neza-León,Liguilla
+1997-11-23,1997-98,Liga MX,True,León,Toros Neza,6,3,,,False,,False,,wiki-mx-1997-98-1997-11-23-León-Toros Neza,Liguilla
+1997-11-18,1997-98,Liga MX,True,Guadalajara,América,1,3,,,False,,False,,wiki-mx-1997-98-1997-11-18-Guadalajara-América,Liguilla
+1997-11-21,1997-98,Liga MX,True,América,Guadalajara,1,0,,,False,,False,,wiki-mx-1997-98-1997-11-21-América-Guadalajara,Liguilla
+1997-11-19,1997-98,Liga MX,True,Atlas,Cruz Azul,0,1,,,False,,False,,wiki-mx-1997-98-1997-11-19-Atlas-Cruz Azul,Liguilla
+1997-11-22,1997-98,Liga MX,True,Cruz Azul,Atlas,4,1,,,False,,False,,wiki-mx-1997-98-1997-11-22-Cruz Azul-Atlas,Liguilla
+1997-11-19,1997-98,Liga MX,True,Atlético Morelia,Atlante,0,0,,,False,,False,,wiki-mx-1997-98-1997-11-19-Atlético Morelia-Atlante,Liguilla
+1997-11-22,1997-98,Liga MX,True,Atlante,Atlético Morelia,1,0,,,False,,False,,wiki-mx-1997-98-1997-11-22-Atlante-Atlético Morelia,Liguilla
+1997-11-26,1997-98,Liga MX,True,Atlante,Cruz Azul,1,1,,,False,,False,,wiki-mx-1997-98-1997-11-26-Atlante-Cruz Azul,Liguilla
+1997-11-29,1997-98,Liga MX,True,Cruz Azul,Atlante,1,0,,,False,,False,,wiki-mx-1997-98-1997-11-29-Cruz Azul-Atlante,Liguilla
+1997-11-27,1997-98,Liga MX,True,América,León,1,0,,,False,,False,,wiki-mx-1997-98-1997-11-27-América-León,Liguilla
+1997-11-30,1997-98,Liga MX,True,León,América,3,1,,,False,,False,,wiki-mx-1997-98-1997-11-30-León-América,Liguilla
+1997-12-04,1997-98,Liga MX,True,Cruz Azul,León,1,0,,,False,,False,,wiki-mx-1997-98-1997-12-04-Cruz Azul-León,Liguilla
+1997-12-07,1997-98,Liga MX,True,León,Cruz Azul,1,1,,,False,,False,,wiki-mx-1997-98-1997-12-07-León-Cruz Azul,Liguilla
+1998-04-08,1997-98,Liga MX,True,Club Puebla,Tecos F.C.,2,1,,,False,,False,,wiki-mx-1997-98-1998-04-08-Club Puebla-Tecos F.C.,Liguilla
+1998-04-11,1997-98,Liga MX,True,Tecos F.C.,Club Puebla,4,1,,,False,,False,,wiki-mx-1997-98-1998-04-11-Tecos F.C.-Club Puebla,Liguilla
+1998-04-10,1997-98,Liga MX,True,Toros Neza,América,1,2,,,False,,False,,wiki-mx-1997-98-1998-04-10-Toros Neza-América,Liguilla
+1997-04-13,1997-98,Liga MX,True,América,Toros Neza,4,2,,,False,,False,,wiki-mx-1997-98-1997-04-13-América-Toros Neza,Liguilla
+1998-04-15,1997-98,Liga MX,True,Atlante,Toluca,0,1,,,False,,False,,wiki-mx-1997-98-1998-04-15-Atlante-Toluca,Liguilla
+1998-04-18,1997-98,Liga MX,True,Toluca,Atlante,5,1,,,False,,False,,wiki-mx-1997-98-1998-04-18-Toluca-Atlante,Liguilla
+1998-04-16,1997-98,Liga MX,True,América,Cruz Azul,2,1,,,False,,False,,wiki-mx-1997-98-1998-04-16-América-Cruz Azul,Liguilla
+1998-04-19,1997-98,Liga MX,True,Cruz Azul,América,1,1,,,False,,False,,wiki-mx-1997-98-1998-04-19-Cruz Azul-América,Liguilla
+1998-04-15,1997-98,Liga MX,True,Santos Laguna,Necaxa,0,0,,,False,,False,,wiki-mx-1997-98-1998-04-15-Santos Laguna-Necaxa,Liguilla
+1998-04-18,1997-98,Liga MX,True,Necaxa,Santos Laguna,2,1,,,False,,False,,wiki-mx-1997-98-1998-04-18-Necaxa-Santos Laguna,Liguilla
+1998-04-15,1997-98,Liga MX,True,Tecos F.C.,Atlas,2,1,,,False,,False,,wiki-mx-1997-98-1998-04-15-Tecos F.C.-Atlas,Liguilla
+1998-04-18,1997-98,Liga MX,True,Atlas,Tecos F.C.,4,2,,,False,,False,,wiki-mx-1997-98-1998-04-18-Atlas-Tecos F.C.,Liguilla
+1998-04-26,1997-98,Liga MX,True,América,Toluca,0,1,,,False,,False,,wiki-mx-1997-98-1998-04-26-América-Toluca,Liguilla
+1998-05-03,1997-98,Liga MX,True,Toluca,América,2,1,,,False,,False,,wiki-mx-1997-98-1998-05-03-Toluca-América,Liguilla
+1998-04-25,1997-98,Liga MX,True,Atlas F.C.,Necaxa,1,2,,,False,,False,,wiki-mx-1997-98-1998-04-25-Atlas F.C.-Necaxa,Liguilla
+1998-05-02,1997-98,Liga MX,True,Necaxa,Atlas F.C.,1,1,,,False,,False,,wiki-mx-1997-98-1998-05-02-Necaxa-Atlas F.C.,Liguilla
+1998-05-07,1997-98,Liga MX,True,Necaxa,Toluca,2,1,,,False,,False,,wiki-mx-1997-98-1998-05-07-Necaxa-Toluca,Liguilla
+1998-05-10,1997-98,Liga MX,True,Toluca,Necaxa,5,2,,,False,,False,,wiki-mx-1997-98-1998-05-10-Toluca-Necaxa,Liguilla
+1998-11-26,1998-99,Liga MX,True,Atlético Morelia,Guadalajara,1,1,,,False,,False,,wiki-mx-1998-99-1998-11-26-Atlético Morelia-Guadalajara,Liguilla
+1998-11-29,1998-99,Liga MX,True,Guadalajara,Atlético Morelia,4,1,,,False,,False,,wiki-mx-1998-99-1998-11-29-Guadalajara-Atlético Morelia,Liguilla
+1998-11-25,1998-99,Liga MX,True,Pumas UNAM,Cruz Azul,3,2,,,False,,False,,wiki-mx-1998-99-1998-11-25-Pumas UNAM-Cruz Azul,Liguilla
+1998-11-28,1998-99,Liga MX,True,Cruz Azul,Pumas UNAM,1,1,,,False,,False,,wiki-mx-1998-99-1998-11-28-Cruz Azul-Pumas UNAM,Liguilla
+1998-11-25,1998-99,Liga MX,True,Tecos F.C.,Necaxa,2,0,,,False,,False,,wiki-mx-1998-99-1998-11-25-Tecos F.C.-Necaxa,Liguilla
+1998-11-29,1998-99,Liga MX,True,Necaxa,Tecos F.C.,3,1,,,False,,False,,wiki-mx-1998-99-1998-11-29-Necaxa-Tecos F.C.,Liguilla
+1998-11-26,1998-99,Liga MX,True,Atlas,Toluca,1,2,,,False,,False,,wiki-mx-1998-99-1998-11-26-Atlas-Toluca,Liguilla
+1998-11-29,1998-99,Liga MX,True,Toluca,Atlas,0,2,,,False,,False,,wiki-mx-1998-99-1998-11-29-Toluca-Atlas,Liguilla
+1998-12-03,1998-99,Liga MX,True,Pumas UNAM,Guadalajara,1,1,,,False,,False,,wiki-mx-1998-99-1998-12-03-Pumas UNAM-Guadalajara,Liguilla
+1998-12-06,1998-99,Liga MX,True,Guadalajara,Pumas UNAM,1,0,,,False,,False,,wiki-mx-1998-99-1998-12-06-Guadalajara-Pumas UNAM,Liguilla
+1998-12-03,1998-99,Liga MX,True,Atlas,Necaxa,0,0,,,False,,False,,wiki-mx-1998-99-1998-12-03-Atlas-Necaxa,Liguilla
+1998-12-06,1998-99,Liga MX,True,Necaxa,Atlas,3,2,,,False,,False,,wiki-mx-1998-99-1998-12-06-Necaxa-Atlas,Liguilla
+1998-12-10,1998-99,Liga MX,True,Necaxa,Guadalajara,0,0,,,False,,False,,wiki-mx-1998-99-1998-12-10-Necaxa-Guadalajara,Liguilla
+1998-12-13,1998-99,Liga MX,True,Guadalajara,Necaxa,0,2,,,False,,False,,wiki-mx-1998-99-1998-12-13-Guadalajara-Necaxa,Liguilla
+1999-05-13,1998-99,Liga MX,True,Tecos F.C.,Santos Laguna,1,4,,,False,,False,,wiki-mx-1998-99-1999-05-13-Tecos F.C.-Santos Laguna,Liguilla
+1999-05-16,1998-99,Liga MX,True,Santos Laguna,Tecos F.C.,3,4,,,False,,False,,wiki-mx-1998-99-1999-05-16-Santos Laguna-Tecos F.C.,Liguilla
+1999-05-19,1998-99,Liga MX,True,Necaxa,Toluca,1,3,,,False,,False,,wiki-mx-1998-99-1999-05-19-Necaxa-Toluca,Liguilla
+1999-05-22,1998-99,Liga MX,True,Toluca,Necaxa,1,2,,,False,,False,,wiki-mx-1998-99-1999-05-22-Toluca-Necaxa,Liguilla
+1999-05-20,1998-99,Liga MX,True,Santos Laguna,América,3,0,,,False,,False,,wiki-mx-1998-99-1999-05-20-Santos Laguna-América,Liguilla
+1999-05-23,1998-99,Liga MX,True,América,Santos Laguna,2,0,,,False,,False,,wiki-mx-1998-99-1999-05-23-América-Santos Laguna,Liguilla
+1999-05-19,1998-99,Liga MX,True,Atlético Morelia,Atlas,1,1,,,False,,False,,wiki-mx-1998-99-1999-05-19-Atlético Morelia-Atlas,Liguilla
+1999-05-22,1998-99,Liga MX,True,Atlas,Atlético Morelia,2,2,,,False,,False,,wiki-mx-1998-99-1999-05-22-Atlas-Atlético Morelia,Liguilla
+1999-05-19,1998-99,Liga MX,True,Guadalajara,Cruz Azul,1,2,,,False,,False,,wiki-mx-1998-99-1999-05-19-Guadalajara-Cruz Azul,Liguilla
+1999-05-22,1998-99,Liga MX,True,Cruz Azul,Guadalajara,2,2,,,False,,False,,wiki-mx-1998-99-1999-05-22-Cruz Azul-Guadalajara,Liguilla
+1999-05-26,1998-99,Liga MX,True,Santos Laguna,Toluca,1,1,,,False,,False,,wiki-mx-1998-99-1999-05-26-Santos Laguna-Toluca,Liguilla
+1999-05-29,1998-99,Liga MX,True,Toluca,Santos Laguna,3,2,,,False,,False,,wiki-mx-1998-99-1999-05-29-Toluca-Santos Laguna,Liguilla
+1999-05-26,1998-99,Liga MX,True,Cruz Azul,Atlas,0,4,,,False,,False,,wiki-mx-1998-99-1999-05-26-Cruz Azul-Atlas,Liguilla
+1999-05-29,1998-99,Liga MX,True,Atlas,Cruz Azul,2,0,,,False,,False,,wiki-mx-1998-99-1999-05-29-Atlas-Cruz Azul,Liguilla
+1999-06-03,1998-99,Liga MX,True,Atlas,Toluca,3,3,,,False,,False,,wiki-mx-1998-99-1999-06-03-Atlas-Toluca,Liguilla
+1999-06-06,1998-99,Liga MX,True,Toluca,Atlas,2,2,,,False,,False,,wiki-mx-1998-99-1999-06-06-Toluca-Atlas,Liguilla
+1999-11-25,1999-00,Liga MX,True,Atlético Morelia,Pachuca,4,2,,,False,,False,,wiki-mx-1999-00-1999-11-25-Atlético Morelia-Pachuca,Liguilla
+1999-11-28,1999-00,Liga MX,True,Pachuca,Atlético Morelia,2,0,,,False,,False,,wiki-mx-1999-00-1999-11-28-Pachuca-Atlético Morelia,Liguilla
+1999-12-02,1999-00,Liga MX,True,Guadalajara,América,0,0,,,False,,False,,wiki-mx-1999-00-1999-12-02-Guadalajara-América,Liguilla
+1999-12-05,1999-00,Liga MX,True,América,Guadalajara,1,0,,,False,,False,,wiki-mx-1999-00-1999-12-05-América-Guadalajara,Liguilla
+1999-12-01,1999-00,Liga MX,True,Cruz Azul,Necaxa,1,0,,,False,,False,,wiki-mx-1999-00-1999-12-01-Cruz Azul-Necaxa,Liguilla
+1999-12-04,1999-00,Liga MX,True,Necaxa,Cruz Azul,3,4,,,False,,False,,wiki-mx-1999-00-1999-12-04-Necaxa-Cruz Azul,Liguilla
+1999-12-01,1999-00,Liga MX,True,Tecos F.C.,Atlas,2,3,,,False,,False,,wiki-mx-1999-00-1999-12-01-Tecos F.C.-Atlas,Liguilla
+1999-12-04,1999-00,Liga MX,True,Atlas,Tecos F.C.,2,2,,,False,,False,,wiki-mx-1999-00-1999-12-04-Atlas-Tecos F.C.,Liguilla
+1999-12-01,1999-00,Liga MX,True,Pachuca,Toluca,1,0,,,False,,False,,wiki-mx-1999-00-1999-12-01-Pachuca-Toluca,Liguilla
+1999-12-04,1999-00,Liga MX,True,Toluca,Pachuca,2,2,,,False,,False,,wiki-mx-1999-00-1999-12-04-Toluca-Pachuca,Liguilla
+1999-12-09,1999-00,Liga MX,True,Cruz Azul,América,0,0,,,False,,False,,wiki-mx-1999-00-1999-12-09-Cruz Azul-América,Liguilla
+1999-12-12,1999-00,Liga MX,True,América,Cruz Azul,1,2,,,False,,False,,wiki-mx-1999-00-1999-12-12-América-Cruz Azul,Liguilla
+1999-12-08,1999-00,Liga MX,True,Pachuca,Atlas,2,0,,,False,,False,,wiki-mx-1999-00-1999-12-08-Pachuca-Atlas,Liguilla
+1999-12-11,1999-00,Liga MX,True,Atlas,Pachuca,1,0,,,False,,False,,wiki-mx-1999-00-1999-12-11-Atlas-Pachuca,Liguilla
+1999-12-16,1999-00,Liga MX,True,Pachuca,Cruz Azul,2,2,,,False,,False,,wiki-mx-1999-00-1999-12-16-Pachuca-Cruz Azul,Liguilla
+1999-12-19,1999-00,Liga MX,True,Cruz Azul,Pachuca,0,1,,,False,,False,,wiki-mx-1999-00-1999-12-19-Cruz Azul-Pachuca,Liguilla
+2000-05-17,1999-00,Liga MX,True,Club Puebla,Toluca,0,2,,,False,,False,,wiki-mx-1999-00-2000-05-17-Club Puebla-Toluca,Liguilla
+2000-05-20,1999-00,Liga MX,True,Toluca,Club Puebla,7,0,,,False,,False,,wiki-mx-1999-00-2000-05-20-Toluca-Club Puebla,Liguilla
+2000-05-14,1999-00,Liga MX,True,Atlas,Guadalajara,1,1,,,False,,False,,wiki-mx-1999-00-2000-05-14-Atlas-Guadalajara,Liguilla
+2000-05-21,1999-00,Liga MX,True,Guadalajara,Atlas,1,1,,,False,,False,,wiki-mx-1999-00-2000-05-21-Guadalajara-Atlas,Liguilla
+2000-05-18,1999-00,Liga MX,True,Atlético Morelia,Santos Laguna,2,3,,,False,,False,,wiki-mx-1999-00-2000-05-18-Atlético Morelia-Santos Laguna,Liguilla
+2000-05-21,1999-00,Liga MX,True,Santos Laguna,Atlético Morelia,0,1,,,False,,False,,wiki-mx-1999-00-2000-05-21-Santos Laguna-Atlético Morelia,Liguilla
+2000-05-18,1999-00,Liga MX,True,Necaxa,Pumas UNAM,3,4,,,False,,False,,wiki-mx-1999-00-2000-05-18-Necaxa-Pumas UNAM,Liguilla
+2000-05-21,1999-00,Liga MX,True,Pumas UNAM,Necaxa,2,1,,,False,,False,,wiki-mx-1999-00-2000-05-21-Pumas UNAM-Necaxa,Liguilla
+2000-05-24,1999-00,Liga MX,True,Guadalajara,Toluca,1,4,,,False,,False,,wiki-mx-1999-00-2000-05-24-Guadalajara-Toluca,Liguilla
+2000-05-27,1999-00,Liga MX,True,Toluca,Guadalajara,2,2,,,False,,False,,wiki-mx-1999-00-2000-05-27-Toluca-Guadalajara,Liguilla
+2000-05-25,1999-00,Liga MX,True,Pumas UNAM,Santos Laguna,1,1,,,False,,False,,wiki-mx-1999-00-2000-05-25-Pumas UNAM-Santos Laguna,Liguilla
+2000-05-28,1999-00,Liga MX,True,Santos Laguna,Pumas UNAM,1,0,,,False,,False,,wiki-mx-1999-00-2000-05-28-Santos Laguna-Pumas UNAM,Liguilla
+2000-05-31,1999-00,Liga MX,True,Santos Laguna,Toluca,0,2,,,False,,False,,wiki-mx-1999-00-2000-05-31-Santos Laguna-Toluca,Liguilla
+2000-06-03,1999-00,Liga MX,True,Toluca,Santos Laguna,5,1,,,False,,False,,wiki-mx-1999-00-2000-06-03-Toluca-Santos Laguna,Liguilla
+2000-11-23,2000-01,Liga MX,True,Irapuato F.C.,Atlético Morelia,1,0,,,False,,False,,wiki-mx-2000-01-2000-11-23-Irapuato F.C.-Atlético Morelia,Liguilla
+2000-11-26,2000-01,Liga MX,True,Atlético Morelia,Irapuato F.C.,7,2,,,False,,False,,wiki-mx-2000-01-2000-11-26-Atlético Morelia-Irapuato F.C.,Liguilla
+2000-11-29,2000-01,Liga MX,True,América,Toluca,0,2,,,False,,False,,wiki-mx-2000-01-2000-11-29-América-Toluca,Liguilla
+2000-12-02,2000-01,Liga MX,True,Toluca,América,2,4,,,False,,False,,wiki-mx-2000-01-2000-12-02-Toluca-América,Liguilla
+2000-11-29,2000-01,Liga MX,True,Atlas,Cruz Azul,0,1,,,False,,False,,wiki-mx-2000-01-2000-11-29-Atlas-Cruz Azul,Liguilla
+2000-12-02,2000-01,Liga MX,True,Cruz Azul,Atlas,0,2,,,False,,False,,wiki-mx-2000-01-2000-12-02-Cruz Azul-Atlas,Liguilla
+2000-11-30,2000-01,Liga MX,True,Atlético Morelia,Pachuca,0,0,,,False,,False,,wiki-mx-2000-01-2000-11-30-Atlético Morelia-Pachuca,Liguilla
+2000-12-03,2000-01,Liga MX,True,Pachuca,Atlético Morelia,1,2,,,False,,False,,wiki-mx-2000-01-2000-12-03-Pachuca-Atlético Morelia,Liguilla
+2000-11-29,2000-01,Liga MX,True,Santos Laguna,Necaxa,2,1,,,False,,False,,wiki-mx-2000-01-2000-11-29-Santos Laguna-Necaxa,Liguilla
+2000-12-02,2000-01,Liga MX,True,Necaxa,Santos Laguna,2,2,,,False,,False,,wiki-mx-2000-01-2000-12-02-Necaxa-Santos Laguna,Liguilla
+2000-12-06,2000-01,Liga MX,True,Atlas,Toluca,3,3,,,False,,False,,wiki-mx-2000-01-2000-12-06-Atlas-Toluca,Liguilla
+2000-12-09,2000-01,Liga MX,True,Toluca,Atlas,3,1,,,False,,False,,wiki-mx-2000-01-2000-12-09-Toluca-Atlas,Liguilla
+2000-12-07,2000-01,Liga MX,True,Santos Laguna,Atlético Morelia,0,0,,,False,,False,,wiki-mx-2000-01-2000-12-07-Santos Laguna-Atlético Morelia,Liguilla
+2000-12-10,2000-01,Liga MX,True,Atlético Morelia,Santos Laguna,3,2,,,False,,False,,wiki-mx-2000-01-2000-12-10-Atlético Morelia-Santos Laguna,Liguilla
+2000-12-13,2000-01,Liga MX,True,Atlético Morelia,Toluca,3,1,,,False,,False,,wiki-mx-2000-01-2000-12-13-Atlético Morelia-Toluca,Liguilla
+2000-12-16,2000-01,Liga MX,True,Toluca,Atlético Morelia,2,0,,,False,,False,,wiki-mx-2000-01-2000-12-16-Toluca-Atlético Morelia,Liguilla
+2001-04-25,2000-01,Liga MX,True,Atlas,Puebla F.C.,1,2,,,False,,False,,wiki-mx-2000-01-2001-04-25-Atlas-Puebla F.C.,Liguilla
+2001-04-28,2000-01,Liga MX,True,Puebla F.C.,Atlas,3,3,,,False,,False,,wiki-mx-2000-01-2001-04-28-Puebla F.C.-Atlas,Liguilla
+2001-04-26,2000-01,Liga MX,True,Atlético Morelia,Tecos F.C.,3,3,,,False,,False,,wiki-mx-2000-01-2001-04-26-Atlético Morelia-Tecos F.C.,Liguilla
+2001-04-29,2000-01,Liga MX,True,Tecos F.C.,Atlético Morelia,1,1,,,False,,False,,wiki-mx-2000-01-2001-04-29-Tecos F.C.-Atlético Morelia,Liguilla
+2001-05-03,2000-01,Liga MX,True,Tecos F.C.,Santos Laguna,2,3,,,False,,False,,wiki-mx-2000-01-2001-05-03-Tecos F.C.-Santos Laguna,Liguilla
+2001-05-06,2000-01,Liga MX,True,Santos Laguna,Tecos F.C.,4,0,,,False,,False,,wiki-mx-2000-01-2001-05-06-Santos Laguna-Tecos F.C.,Liguilla
+2001-05-02,2000-01,Liga MX,True,Club Puebla,Tigres UANL,3,1,,,False,,False,,wiki-mx-2000-01-2001-05-02-Club Puebla-Tigres UANL,Liguilla
+2001-05-05,2000-01,Liga MX,True,Tigres UANL,Club Puebla,2,2,,,False,,False,,wiki-mx-2000-01-2001-05-05-Tigres UANL-Club Puebla,Liguilla
+2001-05-02,2000-01,Liga MX,True,León,América,1,1,,,False,,False,,wiki-mx-2000-01-2001-05-02-León-América,Liguilla
+2001-05-05,2000-01,Liga MX,True,América,León,4,1,,,False,,False,,wiki-mx-2000-01-2001-05-05-América-León,Liguilla
+2001-05-02,2000-01,Liga MX,True,Pachuca,Monterrey,4,0,,,False,,False,,wiki-mx-2000-01-2001-05-02-Pachuca-Monterrey,Liguilla
+2001-05-05,2000-01,Liga MX,True,Monterrey,Pachuca,2,2,,,False,,False,,wiki-mx-2000-01-2001-05-05-Monterrey-Pachuca,Liguilla
+2001-05-10,2000-01,Liga MX,True,Club Puebla,Santos Laguna,5,4,,,False,,False,,wiki-mx-2000-01-2001-05-10-Club Puebla-Santos Laguna,Liguilla
+2001-05-13,2000-01,Liga MX,True,Santos Laguna,Club Puebla,2,1,,,False,,False,,wiki-mx-2000-01-2001-05-13-Santos Laguna-Club Puebla,Liguilla
+2001-05-09,2000-01,Liga MX,True,Pachuca,América,2,0,,,False,,False,,wiki-mx-2000-01-2001-05-09-Pachuca-América,Liguilla
+2001-05-12,2000-01,Liga MX,True,América,Pachuca,1,1,,,False,,False,,wiki-mx-2000-01-2001-05-12-América-Pachuca,Liguilla
+2001-05-17,2000-01,Liga MX,True,Pachuca,Santos Laguna,2,1,,,False,,False,,wiki-mx-2000-01-2001-05-17-Pachuca-Santos Laguna,Liguilla
+2001-05-20,2000-01,Liga MX,True,Santos Laguna,Pachuca,3,1,,,False,,False,,wiki-mx-2000-01-2001-05-20-Santos Laguna-Pachuca,Liguilla
+2001-06-06,2000-01,Liga MX,True,Tiburones Rojos de Veracruz,Atlante,0,0,,,False,,False,,wiki-mx-2000-01-2001-06-06-Tiburones Rojos de Veracruz-Atlante,Liguilla
+2001-06-09,2000-01,Liga MX,True,Atlante,Tiburones Rojos de Veracruz,4,1,,,False,,False,,wiki-mx-2000-01-2001-06-09-Atlante-Tiburones Rojos de Veracruz,Liguilla
+2001-11-28,2001-02,Liga MX,True,Santos Laguna,Tigres UANL,1,1,,,False,,False,,wiki-mx-2001-02-2001-11-28-Santos Laguna-Tigres UANL,Liguilla
+2001-12-01,2001-02,Liga MX,True,Tigres UANL,Santos Laguna,3,0,,,False,,False,,wiki-mx-2001-02-2001-12-01-Tigres UANL-Santos Laguna,Liguilla
+2001-11-28,2001-02,Liga MX,True,Guadalajara,Toluca,1,1,,,False,,False,,wiki-mx-2001-02-2001-11-28-Guadalajara-Toluca,Liguilla
+2001-12-01,2001-02,Liga MX,True,Toluca,Guadalajara,2,0,,,False,,False,,wiki-mx-2001-02-2001-12-01-Toluca-Guadalajara,Liguilla
+2001-11-29,2001-02,Liga MX,True,Atlante,Pachuca,1,2,,,False,,False,,wiki-mx-2001-02-2001-11-29-Atlante-Pachuca,Liguilla
+2001-12-02,2001-02,Liga MX,True,Pachuca,Atlante,0,1,,,False,,False,,wiki-mx-2001-02-2001-12-02-Pachuca-Atlante,Liguilla
+2001-11-29,2001-02,Liga MX,True,Necaxa,Cruz Azul,2,0,,,False,,False,,wiki-mx-2001-02-2001-11-29-Necaxa-Cruz Azul,Liguilla
+2001-12-02,2001-02,Liga MX,True,Cruz Azul,Necaxa,4,0,,,False,,False,,wiki-mx-2001-02-2001-12-02-Cruz Azul-Necaxa,Liguilla
+2001-12-05,2001-02,Liga MX,True,Cruz Azul,Tigres UANL,1,0,,,False,,False,,wiki-mx-2001-02-2001-12-05-Cruz Azul-Tigres UANL,Liguilla
+2001-12-08,2001-02,Liga MX,True,Tigres UANL,Cruz Azul,1,0,,,False,,False,,wiki-mx-2001-02-2001-12-08-Tigres UANL-Cruz Azul,Liguilla
+2001-12-05,2001-02,Liga MX,True,Pachuca,Toluca,1,1,,,False,,False,,wiki-mx-2001-02-2001-12-05-Pachuca-Toluca,Liguilla
+2001-12-08,2001-02,Liga MX,True,Toluca,Pachuca,2,4,,,False,,False,,wiki-mx-2001-02-2001-12-08-Toluca-Pachuca,Liguilla
+2001-12-12,2001-02,Liga MX,True,Pachuca,Tigres UANL,2,0,,,False,,False,,wiki-mx-2001-02-2001-12-12-Pachuca-Tigres UANL,Liguilla
+2001-12-15,2001-02,Liga MX,True,Tigres UANL,Pachuca,1,1,,,False,,False,,wiki-mx-2001-02-2001-12-15-Tigres UANL-Pachuca,Liguilla

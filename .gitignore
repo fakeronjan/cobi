@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.pyc
+
+# Final assembled rating output is regenerated from cobi_ratings.csv.gz each run
+cobi_ratings_final.csv
+
+# Backup files
+*.bak
+*.bak2
+Backup*/
+
+# Local-only
+.claude/
