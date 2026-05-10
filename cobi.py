@@ -1,5 +1,5 @@
 # ============================================================
-# COBI - North American Club Soccer Power Rankings (MLS + Liga MX)
+# COBI - MLS Power Rankings
 # Named after Cobi Jones (LA Galaxy 1996-2007, USMNT)
 # Based on ZIDANE / MESSI / LOGAN architecture
 # ============================================================
@@ -42,12 +42,9 @@ ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/soccer'
 # (competition_label, espn_slug, first_year_in_espn, league_match_flag)
 ESPN_COMPETITIONS = [
     ('MLS',          'usa.1',                  2002, True),
-    ('Liga MX',      'mex.1',                  2002, True),
-    ('CONCACAF CL',  'concacaf.champions',     2008, False),
-    ('Leagues Cup',  'concacaf.leagues.cup',   2023, False),
 ]
 
-LEAGUE_COMPETITIONS = {'MLS', 'Liga MX'}  # the two rated top flights
+LEAGUE_COMPETITIONS = {'MLS'}  # the only rated competition
 
 _today = date.today()
 CURRENT_YEAR = _today.year
@@ -158,14 +155,8 @@ def espn_extract_matches(payload, competition_label, league_match_flag):
 
 
 def _season_for_match(competition, match_date):
-    """Per-match season label. Liga MX uses YYYY-YY (Apertura/Clausura split);
-    MLS / CCC / Leagues Cup use calendar year."""
-    y = match_date.year
-    if competition == 'Liga MX':
-        if match_date.month >= 7:
-            return f"{y}-{str(y+1)[-2:]}"
-        return f"{y-1}-{str(y)[-2:]}"
-    return str(y)
+    """Per-match season label. MLS uses calendar year (Feb-Dec)."""
+    return str(match_date.year)
 
 
 def scrape_espn_all(start_year=None, end_year=None):
@@ -185,16 +176,12 @@ def scrape_espn_all(start_year=None, end_year=None):
 # ============================================================
 # HISTORICAL GAP-FILL LOADERS
 # ============================================================
-# Three static CSVs produced by the dedicated scrapers:
+# Static CSV produced by the dedicated scraper:
 #   - mls_early_historical.csv     (footballcsv 1996-2001)
-#   - ccc_historical.csv           (Wikipedia 1996-2007)
-#   - ligamx_early_historical.csv  (Wikipedia 1996-2001 Liguilla)
-# Run those scrapers separately to refresh; cobi.py just merges them in.
+# Run scrape_mls_early.py separately to refresh; cobi.py just merges it in.
 
 GAPFILL_PATHS = [
     'mls_early_historical.csv',
-    'ccc_historical.csv',
-    'ligamx_early_historical.csv',
 ]
 
 
@@ -243,11 +230,7 @@ def merge_match_sources(espn_df, gapfill_df):
 # ============================================================
 
 def date_to_snapshot_season(d):
-    """Snapshot season label = calendar year. Both MLS (Feb-Dec) and the
-    Clausura half of Liga MX live entirely within one calendar year, and
-    Liga MX Apertura's autumn half also belongs cleanly to its starting year.
-    Keeping snapshots labeled by calendar year keeps cross-league navigation
-    intuitive (snapshot 2024-08-01 = '2024')."""
+    """Snapshot season label = calendar year. MLS runs Feb-Dec, fits cleanly."""
     return str(d.year)
 
 
@@ -263,6 +246,13 @@ def run_pipeline(scrape=True):
               f"(ESPN {len(espn_df):,} + gap {len(gap_df):,} after dedupe) → all_club_games.csv\n")
 
     df = pd.read_csv('all_club_games.csv')
+    # Defensive: drop any non-MLS rows lingering from pre-refactor data so the
+    # on-disk CSV ends up MLS-only regardless of whether we re-scraped.
+    pre_count = len(df)
+    df = df[df['competition'] == 'MLS'].copy()
+    if len(df) != pre_count:
+        print(f"  filtered {pre_count - len(df):,} non-MLS rows from on-disk data")
+        df.to_csv('all_club_games.csv', index=False)
     df['date'] = pd.to_datetime(df['date'])
     df.sort_values('date', inplace=True, kind='stable')
     df.reset_index(drop=True, inplace=True)
@@ -330,22 +320,10 @@ def run_pipeline(scrape=True):
     df['grouped_date_id']  = df.groupby('date').ngroup() + 1
 
     # ---- 5. Rated-team set per calendar year ----
-    # A team is "rated" in calendar year Y if they played any MLS or Liga MX
-    # league match in Y. CCC/Leagues Cup matches feed Massey only when both
-    # opponents are rated (filters out Costa Rican/Honduran clubs whose
-    # cross-league appearances are too sparse to anchor).
-    print("Building per-year rated-team set...")
-    rated_by_year = {}
+    # MLS-only universe — every game is rated-vs-rated by construction.
     league_games = df[df['competition'].isin(LEAGUE_COMPETITIONS)]
-    for y, sg in league_games.groupby(league_games['date'].dt.year):
-        rated_by_year[int(y)] = set(sg['home_team']).union(set(sg['away_team']))
-
-    def _is_rated_game(row):
-        teams = rated_by_year.get(row['date'].year, set())
-        return (row['home_team'] in teams) and (row['away_team'] in teams)
-
-    df['_rated'] = df.apply(_is_rated_game, axis=1)
-    print(f"  {df['_rated'].sum():,} of {len(df):,} games rated-vs-rated")
+    df['_rated'] = True
+    print(f"  {len(df):,} MLS games (all rated-vs-rated)")
 
     # ---- 6. Rolling Massey rating loop ----
     print("\nRunning rolling Massey ratings...")
@@ -460,14 +438,9 @@ def run_pipeline(scrape=True):
     print(f"cobi_standings.csv saved ({len(standings):,} rows)")
 
     # ---- 7b. TROPHY DETECTION ----
-    # Five trophies, each gated on the championship match being conclusively
-    # decided (today > last match + 7 days):
-    #   - MLS Cup champion (single game, late Nov/Dec)
-    #   - Liga MX Apertura champion (2-leg final, Dec)
-    #   - Liga MX Clausura champion (2-leg final, May)
-    #   - CONCACAF CL champion (2-leg final pre-2024, single-game from 2024)
-    #   - Leagues Cup champion (single game, Aug, 2023+)
-    # See feedback_finals_detection_pattern.md — same 7-day gate principle.
+    # MLS Cup: single game, played Nov-Dec. Last MLS match of each calendar
+    # year IS MLS Cup. Gated on (today > last match + 7 days) so the trophy
+    # only appears once the result is conclusive.
     print("\nDetecting trophies...")
     trophy_records = []  # rows of {year, team, honor}
 
@@ -482,15 +455,9 @@ def run_pipeline(scrape=True):
             return sw, (game['away_team'] if sw == game['home_team'] else game['home_team'])
         return None, None
 
-    def _trophy_single_game(comp_df, honor_label, year_func=None):
-        """For a competition whose championship is decided in a single game.
-        year_func optionally maps a match's date → 'year' bucket (defaults to
-        calendar year)."""
-        if comp_df.empty:
-            return
-        cdf = comp_df.copy()
-        cdf['_y'] = cdf['date'].dt.year if year_func is None else cdf['date'].apply(year_func)
-        for y, g in cdf.groupby('_y'):
+    mls_df = df[df['competition'] == 'MLS']
+    if not mls_df.empty:
+        for y, g in mls_df.groupby(mls_df['date'].dt.year):
             g = g.sort_values('date')
             last = g.iloc[-1]
             last_date = pd.to_datetime(last['date']).date()
@@ -499,76 +466,8 @@ def run_pipeline(scrape=True):
             champ, ru = _winner_loser_single(last)
             if champ is None:
                 continue
-            trophy_records.append({'year': str(y), 'team': champ, 'honor': f'{honor_label} Champion'})
-            trophy_records.append({'year': str(y), 'team': ru,    'honor': f'{honor_label} Runner-Up'})
-
-    def _trophy_two_leg(comp_df, honor_label, year_func=None):
-        """For a competition decided by 2-leg aggregate. Walk the last 14 days
-        of head-to-head games between the last match's two teams; sum goals."""
-        if comp_df.empty:
-            return
-        cdf = comp_df.copy()
-        cdf['_y'] = cdf['date'].dt.year if year_func is None else cdf['date'].apply(year_func)
-        for y, g in cdf.groupby('_y'):
-            g = g.sort_values('date')
-            last = g.iloc[-1]
-            last_date = pd.to_datetime(last['date']).date()
-            if (date.today() - last_date).days < 7:
-                continue
-            a = last['home_team']
-            b = last['away_team']
-            last_dt = pd.Timestamp(last_date)
-            window = g[
-                (g['date'] >= last_dt - pd.Timedelta(days=14)) &
-                (g['date'] <= last_dt) &
-                (((g['home_team'] == a) & (g['away_team'] == b)) |
-                 ((g['home_team'] == b) & (g['away_team'] == a)))
-            ]
-            a_goals = sum(
-                (r['home_score'] if r['home_team'] == a else r['away_score'])
-                for _, r in window.iterrows()
-            )
-            b_goals = sum(
-                (r['home_score'] if r['home_team'] == b else r['away_score'])
-                for _, r in window.iterrows()
-            )
-            if a_goals > b_goals:
-                champ, ru = a, b
-            elif b_goals > a_goals:
-                champ, ru = b, a
-            else:
-                sw = last.get('shootout_winner')
-                if pd.notna(sw) and sw:
-                    champ = sw
-                    ru = b if sw == a else a
-                else:
-                    continue
-            trophy_records.append({'year': str(y), 'team': champ, 'honor': f'{honor_label} Champion'})
-            trophy_records.append({'year': str(y), 'team': ru,    'honor': f'{honor_label} Runner-Up'})
-
-    # MLS Cup: single game, played Nov-Dec. Use whole-MLS-season scope; the
-    # last match of each year IS MLS Cup.
-    mls_df = df[df['competition'] == 'MLS']
-    _trophy_single_game(mls_df, 'MLS Cup')
-
-    # Liga MX Apertura: matches with month >= 7 → Apertura half. Final 2-leg.
-    apertura = df[(df['competition'] == 'Liga MX') & (df['date'].dt.month >= 7)]
-    _trophy_two_leg(apertura, 'Liga MX Apertura')
-
-    # Liga MX Clausura: matches with month < 7 → Clausura half. Final 2-leg.
-    clausura = df[(df['competition'] == 'Liga MX') & (df['date'].dt.month < 7)]
-    _trophy_two_leg(clausura, 'Liga MX Clausura')
-
-    # CONCACAF CL: 2-leg final pre-2024, single-leg 2024+.
-    ccl_df = df[df['competition'] == 'CONCACAF CL']
-    ccl_pre  = ccl_df[ccl_df['date'].dt.year <  2024]
-    ccl_post = ccl_df[ccl_df['date'].dt.year >= 2024]
-    _trophy_two_leg(ccl_pre,    'CONCACAF CL')
-    _trophy_single_game(ccl_post, 'CONCACAF CL')
-
-    # Leagues Cup: single game (full format from 2023).
-    lc_df = df[df['competition'] == 'Leagues Cup']
-    _trophy_single_game(lc_df, 'Leagues Cup')
+            trophy_records.append({'year': str(y), 'team': champ, 'honor': 'MLS Cup Champion'})
+            trophy_records.append({'year': str(y), 'team': ru,    'honor': 'MLS Cup Runner-Up'})
 
     trophy_df = pd.DataFrame(trophy_records) if trophy_records else \
                 pd.DataFrame(columns=['year', 'team', 'honor'])
@@ -588,23 +487,11 @@ def run_pipeline(scrape=True):
     latest_id = final_df['ranking_id'].max()
     final_df['most_recent'] = np.where(final_df['ranking_id'] == latest_id, 1, 0)
 
-    # League membership: each team's most recent league appearance (MLS or Liga MX)
-    league_home = league_games[['date', 'home_team', 'competition']].rename(columns={'home_team': 'name'})
-    league_away = league_games[['date', 'away_team', 'competition']].rename(columns={'away_team': 'name'})
-    league_lookup = (
-        pd.concat([league_home, league_away])
-        .sort_values('date')
-        .groupby('name')['competition']
-        .last()
-        .reset_index()
-        .rename(columns={'competition': 'league'})
-    )
-    final_df = pd.merge(final_df, league_lookup, on='name', how='left')
-    final_df['league'] = final_df['league'].fillna('Other')
-
     # Last match string via merge_asof — scoped by (name, season) so a team's
     # last_match resets to empty at the start of each new calendar year.
-    lastmatch_sorted = lastmatch_df.sort_values('date')
+    final_df['season'] = final_df['season'].astype(str)
+    lastmatch_sorted = lastmatch_df.sort_values('date').copy()
+    lastmatch_sorted['season'] = lastmatch_sorted['season'].astype(str)
     final_df = final_df.sort_values('date')
     final_df = pd.merge_asof(
         final_df, lastmatch_sorted.rename(columns={'date': 'match_date'}),
@@ -618,31 +505,21 @@ def run_pipeline(scrape=True):
     final_df['is_game_day'] = np.where(final_df['date'] == final_df['last_match_date'], 1, 0)
     final_df.rename(columns={'name': 'team'}, inplace=True)
 
-    # Merge trophy honors. Each trophy → its own column ('Champion'/'Runner-Up'/'').
-    # Match keys: snapshot's `season` (calendar year string) + team.
-    HONOR_COLS = {
-        'MLS Cup':           'mls_cup_finish',
-        'Liga MX Apertura':  'liga_mx_apertura_finish',
-        'Liga MX Clausura':  'liga_mx_clausura_finish',
-        'CONCACAF CL':       'ccl_finish',
-        'Leagues Cup':       'leagues_cup_finish',
-    }
-    for honor_label, col in HONOR_COLS.items():
-        sub = trophy_df[trophy_df['honor'].str.startswith(honor_label)].copy()
-        if sub.empty:
-            final_df[col] = ''
-            continue
-        sub[col] = sub['honor'].str.replace(f'{honor_label} ', '', regex=False)
-        sub = sub[['year', 'team', col]].rename(columns={'year': 'season'})
+    # MLS Cup honor column ('Champion'/'Runner-Up'/'').
+    sub = trophy_df[trophy_df['honor'].str.startswith('MLS Cup')].copy()
+    if sub.empty:
+        final_df['mls_cup_finish'] = ''
+    else:
+        sub['mls_cup_finish'] = sub['honor'].str.replace('MLS Cup ', '', regex=False)
+        sub = sub[['year', 'team', 'mls_cup_finish']].rename(columns={'year': 'season'})
         final_df = pd.merge(final_df, sub, on=['season', 'team'], how='left')
-        final_df[col] = final_df[col].fillna('')
+        final_df['mls_cup_finish'] = final_df['mls_cup_finish'].fillna('')
 
     final_df = final_df[[
-        'ranking_id', 'date', 'season', 'team', 'league',
+        'ranking_id', 'date', 'season', 'team',
         'rating', 'rank', 'games_played',
         'last_match_date', 'last_match', 'is_game_day', 'most_recent',
-        'mls_cup_finish', 'liga_mx_apertura_finish', 'liga_mx_clausura_finish',
-        'ccl_finish', 'leagues_cup_finish',
+        'mls_cup_finish',
     ]]
     final_df.sort_values(['ranking_id', 'rank'], inplace=True)
     final_df.drop_duplicates(keep='first', inplace=True)
@@ -658,7 +535,7 @@ def run_pipeline(scrape=True):
     # Spot check
     print("\nMost recent COBI ratings (top 20):")
     latest = final_df[final_df['most_recent'] == 1].head(20)
-    print(latest[['rank', 'team', 'league', 'rating', 'games_played',
+    print(latest[['rank', 'team', 'rating', 'games_played',
                   'last_match_date', 'last_match']].to_string(index=False))
 
 
