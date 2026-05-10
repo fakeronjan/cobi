@@ -1,7 +1,7 @@
 season,competition,team,gp,w,d,l,gf,ga,gd,pts
-1996,MLS,LA Galaxy,36,22,0,14,69,55,14,66
 1996,MLS,Tampa Bay Mutiny,37,22,0,15,76,63,13,66
-1996,MLS,D.C. United,36,20,0,16,72,62,10,60
+1996,MLS,LA Galaxy,37,22,0,15,71,58,13,66
+1996,MLS,D.C. United,37,21,0,16,75,64,11,63
 1996,MLS,FC Dallas,34,18,0,16,59,55,4,54
 1996,MLS,Sporting Kansas City,35,18,0,17,71,71,0,54
 1996,MLS,Columbus Crew,35,16,0,19,66,72,-6,48
@@ -57,8 +57,8 @@ season,competition,team,gp,w,d,l,gf,ga,gd,pts
 2000,MLS,San Jose Earthquakes,32,7,8,17,35,50,-15,29
 2001,MLS,Miami Fusion,31,19,5,7,62,44,18,62
 2001,MLS,Chicago Fire FC,31,18,7,6,56,32,24,61
-2001,MLS,San Jose Earthquakes,30,16,6,8,57,31,26,54
-2001,MLS,LA Galaxy,30,15,7,8,58,44,14,52
+2001,MLS,San Jose Earthquakes,31,17,6,8,59,32,27,57
+2001,MLS,LA Galaxy,31,15,7,9,59,46,13,52
 2001,MLS,Red Bull New York,29,14,4,11,45,40,5,46
 2001,MLS,Columbus Crew,28,13,6,9,50,42,8,45
 2001,MLS,Sporting Kansas City,30,12,3,15,37,57,-20,39
@@ -112,9 +112,9 @@ season,competition,team,gp,w,d,l,gf,ga,gd,pts
 2005,MLS,Real Salt Lake,33,6,5,22,31,65,-34,23
 2005,MLS,Chivas USA,33,4,6,23,31,68,-37,18
 2006,MLS,D.C. United,35,16,11,8,54,40,14,59
-2006,MLS,New England Revolution,36,14,13,9,43,38,5,55
+2006,MLS,Houston Dynamo FC,36,14,13,9,51,44,7,55
 2006,MLS,FC Dallas,34,17,4,13,52,48,4,55
-2006,MLS,Houston Dynamo FC,36,13,14,9,51,44,7,53
+2006,MLS,New England Revolution,36,14,12,10,43,38,5,54
 2006,MLS,Chicago Fire FC,34,14,8,12,45,43,2,50
 2006,MLS,Chivas USA,34,11,13,10,47,45,2,46
 2006,MLS,Colorado Rapids,35,12,8,15,41,56,-15,44

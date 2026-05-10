@@ -335,6 +335,20 @@ def run_pipeline(scrape=True):
               f"(ESPN {len(espn_df):,} + gap {len(gap_df):,} after dedupe) → all_club_games.csv\n")
 
     df = pd.read_csv('all_club_games.csv')
+    # Patches for known data gaps in the merged source. ESPN sometimes leaves
+    # shootout_winner empty even when penalties=True (the 2006 MLS Cup is the
+    # canonical example: NE 1-1 Houston, Houston won 4-3 on PKs). Apply
+    # known overrides keyed by (date, home_team, away_team).
+    SHOOTOUT_OVERRIDES = {
+        ('2006-11-12', 'New England Revolution', 'Houston Dynamo FC'): 'Houston Dynamo FC',
+    }
+    for (d, h, a), sw in SHOOTOUT_OVERRIDES.items():
+        mask = (df['date'].astype(str).str[:10] == d) & \
+               (df['home_team'] == h) & (df['away_team'] == a)
+        if mask.any():
+            df.loc[mask, 'shootout_winner'] = sw
+            df.loc[mask, 'penalties'] = True
+
     # Defensive: drop any non-MLS rows lingering from pre-refactor data so the
     # on-disk CSV ends up MLS-only regardless of whether we re-scraped.
     pre_count = len(df)
@@ -544,20 +558,9 @@ def run_pipeline(scrape=True):
     print("\nDetecting trophies...")
     trophy_records = []  # rows of {year, team, honor}
 
-    # Years where our data is missing the actual MLS Cup final or the
-    # shootout_winner isn't populated, so the "last game = Cup" detector
-    # picks the wrong game / can't decide a winner.
-    #   1996: gap-fill ends at Eastern Conference Final (DC vs Tampa Bay,
-    #         Oct 12); real Cup was DC 3-2 LA Galaxy at Foxboro Oct 20.
-    #   2001: gap-fill ends at SJ vs Miami Fusion semifinal (Oct 14);
-    #         real Cup was SJ 2-1 LA Galaxy on Oct 21.
-    #   2006: ESPN scrape has the right game (NE 1-1 Houston, Nov 12)
-    #         but shootout_winner is empty — Houston won 4-3 on PKs.
-    MLS_CUP_OVERRIDES = {
-        1996: ('D.C. United',       'LA Galaxy'),
-        2001: ('San Jose Earthquakes', 'LA Galaxy'),
-        2006: ('Houston Dynamo FC', 'New England Revolution'),
-    }
+    # No more MLS_CUP_OVERRIDES — 1996 + 2001 finals are now in
+    # mls_early_historical.csv, and 2006's shootout_winner is patched at
+    # CSV-load time via SHOOTOUT_OVERRIDES above.
 
     def _winner_loser_single(game):
         """Return (winner, loser) from a single-game final, honoring shootouts."""
@@ -573,12 +576,6 @@ def run_pipeline(scrape=True):
     mls_df = df[df['competition'] == 'MLS']
     if not mls_df.empty:
         for y, g in mls_df.groupby(mls_df['date'].dt.year):
-            year_int = int(y)
-            if year_int in MLS_CUP_OVERRIDES:
-                champ, ru = MLS_CUP_OVERRIDES[year_int]
-                trophy_records.append({'year': str(y), 'team': champ, 'honor': 'MLS Cup Champion'})
-                trophy_records.append({'year': str(y), 'team': ru,    'honor': 'MLS Cup Runner-Up'})
-                continue
             g = g.sort_values('date')
             last = g.iloc[-1]
             last_date = pd.to_datetime(last['date']).date()

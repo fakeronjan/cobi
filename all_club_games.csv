@@ -9244,3 +9244,5 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 1998-08-07,1998,MLS,True,Columbus Crew,New England Revolution,6,1,,,False,,False,,fbcsv-mls-1998-1998-08-07-Columbus Crew SC-New England Revolution,Regular
 1998-08-07,1998,MLS,True,Chicago Fire FC,LA Galaxy,1,2,,,False,,False,,fbcsv-mls-1998-1998-08-07-Chicago Fire-LA Galaxy,Regular
 1998-08-05,1998,MLS,True,Tampa Bay Mutiny,Miami Fusion,3,1,,,False,,False,,fbcsv-mls-1998-1998-08-05-Tampa Bay Mutiny-Miami Fusion,Regular
+1996-10-20,1996,MLS,True,LA Galaxy,D.C. United,2,3,,,False,,True,Foxboro Stadium,wikipedia-1996-mls-cup,Final
+2001-10-21,2001,MLS,True,LA Galaxy,San Jose Earthquakes,1,2,,,False,,True,Crew Stadium,wikipedia-2001-mls-cup,Final

@@ -1131,3 +1131,5 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2001-10-10,2001,MLS,True,Chicago Fire,LA Galaxy,1,1,,,False,,False,,fbcsv-mls-2001-2001-10-10-Chicago Fire-LA Galaxy,Playoff
 2001-10-10,2001,MLS,True,Miami Fusion,San Jose Earthquakes,1,0,,,False,,False,,fbcsv-mls-2001-2001-10-10-Miami Fusion-San Jose Earthquakes,Playoff
 2001-10-14,2001,MLS,True,San Jose Earthquakes,Miami Fusion,4,0,,,False,,False,,fbcsv-mls-2001-2001-10-14-San Jose Earthquakes-Miami Fusion,Playoff
+1996-10-20,1996,MLS,True,LA Galaxy,D.C. United,2,3,,,False,,True,Foxboro Stadium,wikipedia-1996-mls-cup,Final
+2001-10-21,2001,MLS,True,LA Galaxy,San Jose Earthquakes,1,2,,,False,,True,Crew Stadium,wikipedia-2001-mls-cup,Final

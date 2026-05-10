@@ -426,13 +426,23 @@ latest = df[df['ranking_id'] == latest_id].sort_values('rank').copy()
 latest_date_str = str(latest['date'].iloc[0])
 
 
-# ── Cross-conference MLS Cup years ──────────────────────────────────────────
-# Conference badges go gold ("East 🏆") only when the team made an MLS Cup
-# whose two finalists came from different conferences. Years where both
-# finalists were from the same conference (2001 SJ vs LA both West; 2004
-# DC vs KC both East) shouldn't earn conference-champion badges — mirrors
-# LOBO's pattern. Computed up front from cobi_trophies.csv so it's
-# available everywhere we render confBadge.
+# ── East-vs-West MLS Cup format eras ────────────────────────────────────────
+# Conference badges go gold ("East 🏆") only when the year's MLS Cup playoff
+# format was DESIGNED to guarantee East-vs-West finalists (separate conf
+# brackets → conf finals → MLS Cup). The 2001-2012 wild-card / reseeding
+# era allowed same-conference finals by design (and several happened: 2001
+# SJ-LA both W; 2004 DC-KC both E; 2008 Columbus-NY both E; 2009/10/11/12
+# all both W) — so no conference-champion badges for those years even when
+# the final happened to be cross-conf. Mirrors LOBO's pattern: only show
+# the conference winner badge when the league formally crowned conference
+# champions en route to the title.
+def is_east_west_format_year(year):
+    y = int(year)
+    return y <= 2000 or y >= 2013
+
+
+# Pull MLS Cup finalists from trophies CSV so we know who to flag with the
+# conf-champion badge in the East-vs-West-design years.
 _trophies_for_conf = pd.read_csv('cobi_trophies.csv')
 _cup_pairs = {}  # year (int) → {champ_team, runner_up_team}
 for (yr, label), grp in _trophies_for_conf.groupby([
@@ -448,18 +458,12 @@ for (yr, label), grp in _trophies_for_conf.groupby([
         continue
     _cup_pairs[int(yr)] = {champ_row.iloc[0]['team'], ru_row.iloc[0]['team']}
 
-cross_conf_cup_years = set()
-for yr, finalists in _cup_pairs.items():
-    confs = {conference_for(t, yr) for t in finalists}
-    confs.discard('')
-    if len(confs) == 2:
-        cross_conf_cup_years.add(yr)
-
 
 def is_cup_conf_finalist(team, year):
-    """True iff team made MLS Cup that year AND the final was cross-conference."""
+    """True iff team made MLS Cup that year AND the year's playoff format
+    was structured around conference brackets (1996-2000, 2013+)."""
     yr = int(year)
-    return yr in cross_conf_cup_years and team in _cup_pairs.get(yr, set())
+    return is_east_west_format_year(yr) and team in _cup_pairs.get(yr, set())
 cur_reg = {
     r['team']: regular_record_as_of(r['team'], r['season'], latest_date_str)
     for _, r in latest.iterrows()
