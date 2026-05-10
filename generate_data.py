@@ -404,11 +404,24 @@ def playoff_record_as_of(team, season, snap_date_str):
 # date falls in year Y. cobi.py's trophy detection is gated on 7-day-post-final
 # so by the time mls_cup_finish says 'Champion', the trophy is real.
 print("Tagging end-of-season snapshots...")
-season_last_snap = (
-    df.groupby('season')['ranking_id']
-    .max()
-    .to_dict()
+# Gate both EOS and EORS on the trophy-awarded signal from cobi.py — Shield
+# fires 7 days after Decision Day, Cup fires 7 days after MLS Cup, so
+# either field == 'Champion' is a clean "this milestone has happened"
+# proxy. Without these gates, in-progress seasons (current year before
+# Decision Day) would falsely tag their most-recent snapshot as
+# "End of Postseason", since season_last_snap is just whatever's latest.
+seasons_with_cup_winner    = set(
+    df[df.get('mls_cup_finish', '') == 'Champion']['season'].unique()
 )
+seasons_with_shield_winner = set(
+    df[df.get('supporters_shield_finish', '') == 'Champion']['season'].unique()
+)
+
+season_last_snap = {
+    s: rid for s, rid in
+    df.groupby('season')['ranking_id'].max().to_dict().items()
+    if s in seasons_with_cup_winner
+}
 df['is_end_of_season'] = df.apply(
     lambda r: 1 if r['ranking_id'] == season_last_snap.get(r['season']) else 0,
     axis=1
@@ -417,20 +430,18 @@ df['is_end_of_season'] = df.apply(
 # End-of-regular-season snapshot per season: last ranking_id whose date is
 # on or before that year's Decision Day. Used by the GOAT table and the
 # Shield row of the Champions tab so Shield form isn't dragged down by a
-# team's playoff exit. Pre-playoff seasons or missing Decision Day fall
-# back to EOS.
+# team's playoff exit.
 df['_date_only'] = pd.to_datetime(df['date']).dt.date
 season_last_reg_snap = {}
 for season, sub in df.groupby('season'):
-    y = int(season)
-    dd = _decision_day_by_year.get(y)
+    if season not in seasons_with_shield_winner:
+        continue
+    dd = _decision_day_by_year.get(int(season))
     if dd is None:
-        season_last_reg_snap[season] = sub['ranking_id'].max()
         continue
     eligible = sub[sub['_date_only'] <= dd]
-    season_last_reg_snap[season] = (
-        eligible['ranking_id'].max() if not eligible.empty else sub['ranking_id'].max()
-    )
+    if not eligible.empty:
+        season_last_reg_snap[season] = eligible['ranking_id'].max()
 df['is_end_of_regular_season'] = df.apply(
     lambda r: 1 if r['ranking_id'] == season_last_reg_snap.get(r['season']) else 0,
     axis=1
