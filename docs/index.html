@@ -380,11 +380,13 @@ function abbrevComp(str) {
   return str.replace(/\s*\(MLS\)\s*$/, '');
 }
 
-function confBadge(conf, mlsCupFinish) {
+function confBadge(conf, isCupConfFinalist) {
   if (!conf) return '';
-  // MLS Cup is always East vs West, so making the final = winning your
-  // conference. Gold trophy badge for both Champion and Runner-Up.
-  if (mlsCupFinish === 'Champion' || mlsCupFinish === 'Runner-Up') {
+  // Gold "East 🏆" / "West 🏆" only when team made an MLS Cup whose two
+  // finalists came from different conferences. Years where both finalists
+  // were from the same conference (2001 SJ vs LA both West; 2004 D.C. vs KC
+  // both East) don't earn the conference-champion badge — mirrors LOBO.
+  if (isCupConfFinalist) {
     return `<span class="finish-badge finish-champion" title="${conf} Conference Champion">${conf} 🏆</span>`;
   }
   return `<span class="finish-badge conf-pill">${conf}</span>`;
@@ -520,7 +522,7 @@ function renderStandings() {
       <td class="rank-cell">${t.rank}</td>
       <td class="rank-cell col-hide-mobile">${t.conf_rank != null ? t.conf_rank : '-'}</td>
       <td class="team-cell">${t.display_name || t.team}</td>
-      <td>${confBadge(t.conference, t.mls_cup_finish)}</td>
+      <td>${confBadge(t.conference, t.mls_cup_conf_finalist)}</td>
       <td style="font-variant-numeric:tabular-nums;white-space:nowrap">${fmtRecordStacked(t.regular_record, t.playoff_record)}</td>
       <td>${ratingBar(t.rating)}</td>
       <td class="last-match-cell">
@@ -579,8 +581,10 @@ function populateTeams() {
   const sel = document.getElementById('team-select');
   sel.innerHTML = '<option value="">— Select a team —</option>';
   if (!teamsIndex) { sel.disabled = true; return; }
+  // teamsIndex is sorted by (conference, name) for the conference-filtered
+  // views — but when "All" is selected we want a single alphabetical list.
   const filtered = (tsConf === 'all')
-    ? teamsIndex
+    ? [...teamsIndex].sort((a, b) => a.name.localeCompare(b.name))
     : teamsIndex.filter(t => t.conference === tsConf);
   filtered.forEach(t => {
     const opt = document.createElement('option');
@@ -661,7 +665,7 @@ function renderTeamTable() {
     <td class="rank-cell">${g.rank}</td>
     <td class="rank-cell col-hide-mobile">${g.conf_rank != null ? g.conf_rank : '-'}</td>
     <td>${ratingBar(g.rating)}</td>
-    <td class="col-hide-mobile" style="font-size:11px">${confBadge(data.conference, g.mls_cup_finish)}</td>
+    <td class="col-hide-mobile" style="font-size:11px">${confBadge(g.conference || data.conference, g.mls_cup_conf_finalist)}</td>
     <td class="col-hide-mobile" style="font-size:11px">${finishBadge(g)}</td>
   </tr>`;
   }).join('');
@@ -891,7 +895,7 @@ function renderGoat() {
     <td class="rank-cell">${t.rank}</td>
     <td style="text-align:center;white-space:nowrap">${t.season}</td>
     <td class="team-cell">${t.display_name || t.team}</td>
-    <td>${confBadge(t.conference, t.mls_cup_finish)}</td>
+    <td>${confBadge(t.conference, t.mls_cup_conf_finalist)}</td>
     <td>${ratingBar(t.rating)}</td>
     <td style="font-variant-numeric:tabular-nums;white-space:nowrap" class="col-hide-mobile">${fmtRecordStacked(t.regular_record, t.playoff_record)}</td>
     <td class="col-hide-mobile" style="font-size:11px">${finishBadge(t)}</td>

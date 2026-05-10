@@ -424,6 +424,42 @@ df['conf_rank'] = (
 latest_id = int(df['ranking_id'].max())
 latest = df[df['ranking_id'] == latest_id].sort_values('rank').copy()
 latest_date_str = str(latest['date'].iloc[0])
+
+
+# ── Cross-conference MLS Cup years ──────────────────────────────────────────
+# Conference badges go gold ("East 🏆") only when the team made an MLS Cup
+# whose two finalists came from different conferences. Years where both
+# finalists were from the same conference (2001 SJ vs LA both West; 2004
+# DC vs KC both East) shouldn't earn conference-champion badges — mirrors
+# LOBO's pattern. Computed up front from cobi_trophies.csv so it's
+# available everywhere we render confBadge.
+_trophies_for_conf = pd.read_csv('cobi_trophies.csv')
+_cup_pairs = {}  # year (int) → {champ_team, runner_up_team}
+for (yr, label), grp in _trophies_for_conf.groupby([
+    'year',
+    _trophies_for_conf['honor'].str.replace(' Champion', '', regex=False)
+                                .str.replace(' Runner-Up', '', regex=False)
+]):
+    if label != 'MLS Cup':
+        continue
+    champ_row = grp[grp['honor'].str.endswith('Champion')]
+    ru_row    = grp[grp['honor'].str.endswith('Runner-Up')]
+    if champ_row.empty or ru_row.empty:
+        continue
+    _cup_pairs[int(yr)] = {champ_row.iloc[0]['team'], ru_row.iloc[0]['team']}
+
+cross_conf_cup_years = set()
+for yr, finalists in _cup_pairs.items():
+    confs = {conference_for(t, yr) for t in finalists}
+    confs.discard('')
+    if len(confs) == 2:
+        cross_conf_cup_years.add(yr)
+
+
+def is_cup_conf_finalist(team, year):
+    """True iff team made MLS Cup that year AND the final was cross-conference."""
+    yr = int(year)
+    return yr in cross_conf_cup_years and team in _cup_pairs.get(yr, set())
 cur_reg = {
     r['team']: regular_record_as_of(r['team'], r['season'], latest_date_str)
     for _, r in latest.iterrows()
@@ -453,6 +489,7 @@ standings_data = {
             'last_match_date':     clean(r['last_match_date']),
             'mls_cup_finish':            clean(r.get('mls_cup_finish', '')),
             'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
+            'mls_cup_conf_finalist':     is_cup_conf_finalist(r['team'], r['season']),
         }
         for _, r in latest.iterrows()
     ],
@@ -629,6 +666,7 @@ goat_data = [
         'playoff_record':             final_po_lookup.get((r['team'], r['season']), ''),
         'mls_cup_finish':             clean(r.get('mls_cup_finish', '')),
         'supporters_shield_finish':   clean(r.get('supporters_shield_finish', '')),
+        'mls_cup_conf_finalist':      is_cup_conf_finalist(r['team'], r['season']),
     }
     for i, (_, r) in enumerate(eos.iterrows())
 ]
@@ -660,6 +698,7 @@ for team in all_teams:
             {
                 'date':              str(r['date']),
                 'display_name':      display_name(team, str(season)),
+                'conference':        conference_for(team, str(season)),
                 'rating':            round(float(r['rating']), 3),
                 'rank':              int(r['rank']),
                 'conf_rank':         int(r['conf_rank']),
@@ -670,6 +709,7 @@ for team in all_teams:
                 'last_match':        clean(r['last_match']),
                 'mls_cup_finish':            clean(r.get('mls_cup_finish', '')),
                 'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
+                'mls_cup_conf_finalist':     is_cup_conf_finalist(team, str(season)),
             }
             for _, r in sdf.sort_values('date').iterrows()
         ]
@@ -727,6 +767,7 @@ for season in all_seasons:
                 'last_match_date':   clean(r['last_match_date']),
                 'mls_cup_finish':            clean(r.get('mls_cup_finish', '')),
                 'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
+                'mls_cup_conf_finalist':     is_cup_conf_finalist(r['team'], season),
             })
         snaps.append({
             'date':              str(snap_date),

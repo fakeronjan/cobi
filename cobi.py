@@ -544,6 +544,21 @@ def run_pipeline(scrape=True):
     print("\nDetecting trophies...")
     trophy_records = []  # rows of {year, team, honor}
 
+    # Years where our data is missing the actual MLS Cup final or the
+    # shootout_winner isn't populated, so the "last game = Cup" detector
+    # picks the wrong game / can't decide a winner.
+    #   1996: gap-fill ends at Eastern Conference Final (DC vs Tampa Bay,
+    #         Oct 12); real Cup was DC 3-2 LA Galaxy at Foxboro Oct 20.
+    #   2001: gap-fill ends at SJ vs Miami Fusion semifinal (Oct 14);
+    #         real Cup was SJ 2-1 LA Galaxy on Oct 21.
+    #   2006: ESPN scrape has the right game (NE 1-1 Houston, Nov 12)
+    #         but shootout_winner is empty — Houston won 4-3 on PKs.
+    MLS_CUP_OVERRIDES = {
+        1996: ('D.C. United',       'LA Galaxy'),
+        2001: ('San Jose Earthquakes', 'LA Galaxy'),
+        2006: ('Houston Dynamo FC', 'New England Revolution'),
+    }
+
     def _winner_loser_single(game):
         """Return (winner, loser) from a single-game final, honoring shootouts."""
         if game['home_score'] > game['away_score']:
@@ -558,6 +573,12 @@ def run_pipeline(scrape=True):
     mls_df = df[df['competition'] == 'MLS']
     if not mls_df.empty:
         for y, g in mls_df.groupby(mls_df['date'].dt.year):
+            year_int = int(y)
+            if year_int in MLS_CUP_OVERRIDES:
+                champ, ru = MLS_CUP_OVERRIDES[year_int]
+                trophy_records.append({'year': str(y), 'team': champ, 'honor': 'MLS Cup Champion'})
+                trophy_records.append({'year': str(y), 'team': ru,    'honor': 'MLS Cup Runner-Up'})
+                continue
             g = g.sort_values('date')
             last = g.iloc[-1]
             last_date = pd.to_datetime(last['date']).date()
@@ -678,9 +699,14 @@ def run_pipeline(scrape=True):
 
     # Last match string via merge_asof — scoped by (name, season) so a team's
     # last_match resets to empty at the start of each new calendar year.
+    # Cast both date columns to datetime64[ns] explicitly: newer pandas
+    # picks resolution per-source (sometimes [s], sometimes [us]) and
+    # merge_asof refuses mismatched resolutions even though both are dt64.
     final_df['season'] = final_df['season'].astype(str)
+    final_df['date']   = pd.to_datetime(final_df['date']).astype('datetime64[ns]')
     lastmatch_sorted = lastmatch_df.sort_values('date').copy()
     lastmatch_sorted['season'] = lastmatch_sorted['season'].astype(str)
+    lastmatch_sorted['date']   = pd.to_datetime(lastmatch_sorted['date']).astype('datetime64[ns]')
     final_df = final_df.sort_values('date')
     final_df = pd.merge_asof(
         final_df, lastmatch_sorted.rename(columns={'date': 'match_date'}),

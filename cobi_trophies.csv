@@ -1,6 +1,6 @@
 year,team,honor
 1996,D.C. United,MLS Cup Champion
-1996,Tampa Bay Mutiny,MLS Cup Runner-Up
+1996,LA Galaxy,MLS Cup Runner-Up
 1997,D.C. United,MLS Cup Champion
 1997,Colorado Rapids,MLS Cup Runner-Up
 1998,Chicago Fire FC,MLS Cup Champion
@@ -10,7 +10,7 @@ year,team,honor
 2000,Sporting Kansas City,MLS Cup Champion
 2000,Chicago Fire FC,MLS Cup Runner-Up
 2001,San Jose Earthquakes,MLS Cup Champion
-2001,Miami Fusion,MLS Cup Runner-Up
+2001,LA Galaxy,MLS Cup Runner-Up
 2002,LA Galaxy,MLS Cup Champion
 2002,New England Revolution,MLS Cup Runner-Up
 2003,San Jose Earthquakes,MLS Cup Champion
@@ -19,6 +19,8 @@ year,team,honor
 2004,Sporting Kansas City,MLS Cup Runner-Up
 2005,LA Galaxy,MLS Cup Champion
 2005,New England Revolution,MLS Cup Runner-Up
+2006,Houston Dynamo FC,MLS Cup Champion
+2006,New England Revolution,MLS Cup Runner-Up
 2007,Houston Dynamo FC,MLS Cup Champion
 2007,New England Revolution,MLS Cup Runner-Up
 2008,Columbus Crew,MLS Cup Champion
