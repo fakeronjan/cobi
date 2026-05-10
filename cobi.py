@@ -65,6 +65,10 @@ MLS_TEAM_ALIASES = {
     'Kansas City Wizards':            'Sporting Kansas City',
     # Dallas franchise (1996+)
     'Dallas Burn':                    'FC Dallas',
+    # LA Galaxy (full name from Wikipedia's standings)
+    'Los Angeles Galaxy':             'LA Galaxy',
+    # San Jose franchise (1996+)
+    'San Jose Clash':                 'San Jose Earthquakes',
     # Montreal franchise (2012+)
     'Montreal Impact':                'CF Montréal',
 }
@@ -74,6 +78,61 @@ def canonical_team(name):
     if name is None:
         return name
     return MLS_TEAM_ALIASES.get(name, name)
+
+
+# Shootout-era (1996-1999) regular-season final standings from Wikipedia.
+# MLS used a no-draws shootout format then (regulation W = 3 pts, shootout
+# W = 1 pt, L = 0). Our gap-fill source folded shootout outcomes into
+# regulation results so we can't recover the W vs SOW split from the games
+# CSV. Hard-code season-final per-team standings so the Shield winner +
+# end-of-season records are era-correct. Verified Pts = 3*W + SOW.
+# Keep in sync with generate_data.py.
+MLS_EARLY_STANDINGS = {
+    (1996, 'Tampa Bay Mutiny'):       {'w': 19, 'sow': 1, 'l': 12, 'gf': 66, 'ga': 51, 'pts': 58},
+    (1996, 'D.C. United'):            {'w': 15, 'sow': 1, 'l': 16, 'gf': 62, 'ga': 56, 'pts': 46},
+    (1996, 'Red Bull New York'):      {'w': 12, 'sow': 3, 'l': 17, 'gf': 45, 'ga': 47, 'pts': 39},
+    (1996, 'Columbus Crew'):          {'w': 11, 'sow': 4, 'l': 17, 'gf': 59, 'ga': 60, 'pts': 37},
+    (1996, 'New England Revolution'): {'w':  9, 'sow': 6, 'l': 17, 'gf': 43, 'ga': 56, 'pts': 33},
+    (1996, 'LA Galaxy'):              {'w': 15, 'sow': 4, 'l': 13, 'gf': 59, 'ga': 49, 'pts': 49},
+    (1996, 'FC Dallas'):              {'w': 12, 'sow': 5, 'l': 15, 'gf': 50, 'ga': 48, 'pts': 41},
+    (1996, 'Sporting Kansas City'):   {'w': 12, 'sow': 5, 'l': 15, 'gf': 61, 'ga': 63, 'pts': 41},
+    (1996, 'San Jose Earthquakes'):   {'w': 12, 'sow': 3, 'l': 17, 'gf': 50, 'ga': 50, 'pts': 39},
+    (1996, 'Colorado Rapids'):        {'w':  9, 'sow': 2, 'l': 21, 'gf': 44, 'ga': 59, 'pts': 29},
+    (1997, 'D.C. United'):            {'w': 17, 'sow': 4, 'l': 11, 'gf': 70, 'ga': 53, 'pts': 55},
+    (1997, 'Tampa Bay Mutiny'):       {'w': 14, 'sow': 3, 'l': 15, 'gf': 55, 'ga': 60, 'pts': 45},
+    (1997, 'Columbus Crew'):          {'w': 12, 'sow': 3, 'l': 17, 'gf': 42, 'ga': 41, 'pts': 39},
+    (1997, 'New England Revolution'): {'w': 11, 'sow': 4, 'l': 17, 'gf': 40, 'ga': 53, 'pts': 37},
+    (1997, 'Red Bull New York'):      {'w': 11, 'sow': 2, 'l': 19, 'gf': 43, 'ga': 53, 'pts': 35},
+    (1997, 'Sporting Kansas City'):   {'w': 14, 'sow': 7, 'l': 11, 'gf': 57, 'ga': 51, 'pts': 49},
+    (1997, 'LA Galaxy'):              {'w': 14, 'sow': 2, 'l': 16, 'gf': 55, 'ga': 44, 'pts': 44},
+    (1997, 'FC Dallas'):              {'w': 13, 'sow': 3, 'l': 16, 'gf': 55, 'ga': 49, 'pts': 42},
+    (1997, 'Colorado Rapids'):        {'w': 12, 'sow': 2, 'l': 18, 'gf': 50, 'ga': 59, 'pts': 38},
+    (1997, 'San Jose Earthquakes'):   {'w':  9, 'sow': 3, 'l': 20, 'gf': 55, 'ga': 59, 'pts': 30},
+    (1998, 'D.C. United'):            {'w': 17, 'sow': 7, 'l':  8, 'gf': 74, 'ga': 48, 'pts': 58},
+    (1998, 'Columbus Crew'):          {'w': 15, 'sow': 0, 'l': 17, 'gf': 67, 'ga': 56, 'pts': 45},
+    (1998, 'Red Bull New York'):      {'w': 12, 'sow': 3, 'l': 17, 'gf': 54, 'ga': 63, 'pts': 39},
+    (1998, 'Miami Fusion'):           {'w': 10, 'sow': 5, 'l': 17, 'gf': 46, 'ga': 68, 'pts': 35},
+    (1998, 'Tampa Bay Mutiny'):       {'w': 11, 'sow': 1, 'l': 20, 'gf': 46, 'ga': 57, 'pts': 34},
+    (1998, 'New England Revolution'): {'w':  9, 'sow': 2, 'l': 21, 'gf': 53, 'ga': 66, 'pts': 29},
+    (1998, 'LA Galaxy'):              {'w': 22, 'sow': 2, 'l':  8, 'gf': 85, 'ga': 44, 'pts': 68},
+    (1998, 'Chicago Fire FC'):        {'w': 18, 'sow': 2, 'l': 12, 'gf': 62, 'ga': 45, 'pts': 56},
+    (1998, 'Colorado Rapids'):        {'w': 14, 'sow': 2, 'l': 16, 'gf': 62, 'ga': 69, 'pts': 44},
+    (1998, 'FC Dallas'):              {'w': 11, 'sow': 4, 'l': 17, 'gf': 43, 'ga': 59, 'pts': 37},
+    (1998, 'San Jose Earthquakes'):   {'w': 10, 'sow': 3, 'l': 19, 'gf': 48, 'ga': 60, 'pts': 33},
+    (1998, 'Sporting Kansas City'):   {'w': 10, 'sow': 2, 'l': 20, 'gf': 45, 'ga': 50, 'pts': 32},
+    (1999, 'D.C. United'):            {'w': 17, 'sow': 6, 'l':  9, 'gf': 65, 'ga': 43, 'pts': 57},
+    (1999, 'Columbus Crew'):          {'w': 13, 'sow': 6, 'l': 13, 'gf': 48, 'ga': 39, 'pts': 45},
+    (1999, 'Tampa Bay Mutiny'):       {'w':  9, 'sow': 5, 'l': 18, 'gf': 51, 'ga': 50, 'pts': 32},
+    (1999, 'Miami Fusion'):           {'w':  8, 'sow': 5, 'l': 19, 'gf': 42, 'ga': 59, 'pts': 29},
+    (1999, 'New England Revolution'): {'w':  7, 'sow': 5, 'l': 20, 'gf': 38, 'ga': 53, 'pts': 26},
+    (1999, 'Red Bull New York'):      {'w':  4, 'sow': 3, 'l': 25, 'gf': 32, 'ga': 64, 'pts': 15},
+    (1999, 'LA Galaxy'):              {'w': 17, 'sow': 3, 'l': 12, 'gf': 49, 'ga': 29, 'pts': 54},
+    (1999, 'FC Dallas'):              {'w': 16, 'sow': 3, 'l': 13, 'gf': 54, 'ga': 35, 'pts': 51},
+    (1999, 'Chicago Fire FC'):        {'w': 15, 'sow': 3, 'l': 14, 'gf': 51, 'ga': 36, 'pts': 48},
+    (1999, 'Colorado Rapids'):        {'w': 14, 'sow': 6, 'l': 12, 'gf': 38, 'ga': 39, 'pts': 48},
+    (1999, 'San Jose Earthquakes'):   {'w':  9, 'sow':10, 'l': 13, 'gf': 48, 'ga': 49, 'pts': 37},
+    (1999, 'Sporting Kansas City'):   {'w':  6, 'sow': 2, 'l': 24, 'gf': 33, 'ga': 53, 'pts': 20},
+}
 
 
 _today = date.today()
@@ -515,19 +574,9 @@ def run_pipeline(scrape=True):
     # final-weekend pattern); anything after is playoffs. Gated 7 days
     # past Decision Day so an in-progress final weekend doesn't crown early.
     #
-    # 1996-1999 OVERRIDE: MLS used a no-draws shootout format in those years
-    # (regulation W = 3 pts, shootout W = 1 pt, L = 0). Our gap-fill source
-    # (footballcsv) folded shootout outcomes into regulation results, so we
-    # cannot reconstruct era-accurate points from the games CSV. Hard-code
-    # the historically correct Shield winners + runners-up to avoid
-    # publishing wrong trophies. Once a better-quality source for that era
-    # is integrated, this block can be removed.
-    SHIELD_OVERRIDES = {
-        1996: ('Tampa Bay Mutiny',     'LA Galaxy'),
-        1997: ('D.C. United',          'Sporting Kansas City'),
-        1998: ('LA Galaxy',            'D.C. United'),
-        1999: ('D.C. United',          'LA Galaxy'),
-    }
+    # 1996-1999: Shield winner is derived from MLS_EARLY_STANDINGS (Wikipedia
+    # season totals) since our gap-fill source doesn't preserve the SOW
+    # signal needed for era-accurate pts.
     def _regular_season_end_date(season_games):
         """Return the date of Decision Day (regular-season finale) or None."""
         if season_games.empty:
@@ -559,8 +608,15 @@ def run_pipeline(scrape=True):
     if not mls_df.empty:
         for y, g in mls_df.groupby(mls_df['date'].dt.year):
             year_int = int(y)
-            if year_int in SHIELD_OVERRIDES:
-                champ, ru = SHIELD_OVERRIDES[year_int]
+            # Shootout era: derive Shield from static Wikipedia standings.
+            era_rows = [(t, s) for (yr, t), s in MLS_EARLY_STANDINGS.items() if yr == year_int]
+            if era_rows:
+                # Tiebreakers: pts → total wins (reg + SOW) → GD → GF
+                era_rows.sort(key=lambda kv: (kv[1]['pts'], kv[1]['w'] + kv[1]['sow'],
+                                              kv[1]['gf'] - kv[1]['ga'], kv[1]['gf']),
+                              reverse=True)
+                champ, _ = era_rows[0]
+                ru,    _ = era_rows[1]
                 trophy_records.append({'year': str(y), 'team': champ, 'honor': "Supporters Shield Champion"})
                 trophy_records.append({'year': str(y), 'team': ru,    'honor': "Supporters Shield Runner-Up"})
                 continue

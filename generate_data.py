@@ -26,8 +26,82 @@ MLS_TEAM_ALIASES = {
     'Kansas City Wiz':                'Sporting Kansas City',
     'Kansas City Wizards':            'Sporting Kansas City',
     'Dallas Burn':                    'FC Dallas',
+    'Los Angeles Galaxy':             'LA Galaxy',
+    'San Jose Clash':                 'San Jose Earthquakes',
     'Montreal Impact':                'CF Montréal',
 }
+
+
+# ── Shootout-era (1996-1999) regular-season final standings ─────────────────
+# MLS used a no-draws shootout format from 1996-1999: regulation W = 3 pts,
+# shootout W = 1 pt, L = 0 pts. Our gap-fill source (footballcsv) folded
+# shootout outcomes into regulation results — meaning we cannot recover the
+# era-accurate W vs SOW split from the games CSV. Hard-code season-final
+# standings from Wikipedia so end-of-season records and Shield winners are
+# era-correct. Verified Pts = 3*W + SOW for every entry.
+# Source: https://en.wikipedia.org/wiki/<year>_Major_League_Soccer_season
+# Format: (year, canonical_team) → {w, sow, l, gf, ga, pts}
+# Keep in sync with cobi.py.
+MLS_EARLY_STANDINGS = {
+    # 1996 ─────────────────────────────────────────────────────────────
+    (1996, 'Tampa Bay Mutiny'):       {'w': 19, 'sow': 1, 'l': 12, 'gf': 66, 'ga': 51, 'pts': 58},
+    (1996, 'D.C. United'):            {'w': 15, 'sow': 1, 'l': 16, 'gf': 62, 'ga': 56, 'pts': 46},
+    (1996, 'Red Bull New York'):      {'w': 12, 'sow': 3, 'l': 17, 'gf': 45, 'ga': 47, 'pts': 39},
+    (1996, 'Columbus Crew'):          {'w': 11, 'sow': 4, 'l': 17, 'gf': 59, 'ga': 60, 'pts': 37},
+    (1996, 'New England Revolution'): {'w':  9, 'sow': 6, 'l': 17, 'gf': 43, 'ga': 56, 'pts': 33},
+    (1996, 'LA Galaxy'):              {'w': 15, 'sow': 4, 'l': 13, 'gf': 59, 'ga': 49, 'pts': 49},
+    (1996, 'FC Dallas'):              {'w': 12, 'sow': 5, 'l': 15, 'gf': 50, 'ga': 48, 'pts': 41},
+    (1996, 'Sporting Kansas City'):   {'w': 12, 'sow': 5, 'l': 15, 'gf': 61, 'ga': 63, 'pts': 41},
+    (1996, 'San Jose Earthquakes'):   {'w': 12, 'sow': 3, 'l': 17, 'gf': 50, 'ga': 50, 'pts': 39},
+    (1996, 'Colorado Rapids'):        {'w':  9, 'sow': 2, 'l': 21, 'gf': 44, 'ga': 59, 'pts': 29},
+    # 1997 ─────────────────────────────────────────────────────────────
+    (1997, 'D.C. United'):            {'w': 17, 'sow': 4, 'l': 11, 'gf': 70, 'ga': 53, 'pts': 55},
+    (1997, 'Tampa Bay Mutiny'):       {'w': 14, 'sow': 3, 'l': 15, 'gf': 55, 'ga': 60, 'pts': 45},
+    (1997, 'Columbus Crew'):          {'w': 12, 'sow': 3, 'l': 17, 'gf': 42, 'ga': 41, 'pts': 39},
+    (1997, 'New England Revolution'): {'w': 11, 'sow': 4, 'l': 17, 'gf': 40, 'ga': 53, 'pts': 37},
+    (1997, 'Red Bull New York'):      {'w': 11, 'sow': 2, 'l': 19, 'gf': 43, 'ga': 53, 'pts': 35},
+    (1997, 'Sporting Kansas City'):   {'w': 14, 'sow': 7, 'l': 11, 'gf': 57, 'ga': 51, 'pts': 49},
+    (1997, 'LA Galaxy'):              {'w': 14, 'sow': 2, 'l': 16, 'gf': 55, 'ga': 44, 'pts': 44},
+    (1997, 'FC Dallas'):              {'w': 13, 'sow': 3, 'l': 16, 'gf': 55, 'ga': 49, 'pts': 42},
+    (1997, 'Colorado Rapids'):        {'w': 12, 'sow': 2, 'l': 18, 'gf': 50, 'ga': 59, 'pts': 38},
+    (1997, 'San Jose Earthquakes'):   {'w':  9, 'sow': 3, 'l': 20, 'gf': 55, 'ga': 59, 'pts': 30},
+    # 1998 ─────────────────────────────────────────────────────────────
+    (1998, 'D.C. United'):            {'w': 17, 'sow': 7, 'l':  8, 'gf': 74, 'ga': 48, 'pts': 58},
+    (1998, 'Columbus Crew'):          {'w': 15, 'sow': 0, 'l': 17, 'gf': 67, 'ga': 56, 'pts': 45},
+    (1998, 'Red Bull New York'):      {'w': 12, 'sow': 3, 'l': 17, 'gf': 54, 'ga': 63, 'pts': 39},
+    (1998, 'Miami Fusion'):           {'w': 10, 'sow': 5, 'l': 17, 'gf': 46, 'ga': 68, 'pts': 35},
+    (1998, 'Tampa Bay Mutiny'):       {'w': 11, 'sow': 1, 'l': 20, 'gf': 46, 'ga': 57, 'pts': 34},
+    (1998, 'New England Revolution'): {'w':  9, 'sow': 2, 'l': 21, 'gf': 53, 'ga': 66, 'pts': 29},
+    (1998, 'LA Galaxy'):              {'w': 22, 'sow': 2, 'l':  8, 'gf': 85, 'ga': 44, 'pts': 68},
+    (1998, 'Chicago Fire FC'):        {'w': 18, 'sow': 2, 'l': 12, 'gf': 62, 'ga': 45, 'pts': 56},
+    (1998, 'Colorado Rapids'):        {'w': 14, 'sow': 2, 'l': 16, 'gf': 62, 'ga': 69, 'pts': 44},
+    (1998, 'FC Dallas'):              {'w': 11, 'sow': 4, 'l': 17, 'gf': 43, 'ga': 59, 'pts': 37},
+    (1998, 'San Jose Earthquakes'):   {'w': 10, 'sow': 3, 'l': 19, 'gf': 48, 'ga': 60, 'pts': 33},
+    (1998, 'Sporting Kansas City'):   {'w': 10, 'sow': 2, 'l': 20, 'gf': 45, 'ga': 50, 'pts': 32},
+    # 1999 ─────────────────────────────────────────────────────────────
+    (1999, 'D.C. United'):            {'w': 17, 'sow': 6, 'l':  9, 'gf': 65, 'ga': 43, 'pts': 57},
+    (1999, 'Columbus Crew'):          {'w': 13, 'sow': 6, 'l': 13, 'gf': 48, 'ga': 39, 'pts': 45},
+    (1999, 'Tampa Bay Mutiny'):       {'w':  9, 'sow': 5, 'l': 18, 'gf': 51, 'ga': 50, 'pts': 32},
+    (1999, 'Miami Fusion'):           {'w':  8, 'sow': 5, 'l': 19, 'gf': 42, 'ga': 59, 'pts': 29},
+    (1999, 'New England Revolution'): {'w':  7, 'sow': 5, 'l': 20, 'gf': 38, 'ga': 53, 'pts': 26},
+    (1999, 'Red Bull New York'):      {'w':  4, 'sow': 3, 'l': 25, 'gf': 32, 'ga': 64, 'pts': 15},
+    (1999, 'LA Galaxy'):              {'w': 17, 'sow': 3, 'l': 12, 'gf': 49, 'ga': 29, 'pts': 54},
+    (1999, 'FC Dallas'):              {'w': 16, 'sow': 3, 'l': 13, 'gf': 54, 'ga': 35, 'pts': 51},
+    (1999, 'Chicago Fire FC'):        {'w': 15, 'sow': 3, 'l': 14, 'gf': 51, 'ga': 36, 'pts': 48},
+    (1999, 'Colorado Rapids'):        {'w': 14, 'sow': 6, 'l': 12, 'gf': 38, 'ga': 39, 'pts': 48},
+    (1999, 'San Jose Earthquakes'):   {'w':  9, 'sow':10, 'l': 13, 'gf': 48, 'ga': 49, 'pts': 37},
+    (1999, 'Sporting Kansas City'):   {'w':  6, 'sow': 2, 'l': 24, 'gf': 33, 'ga': 53, 'pts': 20},
+}
+
+SHOOTOUT_ERA_YEARS = {1996, 1997, 1998, 1999}
+
+
+def early_record(team, season):
+    """Return W-SOW-L string for a (team, season) in the shootout era, or None."""
+    s = MLS_EARLY_STANDINGS.get((int(season), team))
+    if not s:
+        return None
+    return f"{s['w']}-{s['sow']}-{s['l']}"
 
 
 def canonical_team(name):
@@ -138,7 +212,7 @@ MLS_CONFERENCE_HISTORY = {
     'San Diego FC':              [(2025, 9999, 'West')],
     'San Jose Earthquakes':      [(1996, 9999, 'West')],
     'Seattle Sounders FC':       [(2009, 9999, 'West')],
-    'Sporting Kansas City':      [(1996, 2010, 'East'), (2011, 9999, 'West')],
+    'Sporting Kansas City':      [(1996, 1999, 'West'), (2000, 2010, 'East'), (2011, 9999, 'West')],
     'St. Louis CITY SC':         [(2023, 9999, 'West')],
     'Tampa Bay Mutiny':          [(1996, 2001, 'East')],
     'Toronto FC':                [(2007, 9999, 'East')],
@@ -396,6 +470,12 @@ trophies = pd.read_csv('cobi_trophies.csv')
 eoy_lookup = {}
 for (team, season), grp in df.groupby(['team', 'season']):
     last = grp.sort_values('date').iloc[-1]
+    # Shootout-era (1996-1999) override: substitute era-accurate W-SOW-L
+    # from Wikipedia season totals so end-of-season records and pts come
+    # out right. Computed cumulative records would over-credit shootout
+    # wins (treating them all as regulation Ws → 3 pts each).
+    reg_rec = early_record(team, str(season)) or \
+              regular_record_as_of(team, str(season), str(last['date']))
     eoy_lookup[(team, str(season))] = {
         'team':                       team,
         'display_name':               display_name(team, str(season)),
@@ -403,7 +483,7 @@ for (team, season), grp in df.groupby(['team', 'season']):
         'rating':                     round(float(last['rating']), 3),
         'rank':                       int(last['rank']),
         'conf_rank':                  int(last['conf_rank']),
-        'regular_record':             regular_record_as_of(team, str(season), str(last['date'])),
+        'regular_record':             reg_rec,
         'playoff_record':             playoff_record_as_of(team, str(season), str(last['date'])),
         'mls_cup_finish':             clean(last.get('mls_cup_finish', '')),
         'supporters_shield_finish':   clean(last.get('supporters_shield_finish', '')),
@@ -544,7 +624,8 @@ goat_data = [
         'season':                     r['season'],
         'conference':                 clean(r['conference']),
         'rating':                     round(float(r['rating']), 3),
-        'regular_record':             final_reg_lookup.get((r['team'], r['season']), '0-0-0'),
+        'regular_record':             early_record(r['team'], r['season']) or
+                                      final_reg_lookup.get((r['team'], r['season']), '0-0-0'),
         'playoff_record':             final_po_lookup.get((r['team'], r['season']), ''),
         'mls_cup_finish':             clean(r.get('mls_cup_finish', '')),
         'supporters_shield_finish':   clean(r.get('supporters_shield_finish', '')),
@@ -583,7 +664,8 @@ for team in all_teams:
                 'rank':              int(r['rank']),
                 'conf_rank':         int(r['conf_rank']),
                 'is_end_of_season':  int(r['is_end_of_season']),
-                'regular_record':    regular_record_as_of(team, str(season), str(r['date'])),
+                'regular_record':    (early_record(team, str(season)) if int(r['is_end_of_season']) == 1 else None)
+                                     or regular_record_as_of(team, str(season), str(r['date'])),
                 'playoff_record':    playoff_record_as_of(team, str(season), str(r['date'])),
                 'last_match':        clean(r['last_match']),
                 'mls_cup_finish':            clean(r.get('mls_cup_finish', '')),
@@ -627,8 +709,11 @@ for season in all_seasons:
             .rank(ascending=False, method='min')
             .astype(int)
         )
+        snap_is_eos = int(gdf['is_end_of_season'].max()) == 1
         teams = []
         for _, r in gdf.iterrows():
+            reg_rec = (early_record(r['team'], season) if snap_is_eos else None) \
+                      or regular_record_as_of(r['team'], season, str(snap_date))
             teams.append({
                 'rank':              int(r['snap_rank']),
                 'conf_rank':         int(r['snap_conf_rank']),
@@ -636,7 +721,7 @@ for season in all_seasons:
                 'display_name':      display_name(r['team'], season),
                 'conference':        clean(r['conference']),
                 'rating':            round(float(r['rating']), 3),
-                'regular_record':    regular_record_as_of(r['team'], season, str(snap_date)),
+                'regular_record':    reg_rec,
                 'playoff_record':    playoff_record_as_of(r['team'], season, str(snap_date)),
                 'last_match':        clean(r['last_match']),
                 'last_match_date':   clean(r['last_match_date']),
