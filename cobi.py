@@ -6,7 +6,7 @@
 
 import sys
 import time
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -25,7 +25,11 @@ from rankit.Ranker import MasseyRanker
 # PARAMETERS
 # ============================================================
 
-window_game_days = 200
+window_game_days = 100   # ~1 MLS season; tighter than ZIDANE/MESSI on
+                          # purpose — MLS has heavy player turnover (European
+                          # stars arriving post-prime, MLS young stars
+                          # leaving for Europe), so we want the ratings to
+                          # respond to current rosters quickly.
 margin_cap       = 4
 shootout_margin  = 0.5
 home_field_adv   = 0.5
@@ -222,7 +226,16 @@ def espn_extract_matches(payload, competition_label, league_match_flag):
 
         raw_date = ev.get('date') or comp.get('date') or ''
         try:
-            match_date = datetime.fromisoformat(raw_date.replace('Z', '+00:00')).date()
+            # ESPN's `date` field is the kickoff in UTC. Naively .date()-ing
+            # it puts any 7pm-or-later US-local kickoff on the next UTC day
+            # (a 7:30pm PT game = 02:30Z next day, etc.) — which mis-attributes
+            # the game and breaks date filtering / standings. All current MLS
+            # venues are UTC-4 (Eastern DST) through UTC-7 (Pacific DST), so
+            # subtracting 7h before .date() always lands on the correct
+            # local schedule day regardless of venue, since MLS only schedules
+            # evening kickoffs.
+            kickoff_utc = datetime.fromisoformat(raw_date.replace('Z', '+00:00'))
+            match_date = (kickoff_utc - timedelta(hours=7)).date()
         except ValueError:
             continue
 
