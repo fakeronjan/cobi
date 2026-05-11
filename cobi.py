@@ -12,14 +12,7 @@ warnings.filterwarnings('ignore')
 
 import pandas as pd
 import numpy as np
-# rankit==0.2 uses deprecated numpy aliases removed in numpy 1.24+.
-if not hasattr(np, 'int'):   np.int = int
-if not hasattr(np, 'float'): np.float = float
-if not hasattr(np, 'bool'):  np.bool = bool
 import requests
-import rankit
-from rankit.Table import Table
-from rankit.Ranker import MasseyRanker
 
 # ============================================================
 # PARAMETERS
@@ -38,6 +31,11 @@ min_games        = 5    # Threshold for inclusion in final standings.
                           # by then; legacy 15 nuked the first ~6 weeks of
                           # 1996 (only KC had 15+ games until late June) and
                           # Inter Miami's entire 2020 pre-October.
+
+# WLS: weights affect observation influence, not margin magnitude.
+# Margin transform (cap=4) + per-game HCA are applied in prepare_game_data
+# upstream — solver just takes the pre-prepped adj_margin_home as input.
+WEIGHTING_MODE = "wls"
 
 # Re-process the most recent N ranking_ids (game-days) on every run so late-
 # arriving ESPN data is absorbed. Without this, a cron firing mid-day caches
@@ -86,6 +84,61 @@ MLS_TEAM_ALIASES = {
     # Montreal franchise (2012+)
     'Montreal Impact':                'CF Montréal',
 }
+
+
+def _solve_massey(window_df, weighting_mode):
+    """
+    Homebrew weighted-least-squares Massey solver. Replaces rankit.
+
+    Takes a window df with home_team, away_team, adj_margin_home (the
+    HCA + cap pre-applied margin from home perspective), and date_weight.
+    Returns DataFrame with columns: name, rating, rank.
+
+    Margin transform + per-game HCA are applied UPSTREAM in
+    prepare_game_data (since COBI has soccer-specific quirks like
+    shootout-margin handling that need to happen before solver). The
+    solver just does WLS on the pre-prepped response variable.
+    """
+    teams = sorted(set(window_df["home_team"]) | set(window_df["away_team"]))
+    team_idx = {t: i for i, t in enumerate(teams)}
+    n_teams = len(teams)
+    n_games = len(window_df)
+
+    X = np.zeros((n_games + 1, n_teams))
+    y = np.zeros(n_games + 1)
+    w = np.zeros(n_games + 1)
+
+    adj_margin = window_df["adj_margin_home"].to_numpy(dtype=float)
+    weights    = window_df["date_weight"].to_numpy(dtype=float)
+    home_names = window_df["home_team"].to_numpy()
+    away_names = window_df["away_team"].to_numpy()
+
+    for i in range(n_games):
+        X[i, team_idx[home_names[i]]] = 1.0
+        X[i, team_idx[away_names[i]]] = -1.0
+
+    if weighting_mode == "wls":
+        y[:n_games] = adj_margin
+        w[:n_games] = weights
+    elif weighting_mode == "margin_scale":
+        y[:n_games] = adj_margin * weights
+        w[:n_games] = 1.0
+    else:
+        raise ValueError(f"Unknown WEIGHTING_MODE: {weighting_mode}")
+
+    # Zero-sum constraint via high-weight extra row.
+    X[-1, :] = 1.0
+    y[-1] = 0.0
+    w[-1] = 1.0e8
+
+    sqrt_w = np.sqrt(w)
+    Xw = X * sqrt_w[:, None]
+    yw = y * sqrt_w
+    r, *_ = np.linalg.lstsq(Xw, yw, rcond=None)
+
+    out = pd.DataFrame({"name": teams, "rating": r})
+    out["rank"] = out["rating"].rank(ascending=False, method="min").astype(int)
+    return out
 
 
 def canonical_team(name):
@@ -507,10 +560,12 @@ def run_pipeline(scrape=True):
         working['game_days_ago'] = i - working['grouped_date_id']
         working['date_weight']   = 1 - (working['game_days_ago'] / window_game_days)
 
-        working['weighted_margin_home'] = working['adj_margin_home'] * working['date_weight']
-        working['weighted_margin_away'] = -working['weighted_margin_home']
-
-        working = working[working['weighted_margin_home'] != 0]
+        # Drop draws (adj_margin_home == 0) from the solve to match the
+        # prior rankit behavior — rankit ignored zero-margin rows by
+        # default. Note: 0-0 regulation draws are dropped, but shootout-
+        # decided 0-0 games have non-zero adj_margin (±shootout_margin)
+        # so they participate.
+        working = working[working['adj_margin_home'] != 0]
         if len(working) < 10:
             continue
 
@@ -521,11 +576,7 @@ def run_pipeline(scrape=True):
             last_printed_ym = ym
 
         try:
-            tbl = Table(working,
-                        ['home_team', 'away_team',
-                         'weighted_margin_home', 'weighted_margin_away'])
-            ranker = MasseyRanker(tbl)
-            ranked = ranker.rank()
+            ranked = _solve_massey(working, WEIGHTING_MODE)
 
             if ranked['rating'].isna().any() or np.isinf(ranked['rating']).any():
                 continue

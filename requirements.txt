@@ -1,5 +1,4 @@
 pandas
-numpy<2
+numpy
 requests
 beautifulsoup4
-rankit==0.2
