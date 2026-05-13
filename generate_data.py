@@ -250,6 +250,25 @@ df['team'] = df['team'].map(canonical_team)
 df['conference'] = df.apply(lambda r: conference_for(r['team'], r['season']), axis=1)
 
 
+# cobi.py constructs last_match strings using the canonical franchise name
+# (e.g. "L vs. Chicago Fire FC 0-1 (MLS)" for a 2010 game when the team was
+# actually called the Chicago Fire). Rewrite the opponent portion with the
+# era-appropriate display name. Liga MX / foreign opponents in CCL games
+# don't match any canonical so they pass through unchanged.
+_LAST_MATCH_RE = re.compile(r'^([WLD])\s+(vs\.?|@)\s+(.+?)\s+(\d+\s*-\s*\d+)\s*(\([^)]+\))?\s*$')
+
+def era_aware_last_match(raw, season):
+    if not raw:
+        return raw
+    m = _LAST_MATCH_RE.match(str(raw))
+    if not m:
+        return raw
+    letter, venue, opponent, score, comp = m.groups()
+    new_opp = display_name(opponent.strip(), str(season))
+    suffix = f' {comp}' if comp else ''
+    return f"{letter} {venue} {new_opp} {score}{suffix}"
+
+
 def clean(val):
     if pd.isna(val):
         return ''
@@ -533,7 +552,7 @@ standings_data = {
             'regular_record':      cur_reg.get(r['team'], '0-0-0'),
             'playoff_record':      cur_po.get(r['team'], ''),
             'games_played':        int(r['games_played']),
-            'last_match':          clean(r['last_match']),
+            'last_match':          era_aware_last_match(clean(r['last_match']), r['season']),
             'last_match_date':     clean(r['last_match_date']),
             'mls_cup_finish':            clean(r.get('mls_cup_finish', '')),
             'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
@@ -767,7 +786,7 @@ for team in all_teams:
                 'regular_record':    (early_record(team, str(season)) if int(r['is_end_of_season']) == 1 else None)
                                      or regular_record_as_of(team, str(season), str(r['date'])),
                 'playoff_record':    playoff_record_as_of(team, str(season), str(r['date'])),
-                'last_match':        clean(r['last_match']),
+                'last_match':        era_aware_last_match(clean(r['last_match']), season),
                 'mls_cup_finish':            clean(r.get('mls_cup_finish', '')),
                 'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
                 'mls_cup_conf_finalist':     is_cup_conf_finalist(team, str(season)),
@@ -825,7 +844,7 @@ for season in all_seasons:
                 'rating':            round(float(r['rating']), 3),
                 'regular_record':    reg_rec,
                 'playoff_record':    playoff_record_as_of(r['team'], season, str(snap_date)),
-                'last_match':        clean(r['last_match']),
+                'last_match':        era_aware_last_match(clean(r['last_match']), season),
                 'last_match_date':   clean(r['last_match_date']),
                 'mls_cup_finish':            clean(r.get('mls_cup_finish', '')),
                 'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
