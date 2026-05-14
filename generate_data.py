@@ -773,6 +773,14 @@ for team in all_teams:
 
     seasons = {}
     for season, sdf in tdf.groupby('season'):
+        # Skip seasons where the team didn't actually play any MLS league games.
+        # Without this, a defunct team gets a "ghost" season the year after they
+        # fold (Miami Fusion / Tampa Bay Mutiny in 2002) because the solver
+        # still publishes EOS / EORS snapshots for them while their 2001 games
+        # are in the rolling window. Same `teams_by_season` filter the per-season
+        # JSON loop already uses below.
+        if team not in teams_by_season.get(str(season), set()):
+            continue
         seasons[str(season)] = [
             {
                 'date':              str(r['date']),
