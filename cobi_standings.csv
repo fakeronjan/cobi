@@ -564,33 +564,33 @@ season,competition,team,gp,w,d,l,gf,ga,gd,pts
 2025,MLS,D.C. United,34,5,11,18,30,66,-36,26
 2025,MLS,MLS All-Stars,1,1,0,0,3,1,2,3
 2025,MLS,Liga MX All-Stars,1,0,0,1,1,3,-2,0
-2026,MLS,San Jose Earthquakes,12,9,2,1,27,8,19,29
-2026,MLS,Vancouver Whitecaps,11,8,2,1,27,7,20,26
-2026,MLS,Nashville SC,11,7,3,1,23,8,15,24
-2026,MLS,New England Revolution,11,7,1,3,20,13,7,22
-2026,MLS,Inter Miami CF,12,6,4,2,26,21,5,22
-2026,MLS,LAFC,12,6,3,3,20,12,8,21
-2026,MLS,Seattle Sounders FC,10,6,3,1,14,6,8,21
-2026,MLS,Minnesota United FC,12,6,3,3,16,18,-2,21
-2026,MLS,FC Dallas,12,5,4,3,23,16,7,19
-2026,MLS,Real Salt Lake,11,6,1,4,20,17,3,19
-2026,MLS,Houston Dynamo FC,11,6,0,5,17,19,-2,18
-2026,MLS,Chicago Fire FC,11,5,2,4,20,14,6,17
-2026,MLS,LA Galaxy,12,4,4,4,18,18,0,16
-2026,MLS,D.C. United,12,4,4,4,15,17,-2,16
-2026,MLS,FC Cincinnati,12,4,4,4,24,27,-3,16
-2026,MLS,New York City FC,12,4,3,5,22,18,4,15
-2026,MLS,Charlotte FC,12,4,3,5,20,21,-1,15
-2026,MLS,Red Bull New York,12,4,3,5,19,28,-9,15
-2026,MLS,Austin FC,12,3,5,4,18,21,-3,14
+2026,MLS,Vancouver Whitecaps,12,9,2,1,30,9,21,29
+2026,MLS,San Jose Earthquakes,13,9,2,2,29,11,18,29
+2026,MLS,Nashville SC,12,8,3,1,26,8,18,27
+2026,MLS,Inter Miami CF,13,7,4,2,31,24,7,25
+2026,MLS,Seattle Sounders FC,11,7,3,1,17,8,9,24
+2026,MLS,Real Salt Lake,12,7,1,4,23,17,6,22
+2026,MLS,New England Revolution,12,7,1,4,20,16,4,22
+2026,MLS,LAFC,13,6,3,4,21,14,7,21
+2026,MLS,Minnesota United FC,13,6,3,4,16,19,-3,21
+2026,MLS,Chicago Fire FC,12,6,2,4,23,15,8,20
+2026,MLS,FC Dallas,13,5,4,4,25,19,6,19
+2026,MLS,New York City FC,13,5,3,5,23,18,5,18
+2026,MLS,Houston Dynamo FC,12,6,0,6,17,22,-5,18
+2026,MLS,Red Bull New York,13,5,3,5,22,30,-8,18
+2026,MLS,San Diego FC,13,4,4,5,25,20,5,16
+2026,MLS,Colorado Rapids,13,5,1,7,23,20,3,16
+2026,MLS,LA Galaxy,13,4,4,5,19,21,-2,16
+2026,MLS,D.C. United,13,4,4,5,16,20,-4,16
+2026,MLS,FC Cincinnati,13,4,4,5,27,32,-5,16
+2026,MLS,Charlotte FC,13,4,3,6,20,22,-2,15
+2026,MLS,Portland Timbers,12,4,2,6,21,23,-2,14
 2026,MLS,Toronto FC,12,3,5,4,20,24,-4,14
-2026,MLS,Colorado Rapids,12,4,1,7,22,20,2,13
-2026,MLS,San Diego FC,12,3,4,5,20,20,0,13
-2026,MLS,Portland Timbers,11,4,1,6,19,21,-2,13
-2026,MLS,Columbus Crew,12,3,3,6,16,19,-3,12
-2026,MLS,CF Montréal,11,4,0,7,16,23,-7,12
+2026,MLS,Austin FC,13,3,5,5,18,26,-8,14
+2026,MLS,CF Montréal,12,4,1,7,18,25,-7,13
+2026,MLS,Orlando City SC,13,4,1,8,20,37,-17,13
+2026,MLS,Columbus Crew,13,3,3,7,18,22,-4,12
+2026,MLS,St. Louis CITY SC,12,3,3,6,12,19,-7,12
 2026,MLS,Atlanta United FC,12,3,1,8,13,20,-7,10
-2026,MLS,Orlando City SC,12,3,1,8,16,34,-18,10
-2026,MLS,St. Louis CITY SC,11,2,3,6,10,18,-8,9
-2026,MLS,Philadelphia Union,12,1,3,8,10,19,-9,6
-2026,MLS,Sporting Kansas City,11,1,2,8,8,32,-24,5
+2026,MLS,Sporting Kansas City,12,2,2,8,11,33,-22,8
+2026,MLS,Philadelphia Union,13,1,3,9,13,23,-10,6

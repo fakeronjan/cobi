@@ -8124,6 +8124,20 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-05-10,2026,MLS,True,New York City FC,Columbus Crew,3,0,,,False,,False,Yankee Stadium,761612,
 2026-05-10,2026,MLS,True,Minnesota United FC,Austin FC,2,2,,,False,,False,Allianz Field,761613,
 2026-05-10,2026,MLS,True,LAFC,Houston Dynamo FC,1,4,,,False,,False,BMO Stadium,761614,
+2026-05-13,2026,MLS,True,Charlotte FC,New York City FC,0,1,,,False,,False,Bank of America Stadium,761615,
+2026-05-13,2026,MLS,True,CF Montréal,Portland Timbers,2,2,,,False,,False,Stade Saputo,761618,
+2026-05-13,2026,MLS,True,D.C. United,Chicago Fire FC,1,3,,,False,,False,Audi Field,761620,
+2026-05-13,2026,MLS,True,FC Cincinnati,Inter Miami CF,3,5,,,False,,False,TQL Stadium,761619,
+2026-05-13,2026,MLS,True,New England Revolution,Nashville SC,0,3,,,False,,False,Gillette Stadium,761617,
+2026-05-13,2026,MLS,True,Orlando City SC,Philadelphia Union,4,3,,,False,,False,Inter&Co Stadium,761616,
+2026-05-13,2026,MLS,True,Red Bull New York,Columbus Crew,3,2,,,False,,False,Red Bull Arena,761621,
+2026-05-13,2026,MLS,True,FC Dallas,Vancouver Whitecaps,2,3,,,False,,False,Toyota Stadium,761622,
+2026-05-13,2026,MLS,True,Minnesota United FC,Colorado Rapids,0,1,,,False,,False,Allianz Field,761624,
+2026-05-13,2026,MLS,True,Sporting Kansas City,LA Galaxy,3,1,,,False,,False,Children's Mercy Park,761623,
+2026-05-13,2026,MLS,True,St. Louis CITY SC,LAFC,2,1,,,False,,False,Energizer Park,761625,
+2026-05-13,2026,MLS,True,Real Salt Lake,Houston Dynamo FC,3,0,,,False,,False,America First Field,761628,
+2026-05-13,2026,MLS,True,San Diego FC,Austin FC,5,0,,,False,,False,Snapdragon Stadium,761627,
+2026-05-13,2026,MLS,True,Seattle Sounders FC,San Jose Earthquakes,3,2,,,False,,False,Lumen Field,761626,
 1996-04-06,1996,MLS,True,San Jose Earthquakes,D.C. United,1,0,,,False,,False,,fbcsv-mls-1996-1996-04-06-San Jose Earthquakes-D.C. United,Regular
 1996-04-13,1996,MLS,True,LA Galaxy,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1996-1996-04-13-LA Galaxy-Red Bull New York,Regular
 1996-04-13,1996,MLS,True,Tampa Bay Mutiny,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-04-13-Tampa Bay Mutiny-New England Revolution,Regular
