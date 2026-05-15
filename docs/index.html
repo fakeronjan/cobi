@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>COBI — MLS Power Rankings</title>
+<title>COBI - MLS Power Rankings</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -148,7 +148,7 @@
   }
   .team-cell { font-weight: 600; }
 
-  /* Clickable cells — deep-link to Team Summary / Standings */
+  /* Clickable cells - deep-link to Team Summary / Standings */
   .linked { cursor: pointer; }
   .linked:hover { text-decoration: underline; }
   .team-cell.linked, .team-link.linked { color: #1a6b8a; }
@@ -291,7 +291,7 @@
 <div id="team-summary" class="tab">
   <div class="league-pills" id="ts-conf-pills"></div>
   <div class="controls">
-    <select id="team-select" disabled><option value="">— Select a team —</option></select>
+    <select id="team-select" disabled><option value="">- Select a team -</option></select>
     <select id="season-select"><option value="all">All seasons</option></select>
     <select id="date-type-select">
       <option value="all">All dates</option>
@@ -368,7 +368,7 @@ const _PLACEHOLDER_LM = new Set(['No match yet', 'No competitive match yet', 'No
 function displayMatch(s) { return (!s || _PLACEHOLDER_LM.has(s)) ? '' : s; }
 
 function fmtRecord(rec) {
-  if (!rec || rec === '—') return '0-0-0';
+  if (!rec || rec === '-') return '0-0-0';
   const parts = rec.split('-');
   if (parts.length !== 3) return rec;
   const w = parseInt(parts[0]), d = parseInt(parts[1]), l = parseInt(parts[2]);
@@ -390,7 +390,7 @@ function fmtRecordStacked(reg, playoff) {
 }
 
 function abbrevComp(str) {
-  // Strip the trailing "(MLS)" qualifier — redundant now that all games
+  // Strip the trailing "(MLS)" qualifier - redundant now that all games
   // are MLS. Kept as a hook for future cross-competition expansions.
   if (!str) return '';
   return str.replace(/\s*\(MLS\)\s*$/, '');
@@ -401,7 +401,7 @@ function confBadge(conf, isCupConfFinalist) {
   // Gold "East 🏆" / "West 🏆" only when team made an MLS Cup whose two
   // finalists came from different conferences. Years where both finalists
   // were from the same conference (2001 SJ vs LA both West; 2004 D.C. vs KC
-  // both East) don't earn the conference-champion badge — mirrors LOBO.
+  // both East) don't earn the conference-champion badge - mirrors LOBO.
   if (isCupConfFinalist) {
     return `<span class="finish-badge finish-champion" title="${conf} Conference Champion">${conf} 🏆</span>`;
   }
@@ -409,7 +409,7 @@ function confBadge(conf, isCupConfFinalist) {
 }
 
 // Render MLS honors. Doubles (Cup + Shield same team) get a gold-gradient
-// "DOUBLE 👑" badge ALONGSIDE both individual trophy badges — celebrate
+// "DOUBLE 👑" badge ALONGSIDE both individual trophy badges - celebrate
 // the rare achievement, mirroring ZIDANE's Treble pattern.
 function finishBadge(t) {
   const cup    = t.mls_cup_finish;
@@ -434,10 +434,10 @@ function resultClass(match, isStale) {
   return '';
 }
 
-// COBI format: "L vs. New England Revolution 0-1 (MLS)" — trailing (MLS) is
+// COBI format: "L vs. New England Revolution 0-1 (MLS)" - trailing (MLS) is
 // stripped via abbrevComp; other comp tags like "(CONCACAF CL)" are kept.
 // Liga MX / foreign-club opponents in CCL games won't be in nameToSlug so
-// they render as plain text (intentional — only MLS clubs have summaries).
+// they render as plain text (intentional - only MLS clubs have summaries).
 function renderLastMatch(raw, season, isStale) {
   const display = displayMatch(raw);
   if (!display) return '-';
@@ -623,7 +623,7 @@ function renderStandings() {
   document.getElementById('standings-count').textContent =
     `${teams.length} team${teams.length !== 1 ? 's' : ''}`;
 
-  // 1996-1999 had no draws — tied games went to a 35-yard run-in shootout,
+  // 1996-1999 had no draws - tied games went to a 35-yard run-in shootout,
   // and the era's points formula was 3 reg-W + 1 SOW + 0 L. End-of-season
   // records for those four years are pulled from Wikipedia (era-accurate);
   // intra-season views show approximate cumulative-through-date because
@@ -632,7 +632,7 @@ function renderStandings() {
   const isShootoutEra = seasonYear >= 1996 && seasonYear <= 1999;
   const recordHeader = isShootoutEra ? 'W-SOW-L (Pts)' : 'W-D-L (Pts)';
   const eraNote = isShootoutEra
-    ? `<p class="data-note">MLS 1996–1999 had no draws — tied games were decided by a 35-yard run-in shootout. Era points: 3 for a regulation win, 1 for a shootout win (SOW), 0 for a loss. End-of-season records here are pulled from Wikipedia and are era-accurate; intra-season records during this era are approximate (our gap-fill source doesn't preserve per-game shootout flags).</p>`
+    ? `<p class="data-note">MLS 1996–1999 had no draws - tied games were decided by a 35-yard run-in shootout. Era points: 3 for a regulation win, 1 for a shootout win (SOW), 0 for a loss. End-of-season records here are pulled from Wikipedia and are era-accurate; intra-season records during this era are approximate (our gap-fill source doesn't preserve per-game shootout flags).</p>`
     : '';
 
   document.getElementById('standings-table-wrap').innerHTML = `
@@ -672,10 +672,10 @@ async function loadTeamsIndex() {
 
 function populateTeams() {
   const sel = document.getElementById('team-select');
-  sel.innerHTML = '<option value="">— Select a team —</option>';
+  sel.innerHTML = '<option value="">- Select a team -</option>';
   if (!teamsIndex) { sel.disabled = true; return; }
   // teamsIndex is sorted by (conference, name) for the conference-filtered
-  // views — but when "All" is selected we want a single alphabetical list.
+  // views - but when "All" is selected we want a single alphabetical list.
   const filtered = (tsConf === 'all')
     ? [...teamsIndex].sort((a, b) => a.name.localeCompare(b.name))
     : teamsIndex.filter(t => t.conference === tsConf);
@@ -889,7 +889,7 @@ function renderChampions() {
   const isShield = historyTrophy === 'Supporters Shield';
   // Shield should be graded on regular-season form (frozen on Decision
   // Day) so a team's R1 playoff exit doesn't drag down their Shield-era
-  // rating. MLS Cup uses end-of-postseason rating — playoff form matters.
+  // rating. MLS Cup uses end-of-postseason rating - playoff form matters.
   const ratingKey   = isShield ? 'rating_regular_season'    : 'rating';
   const rankKey     = isShield ? 'rank_regular_season'      : 'rank';
   const confRankKey = isShield ? 'conf_rank_regular_season' : 'conf_rank';
@@ -929,8 +929,8 @@ function renderChampions() {
   }).join('');
 
   const note = isShield
-    ? `<p class="data-note">Supporters' Shield = best regular-season points total. Ties broken by wins, then GD, then GF. <em>Rating shown is end-of-regular-season — frozen on Decision Day, before playoffs.</em> Pre-2000 standings come from era-accurate Wikipedia totals — MLS used a no-draws shootout format then (regulation W = 3 pts, shootout W = 1 pt).</p>`
-    : `<p class="data-note">MLS Cup = playoff bracket champion. <em>Rating shown is end-of-playoffs — includes the Cup run.</em></p>`;
+    ? `<p class="data-note">Supporters' Shield = best regular-season points total. Ties broken by wins, then GD, then GF. <em>Rating shown is end-of-regular-season - frozen on Decision Day, before playoffs.</em> Pre-2000 standings come from era-accurate Wikipedia totals - MLS used a no-draws shootout format then (regulation W = 3 pts, shootout W = 1 pt).</p>`
+    : `<p class="data-note">MLS Cup = playoff bracket champion. <em>Rating shown is end-of-playoffs - includes the Cup run.</em></p>`;
 
   const scoreCol = isShield ? '' :
     `<th class="divider-col" style="text-align:center;font-size:10px;width:52px">Score</th>`;
@@ -1036,8 +1036,8 @@ function renderGoat() {
   document.getElementById('goat-note').innerHTML =
     `Top 50 by <strong>${sortLabel.toLowerCase()}</strong> rating · Eligibility requires winning Supporters' Shield or MLS Cup that year. ` +
     (isReg
-      ? `<em>Regular-season rating freezes on Decision Day — Shield winners aren't penalized for early playoff exits.</em>`
-      : `<em>End-of-playoffs rating includes the Cup run — rewards teams that peaked in the bracket.</em>`);
+      ? `<em>Regular-season rating freezes on Decision Day - Shield winners aren't penalized for early playoff exits.</em>`
+      : `<em>End-of-playoffs rating includes the Cup run - rewards teams that peaked in the bracket.</em>`);
 
   document.getElementById('goat-table-wrap').innerHTML = `
     <table>
@@ -1090,7 +1090,7 @@ buildConfPills('goat-conf-pills', goatConf, v => {
 
 buildTrophyPills();
 // Load teams_index first so opponent/slug lookups are populated before any
-// table renders — avoids a double-render flash on initial page load.
+// table renders - avoids a double-render flash on initial page load.
 (async () => {
   await loadTeamsIndex();
   initStandings();
