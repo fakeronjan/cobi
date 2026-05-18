@@ -8151,6 +8151,8 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-05-16,2026,MLS,True,Real Salt Lake,Colorado Rapids,2,1,,,False,,False,America First Field,761639,
 2026-05-16,2026,MLS,True,San Diego FC,FC Cincinnati,3,3,,,False,,False,Snapdragon Stadium,761640,
 2026-05-16,2026,MLS,True,San Jose Earthquakes,FC Dallas,2,3,,,False,,False,PayPal Park,761641,
+2026-05-17,2026,MLS,True,Inter Miami CF,Portland Timbers,2,0,,,False,,False,Nu Stadium,761642,
+2026-05-17,2026,MLS,True,Nashville SC,LAFC,3,2,,,False,,False,GEODIS Park,761643,
 1996-04-06,1996,MLS,True,San Jose Earthquakes,D.C. United,1,0,,,False,,False,,fbcsv-mls-1996-1996-04-06-San Jose Earthquakes-D.C. United,Regular
 1996-04-13,1996,MLS,True,LA Galaxy,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1996-1996-04-13-LA Galaxy-Red Bull New York,Regular
 1996-04-13,1996,MLS,True,Tampa Bay Mutiny,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-04-13-Tampa Bay Mutiny-New England Revolution,Regular
