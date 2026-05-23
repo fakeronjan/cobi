@@ -484,15 +484,15 @@ function renderLastMatch(raw, season, isStale) {
   if (!display) return '-';
   const stripped = abbrevComp(display);
   const rc = resultClass(raw, isStale);
-  const m = stripped.match(/^([WLD])\s+(vs\.?(?:\s*\(N\))?|@)\s+(.+?)\s+(\d+\s*-\s*\d+)\s*(\([^)]+\))?\s*$/);
+  const m = stripped.match(/^([WLD])\s+(\d+\s*-\s*\d+)\s+(vs\.?(?:\s*\(N\))?|@)\s+(.+?)\s*(\([^)]+\))?\s*$/);
   if (!m) return `<span class="${rc}">${stripped}</span>`;
-  const [, letter, venue, opponent, score, comp] = m;
+  const [, letter, score, venue, opponent, comp] = m;
   const slug = nameToSlug[opponent.trim()];
   const oppHtml = slug
     ? `<span class="team-link linked" data-team-slug="${slug}" data-season="${season}">${opponent}</span>`
     : opponent;
   const compStr = comp ? ` ${comp}` : '';
-  return `<span class="${rc}">${letter} ${venue} ${oppHtml} ${score}${compStr}</span>`;
+  return `<span class="${rc}">${letter} ${score} ${venue} ${oppHtml}${compStr}</span>`;
 }
 
 // ── Deep-link handlers ──────────────────────────────────────────────────────
