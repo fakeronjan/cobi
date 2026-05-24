@@ -663,6 +663,11 @@ def run_pipeline(scrape=True):
             g = g.sort_values('date')
             last = g.iloc[-1]
             last_date = pd.to_datetime(last['date']).date()
+            # MLS Cup is played in November or early December. If the last
+            # MLS game of the calendar year is NOT in Nov/Dec, the season is
+            # still in progress — don't crown a Cup champion mid-RS.
+            if last_date.month not in (11, 12):
+                continue
             if (date.today() - last_date).days < 7:
                 continue
             champ, ru = _winner_loser_single(last)
@@ -680,19 +685,28 @@ def run_pipeline(scrape=True):
     # season totals) since our gap-fill source doesn't preserve the SOW
     # signal needed for era-accurate pts.
     def _regular_season_end_date(season_games):
-        """Return the date of Decision Day (regular-season finale) or None."""
+        """Return the date of Decision Day (regular-season finale) or None.
+
+        Returns None for in-progress seasons (no Sept-Nov games yet, or no
+        late-season big-day cluster). Previously fell back to "max date in
+        the year" which falsely crowned a Shield winner mid-May for the
+        current in-progress season.
+        """
         if season_games.empty:
             return None
-        # Restrict to Sept-Nov to skip mid-season busy days
+        # Decision Day must be in the Sept-Nov window. No fall-back to other
+        # months — that would crown an in-progress season as if it ended.
         late = season_games[
             (season_games['date'].dt.month >= 9) &
             (season_games['date'].dt.month <= 11)
         ]
         if late.empty:
-            return season_games['date'].dt.date.max()
+            return None
         daily = late.groupby(late['date'].dt.date).size()
         big_days = daily[daily >= 6]
-        return big_days.index.max() if not big_days.empty else daily.idxmax()
+        if big_days.empty:
+            return None
+        return big_days.index.max()
 
     def _points(row, team):
         """3 for win (incl. shootout), 1 for draw, 0 for loss."""

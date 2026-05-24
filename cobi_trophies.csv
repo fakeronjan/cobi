@@ -1,18 +1,6 @@
 year,team,honor
-1996,D.C. United,MLS Cup Champion
-1996,LA Galaxy,MLS Cup Runner-Up
-1997,D.C. United,MLS Cup Champion
-1997,Colorado Rapids,MLS Cup Runner-Up
-1998,Chicago Fire FC,MLS Cup Champion
-1998,D.C. United,MLS Cup Runner-Up
 1999,D.C. United,MLS Cup Champion
 1999,LA Galaxy,MLS Cup Runner-Up
-2000,Sporting Kansas City,MLS Cup Champion
-2000,Chicago Fire FC,MLS Cup Runner-Up
-2001,San Jose Earthquakes,MLS Cup Champion
-2001,LA Galaxy,MLS Cup Runner-Up
-2002,LA Galaxy,MLS Cup Champion
-2002,New England Revolution,MLS Cup Runner-Up
 2003,San Jose Earthquakes,MLS Cup Champion
 2003,Chicago Fire FC,MLS Cup Runner-Up
 2004,D.C. United,MLS Cup Champion
@@ -59,8 +47,6 @@ year,team,honor
 2024,Red Bull New York,MLS Cup Runner-Up
 2025,Inter Miami CF,MLS Cup Champion
 2025,Vancouver Whitecaps,MLS Cup Runner-Up
-2026,Nashville SC,MLS Cup Champion
-2026,LAFC,MLS Cup Runner-Up
 1996,Tampa Bay Mutiny,Supporters Shield Champion
 1996,LA Galaxy,Supporters Shield Runner-Up
 1997,D.C. United,Supporters Shield Champion
@@ -69,24 +55,10 @@ year,team,honor
 1998,D.C. United,Supporters Shield Runner-Up
 1999,D.C. United,Supporters Shield Champion
 1999,LA Galaxy,Supporters Shield Runner-Up
-2000,Chicago Fire FC,Supporters Shield Champion
-2000,Sporting Kansas City,Supporters Shield Runner-Up
-2001,Miami Fusion,Supporters Shield Champion
-2001,Chicago Fire FC,Supporters Shield Runner-Up
-2002,LA Galaxy,Supporters Shield Champion
-2002,San Jose Earthquakes,Supporters Shield Runner-Up
-2003,Chicago Fire FC,Supporters Shield Champion
-2003,San Jose Earthquakes,Supporters Shield Runner-Up
-2004,Sporting Kansas City,Supporters Shield Champion
-2004,Colorado Rapids,Supporters Shield Runner-Up
 2005,San Jose Earthquakes,Supporters Shield Champion
 2005,New England Revolution,Supporters Shield Runner-Up
 2006,D.C. United,Supporters Shield Champion
 2006,FC Dallas,Supporters Shield Runner-Up
-2007,D.C. United,Supporters Shield Champion
-2007,Chivas USA,Supporters Shield Runner-Up
-2008,Columbus Crew,Supporters Shield Champion
-2008,Chicago Fire FC,Supporters Shield Runner-Up
 2009,Columbus Crew,Supporters Shield Champion
 2009,Chivas USA,Supporters Shield Runner-Up
 2010,LA Galaxy,Supporters Shield Champion
@@ -121,5 +93,3 @@ year,team,honor
 2024,Columbus Crew,Supporters Shield Runner-Up
 2025,Philadelphia Union,Supporters Shield Champion
 2025,FC Cincinnati,Supporters Shield Runner-Up
-2026,Nashville SC,Supporters Shield Champion
-2026,Vancouver Whitecaps,Supporters Shield Runner-Up
