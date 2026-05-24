@@ -709,44 +709,64 @@ with open('docs/data/champions.json', 'w') as f:
     json.dump(champions_by_trophy, f, separators=(',', ':'))
 
 
-# ── 3. GOAT table ────────────────────────────────────────────────────────────
-# End-of-season top-rated MLS Cup winners. Drops in-progress current year
-# automatically since uncrowned years won't be included.
-print("Writing goat_teams.json...")
-eos = df[df['is_end_of_season'] == 1].copy()
-won_a_trophy = (
-    (eos.get('mls_cup_finish', '') == 'Champion') |
-    (eos.get('supporters_shield_finish', '') == 'Champion')
-)
-eos = eos[won_a_trophy].sort_values('rating', ascending=False).reset_index(drop=True)
+# ── 3. GOAT tables (RS + PS) ─────────────────────────────────────────────────
+# Two lists matching the fleet pattern (DILLON / GRIFFEY / SAKIC):
+#   - goat_rs.json: top 50 by end-of-regular-season rating, all teams eligible.
+#   - goat_ps.json: top 50 by end-of-postseason rating, restricted to MLS Cup
+#     participants (final-game contenders) so the list shows actual
+#     championship-level teams, not playoff flameouts.
+GOAT_TOP_N = 50
+print("Writing goat_rs.json + goat_ps.json...")
 
 final_reg_lookup = {(t, s): grp.sort_values('date').iloc[-1]['record']
                     for (t, s), grp in reg.groupby(['team', 'snap_season'])}
 final_po_lookup  = {(t, s): grp.sort_values('date').iloc[-1]['record']
                     for (t, s), grp in po.groupby(['team', 'snap_season'])}
 
-# Emit every trophy winner with BOTH ratings; the frontend toggles
-# between sort-by-postseason and sort-by-regular-season and slices to
-# top 50 from the active sort.
-goat_data = []
-for _, r in eos.iterrows():
-    eors_rating = eors_rating_lookup.get((r['team'], r['season']))
-    goat_data.append({
+
+def _goat_row(r, rating_to_show, rank):
+    return {
+        'rank':                       rank,
         'team':                       r['team'],
         'display_name':               display_name(r['team'], r['season']),
         'season':                     r['season'],
         'conference':                 clean(r['conference']),
-        'rating_postseason':          round(float(r['rating']), 3),
-        'rating_regular_season':      round(float(eors_rating), 3) if eors_rating is not None else None,
+        'rating':                     round(float(rating_to_show), 3),
         'regular_record':             early_record(r['team'], r['season']) or
                                       final_reg_lookup.get((r['team'], r['season']), '0-0-0'),
         'playoff_record':             final_po_lookup.get((r['team'], r['season']), ''),
         'mls_cup_finish':             clean(r.get('mls_cup_finish', '')),
         'supporters_shield_finish':   clean(r.get('supporters_shield_finish', '')),
         'mls_cup_conf_finalist':      is_cup_conf_finalist(r['team'], r['season']),
-    })
-with open('docs/data/goat_teams.json', 'w') as f:
-    json.dump(goat_data, f, separators=(',', ':'))
+    }
+
+
+# GOAT-RS: end-of-regular-season snapshots, ALL teams eligible.
+eors_rows = (
+    df[df['is_end_of_regular_season'] == 1]
+    .sort_values('rating', ascending=False)
+    .head(GOAT_TOP_N)
+    .reset_index(drop=True)
+)
+goat_rs = [_goat_row(r, r['rating'], i + 1) for i, (_, r) in enumerate(eors_rows.iterrows())]
+
+# GOAT-PS: end-of-season snapshots, MLS Cup participants only
+# (champion OR runner-up of the MLS Cup final). Same fleet pattern as
+# DILLON (SB participants), GRIFFEY (WS), SAKIC (Stanley Cup Final).
+eos = df[df['is_end_of_season'] == 1].copy()
+played_mls_cup = eos.get('mls_cup_finish', '').isin(['Champion', 'Runner-Up'])
+eos = (
+    eos[played_mls_cup]
+    .sort_values('rating', ascending=False)
+    .head(GOAT_TOP_N)
+    .reset_index(drop=True)
+)
+goat_ps = [_goat_row(r, r['rating'], i + 1) for i, (_, r) in enumerate(eos.iterrows())]
+
+with open('docs/data/goat_rs.json', 'w') as f:
+    json.dump(goat_rs, f, separators=(',', ':'))
+with open('docs/data/goat_ps.json', 'w') as f:
+    json.dump(goat_ps, f, separators=(',', ':'))
 
 
 # ── 4. Per-team JSON files ───────────────────────────────────────────────────
