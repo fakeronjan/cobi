@@ -2,9 +2,6 @@
 __pycache__/
 *.pyc
 
-# Final assembled rating output is regenerated from cobi_ratings.csv.gz each run
-cobi_ratings_final.csv
-
 # Backup files
 *.bak
 *.bak2
