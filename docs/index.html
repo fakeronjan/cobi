@@ -371,12 +371,13 @@ let teamsIndex        = null;
 let teamCache         = {};
 let nameToSlug        = {};  // canonical + historical name → slug, built from teamsIndex
 
-// GOAT rating mode: 'postseason' (full season including Cup run) vs
-// 'regular_season' (rating frozen on Decision Day, before playoffs).
-let goatMode = 'postseason';
+// GOAT rating mode: 'regular_season' (rating frozen on Decision Day, before
+// playoffs) vs 'postseason' (full season including Cup run). Regular season
+// listed first to match the fleet convention (DUNCAN / GRIFFEY / SAKIC).
+let goatMode = 'regular_season';
 const GOAT_MODE_OPTIONS = [
-  { value: 'postseason',     label: 'Playoffs' },
-  { value: 'regular_season', label: 'Regular Season' },
+  { value: 'regular_season', label: 'End of regular season' },
+  { value: 'postseason',     label: 'End of playoffs' },
 ];
 
 // Conference filter pillbox (shared across Standings / TS / GOAT)
