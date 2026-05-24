@@ -8153,6 +8153,18 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-05-16,2026,MLS,True,San Jose Earthquakes,FC Dallas,2,3,,,False,,False,PayPal Park,761641,
 2026-05-17,2026,MLS,True,Inter Miami CF,Portland Timbers,2,0,,,False,,False,Nu Stadium,761642,
 2026-05-17,2026,MLS,True,Nashville SC,LAFC,3,2,,,False,,False,GEODIS Park,761643,
+2026-05-23,2026,MLS,True,St. Louis CITY SC,Austin FC,3,0,,,False,,False,Energizer Park,761644,
+2026-05-23,2026,MLS,True,Minnesota United FC,Real Salt Lake,1,1,,,False,,False,Allianz Field,761650,
+2026-05-23,2026,MLS,True,Charlotte FC,New England Revolution,1,0,,,False,,False,Bank of America Stadium,761647,
+2026-05-23,2026,MLS,True,D.C. United,CF Montréal,4,4,,,False,,False,Audi Field,761646,
+2026-05-23,2026,MLS,True,FC Cincinnati,Orlando City SC,6,2,,,False,,False,TQL Stadium,761645,
+2026-05-23,2026,MLS,True,Chicago Fire FC,Toronto FC,2,1,,,False,,False,Soldier Field,761648,
+2026-05-23,2026,MLS,True,Nashville SC,New York City FC,2,1,,,False,,False,GEODIS Park,761649,
+2026-05-23,2026,MLS,True,Sporting Kansas City,Red Bull New York,1,2,,,False,,False,Children's Mercy Park,761651,
+2026-05-23,2026,MLS,True,Colorado Rapids,FC Dallas,1,2,,,False,,False,Dick's Sporting Goods Park,761654,
+2026-05-23,2026,MLS,True,Portland Timbers,San Jose Earthquakes,1,3,,,False,,False,Providence Park,761653,
+2026-05-23,2026,MLS,True,San Diego FC,Vancouver Whitecaps,2,4,,,False,,False,Snapdragon Stadium,761652,
+2026-05-23,2026,MLS,True,LA Galaxy,Houston Dynamo FC,1,1,,,False,,False,Dignity Health Sports Park,761655,
 1996-04-06,1996,MLS,True,San Jose Earthquakes,D.C. United,1,0,,,False,,False,,fbcsv-mls-1996-1996-04-06-San Jose Earthquakes-D.C. United,Regular
 1996-04-13,1996,MLS,True,LA Galaxy,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1996-1996-04-13-LA Galaxy-Red Bull New York,Regular
 1996-04-13,1996,MLS,True,Tampa Bay Mutiny,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-04-13-Tampa Bay Mutiny-New England Revolution,Regular
