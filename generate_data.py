@@ -695,15 +695,35 @@ for (year, label), grp in trophies.groupby(['year', trophies['honor'].str.replac
                     'regular_record': '0-0-0', 'playoff_record': '',
                      'mls_cup_finish': '', 'supporters_shield_finish': ''}
     score_fn = dict(CHAMPIONS_TROPHIES)[label]
+    # Copy the champion/runner_up dicts so each trophy's entry has its OWN
+    # mutable copy. Without this, a team that wins both MLS Cup and Shield
+    # in the same year (a Double) shares the same eoy_lookup dict between
+    # both trophy entries — and the second trophy's title_count walk
+    # overwrites the first's. Bit LA Galaxy 2011 (MLS Cup #3 instead of #2).
     champions_by_trophy[label].append({
         'season':      str(year),
-        'champion':    champion,
-        'runner_up':   runner_up,
+        'champion':    dict(champion),
+        'runner_up':   dict(runner_up),
         'final_score': score_fn(year, champ_team, ru_team),
     })
 
 for label in champions_by_trophy:
     champions_by_trophy[label].sort(key=lambda e: e['season'], reverse=True)
+
+# Cumulative title counts per (team, trophy). Walks each trophy's entries
+# chronologically (oldest first), tally champion + runner-up running totals,
+# and attach to each entry for display as "(N 🏆)" / "(N 🛡️)" / "(N 🥈)" in
+# the UI. Mirrors DUNCAN / GRIFFEY / SAKIC pattern.
+for label, entries in champions_by_trophy.items():
+    champ_count = {}
+    ru_count    = {}
+    for entry in reversed(entries):  # reversed = chronological (oldest first)
+        ct = entry['champion']['team']
+        rt = entry['runner_up']['team']
+        champ_count[ct] = champ_count.get(ct, 0) + 1
+        ru_count[rt]    = ru_count.get(rt, 0) + 1
+        entry['champion']['title_count']        = champ_count[ct]
+        entry['runner_up']['runner_up_count']   = ru_count[rt]
 
 with open('docs/data/champions.json', 'w') as f:
     json.dump(champions_by_trophy, f, separators=(',', ':'))

@@ -959,9 +959,9 @@ function renderChampions() {
     return;
   }
 
-  // For Doubles, celebrate with DOUBLE 👑 + the OTHER trophy badge inline
-  // next to the team name. Current trophy is implicit (it's the table header),
-  // so no need to repeat it here.
+  // For Doubles, celebrate with DOUBLE 👑 + the OTHER trophy badge on a
+  // SECOND line below the team name (so the team-name column stays narrow).
+  // Current trophy is implicit (table header), so no need to repeat it.
   function rowHonor(t) {
     if (!t) return '';
     const isDouble = t.mls_cup_finish === 'Champion' && t.supporters_shield_finish === 'Champion';
@@ -969,10 +969,12 @@ function renderChampions() {
     const other = (historyTrophy === 'MLS Cup')
       ? '<span class="finish-badge finish-shield">Shield 🛡️</span>'
       : '<span class="finish-badge finish-champion">MLS Cup 🏆</span>';
-    return ` <span class="finish-badge finish-double">DOUBLE 👑</span> ${other}`;
+    return `<div style="margin-top:3px"><span class="finish-badge finish-double">DOUBLE 👑</span> ${other}</div>`;
   }
 
   const isShield = historyTrophy === 'Supporters Shield';
+  // Cumulative-titles emoji is sport-specific: 🏆 for MLS Cup, 🛡️ for Shield.
+  const titleEmoji = isShield ? '🛡️' : '🏆';
   // Shield should be graded on regular-season form (frozen on Decision
   // Day) so a team's R1 playoff exit doesn't drag down their Shield-era
   // rating. MLS Cup uses end-of-postseason rating - playoff form matters.
@@ -989,9 +991,14 @@ function renderChampions() {
     const confRank = t[confRankKey] != null ? `${t[confRankKey]}` : '-';
     const label = t.display_name || t.team;
     const slug = nameToSlug[t.team] || nameToSlug[label];
+    const countStr = t.title_count
+      ? ` <span style="color:#888;font-size:0.85em;font-weight:400">(${t.title_count} ${titleEmoji})</span>`
+      : t.runner_up_count
+        ? ` <span style="color:#888;font-size:0.85em;font-weight:400">(${t.runner_up_count} 🥈)</span>`
+        : '';
     const teamTd = slug
-      ? `<td class="${bg} team-cell linked" data-team-slug="${slug}" data-season="${season}" style="white-space:nowrap">${label}${rowHonor(t)}</td>`
-      : `<td class="${bg} team-cell" style="white-space:nowrap">${label}${rowHonor(t)}</td>`;
+      ? `<td class="${bg} team-cell linked" data-team-slug="${slug}" data-season="${season}" style="white-space:nowrap">${label}${countStr}${rowHonor(t)}</td>`
+      : `<td class="${bg} team-cell" style="white-space:nowrap">${label}${countStr}${rowHonor(t)}</td>`;
     return `
       ${teamTd}
       <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${ovrRank}</td>

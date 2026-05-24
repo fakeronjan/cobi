@@ -659,17 +659,22 @@ def run_pipeline(scrape=True):
 
     mls_df = df[df['competition'] == 'MLS']
     if not mls_df.empty:
+        today = date.today()
+        current_year = today.year
         for y, g in mls_df.groupby(mls_df['date'].dt.year):
             g = g.sort_values('date')
             last = g.iloc[-1]
             last_date = pd.to_datetime(last['date']).date()
-            # MLS Cup is played in November or early December. If the last
-            # MLS game of the calendar year is NOT in Nov/Dec, the season is
-            # still in progress — don't crown a Cup champion mid-RS.
-            if last_date.month not in (11, 12):
-                continue
-            if (date.today() - last_date).days < 7:
-                continue
+            # In-progress gate applies ONLY to the current calendar year:
+            # the latest MLS game must be in the Cup window (Oct-Dec; early
+            # MLS Cups were in October) AND >= 7 days old (so we don't crown
+            # mid-final-weekend). For prior calendar years the last MLS game
+            # of the year IS the Cup final — no gate needed.
+            if int(y) == current_year:
+                if last_date.month not in (10, 11, 12):
+                    continue
+                if (today - last_date).days < 7:
+                    continue
             champ, ru = _winner_loser_single(last)
             if champ is None:
                 continue
