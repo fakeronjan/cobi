@@ -373,9 +373,9 @@ let teamCache         = {};
 let nameToSlug        = {};  // canonical + historical name → slug, built from teamsIndex
 
 // GOAT rating mode: 'rs' (rating frozen at end of regular season) vs 'ps'
-// (full season including Cup run). RS-first display order matches the
-// fleet (DILLON / GRIFFEY / SAKIC).
-let goatMode = 'rs';
+// (full season including Cup run). PS-first display order matches the
+// fleet (DILLON / GRIFFEY / SAKIC / DUNCAN / LOBO).
+let goatMode = 'ps';
 const GOAT_MODE_OPTIONS = [
   { value: 'rs', label: 'End of regular season' },
   { value: 'ps', label: 'End of playoffs' },
