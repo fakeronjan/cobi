@@ -4,6 +4,7 @@
 # Based on ZIDANE / MESSI / LOGAN architecture
 # ============================================================
 
+import os
 import sys
 import time
 from datetime import date, datetime, timedelta
@@ -390,6 +391,35 @@ def merge_match_sources(espn_df, gapfill_df):
     return combined
 
 
+def union_with_existing(fresh_df, path='all_club_games.csv'):
+    """Treat the committed games file as the persistent database: a run may ADD
+    new games or CORRECT existing ones, but must never DELETE games we already
+    have just because this run's live fetch came back short.
+
+    ESPN's scoreboard API is re-queried for the FULL history every run and is
+    not perfectly stable — a transient failure or partial response for an old
+    season silently drops those games from `fresh_df`. Without this union, that
+    shrinks the date set, which (a) erases real history and (b) desyncs the
+    positional-id ratings cache. Fresh rows win for games present in both (so
+    score/metadata corrections still land); DB-only games are preserved.
+    """
+    if not os.path.exists(path):
+        return fresh_df
+    prev_df = pd.read_csv(path)
+    key = ['date', 'home_team', 'away_team']
+    fresh = fresh_df.copy(); fresh['_src_priority'] = 0   # fresh wins on conflict
+    prev = prev_df.copy();   prev['_src_priority'] = 1
+    combined = pd.concat([fresh, prev], ignore_index=True, sort=False)
+    combined = combined.sort_values('_src_priority').drop_duplicates(subset=key, keep='first')
+    combined = combined.drop(columns=['_src_priority']).reset_index(drop=True)
+    fresh_keys = set(map(tuple, fresh_df[key].astype(str).values))
+    preserved = sum(1 for k in map(tuple, prev_df[key].astype(str).values) if k not in fresh_keys)
+    if preserved:
+        print(f"[db-union] preserved {preserved:,} games already in the database "
+              f"that this run's fetch did not return (flaky source — not deleting history)")
+    return combined
+
+
 # ============================================================
 # RATING PIPELINE
 # ============================================================
@@ -406,9 +436,10 @@ def run_pipeline(scrape=True):
         print("\n[gapfill] Loading historical CSVs...")
         gap_df = load_gapfill()
         merged = merge_match_sources(espn_df, gap_df)
+        merged = union_with_existing(merged, 'all_club_games.csv')
         merged.to_csv('all_club_games.csv', index=False)
         print(f"[merge] {len(merged):,} matches "
-              f"(ESPN {len(espn_df):,} + gap {len(gap_df):,} after dedupe) → all_club_games.csv\n")
+              f"(ESPN {len(espn_df):,} + gap {len(gap_df):,}, unioned with existing DB) → all_club_games.csv\n")
 
     df = pd.read_csv('all_club_games.csv')
     # Patches for known data gaps in the merged source. ESPN sometimes leaves
