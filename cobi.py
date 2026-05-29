@@ -523,6 +523,37 @@ def run_pipeline(scrape=True):
 
     try:
         cobi_df = pd.read_csv('cobi_ratings.csv.gz')
+    except FileNotFoundError:
+        cobi_df = None
+        print("No existing ratings — running full history from scratch.")
+
+    # Cache-validity guard: ranking_id is positional (groupby('date').ngroup()+1),
+    # so when the scraped game-date set changes size (e.g. a historical date drops
+    # out), every later date's id shifts and the cache silently desyncs from real
+    # dates — the skip logic then stops emitting new game-days and ratings freeze.
+    # Verify the cached id->date mapping still matches current games; on any
+    # mismatch, discard the cache and rebuild from scratch.
+    if cobi_df is not None:
+        cur_id_date = (df.drop_duplicates('grouped_date_id')
+                         .set_index('grouped_date_id')['date']
+                         .dt.strftime('%Y-%m-%d').to_dict())
+        cache_id_date = (cobi_df.drop_duplicates('ranking_id')
+                           .set_index('ranking_id')['ranking_date']
+                           .astype(str).str.slice(0, 10).to_dict())
+        mismatches = sum(1 for rid, d in cache_id_date.items()
+                         if cur_id_date.get(rid) != d)
+        if mismatches:
+            print(f"  cache desynced from current game dates "
+                  f"({mismatches:,} ranking_id<->date mismatches) — full rebuild from scratch")
+            cobi_df = None
+
+    if cobi_df is None:
+        cobi_df = pd.DataFrame(columns=[
+            'ranking_id', 'ranking_date', 'season', 'name', 'rating', 'rank', 'games_played'
+        ])
+        max_ranked = -1
+        min_ranked = -1
+    else:
         all_ids = sorted(cobi_df['ranking_id'].unique())
         if len(all_ids) > RECOMPUTE_TAIL_DAYS:
             tail_threshold = all_ids[-RECOMPUTE_TAIL_DAYS]
@@ -534,13 +565,6 @@ def run_pipeline(scrape=True):
         min_ranked = int(cobi_df['ranking_id'].min()) if not cobi_df.empty else -1
         if max_ranked >= 0:
             print(f"Existing ratings: ranking_ids {min_ranked} → {max_ranked}")
-    except FileNotFoundError:
-        cobi_df = pd.DataFrame(columns=[
-            'ranking_id', 'ranking_date', 'season', 'name', 'rating', 'rank', 'games_played'
-        ])
-        max_ranked = -1
-        min_ranked = -1
-        print("No existing ratings — running full history from scratch.")
 
     last_printed_ym = None
 
