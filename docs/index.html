@@ -671,7 +671,7 @@ async function initStandings() {
     const res  = await fetch(`${BASE}/seasons_index.json`);
     const meta = await res.json();
     document.getElementById('last-updated').textContent =
-      `Ratings include games from ${fmtDate(meta.first_date)} to ${fmtDate(meta.last_date)}`;
+      `Ratings include matches from ${fmtDate(meta.first_date)} to ${fmtDate(meta.last_date)}`;
     if (meta.generated_at) {
       const refreshed = new Date(meta.generated_at);
       document.getElementById('last-refreshed').textContent =
