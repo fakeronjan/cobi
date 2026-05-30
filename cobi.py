@@ -28,7 +28,7 @@ margin_cap       = 4
 shootout_margin  = 0.5
 home_field_adv   = 0.5
 min_games        = 5    # Threshold for inclusion in final standings.
-                          # Set to 5 because Massey ratings are stable enough
+                          # Set to 5 because fakeronjan WLS ratings are stable enough
                           # by then; legacy 15 nuked the first ~6 weeks of
                           # 1996 (only KC had 15+ games until late June) and
                           # Inter Miami's entire 2020 pre-October.
@@ -87,9 +87,9 @@ MLS_TEAM_ALIASES = {
 }
 
 
-def _solve_massey(window_df, weighting_mode):
+def _solve_wls(window_df, weighting_mode):
     """
-    Homebrew weighted-least-squares Massey solver. Replaces rankit.
+    Homebrew weighted-least-squares fakeronjan WLS solver. Replaces rankit.
 
     Takes a window df with home_team, away_team, adj_margin_home (the
     HCA + cap pre-applied margin from home perspective), and date_weight.
@@ -548,8 +548,8 @@ def run_pipeline(scrape=True):
     df['_rated'] = True
     print(f"  {len(df):,} MLS games (all rated-vs-rated)")
 
-    # ---- 6. Rolling Massey rating loop ----
-    print("\nRunning rolling Massey ratings...")
+    # ---- 6. Rolling fakeronjan WLS rating loop ----
+    print("\nRunning rolling fakeronjan WLS ratings...")
     max_date_id = int(df['grouped_date_id'].max())
 
     try:
@@ -633,7 +633,7 @@ def run_pipeline(scrape=True):
             last_printed_ym = ym
 
         try:
-            ranked = _solve_massey(working, WEIGHTING_MODE)
+            ranked = _solve_wls(working, WEIGHTING_MODE)
 
             if ranked['rating'].isna().any() or np.isinf(ranked['rating']).any():
                 continue
