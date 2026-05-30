@@ -748,7 +748,7 @@ final_po_lookup  = {(t, s): grp.sort_values('date').iloc[-1]['record']
 # rows so the UI can tag them inline + footnote.
 SHORT_SEASONS = {
     2020: {
-        'tag': 'COVID Is Back',
+        'tag': 'COVID',
         'category': 'covid',
         'note': 'The 2020 season was suspended in March, resumed with the "MLS Is Back" tournament in an Orlando bubble (July-August), then continued with a regional regular season averaging ~23 games per team (vs typical 34).',
     },
