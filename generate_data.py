@@ -744,12 +744,28 @@ final_po_lookup  = {(t, s): grp.sort_values('date').iloc[-1]['record']
                     for (t, s), grp in po.groupby(['team', 'snap_season'])}
 
 
+# Short / disrupted seasons — flagged on GOAT/Champions/Standings/TeamSummary
+# rows so the UI can tag them inline + footnote.
+SHORT_SEASONS = {
+    2020: {
+        'tag': 'COVID Is Back',
+        'category': 'covid',
+        'note': 'The 2020 season was suspended in March, resumed with the "MLS Is Back" tournament in an Orlando bubble (July-August), then continued with a regional regular season averaging ~23 games per team (vs typical 34).',
+    },
+}
+
+
 def _goat_row(r, rating_to_show, rank):
+    s = int(r['season']) if not pd.isna(r['season']) else 0
     return {
         'rank':                       rank,
         'team':                       r['team'],
         'display_name':               display_name(r['team'], r['season']),
         'season':                     r['season'],
+        'short_season':               s in SHORT_SEASONS,
+        'short_season_tag':           SHORT_SEASONS.get(s, {}).get('tag', '')      if s in SHORT_SEASONS else '',
+        'short_season_category':      SHORT_SEASONS.get(s, {}).get('category', '') if s in SHORT_SEASONS else '',
+        'short_season_note':          SHORT_SEASONS.get(s, {}).get('note', '')     if s in SHORT_SEASONS else '',
         'conference':                 clean(r['conference']),
         'rating':                     round(float(rating_to_show), 3),
         'regular_record':             early_record(r['team'], r['season']) or
@@ -929,6 +945,10 @@ seasons_index = {
     'first_date':   str(games_lg['date'].min().date()),
     'last_date':    str(games_lg['date'].max().date()),
     'generated_at': datetime.now(timezone.utc).isoformat(timespec='seconds'),
+    'disrupted_seasons': {
+        str(year): {'tag': info['tag'], 'category': info['category'], 'note': info['note']}
+        for year, info in SHORT_SEASONS.items()
+    },
 }
 with open('docs/data/seasons_index.json', 'w') as f:
     json.dump(seasons_index, f, separators=(',', ':'))
