@@ -96,6 +96,17 @@ MLS_EARLY_STANDINGS = {
 SHOOTOUT_ERA_YEARS = {1996, 1997, 1998, 1999}
 
 
+# Short / disrupted seasons — flagged on GOAT/Champions/Standings/TeamSummary
+# rows so the UI can tag them inline + footnote.
+SHORT_SEASONS = {
+    2020: {
+        'tag': 'COVID',
+        'category': 'covid',
+        'note': 'The 2020 season was suspended in March, resumed with the "MLS Is Back" tournament in an Orlando bubble (July-August), then continued with a regional regular season averaging ~23 games per team (vs typical 34).',
+    },
+}
+
+
 def early_record(team, season):
     """Return W-SOW-L string for a (team, season) in the shootout era, or None."""
     s = MLS_EARLY_STANDINGS.get((int(season), team))
@@ -582,6 +593,7 @@ for (team, season), grp in df.groupby(['team', 'season']):
               regular_record_as_of(team, str(season), str(last['date']))
     eors_rating = eors_rating_lookup.get((team, str(season)))
     eors_ranks  = eors_rank_lookup.get((team, str(season)))
+    s_int = int(season) if not pd.isna(season) else 0
     eoy_lookup[(team, str(season))] = {
         'team':                       team,
         'display_name':               display_name(team, str(season)),
@@ -597,6 +609,10 @@ for (team, season), grp in df.groupby(['team', 'season']):
         'playoff_record':             playoff_record_as_of(team, str(season), str(last['date'])),
         'mls_cup_finish':             clean(last.get('mls_cup_finish', '')),
         'supporters_shield_finish':   clean(last.get('supporters_shield_finish', '')),
+        'short_season':               s_int in SHORT_SEASONS,
+        'short_season_tag':           SHORT_SEASONS.get(s_int, {}).get('tag', '')      if s_int in SHORT_SEASONS else '',
+        'short_season_category':      SHORT_SEASONS.get(s_int, {}).get('category', '') if s_int in SHORT_SEASONS else '',
+        'short_season_note':          SHORT_SEASONS.get(s_int, {}).get('note', '')     if s_int in SHORT_SEASONS else '',
     }
 
 
@@ -742,17 +758,6 @@ final_reg_lookup = {(t, s): grp.sort_values('date').iloc[-1]['record']
                     for (t, s), grp in reg.groupby(['team', 'snap_season'])}
 final_po_lookup  = {(t, s): grp.sort_values('date').iloc[-1]['record']
                     for (t, s), grp in po.groupby(['team', 'snap_season'])}
-
-
-# Short / disrupted seasons — flagged on GOAT/Champions/Standings/TeamSummary
-# rows so the UI can tag them inline + footnote.
-SHORT_SEASONS = {
-    2020: {
-        'tag': 'COVID',
-        'category': 'covid',
-        'note': 'The 2020 season was suspended in March, resumed with the "MLS Is Back" tournament in an Orlando bubble (July-August), then continued with a regional regular season averaging ~23 games per team (vs typical 34).',
-    },
-}
 
 
 def _goat_row(r, rating_to_show, rank):
