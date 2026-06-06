@@ -20,7 +20,7 @@ import requests
 # ============================================================
 
 window_game_days = 100   # ~1 MLS season; tighter than ZIDANE/MESSI on
-                          # purpose — MLS has heavy player turnover (European
+                          # purpose - MLS has heavy player turnover (European
                           # stars arriving post-prime, MLS young stars
                           # leaving for Europe), so we want the ratings to
                           # respond to current rosters quickly.
@@ -35,7 +35,7 @@ min_games        = 5    # Threshold for inclusion in final standings.
 
 # WLS: weights affect observation influence, not margin magnitude.
 # Margin transform (cap=4) + per-game HCA are applied in prepare_game_data
-# upstream — solver just takes the pre-prepped adj_margin_home as input.
+# upstream - solver just takes the pre-prepped adj_margin_home as input.
 WEIGHTING_MODE = "wls"
 
 # Re-process the most recent N ranking_ids (game-days) on every run so late-
@@ -61,7 +61,7 @@ LEAGUE_COMPETITIONS = {'MLS'}  # the only rated competition
 
 # Same-franchise rebrands → consolidate to one canonical name so a team's
 # rating is continuous across name changes. Relocations are NOT aliased
-# (San Jose → Houston was a move, not a rename — they remain distinct).
+# (San Jose → Houston was a move, not a rename - they remain distinct).
 # Forward-looking entries cover names that don't currently appear in our
 # scrape window (2002+) but would matter if older data is added.
 MLS_TEAM_ALIASES = {
@@ -69,7 +69,7 @@ MLS_TEAM_ALIASES = {
     'Chicago Fire':                   'Chicago Fire FC',
     # Columbus franchise (1996+)
     'Columbus Crew SC':               'Columbus Crew',
-    # NY/NJ franchise (1996+) — no-ops on current data, future-proofing
+    # NY/NJ franchise (1996+) - no-ops on current data, future-proofing
     'NY/NJ MetroStars':               'Red Bull New York',
     'MetroStars':                     'Red Bull New York',
     'New York Red Bulls':             'Red Bull New York',
@@ -286,7 +286,7 @@ def espn_extract_matches(payload, competition_label, league_match_flag):
         try:
             # ESPN's `date` field is the kickoff in UTC. Naively .date()-ing
             # it puts any 7pm-or-later US-local kickoff on the next UTC day
-            # (a 7:30pm PT game = 02:30Z next day, etc.) — which mis-attributes
+            # (a 7:30pm PT game = 02:30Z next day, etc.) - which mis-attributes
             # the game and breaks date filtering / standings. All current MLS
             # venues are UTC-4 (Eastern DST) through UTC-7 (Pacific DST), so
             # subtracting 7h before .date() always lands on the correct
@@ -330,7 +330,7 @@ def scrape_espn_all(start_year=None, end_year=None):
     all_rows = []
     for label, slug, first_year, league_flag in ESPN_COMPETITIONS:
         fy = max(first_year, start_year or first_year)
-        print(f"[ESPN] {label} ({slug}) — {fy}-{end_year}")
+        print(f"[ESPN] {label} ({slug}) - {fy}-{end_year}")
         for year in range(fy, end_year + 1):
             payload = espn_fetch_year(slug, year)
             rows = espn_extract_matches(payload, label, league_flag)
@@ -358,7 +358,7 @@ def load_gapfill():
     frames = []
     for p in GAPFILL_PATHS:
         if not os.path.exists(p):
-            print(f"  [gapfill] {p} not found — skipping")
+            print(f"  [gapfill] {p} not found - skipping")
             continue
         df = pd.read_csv(p)
         print(f"  [gapfill] {p}: {len(df):,} rows")
@@ -397,7 +397,7 @@ def union_with_existing(fresh_df, path='all_club_games.csv'):
     have just because this run's live fetch came back short.
 
     ESPN's scoreboard API is re-queried for the FULL history every run and is
-    not perfectly stable — a transient failure or partial response for an old
+    not perfectly stable - a transient failure or partial response for an old
     season silently drops those games from `fresh_df`. Without this union, that
     shrinks the date set, which (a) erases real history and (b) desyncs the
     positional-id ratings cache. Fresh rows win for games present in both (so
@@ -416,7 +416,7 @@ def union_with_existing(fresh_df, path='all_club_games.csv'):
     preserved = sum(1 for k in map(tuple, prev_df[key].astype(str).values) if k not in fresh_keys)
     if preserved:
         print(f"[db-union] preserved {preserved:,} games already in the database "
-              f"that this run's fetch did not return (flaky source — not deleting history)")
+              f"that this run's fetch did not return (flaky source - not deleting history)")
     return combined
 
 
@@ -532,7 +532,7 @@ def run_pipeline(scrape=True):
     lastmatch_away.columns = ['date', 'name', 'last_match']
     lastmatch_df = pd.concat([lastmatch_home, lastmatch_away]).reset_index(drop=True)
     lastmatch_df['date'] = pd.to_datetime(lastmatch_df['date'])
-    # Snapshot season label (calendar year string) — matches the snapshot's
+    # Snapshot season label (calendar year string) - matches the snapshot's
     # `season` column so the downstream merge_asof can scope carry-forward to
     # within the same calendar year. Without this, a team's Dec 2024 match
     # would still show as their last_match in Mar 2025 snapshots.
@@ -543,7 +543,7 @@ def run_pipeline(scrape=True):
     df['grouped_date_id']  = df.groupby('date').ngroup() + 1
 
     # ---- 5. Rated-team set per calendar year ----
-    # MLS-only universe — every game is rated-vs-rated by construction.
+    # MLS-only universe - every game is rated-vs-rated by construction.
     league_games = df[df['competition'].isin(LEAGUE_COMPETITIONS)]
     df['_rated'] = True
     print(f"  {len(df):,} MLS games (all rated-vs-rated)")
@@ -556,12 +556,12 @@ def run_pipeline(scrape=True):
         cobi_df = pd.read_csv('cobi_ratings.csv.gz')
     except FileNotFoundError:
         cobi_df = None
-        print("No existing ratings — running full history from scratch.")
+        print("No existing ratings - running full history from scratch.")
 
     # Cache-validity guard: ranking_id is positional (groupby('date').ngroup()+1),
     # so when the scraped game-date set changes size (e.g. a historical date drops
     # out), every later date's id shifts and the cache silently desyncs from real
-    # dates — the skip logic then stops emitting new game-days and ratings freeze.
+    # dates - the skip logic then stops emitting new game-days and ratings freeze.
     # Verify the cached id->date mapping still matches current games; on any
     # mismatch, discard the cache and rebuild from scratch.
     if cobi_df is not None:
@@ -575,7 +575,7 @@ def run_pipeline(scrape=True):
                          if cur_id_date.get(rid) != d)
         if mismatches:
             print(f"  cache desynced from current game dates "
-                  f"({mismatches:,} ranking_id<->date mismatches) — full rebuild from scratch")
+                  f"({mismatches:,} ranking_id<->date mismatches) - full rebuild from scratch")
             cobi_df = None
 
     if cobi_df is None:
@@ -618,7 +618,7 @@ def run_pipeline(scrape=True):
         working['date_weight']   = 1 - (working['game_days_ago'] / window_game_days)
 
         # Drop draws (adj_margin_home == 0) from the solve to match the
-        # prior rankit behavior — rankit ignored zero-margin rows by
+        # prior rankit behavior - rankit ignored zero-margin rows by
         # default. Note: 0-0 regulation draws are dropped, but shootout-
         # decided 0-0 games have non-zero adj_margin (±shootout_margin)
         # so they participate.
@@ -697,7 +697,7 @@ def run_pipeline(scrape=True):
     print("\nDetecting trophies...")
     trophy_records = []  # rows of {year, team, honor}
 
-    # No more MLS_CUP_OVERRIDES — 1996 + 2001 finals are now in
+    # No more MLS_CUP_OVERRIDES - 1996 + 2001 finals are now in
     # mls_early_historical.csv, and 2006's shootout_winner is patched at
     # CSV-load time via SHOOTOUT_OVERRIDES above.
 
@@ -724,7 +724,7 @@ def run_pipeline(scrape=True):
             # the latest MLS game must be in the Cup window (Oct-Dec; early
             # MLS Cups were in October) AND >= 7 days old (so we don't crown
             # mid-final-weekend). For prior calendar years the last MLS game
-            # of the year IS the Cup final — no gate needed.
+            # of the year IS the Cup final - no gate needed.
             if int(y) == current_year:
                 if last_date.month not in (10, 11, 12):
                     continue
@@ -755,7 +755,7 @@ def run_pipeline(scrape=True):
         if season_games.empty:
             return None
         # Decision Day must be in the Sept-Nov window. No fall-back to other
-        # months — that would crown an in-progress season as if it ended.
+        # months - that would crown an in-progress season as if it ended.
         late = season_games[
             (season_games['date'].dt.month >= 9) &
             (season_games['date'].dt.month <= 11)
@@ -852,7 +852,7 @@ def run_pipeline(scrape=True):
     latest_id = final_df['ranking_id'].max()
     final_df['most_recent'] = np.where(final_df['ranking_id'] == latest_id, 1, 0)
 
-    # Last match string via merge_asof — scoped by (name, season) so a team's
+    # Last match string via merge_asof - scoped by (name, season) so a team's
     # last_match resets to empty at the start of each new calendar year.
     # Cast both date columns to datetime64[ns] explicitly: newer pandas
     # picks resolution per-source (sometimes [s], sometimes [us]) and

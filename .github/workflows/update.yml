@@ -2,7 +2,7 @@ name: Update COBI Ratings
 
 on:
   schedule:
-    - cron: '33 16 * * *'  # 16:33 UTC daily — after the US-sport block (DILLON 15:53, SALAAM 16:13)
+    - cron: '33 16 * * *'  # 16:33 UTC daily - after the US-sport block (DILLON 15:53, SALAAM 16:13)
   workflow_dispatch:        # manual trigger from GitHub UI
 
 permissions:

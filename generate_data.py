@@ -1,5 +1,5 @@
 """
-generate_data.py — reads cobi_ratings_final.csv and writes JSON files for the web frontend.
+generate_data.py - reads cobi_ratings_final.csv and writes JSON files for the web frontend.
 Run after cobi.py. Outputs to docs/data/.
 """
 
@@ -35,7 +35,7 @@ MLS_TEAM_ALIASES = {
 # ── Shootout-era (1996-1999) regular-season final standings ─────────────────
 # MLS used a no-draws shootout format from 1996-1999: regulation W = 3 pts,
 # shootout W = 1 pt, L = 0 pts. Our gap-fill source (footballcsv) folded
-# shootout outcomes into regulation results — meaning we cannot recover the
+# shootout outcomes into regulation results - meaning we cannot recover the
 # era-accurate W vs SOW split from the games CSV. Hard-code season-final
 # standings from Wikipedia so end-of-season records and Shield winners are
 # era-correct. Verified Pts = 3*W + SOW for every entry.
@@ -96,7 +96,7 @@ MLS_EARLY_STANDINGS = {
 SHOOTOUT_ERA_YEARS = {1996, 1997, 1998, 1999}
 
 
-# Short / disrupted seasons — flagged on GOAT/Champions/Standings/TeamSummary
+# Short / disrupted seasons - flagged on GOAT/Champions/Standings/TeamSummary
 # rows so the UI can tag them inline + footnote.
 SHORT_SEASONS = {
     2020: {
@@ -434,7 +434,7 @@ def playoff_record_as_of(team, season, snap_date_str):
 # date falls in year Y. cobi.py's trophy detection is gated on 7-day-post-final
 # so by the time mls_cup_finish says 'Champion', the trophy is real.
 print("Tagging end-of-season snapshots...")
-# Gate both EOS and EORS on the trophy-awarded signal from cobi.py — Shield
+# Gate both EOS and EORS on the trophy-awarded signal from cobi.py - Shield
 # fires 7 days after Decision Day, Cup fires 7 days after MLS Cup, so
 # either field == 'Champion' is a clean "this milestone has happened"
 # proxy. Without these gates, in-progress seasons (current year before
@@ -506,7 +506,7 @@ latest_date_str = str(latest['date'].iloc[0])
 # brackets → conf finals → MLS Cup). The 2001-2012 wild-card / reseeding
 # era allowed same-conference finals by design (and several happened: 2001
 # SJ-LA both W; 2004 DC-KC both E; 2008 Columbus-NY both E; 2009/10/11/12
-# all both W) — so no conference-champion badges for those years even when
+# all both W) - so no conference-champion badges for those years even when
 # the final happened to be cross-conf. Mirrors LOBO's pattern: only show
 # the conference winner badge when the league formally crowned conference
 # champions en route to the title.
@@ -644,7 +644,7 @@ def _mls_cup_score(year, champ, runner_up):
 
 def _shield_score(year, champ, runner_up):
     """Shield 'score' = champion's regular-season points vs runner-up's.
-    Mirrors cobi.py's Shield detection logic — Decision Day filter, MLS games
+    Mirrors cobi.py's Shield detection logic - Decision Day filter, MLS games
     only, 3 for win incl. shootout, 1 for draw."""
     y = int(year)
     g = games_raw.copy()
@@ -714,7 +714,7 @@ for (year, label), grp in trophies.groupby(['year', trophies['honor'].str.replac
     # Copy the champion/runner_up dicts so each trophy's entry has its OWN
     # mutable copy. Without this, a team that wins both MLS Cup and Shield
     # in the same year (a Double) shares the same eoy_lookup dict between
-    # both trophy entries — and the second trophy's title_count walk
+    # both trophy entries - and the second trophy's title_count walk
     # overwrites the first's. Bit LA Galaxy 2011 (MLS Cup #3 instead of #2).
     champions_by_trophy[label].append({
         'season':      str(year),
@@ -878,7 +878,7 @@ all_seasons = sorted(df['season'].unique(), reverse=True)
 
 for season in all_seasons:
     sdf = df[df['season'] == season].copy()
-    # Filter to teams that actually played in this season — drops defunct
+    # Filter to teams that actually played in this season - drops defunct
     # franchises whose stale rating is still in the rolling window (e.g.,
     # Miami Fusion folded after 2001, would otherwise appear in early-2002
     # snapshots until their 2001 games age out of the 200-game-day window).
@@ -919,7 +919,7 @@ for season in all_seasons:
                 'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
                 'mls_cup_conf_finalist':     is_cup_conf_finalist(r['team'], season),
             })
-        # If the snapshot is BOTH EORS and EOS (rare — mid-1990s seasons
+        # If the snapshot is BOTH EORS and EOS (rare - mid-1990s seasons
         # that ended on Decision Day with no playoff round in our data, or
         # in-progress seasons before playoffs start), prefer the EOS label
         # since it reflects the actual final state for the season.
@@ -943,7 +943,7 @@ for season in all_seasons:
 
 df_dates = pd.to_datetime(df['date'])
 # first_date / last_date describe the underlying GAME data, not surviving
-# rating snapshots — the min_games filter shaves the first few weeks of
+# rating snapshots - the min_games filter shaves the first few weeks of
 # each team's history off the rated output, but those games still happened.
 seasons_index = {
     'seasons':      all_seasons,

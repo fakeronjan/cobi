@@ -58,7 +58,7 @@ def _parse_score(raw):
 
 # Historical MLS clubs that need name normalization to align with ESPN.
 # footballcsv uses modern-canonical names already (e.g., "Sporting Kansas City"
-# even for the 1996 season when the club was "Kansas City Wiz"). This is fine —
+# even for the 1996 season when the club was "Kansas City Wiz"). This is fine -
 # we want a single canonical name per franchise across eras anyway. ESPN-side
 # fixups happen in cobi.py via a shared TEAM_NAME_MAP.
 TEAM_FIXUPS = {
@@ -91,7 +91,7 @@ def fetch_year(year):
         team1 = TEAM_FIXUPS.get(team1, team1)
         team2 = TEAM_FIXUPS.get(team2, team2)
 
-        # Penalty/shootout — footballcsv 'P' column carries penalty score like '4-3'
+        # Penalty/shootout - footballcsv 'P' column carries penalty score like '4-3'
         p = r_.get('P') or ''
         ps_h, ps_a = _parse_score(p)
         penalties = ps_h is not None and ps_a is not None
@@ -102,7 +102,7 @@ def fetch_year(year):
             elif ps_a > ps_h:
                 shootout_winner = team2
 
-        # Extra-time score (ET column) — for our purposes treat ET final
+        # Extra-time score (ET column) - for our purposes treat ET final
         # as the FT for margin (same as how ZIDANE handles AET in CL).
         # If ET present and different from FT, prefer ET-final.
         et = r_.get('ET') or ''
@@ -110,7 +110,7 @@ def fetch_year(year):
         if et_h is not None and et_a is not None:
             hs, as_ = et_h, et_a
 
-        # Stage: footballcsv uses 'Regular' / 'Playoffs' / 'Final' — flag
+        # Stage: footballcsv uses 'Regular' / 'Playoffs' / 'Final' - flag
         # all non-Regular as playoff matches (still league_match=True since
         # it's all the MLS season for our purposes).
         stage = (r_.get('Stage') or '').strip()
