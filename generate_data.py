@@ -8,6 +8,7 @@ import numpy as np
 import json
 import os
 import re
+import glob
 from bisect import bisect_right
 from datetime import date, datetime, timezone
 
@@ -872,6 +873,16 @@ for team in all_teams:
 teams_index.sort(key=lambda x: (x['conference'], x['name']))
 with open('docs/data/teams_index.json', 'w') as f:
     json.dump(teams_index, f, separators=(',', ':'))
+
+# Prune orphaned team files: COBI originally rated MLS + Liga MX, then went
+# MLS-only - the dropped Liga MX clubs' files linger, unreachable from the UI
+# (not in teams_index) but serving frozen, stale data. Remove any team file
+# whose slug is no longer in the live index.
+_live_team_files = {f"{t['slug']}.json" for t in teams_index}
+for _f in glob.glob('docs/data/teams/*.json'):
+    if os.path.basename(_f) not in _live_team_files:
+        os.remove(_f)
+        print(f"  Pruned orphaned team file: {os.path.basename(_f)}")
 
 
 # ── 5. Per-season JSON files ─────────────────────────────────────────────────
