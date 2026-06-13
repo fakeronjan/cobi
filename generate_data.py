@@ -262,11 +262,13 @@ df['conference'] = df.apply(lambda r: conference_for(r['team'], r['season']), ax
 
 
 # cobi.py constructs last_match strings using the canonical franchise name
-# (e.g. "L vs. Chicago Fire FC 0-1 (MLS)" for a 2010 game when the team was
+# (e.g. "L 0-1 @ Chicago Fire FC (MLS)" for a 2010 game when the team was
 # actually called the Chicago Fire). Rewrite the opponent portion with the
 # era-appropriate display name. Liga MX / foreign opponents in CCL games
-# don't match any canonical so they pass through unchanged.
-_LAST_MATCH_RE = re.compile(r'^([WLD])\s+(vs\.?|@)\s+(.+?)\s+(\d+\s*-\s*\d+)\s*(\([^)]+\))?\s*$')
+# don't match any canonical so they pass through unchanged. Format is
+# "<W/L/D> <score> <vs.|@> <opponent> (<league>)" - opponent is the trailing
+# portion before the league tag (mirrors DILLON).
+_LAST_MATCH_RE = re.compile(r'^([WLD])\s+(\d+\s*-\s*\d+)\s+(vs\.?|@)\s+(.+?)\s*(\([^)]+\))?\s*$')
 
 def era_aware_last_match(raw, season):
     if not raw:
@@ -274,10 +276,10 @@ def era_aware_last_match(raw, season):
     m = _LAST_MATCH_RE.match(str(raw))
     if not m:
         return raw
-    letter, venue, opponent, score, comp = m.groups()
+    letter, score, venue, opponent, comp = m.groups()
     new_opp = display_name(opponent.strip(), str(season))
     suffix = f' {comp}' if comp else ''
-    return f"{letter} {venue} {new_opp} {score}{suffix}"
+    return f"{letter} {score} {venue} {new_opp}{suffix}"
 
 
 def clean(val):
