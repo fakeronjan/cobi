@@ -798,11 +798,15 @@ goat_rs = [_goat_row(r, r['rating'], i + 1) for i, (_, r) in enumerate(eors_rows
 # (champion OR runner-up of the MLS Cup final). Same fleet pattern as
 # DILLON (SB participants), GRIFFEY (WS), SAKIC (Stanley Cup Final).
 eos = df[df['is_end_of_season'] == 1].copy()
-played_mls_cup = eos.get('mls_cup_finish', '').isin(['Champion', 'Runner-Up'])
+won_mls_cup = eos.get('mls_cup_finish', '') == 'Champion'   # champions only
+champs = eos[won_mls_cup]
+# Length rounds down to the nearest 10, capped at GOAT_TOP_N (e.g. 30 MLS Cup
+# champions -> top 30). Dominant non-winning seasons live on the RS GOAT.
+_n = min(GOAT_TOP_N, (champs['season'].nunique() // 10) * 10)
 eos = (
-    eos[played_mls_cup]
+    champs
     .sort_values('rating', ascending=False)
-    .head(GOAT_TOP_N)
+    .head(_n)
     .reset_index(drop=True)
 )
 goat_ps = [_goat_row(r, r['rating'], i + 1) for i, (_, r) in enumerate(eos.iterrows())]
