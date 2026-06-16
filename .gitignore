@@ -9,3 +9,6 @@ Backup*/
 
 # Local-only
 .claude/
+
+# Engine-migration backup snapshots (never commit)
+*-bak
