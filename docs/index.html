@@ -45,6 +45,17 @@
     color: rgba(255,255,255,0.6);
     margin-top: 6px;
   }
+  header p.data-credit {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 6px;
+    max-width: 960px;
+    line-height: 1.5;
+  }
+  header p.data-credit a {
+    color: rgba(255,255,255,0.82);
+    text-decoration: underline;
+  }
 
   nav {
     background: #155a75;
@@ -410,6 +421,7 @@
   <p class="subtitle">MLS Power Rankings · Beta</p>
   <p class="model-note">Considers strength of opponent, margin of result, and recency. Reads as approximate goal-spread vs avg team. ~0.5+ = contender; ~0.9+ = elite; ~1.2+ = generational (Inter Miami 2025 = 1.32).</p>
   <p class="updated"><span class="cadence-inline">🔄 Updated daily</span> <span class="cadence-sep">|</span> <span id="last-updated">Loading...</span> <span class="cadence-sep">|</span> <span id="last-refreshed">Loading...</span></p>
+  <p class="data-credit">Data: current and recent MLS results from the ESPN API; historical match data from <a href="https://github.com/footballcsv" target="_blank" rel="noopener">footballcsv</a> (CC0); pre-2000 standings from <a href="https://en.wikipedia.org" target="_blank" rel="noopener">Wikipedia</a> (CC BY-SA 4.0). Ratings are derived from this data.</p>
 </header>
 
 <nav>
