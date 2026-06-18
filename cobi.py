@@ -36,7 +36,6 @@ min_games        = 5    # Threshold for inclusion in final standings.
 # WLS: weights affect observation influence, not margin magnitude.
 # Margin transform (cap=4) + per-game HCA are applied in prepare_game_data
 # upstream - solver just takes the pre-prepped adj_margin_home as input.
-WEIGHTING_MODE = "wls"
 
 # Re-process the most recent N ranking_ids (game-days) on every run so late-
 # arriving ESPN data is absorbed. Without this, a cron firing mid-day caches
@@ -87,7 +86,7 @@ MLS_TEAM_ALIASES = {
 }
 
 
-def _solve_wls(window_df, weighting_mode):
+def _solve_wls(window_df):
     """
     Homebrew weighted-least-squares fakeronjan WLS solver. Replaces rankit.
 
@@ -118,14 +117,8 @@ def _solve_wls(window_df, weighting_mode):
         X[i, team_idx[home_names[i]]] = 1.0
         X[i, team_idx[away_names[i]]] = -1.0
 
-    if weighting_mode == "wls":
-        y[:n_games] = adj_margin
-        w[:n_games] = weights
-    elif weighting_mode == "margin_scale":
-        y[:n_games] = adj_margin * weights
-        w[:n_games] = 1.0
-    else:
-        raise ValueError(f"Unknown WEIGHTING_MODE: {weighting_mode}")
+    y[:n_games] = adj_margin
+    w[:n_games] = weights
 
     # Zero-sum constraint via high-weight extra row.
     X[-1, :] = 1.0
@@ -633,7 +626,7 @@ def run_pipeline(scrape=True):
             last_printed_ym = ym
 
         try:
-            ranked = _solve_wls(working, WEIGHTING_MODE)
+            ranked = _solve_wls(working)
 
             if ranked['rating'].isna().any() or np.isinf(ranked['rating']).any():
                 continue
