@@ -617,12 +617,12 @@ def run_pipeline(scrape=True):
         working['game_days_ago'] = i - working['grouped_date_id']
         working['date_weight']   = 1 - (working['game_days_ago'] / window_game_days)
 
-        # Drop draws (adj_margin_home == 0) from the solve to match the
-        # prior rankit behavior - rankit ignored zero-margin rows by
-        # default. Note: 0-0 regulation draws are dropped, but shootout-
-        # decided 0-0 games have non-zero adj_margin (±shootout_margin)
-        # so they participate.
-        working = working[working['adj_margin_home'] != 0]
+        # KEEP draws: a draw between mismatched teams is signal. The old
+        # `adj_margin_home != 0` filter was a vestigial rankit-port carryover
+        # that silently dropped neutral-site regulation draws (neutral -> hfa=0
+        # -> adj_margin_home == 0). Negligible for MLS (~no neutral games), but
+        # it was the same bug that broke MESSI on neutral WC draws.
+        # Removed 2026-06-18.
         if len(working) < 10:
             continue
 
