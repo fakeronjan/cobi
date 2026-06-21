@@ -168,7 +168,9 @@
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     color: #1a6b8a;
+    text-align: center;
   }
+  thead th.col-num { text-align: center; }
   .rating-bar-wrap {
     display: flex;
     flex-direction: column;
@@ -861,8 +863,8 @@ function renderStandings() {
     ${eraNote}
     <table>
       <thead><tr>
-        <th>OVR #</th><th class="col-hide-mobile">CONF #</th>
-        <th>Team</th><th>Conf</th><th>${recordHeader}</th><th>Rating</th>
+        <th class="col-num">OVR #</th><th class="col-hide-mobile col-num">CONF #</th>
+        <th>Team</th><th>Conf</th><th>${recordHeader}</th><th class="col-num">Rating</th>
         <th>Last Match</th>
         <th class="col-hide-mobile">Date</th>
         <th class="col-hide-mobile">Honors</th>
@@ -1030,8 +1032,8 @@ function renderTeamTable() {
       <thead><tr>
         <th style="text-align:center">Season</th><th>Date</th><th>Last Match</th>
         <th>W-D-L (Pts)</th>
-        <th>OVR #</th><th class="col-hide-mobile">CONF #</th>
-        <th>Rating</th>
+        <th class="col-num">OVR #</th><th class="col-hide-mobile col-num">CONF #</th>
+        <th class="col-num">Rating</th>
         <th class="col-hide-mobile">Conf</th>
         <th class="col-hide-mobile">Honors</th>
       </tr></thead>
@@ -1206,8 +1208,8 @@ function renderChampions() {
       : `<td class="${bg} team-cell" style="white-space:nowrap">${label}${countStr}${rowHonor(t)}</td>`;
     return `
       ${teamTd}
-      <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${ovrRank}</td>
-      <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em">${confRank}</td>
+      <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em;text-align:center">${ovrRank}</td>
+      <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap;color:#888;font-size:0.85em;text-align:center">${confRank}</td>
       <td class="${bg} rating-cell" style="font-variant-numeric:tabular-nums">${rating}</td>
       <td class="${bg} col-hide-mobile" style="font-variant-numeric:tabular-nums;white-space:nowrap">${fmtRecordStacked(t.regular_record, t.playoff_record)}</td>`;
   }
@@ -1245,15 +1247,15 @@ function renderChampions() {
       <thead><tr>
         <th style="text-align:center">Season</th>
         <th class="col-champ">Champion</th>
-        <th class="col-champ col-hide-mobile">OVR #</th>
-        <th class="col-champ col-hide-mobile">CONF #</th>
-        <th class="col-champ">${ratingLabel}</th>
+        <th class="col-champ col-hide-mobile col-num">OVR #</th>
+        <th class="col-champ col-hide-mobile col-num">CONF #</th>
+        <th class="col-champ col-num">${ratingLabel}</th>
         <th class="col-champ col-hide-mobile">W-D-L (Pts)</th>
         ${scoreCol}
         <th class="col-ru">Runner-Up</th>
-        <th class="col-ru col-hide-mobile">OVR #</th>
-        <th class="col-ru col-hide-mobile">CONF #</th>
-        <th class="col-ru">${ratingLabel}</th>
+        <th class="col-ru col-hide-mobile col-num">OVR #</th>
+        <th class="col-ru col-hide-mobile col-num">CONF #</th>
+        <th class="col-ru col-num">${ratingLabel}</th>
         <th class="col-ru col-hide-mobile">W-D-L (Pts)</th>
       </tr></thead>
       <tbody>${rows}</tbody>
@@ -1332,7 +1334,7 @@ function renderGoat() {
         <th style="text-align:center">Season</th>
         <th>Team</th><th>Conf</th>
         <th class="col-hide-mobile">W-D-L (Pts)</th>
-        <th>Rating</th>
+        <th class="col-num">Rating</th>
         <th class="col-hide-mobile">Honors</th>
       </tr></thead>
       <tbody>${rows}</tbody>
