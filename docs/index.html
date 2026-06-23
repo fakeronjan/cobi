@@ -652,7 +652,7 @@ async function teamLinkClick(slug, season) {
     renderTeamTable();
   }, [
     { value: 'cross',  label: 'All season summary' },
-    { value: 'single', label: 'All games within one season' },
+    { value: 'single', label: 'All matches within one season' },
   ]);
   document.getElementById('season-select').style.display    = wantSingle ? '' : 'none';
   document.getElementById('date-type-select').style.display = wantSingle ? 'none' : '';
@@ -856,7 +856,7 @@ function renderStandings() {
   const isShootoutEra = seasonYear >= 1996 && seasonYear <= 1999;
   const recordHeader = isShootoutEra ? 'W-SOW-L (Pts)' : 'W-D-L (Pts)';
   const eraNote = isShootoutEra
-    ? `<p class="data-note">MLS 1996–1999 had no draws - tied games were decided by a 35-yard run-in shootout. Era points: 3 for a regulation win, 1 for a shootout win (SOW), 0 for a loss. End-of-season records here are pulled from Wikipedia and are era-accurate; intra-season records during this era are approximate (our gap-fill source doesn't preserve per-game shootout flags).</p>`
+    ? `<p class="data-note">MLS 1996–1999 had no draws - tied matches were decided by a 35-yard run-in shootout. Era points: 3 for a regulation win, 1 for a shootout win (SOW), 0 for a loss. End-of-season records here are pulled from Wikipedia and are era-accurate; intra-season records during this era are approximate (our gap-fill source doesn't preserve per-match shootout flags).</p>`
     : '';
 
   document.getElementById('standings-table-wrap').innerHTML = `
@@ -1362,7 +1362,7 @@ buildConfPills('ts-view-pills', tsView, v => {
   renderTeamTable();
 }, [
   { value: 'cross',  label: 'All season summary' },
-  { value: 'single', label: 'All games within one season' },
+  { value: 'single', label: 'All matches within one season' },
 ]);
 // Initial dropdown visibility for default view ('cross')
 document.getElementById('date-type-select').style.display = '';
