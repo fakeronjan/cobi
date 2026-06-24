@@ -2542,6 +2542,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2013-05-04,2013,MLS,True,Philadelphia Union,Seattle Sounders FC,2,2,,,False,,False,Subaru Park,359666,
 2013-05-04,2013,MLS,True,San Jose Earthquakes,CF Montréal,2,2,,,False,,False,Buck Shaw Stadium,359667,
 2013-05-04,2013,MLS,True,Colorado Rapids,Toronto FC,1,0,,,False,,False,Dick's Sporting Goods Park,359664,
+2013-05-04,2013,MLS,True,Real Salt Lake,Vancouver Whitecaps,2,0,,,False,,False,America First Field,359665,
 2013-05-05,2013,MLS,True,Sporting Kansas City,Chivas USA,4,0,,,False,,False,Children's Mercy Park,359662,
 2013-05-05,2013,MLS,True,LA Galaxy,Houston Dynamo FC,0,1,,,False,,False,Dignity Health Sports Park,359663,
 2013-05-08,2013,MLS,True,D.C. United,Houston Dynamo FC,0,4,,,False,,False,RFK Stadium,359661,
@@ -2549,6 +2550,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2013-05-08,2013,MLS,True,New England Revolution,Real Salt Lake,1,2,,,False,,False,Gillette Stadium,359659,
 2013-05-08,2013,MLS,True,Sporting Kansas City,Seattle Sounders FC,0,1,,,False,,False,Children's Mercy Park,359658,
 2013-05-08,2013,MLS,True,FC Dallas,Portland Timbers,1,1,,,False,,False,Toyota Stadium,359657,
+2013-05-08,2013,MLS,True,San Jose Earthquakes,Toronto FC,2,1,,,False,,False,Buck Shaw Stadium,359656,
 2013-05-11,2013,MLS,True,Chicago Fire FC,Philadelphia Union,0,1,,,False,,False,SeatGeek Stadium,359655,
 2013-05-11,2013,MLS,True,CF Montréal,Real Salt Lake,3,2,,,False,,False,Stade Saputo,359654,
 2013-05-11,2013,MLS,True,Seattle Sounders FC,San Jose Earthquakes,4,0,,,False,,False,Lumen Field,359648,
@@ -2613,6 +2615,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2013-06-29,2013,MLS,True,CF Montréal,Colorado Rapids,3,4,,,False,,False,Stade Saputo,359593,
 2013-06-29,2013,MLS,True,D.C. United,Vancouver Whitecaps,0,1,,,False,,False,RFK Stadium,359595,
 2013-06-29,2013,MLS,True,Sporting Kansas City,Columbus Crew,3,2,,,False,,False,Children's Mercy Park,359592,
+2013-06-29,2013,MLS,True,Chivas USA,New England Revolution,1,1,,,False,,False,Dignity Health Sports Park,359591,
 2013-06-29,2013,MLS,True,San Jose Earthquakes,LA Galaxy,3,2,,,False,,False,Buck Shaw Stadium,359590,
 2013-06-30,2013,MLS,True,Red Bull New York,Houston Dynamo FC,2,0,,,False,,False,Sports Illustrated Stadium,359589,
 2013-07-03,2013,MLS,True,Toronto FC,CF Montréal,3,3,,,False,,False,BMO Field,359588,
@@ -9299,9 +9302,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2001-10-14,2001,MLS,True,San Jose Earthquakes,Miami Fusion,4,0,,,False,,False,,fbcsv-mls-2001-2001-10-14-San Jose Earthquakes-Miami Fusion,Playoff
 1996-10-20,1996,MLS,True,LA Galaxy,D.C. United,2,3,,,False,,True,Foxboro Stadium,wikipedia-1996-mls-cup,Final
 2001-10-21,2001,MLS,True,LA Galaxy,San Jose Earthquakes,1,2,,,False,,True,Crew Stadium,wikipedia-2001-mls-cup,Final
-2013-05-04,2013,MLS,True,Real Salt Lake,Vancouver Whitecaps,2,0,,,False,,False,America First Field,359665,
-2013-05-08,2013,MLS,True,San Jose Earthquakes,Toronto FC,2,1,,,False,,False,Buck Shaw Stadium,359656,
-2013-06-29,2013,MLS,True,Chivas USA,New England Revolution,1,1,,,False,,False,Dignity Health Sports Park,359591,
 1996-04-13,1996,MLS,True,Columbus Crew,D.C. United,4,0,,,False,,False,,fbcsv-mls-1996-1996-04-13-Columbus Crew SC-D.C. United,Regular
 1996-04-20,1996,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,2,,,False,,False,,fbcsv-mls-1996-1996-04-20-Columbus Crew SC-Tampa Bay Mutiny,Regular
 1996-04-27,1996,MLS,True,Red Bull New York,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1996-1996-04-27-Red Bull New York-Columbus Crew SC,Regular
