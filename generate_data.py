@@ -563,6 +563,10 @@ standings_data = {
             'display_name':        display_name(r['team'], r['season']),
             'conference':          clean(r['conference']),
             'rating':              round(float(r['rating']), 3),
+            'rating_o':            round(float(r['rating_o']), 3) if 'rating_o' in r and not pd.isna(r['rating_o']) else None,
+            'rating_d':            round(float(r['rating_d']), 3) if 'rating_d' in r and not pd.isna(r['rating_d']) else None,
+            'rank_o':              int(r['rank_o']) if 'rank_o' in r and not pd.isna(r['rank_o']) else None,
+            'rank_d':              int(r['rank_d']) if 'rank_d' in r and not pd.isna(r['rank_d']) else None,
             'regular_record':      cur_reg.get(r['team'], '0-0-0'),
             'playoff_record':      cur_po.get(r['team'], ''),
             'games_played':        int(r['games_played']),
@@ -776,6 +780,10 @@ def _goat_row(r, rating_to_show, rank):
         'short_season_note':          SHORT_SEASONS.get(s, {}).get('note', '')     if s in SHORT_SEASONS else '',
         'conference':                 clean(r['conference']),
         'rating':                     round(float(rating_to_show), 3),
+        'rating_o':                   round(float(r['rating_o']), 3) if 'rating_o' in r and not pd.isna(r['rating_o']) else None,
+        'rating_d':                   round(float(r['rating_d']), 3) if 'rating_d' in r and not pd.isna(r['rating_d']) else None,
+        'rank_o':                     int(r['rank_o']) if 'rank_o' in r and not pd.isna(r['rank_o']) else None,
+        'rank_d':                     int(r['rank_d']) if 'rank_d' in r and not pd.isna(r['rank_d']) else None,
         'regular_record':             early_record(r['team'], r['season']) or
                                       final_reg_lookup.get((r['team'], r['season']), '0-0-0'),
         'playoff_record':             final_po_lookup.get((r['team'], r['season']), ''),
@@ -785,36 +793,29 @@ def _goat_row(r, rating_to_show, rank):
     }
 
 
-# GOAT-RS: end-of-regular-season snapshots, ALL teams eligible.
-eors_rows = (
-    df[df['is_end_of_regular_season'] == 1]
-    .sort_values('rating', ascending=False)
-    .head(GOAT_TOP_N)
-    .reset_index(drop=True)
-)
-goat_rs = [_goat_row(r, r['rating'], i + 1) for i, (_, r) in enumerate(eors_rows.iterrows())]
+# Each pool emits three views (overall / offense / defense), DILLON-style:
+# every row carries rating + rating_o + rating_d so the frontend can show the
+# split and re-sort by metric; rank is positional to the active sort.
+def _build_goat(src, sort_col, n):
+    rows = src.sort_values(sort_col, ascending=False).head(n).reset_index(drop=True)
+    return [_goat_row(r, r['rating'], i + 1) for i, (_, r) in enumerate(rows.iterrows())]
 
-# GOAT-PS: end-of-season snapshots, MLS Cup participants only
-# (champion OR runner-up of the MLS Cup final). Same fleet pattern as
+# GOAT-RS: end-of-regular-season snapshots, ALL teams eligible.
+eors_all = df[df['is_end_of_regular_season'] == 1]
+for fname, col in [('goat_rs.json', 'rating'), ('goat_rs_o.json', 'rating_o'), ('goat_rs_d.json', 'rating_d')]:
+    with open(f'docs/data/{fname}', 'w') as f:
+        json.dump(_build_goat(eors_all, col, GOAT_TOP_N), f, separators=(',', ':'))
+
+# GOAT-PS: end-of-season snapshots, MLS Cup champions only. Same fleet pattern as
 # DILLON (SB participants), GRIFFEY (WS), SAKIC (Stanley Cup Final).
 eos = df[df['is_end_of_season'] == 1].copy()
-won_mls_cup = eos.get('mls_cup_finish', '') == 'Champion'   # champions only
-champs = eos[won_mls_cup]
+champs = eos[eos.get('mls_cup_finish', '') == 'Champion']   # champions only
 # Length rounds down to the nearest 10, capped at GOAT_TOP_N (e.g. 30 MLS Cup
 # champions -> top 30). Dominant non-winning seasons live on the RS GOAT.
 _n = min(GOAT_TOP_N, (champs['season'].nunique() // 10) * 10)
-eos = (
-    champs
-    .sort_values('rating', ascending=False)
-    .head(_n)
-    .reset_index(drop=True)
-)
-goat_ps = [_goat_row(r, r['rating'], i + 1) for i, (_, r) in enumerate(eos.iterrows())]
-
-with open('docs/data/goat_rs.json', 'w') as f:
-    json.dump(goat_rs, f, separators=(',', ':'))
-with open('docs/data/goat_ps.json', 'w') as f:
-    json.dump(goat_ps, f, separators=(',', ':'))
+for fname, col in [('goat_ps.json', 'rating'), ('goat_ps_o.json', 'rating_o'), ('goat_ps_d.json', 'rating_d')]:
+    with open(f'docs/data/{fname}', 'w') as f:
+        json.dump(_build_goat(champs, col, _n), f, separators=(',', ':'))
 
 
 # ── 4. Per-team JSON files ───────────────────────────────────────────────────
@@ -857,6 +858,10 @@ for team in all_teams:
                 'rating':            round(float(r['rating']), 3),
                 'rank':              int(r['rank']),
                 'conf_rank':         int(r['conf_rank']),
+                'rating_o':          round(float(r['rating_o']), 3) if 'rating_o' in r and not pd.isna(r['rating_o']) else None,
+                'rating_d':          round(float(r['rating_d']), 3) if 'rating_d' in r and not pd.isna(r['rating_d']) else None,
+                'rank_o':            int(r['rank_o']) if 'rank_o' in r and not pd.isna(r['rank_o']) else None,
+                'rank_d':            int(r['rank_d']) if 'rank_d' in r and not pd.isna(r['rank_d']) else None,
                 'is_end_of_season':         int(r['is_end_of_season']),
                 'is_end_of_regular_season': int(r['is_end_of_regular_season']),
                 'regular_record':    (early_record(team, str(season)) if int(r['is_end_of_season']) == 1 else None)
@@ -915,6 +920,10 @@ for season in all_seasons:
             .rank(ascending=False, method='min')
             .astype(int)
         )
+        # Re-rank O/D within the snapshot too, so OFF/DEF ranks match the
+        # displayed set (mirrors snap_rank).
+        gdf['snap_rank_o'] = gdf['rating_o'].rank(ascending=False, method='min')
+        gdf['snap_rank_d'] = gdf['rating_d'].rank(ascending=False, method='min')
         snap_is_eos  = int(gdf['is_end_of_season'].max()) == 1
         snap_is_eors = int(gdf['is_end_of_regular_season'].max()) == 1
         teams = []
@@ -928,6 +937,10 @@ for season in all_seasons:
                 'display_name':      display_name(r['team'], season),
                 'conference':        clean(r['conference']),
                 'rating':            round(float(r['rating']), 3),
+                'rating_o':          round(float(r['rating_o']), 3) if not pd.isna(r['rating_o']) else None,
+                'rating_d':          round(float(r['rating_d']), 3) if not pd.isna(r['rating_d']) else None,
+                'rank_o':            int(r['snap_rank_o']) if not pd.isna(r['snap_rank_o']) else None,
+                'rank_d':            int(r['snap_rank_d']) if not pd.isna(r['snap_rank_d']) else None,
                 'regular_record':    reg_rec,
                 'playoff_record':    playoff_record_as_of(r['team'], season, str(snap_date)),
                 'last_match':        era_aware_last_match(clean(r['last_match']), season),

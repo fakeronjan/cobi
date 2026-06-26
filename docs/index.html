@@ -171,6 +171,10 @@
     text-align: center;
   }
   thead th.col-num { text-align: center; }
+  /* Offense / Defense split: value above, rank below, centered like Rating. */
+  td.od-cell, th.col-od { text-align: center; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .od-val { line-height: 1.15; font-variant-numeric: tabular-nums; }
+  .od-rank { line-height: 1.15; color: #888; font-weight: 500; font-size: 0.78em; font-variant-numeric: tabular-nums; margin-top: 1px; }
   .rating-bar-wrap {
     display: flex;
     flex-direction: column;
@@ -476,6 +480,7 @@
 <div id="goat" class="tab">
   <p class="data-note" id="goat-note">Top 30 single-season ratings · end of playoffs, champions only</p>
   <div class="league-pills" id="goat-mode-pills"></div>
+  <div class="league-pills" id="goat-metric-pills"></div>
   <div class="league-pills" id="goat-conf-pills"></div>
   <div id="goat-table-wrap"><p class="loading">Loading GOAT table...</p></div>
   <div class="disrupted-note disrupted-note-bottom" id="goat-disrupted-note" style="display:none"></div>
@@ -491,6 +496,10 @@ let currentSeasonData = null;
 let currentSnapshot   = null;
 let goatDataRS        = null;
 let goatDataPS        = null;
+let goatDataRSO       = null;  // Offense, RS-end
+let goatDataRSD       = null;  // Defense, RS-end
+let goatDataPSO       = null;  // Offense, PS-end
+let goatDataPSD       = null;  // Defense, PS-end
 let teamsIndex        = null;
 let teamCache         = {};
 let nameToSlug        = {};  // canonical + historical name → slug, built from teamsIndex
@@ -502,6 +511,15 @@ let goatMode = 'ps';
 const GOAT_MODE_OPTIONS = [
   { value: 'rs', label: 'End of regular season' },
   { value: 'ps', label: 'End of playoffs' },
+];
+
+// GOAT metric: overall rating, or the offense / defense split. Labels match
+// the fleet (DILLON).
+let goatMetric = 'overall';
+const GOAT_METRIC_OPTIONS = [
+  { value: 'overall', label: 'Rating (overall)' },
+  { value: 'offense', label: 'Offense only' },
+  { value: 'defense', label: 'Defense only' },
 ];
 
 // Conference filter pillbox (shared across Standings / TS / GOAT)
@@ -712,6 +730,14 @@ function ratingBar(rating, scaleMax) {
   </div>`;
 }
 
+// Offense / defense cell: value above, rank below (plain number, no '#'). Both null-safe.
+function fmtOD(val, rank) {
+  if (val == null) return '-';
+  const v = val.toFixed(2);
+  if (rank == null) return v;
+  return `<div class="od-val">${v}</div><div class="od-rank">${rank}</div>`;
+}
+
 // ── Tab switching ────────────────────────────────────────────────────────────
 document.querySelectorAll('nav button').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -838,6 +864,8 @@ function renderStandings() {
       <td>${confBadge(t.conference, t.mls_cup_conf_finalist)}</td>
       <td style="font-variant-numeric:tabular-nums;white-space:nowrap">${fmtRecordStacked(t.regular_record, t.playoff_record)}</td>
       <td>${ratingBar(t.rating, _bs0)}</td>
+      <td class="rating-cell od-cell col-hide-mobile">${fmtOD(t.rating_o, t.rank_o)}</td>
+      <td class="rating-cell od-cell col-hide-mobile">${fmtOD(t.rating_d, t.rank_d)}</td>
       <td class="last-match-cell">${renderLastMatch(t.last_match, season, isStale)}</td>
       <td class="col-hide-mobile" style="font-size:11px;color:#888;white-space:nowrap">${t.last_match_date || ''}</td>
       <td class="col-hide-mobile" style="font-size:11px">${finishBadge(t)}</td>
@@ -865,6 +893,8 @@ function renderStandings() {
       <thead><tr>
         <th class="col-num">OVR #</th><th class="col-hide-mobile col-num">CONF #</th>
         <th>Team</th><th>Conf</th><th>${recordHeader}</th><th class="col-num">Rating</th>
+        <th class="col-hide-mobile col-od" title="Attacking strength: goals scored vs an average opponent. Sums with Defense to Rating.">OFF</th>
+        <th class="col-hide-mobile col-od" title="Defending strength: goals prevented vs an average opponent. Sums with Offense to Rating.">DEF</th>
         <th>Last Match</th>
         <th class="col-hide-mobile">Date</th>
         <th class="col-hide-mobile">Honors</th>
@@ -1022,6 +1052,8 @@ function renderTeamTable() {
     <td class="rank-cell">${g.rank != null ? g.rank : '-'}</td>
     <td class="rank-cell col-hide-mobile">${g.conf_rank != null ? g.conf_rank : '-'}</td>
     <td>${g.rank != null ? ratingBar(g.rating, _bs1) : '<span style="color:#bbb">-</span>'}</td>
+    <td class="rating-cell od-cell col-hide-mobile">${fmtOD(g.rating_o, g.rank_o)}</td>
+    <td class="rating-cell od-cell col-hide-mobile">${fmtOD(g.rating_d, g.rank_d)}</td>
     <td class="col-hide-mobile" style="font-size:11px">${confBadge(g.conference || data.conference, g.mls_cup_conf_finalist)}</td>
     <td class="col-hide-mobile" style="font-size:11px">${finishBadge(g)}</td>
   </tr>`;
@@ -1034,6 +1066,8 @@ function renderTeamTable() {
         <th>W-D-L (Pts)</th>
         <th class="col-num">OVR #</th><th class="col-hide-mobile col-num">CONF #</th>
         <th class="col-num">Rating</th>
+        <th class="col-hide-mobile col-od" title="Attacking strength: goals scored vs an average opponent. Sums with Defense to Rating.">OFF</th>
+        <th class="col-hide-mobile col-od" title="Defending strength: goals prevented vs an average opponent. Sums with Offense to Rating.">DEF</th>
         <th class="col-hide-mobile">Conf</th>
         <th class="col-hide-mobile">Honors</th>
       </tr></thead>
@@ -1286,12 +1320,20 @@ function buildTrophyPills() {
 // ── GOAT Table ────────────────────────────────────────────────────────────────
 async function loadGoat() {
   try {
-    const [r1, r2] = await Promise.all([
+    const [r1, r2, r3, r4, r5, r6] = await Promise.all([
       fetch(`${BASE}/goat_rs.json`),
       fetch(`${BASE}/goat_ps.json`),
+      fetch(`${BASE}/goat_rs_o.json`),
+      fetch(`${BASE}/goat_rs_d.json`),
+      fetch(`${BASE}/goat_ps_o.json`),
+      fetch(`${BASE}/goat_ps_d.json`),
     ]);
-    goatDataRS = await r1.json();
-    goatDataPS = await r2.json();
+    goatDataRS  = await r1.json();
+    goatDataPS  = await r2.json();
+    goatDataRSO = await r3.json();
+    goatDataRSD = await r4.json();
+    goatDataPSO = await r5.json();
+    goatDataPSD = await r6.json();
     renderGoat();
   } catch(e) {
     document.getElementById('goat-table-wrap').innerHTML =
@@ -1299,8 +1341,27 @@ async function loadGoat() {
   }
 }
 
+// Fixed Rating / OFF / DEF column set. The active metric (the pill selection)
+// renders the value+bar; the other two render the compact value.
+const GOAT_METRICS = [
+  { field: 'rating',   label: 'Rating', title: '' },
+  { field: 'rating_o', label: 'OFF',    title: 'Attacking strength: goals scored vs an average opponent. Sums with Defense to Rating.' },
+  { field: 'rating_d', label: 'DEF',    title: 'Defending strength: goals prevented vs an average opponent. Sums with Offense to Rating.' },
+];
+
+// {data, field} for the active mode (rs/ps) x metric (overall/offense/defense).
+function goatPick() {
+  const byMode = goatMode === 'rs'
+    ? { overall: goatDataRS, offense: goatDataRSO, defense: goatDataRSD }
+    : { overall: goatDataPS, offense: goatDataPSO, defense: goatDataPSD };
+  const field = goatMetric === 'offense' ? 'rating_o'
+              : goatMetric === 'defense' ? 'rating_d' : 'rating';
+  return { data: byMode[goatMetric], field };
+}
+
 function renderGoat() {
-  const data = goatMode === 'rs' ? goatDataRS : goatDataPS;
+  const pick = goatPick();
+  const data = pick.data;
   if (!data) return;
   const _gn = document.getElementById('goat-note');
   if (_gn) _gn.textContent = `Top ${data.length} single-season ratings · ` + (goatMode === 'rs' ? 'end of regular season, all teams' : 'end of playoffs, champions only');
@@ -1309,24 +1370,30 @@ function renderGoat() {
     : data.filter(t => t.conference === goatConf);
   updateDisruptedNote('goat-disrupted-note', teams.map(t => t.season));
 
-  const _bs2 = barScale(teams.map(t => t.rating));
+  const _bs2 = barScale(teams.map(t => t[pick.field]));
   const rows = teams.map(t => {
     const label = t.display_name || t.team;
     const slug = nameToSlug[t.team] || nameToSlug[label];
     const teamTd = slug
       ? `<td class="team-cell linked" data-team-slug="${slug}" data-season="${t.season}">${label}</td>`
       : `<td class="team-cell">${label}</td>`;
+    // Active metric gets the value+bar; the other two render the compact value.
+    const metricCells = GOAT_METRICS.map(m => m.field === pick.field
+      ? `<td class="od-cell">${ratingBar(t[m.field], _bs2)}</td>`
+      : `<td class="rating-cell od-cell col-hide-mobile">${fmtOD(t[m.field], null)}</td>`).join('');
     return `<tr>
       <td class="rank-cell">${t.rank}</td>
       <td class="season-cell linked" data-season-link="${t.season}" style="white-space:nowrap">${t.season}${seasonTag(t.season)}</td>
       ${teamTd}
       <td>${confBadge(t.conference, t.mls_cup_conf_finalist)}</td>
       <td style="font-variant-numeric:tabular-nums;white-space:nowrap" class="col-hide-mobile">${fmtRecordStacked(t.regular_record, t.playoff_record)}</td>
-      <td>${ratingBar(t.rating, _bs2)}</td>
+      ${metricCells}
       <td class="col-hide-mobile" style="font-size:11px">${finishBadge(t)}</td>
     </tr>`;
   }).join('');
 
+  const metricHeaders = GOAT_METRICS.map(m =>
+    `<th class="col-od${m.field === pick.field ? '' : ' col-hide-mobile'}"${m.title ? ` title="${m.title}"` : ''}>${m.label}</th>`).join('');
   document.getElementById('goat-table-wrap').innerHTML = `
     <table>
       <thead><tr>
@@ -1334,7 +1401,7 @@ function renderGoat() {
         <th style="text-align:center">Season</th>
         <th>Team</th><th>Conf</th>
         <th class="col-hide-mobile">W-D-L (Pts)</th>
-        <th class="col-num">Rating</th>
+        ${metricHeaders}
         <th class="col-hide-mobile">Honors</th>
       </tr></thead>
       <tbody>${rows}</tbody>
@@ -1381,6 +1448,25 @@ document.getElementById('season-select').style.display    = 'none';
       wrap.querySelectorAll('button').forEach(x => x.classList.remove('active'));
       b.classList.add('active');
       goatMode = o.value;
+      renderGoat();
+    });
+    wrap.appendChild(b);
+  });
+})();
+
+(function buildGoatMetricPills() {
+  const wrap = document.getElementById('goat-metric-pills');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  GOAT_METRIC_OPTIONS.forEach(o => {
+    const b = document.createElement('button');
+    b.textContent = o.label;
+    b.dataset.value = o.value;
+    if (o.value === goatMetric) b.classList.add('active');
+    b.addEventListener('click', () => {
+      wrap.querySelectorAll('button').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      goatMetric = o.value;
       renderGoat();
     });
     wrap.appendChild(b);
