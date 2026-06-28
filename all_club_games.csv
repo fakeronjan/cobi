@@ -9302,336 +9302,336 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2001-10-14,2001,MLS,True,San Jose Earthquakes,Miami Fusion,4,0,,,False,,False,,fbcsv-mls-2001-2001-10-14-San Jose Earthquakes-Miami Fusion,Playoff
 1996-10-20,1996,MLS,True,LA Galaxy,D.C. United,2,3,,,False,,True,Foxboro Stadium,wikipedia-1996-mls-cup,Final
 2001-10-21,2001,MLS,True,LA Galaxy,San Jose Earthquakes,1,2,,,False,,True,Crew Stadium,wikipedia-2001-mls-cup,Final
-2001-08-28,2001,MLS,True,Chicago Fire FC,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-2001-2001-08-28-Chicago Fire-Columbus Crew SC,Regular
-2001-08-31,2001,MLS,True,Columbus Crew,New England Revolution,4,1,,,False,,False,,fbcsv-mls-2001-2001-08-31-Columbus Crew SC-New England Revolution,Regular
-2001-09-07,2001,MLS,True,Chicago Fire FC,FC Dallas,2,2,,,False,,False,,fbcsv-mls-2001-2001-09-07-Chicago Fire-FC Dallas,Regular
-2001-09-08,2001,MLS,True,Tampa Bay Mutiny,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-2001-2001-09-08-Tampa Bay Mutiny-Columbus Crew SC,Regular
-2001-08-31,2001,MLS,True,Red Bull New York,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-2001-2001-08-31-Red Bull New York-Chicago Fire,Regular
-2001-09-20,2001,MLS,True,Chicago Fire FC,FC Dallas,2,0,,,False,,False,,fbcsv-mls-2001-2001-09-20-Chicago Fire-FC Dallas,Playoff
-2001-06-08,2001,MLS,True,Chicago Fire FC,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-2001-2001-06-08-Chicago Fire-Columbus Crew SC,Regular
-2001-05-25,2001,MLS,True,Columbus Crew,Colorado Rapids,3,3,,,False,,False,,fbcsv-mls-2001-2001-05-25-Columbus Crew SC-Colorado Rapids,Regular
-2001-06-01,2001,MLS,True,Columbus Crew,LA Galaxy,1,1,,,False,,False,,fbcsv-mls-2001-2001-06-01-Columbus Crew SC-LA Galaxy,Regular
-2001-05-29,2001,MLS,True,Chicago Fire FC,LA Galaxy,3,4,,,False,,False,,fbcsv-mls-2001-2001-05-29-Chicago Fire-LA Galaxy,Regular
-2001-06-01,2001,MLS,True,D.C. United,Chicago Fire FC,1,2,,,False,,False,,fbcsv-mls-2001-2001-06-01-D.C. United-Chicago Fire,Regular
-2001-07-31,2001,MLS,True,Columbus Crew,Chicago Fire FC,3,0,,,False,,False,,fbcsv-mls-2001-2001-07-31-Columbus Crew SC-Chicago Fire,Regular
-2001-07-20,2001,MLS,True,Columbus Crew,San Jose Earthquakes,2,1,,,False,,False,,fbcsv-mls-2001-2001-07-20-Columbus Crew SC-San Jose Earthquakes,Regular
-2001-07-20,2001,MLS,True,Chicago Fire FC,FC Dallas,2,1,,,False,,False,,fbcsv-mls-2001-2001-07-20-Chicago Fire-FC Dallas,Regular
-2001-07-17,2001,MLS,True,Columbus Crew,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-2001-2001-07-17-Columbus Crew SC-Red Bull New York,Regular
-2001-07-17,2001,MLS,True,Miami Fusion,Chicago Fire FC,2,1,,,False,,False,,fbcsv-mls-2001-2001-07-17-Miami Fusion-Chicago Fire,Regular
-2001-08-03,2001,MLS,True,Colorado Rapids,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2001-2001-08-03-Colorado Rapids-Chicago Fire,Regular
-2001-08-18,2001,MLS,True,Red Bull New York,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-2001-2001-08-18-Red Bull New York-Columbus Crew SC,Regular
-2001-10-10,2001,MLS,True,Chicago Fire FC,LA Galaxy,1,1,,,False,,False,,fbcsv-mls-2001-2001-10-10-Chicago Fire-LA Galaxy,Playoff
-2001-09-29,2001,MLS,True,Chicago Fire FC,FC Dallas,2,0,,,False,,False,,fbcsv-mls-2001-2001-09-29-Chicago Fire-FC Dallas,Playoff
-2001-09-26,2001,MLS,True,San Jose Earthquakes,Columbus Crew,3,0,,,False,,False,,fbcsv-mls-2001-2001-09-26-San Jose Earthquakes-Columbus Crew SC,Playoff
-2001-09-23,2001,MLS,True,FC Dallas,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2001-2001-09-23-FC Dallas-Chicago Fire,Playoff
-2001-09-22,2001,MLS,True,Columbus Crew,San Jose Earthquakes,1,3,,,False,,False,,fbcsv-mls-2001-2001-09-22-Columbus Crew SC-San Jose Earthquakes,Playoff
-2001-08-24,2001,MLS,True,D.C. United,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-2001-2001-08-24-D.C. United-Columbus Crew SC,Regular
-2001-05-25,2001,MLS,True,Chicago Fire FC,San Jose Earthquakes,1,1,,,False,,False,,fbcsv-mls-2001-2001-05-25-Chicago Fire-San Jose Earthquakes,Regular
-2001-06-15,2001,MLS,True,Columbus Crew,Tampa Bay Mutiny,6,1,,,False,,False,,fbcsv-mls-2001-2001-06-15-Columbus Crew SC-Tampa Bay Mutiny,Regular
-2001-06-22,2001,MLS,True,Chicago Fire FC,New England Revolution,1,1,,,False,,False,,fbcsv-mls-2001-2001-06-22-Chicago Fire-New England Revolution,Regular
-2001-06-29,2001,MLS,True,Chicago Fire FC,Red Bull New York,3,1,,,False,,False,,fbcsv-mls-2001-2001-06-29-Chicago Fire-Red Bull New York,Regular
-2001-06-22,2001,MLS,True,FC Dallas,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-2001-2001-06-22-FC Dallas-Columbus Crew SC,Regular
-2001-06-29,2001,MLS,True,Miami Fusion,Columbus Crew,4,3,,,False,,False,,fbcsv-mls-2001-2001-06-29-Miami Fusion-Columbus Crew SC,Regular
-2001-08-24,2001,MLS,True,LA Galaxy,Chicago Fire FC,1,3,,,False,,False,,fbcsv-mls-2001-2001-08-24-LA Galaxy-Chicago Fire,Regular
-1999-08-04,1999,MLS,True,Sporting Kansas City,Chicago Fire FC,1,2,,,False,,False,,fbcsv-mls-1999-1999-08-04-Sporting Kansas City-Chicago Fire,Regular
-1999-07-31,1999,MLS,True,Columbus Crew,Miami Fusion,4,0,,,False,,False,,fbcsv-mls-1999-1999-07-31-Columbus Crew SC-Miami Fusion,Regular
-1999-07-30,1999,MLS,True,Chicago Fire FC,LA Galaxy,0,1,,,False,,False,,fbcsv-mls-1999-1999-07-30-Chicago Fire-LA Galaxy,Regular
-2001-05-18,2001,MLS,True,Columbus Crew,D.C. United,2,1,,,False,,False,,fbcsv-mls-2001-2001-05-18-Columbus Crew SC-D.C. United,Regular
-2001-05-11,2001,MLS,True,New England Revolution,Chicago Fire FC,2,1,,,False,,False,,fbcsv-mls-2001-2001-05-11-New England Revolution-Chicago Fire,Regular
-2001-05-11,2001,MLS,True,FC Dallas,Columbus Crew,4,0,,,False,,False,,fbcsv-mls-2001-2001-05-11-FC Dallas-Columbus Crew SC,Regular
-2001-05-18,2001,MLS,True,Chicago Fire FC,Sporting Kansas City,2,0,,,False,,False,,fbcsv-mls-2001-2001-05-18-Chicago Fire-Sporting Kansas City,Regular
-2001-05-15,2001,MLS,True,New England Revolution,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-2001-2001-05-15-New England Revolution-Columbus Crew SC,Regular
-2001-07-13,2001,MLS,True,Chicago Fire FC,Colorado Rapids,1,0,,,False,,False,,fbcsv-mls-2001-2001-07-13-Chicago Fire-Colorado Rapids,Regular
-2001-07-06,2001,MLS,True,Tampa Bay Mutiny,Chicago Fire FC,2,3,,,False,,False,,fbcsv-mls-2001-2001-07-06-Tampa Bay Mutiny-Chicago Fire,Regular
-2001-07-03,2001,MLS,True,Sporting Kansas City,Chicago Fire FC,0,7,,,False,,False,,fbcsv-mls-2001-2001-07-03-Sporting Kansas City-Chicago Fire,Regular
-2001-07-03,2001,MLS,True,LA Galaxy,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-2001-2001-07-03-LA Galaxy-Columbus Crew SC,Regular
-2001-07-06,2001,MLS,True,Columbus Crew,FC Dallas,2,2,,,False,,False,,fbcsv-mls-2001-2001-07-06-Columbus Crew SC-FC Dallas,Regular
-2001-04-13,2001,MLS,True,Chicago Fire FC,D.C. United,2,0,,,False,,False,,fbcsv-mls-2001-2001-04-13-Chicago Fire-D.C. United,Regular
-2001-04-13,2001,MLS,True,Tampa Bay Mutiny,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-2001-2001-04-13-Tampa Bay Mutiny-Columbus Crew SC,Regular
-2001-04-20,2001,MLS,True,Columbus Crew,Sporting Kansas City,0,3,,,False,,False,,fbcsv-mls-2001-2001-04-20-Columbus Crew SC-Sporting Kansas City,Regular
-2001-04-20,2001,MLS,True,FC Dallas,Chicago Fire FC,3,2,,,False,,False,,fbcsv-mls-2001-2001-04-20-FC Dallas-Chicago Fire,Regular
-2001-04-06,2001,MLS,True,Columbus Crew,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2001-2001-04-06-Columbus Crew SC-Chicago Fire,Regular
-2000-07-03,2000,MLS,True,LA Galaxy,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-2000-2000-07-03-LA Galaxy-Columbus Crew SC,Regular
-2000-07-11,2000,MLS,True,Columbus Crew,New England Revolution,4,1,,,False,,False,,fbcsv-mls-2000-2000-07-11-Columbus Crew SC-New England Revolution,Regular
-2000-07-07,2000,MLS,True,Chicago Fire FC,Columbus Crew,3,1,,,False,,False,,fbcsv-mls-2000-2000-07-07-Chicago Fire-Columbus Crew SC,Regular
-2000-10-14,2000,MLS,True,Chicago Fire FC,Sporting Kansas City,0,1,,,False,,False,,fbcsv-mls-2000-2000-10-14-Chicago Fire-Sporting Kansas City,Playoff
-2000-07-14,2000,MLS,True,Chicago Fire FC,Tampa Bay Mutiny,0,0,,,False,,False,,fbcsv-mls-2000-2000-07-14-Chicago Fire-Tampa Bay Mutiny,Regular
-2001-05-04,2001,MLS,True,Columbus Crew,Miami Fusion,0,0,,,False,,False,,fbcsv-mls-2001-2001-05-04-Columbus Crew SC-Miami Fusion,Regular
-2000-09-01,2000,MLS,True,San Jose Earthquakes,Columbus Crew,3,0,,,False,,False,,fbcsv-mls-2000-2000-09-01-San Jose Earthquakes-Columbus Crew SC,Regular
-2000-08-29,2000,MLS,True,Columbus Crew,Tampa Bay Mutiny,3,4,,,False,,False,,fbcsv-mls-2000-2000-08-29-Columbus Crew SC-Tampa Bay Mutiny,Regular
-2000-08-29,2000,MLS,True,Chicago Fire FC,FC Dallas,4,0,,,False,,False,,fbcsv-mls-2000-2000-08-29-Chicago Fire-FC Dallas,Regular
-2000-08-25,2000,MLS,True,New England Revolution,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-2000-2000-08-25-New England Revolution-Columbus Crew SC,Regular
-2000-09-08,2000,MLS,True,Columbus Crew,Chicago Fire FC,2,3,,,False,,False,,fbcsv-mls-2000-2000-09-08-Columbus Crew SC-Chicago Fire,Regular
-2000-09-25,2000,MLS,True,Chicago Fire FC,Red Bull New York,3,0,,,False,,False,,fbcsv-mls-2000-2000-09-25-Chicago Fire-Red Bull New York,Playoff
-2000-08-25,2000,MLS,True,Tampa Bay Mutiny,Chicago Fire FC,3,3,,,False,,False,,fbcsv-mls-2000-2000-08-25-Tampa Bay Mutiny-Chicago Fire,Regular
-2001-05-04,2001,MLS,True,Chicago Fire FC,Tampa Bay Mutiny,2,0,,,False,,False,,fbcsv-mls-2001-2001-05-04-Chicago Fire-Tampa Bay Mutiny,Regular
-2001-04-27,2001,MLS,True,Tampa Bay Mutiny,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-2001-2001-04-27-Tampa Bay Mutiny-Chicago Fire,Regular
-2000-09-02,2000,MLS,True,Chicago Fire FC,Colorado Rapids,2,1,,,False,,False,,fbcsv-mls-2000-2000-09-02-Chicago Fire-Colorado Rapids,Regular
-2000-10-05,2000,MLS,True,Chicago Fire FC,Red Bull New York,3,2,,,False,,False,,fbcsv-mls-2000-2000-10-05-Chicago Fire-Red Bull New York,Playoff
-2000-09-29,2000,MLS,True,Red Bull New York,Chicago Fire FC,2,0,,,False,,False,,fbcsv-mls-2000-2000-09-29-Red Bull New York-Chicago Fire,Playoff
-2000-09-05,2000,MLS,True,Chicago Fire FC,Columbus Crew,3,1,,,False,,False,,fbcsv-mls-2000-2000-09-05-Chicago Fire-Columbus Crew SC,Regular
-2000-07-14,2000,MLS,True,Columbus Crew,Sporting Kansas City,2,0,,,False,,False,,fbcsv-mls-2000-2000-07-14-Columbus Crew SC-Sporting Kansas City,Regular
-2000-07-21,2000,MLS,True,Sporting Kansas City,Columbus Crew,3,1,,,False,,False,,fbcsv-mls-2000-2000-07-21-Sporting Kansas City-Columbus Crew SC,Regular
-2000-08-01,2000,MLS,True,San Jose Earthquakes,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-2000-2000-08-01-San Jose Earthquakes-Columbus Crew SC,Regular
-2000-08-01,2000,MLS,True,Tampa Bay Mutiny,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-2000-2000-08-01-Tampa Bay Mutiny-Chicago Fire,Regular
-2000-08-04,2000,MLS,True,New England Revolution,Columbus Crew,1,1,,,False,,False,,fbcsv-mls-2000-2000-08-04-New England Revolution-Columbus Crew SC,Regular
-2000-08-05,2000,MLS,True,Chicago Fire FC,Red Bull New York,3,1,,,False,,False,,fbcsv-mls-2000-2000-08-05-Chicago Fire-Red Bull New York,Regular
-2001-08-17,2001,MLS,True,San Jose Earthquakes,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-2001-2001-08-17-San Jose Earthquakes-Chicago Fire,Regular
-2001-08-03,2001,MLS,True,Sporting Kansas City,Columbus Crew,1,3,,,False,,False,,fbcsv-mls-2001-2001-08-03-Sporting Kansas City-Columbus Crew SC,Regular
-2001-08-14,2001,MLS,True,Columbus Crew,FC Dallas,3,0,,,False,,False,,fbcsv-mls-2001-2001-08-14-Columbus Crew SC-FC Dallas,Regular
-2001-08-10,2001,MLS,True,San Jose Earthquakes,Columbus Crew,2,2,,,False,,False,,fbcsv-mls-2001-2001-08-10-San Jose Earthquakes-Columbus Crew SC,Regular
-2001-08-10,2001,MLS,True,Chicago Fire FC,Tampa Bay Mutiny,3,1,,,False,,False,,fbcsv-mls-2001-2001-08-10-Chicago Fire-Tampa Bay Mutiny,Regular
-2001-08-14,2001,MLS,True,Chicago Fire FC,Miami Fusion,1,2,,,False,,False,,fbcsv-mls-2001-2001-08-14-Chicago Fire-Miami Fusion,Regular
-2000-07-03,2000,MLS,True,Colorado Rapids,Chicago Fire FC,2,1,,,False,,False,,fbcsv-mls-2000-2000-07-03-Colorado Rapids-Chicago Fire,Regular
-2000-06-27,2000,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,2,,,False,,False,,fbcsv-mls-2000-2000-06-27-Columbus Crew SC-Tampa Bay Mutiny,Regular
-2000-06-23,2000,MLS,True,San Jose Earthquakes,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2000-2000-06-23-San Jose Earthquakes-Chicago Fire,Regular
-2000-06-23,2000,MLS,True,Columbus Crew,New England Revolution,3,1,,,False,,False,,fbcsv-mls-2000-2000-06-23-Columbus Crew SC-New England Revolution,Regular
-2000-06-30,2000,MLS,True,Columbus Crew,San Jose Earthquakes,2,1,,,False,,False,,fbcsv-mls-2000-2000-06-30-Columbus Crew SC-San Jose Earthquakes,Regular
-2000-08-18,2000,MLS,True,Chicago Fire FC,LA Galaxy,2,1,,,False,,False,,fbcsv-mls-2000-2000-08-18-Chicago Fire-LA Galaxy,Regular
-2000-07-20,2000,MLS,True,Colorado Rapids,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2000-2000-07-20-Colorado Rapids-Chicago Fire,Regular
-2000-08-15,2000,MLS,True,FC Dallas,Chicago Fire FC,3,0,,,False,,False,,fbcsv-mls-2000-2000-08-15-FC Dallas-Chicago Fire,Regular
-2000-08-15,2000,MLS,True,Columbus Crew,Miami Fusion,2,0,,,False,,False,,fbcsv-mls-2000-2000-08-15-Columbus Crew SC-Miami Fusion,Regular
-1999-07-23,1999,MLS,True,Columbus Crew,FC Dallas,4,1,,,False,,False,,fbcsv-mls-1999-1999-07-23-Columbus Crew SC-FC Dallas,Regular
-1999-07-01,1999,MLS,True,Chicago Fire FC,FC Dallas,2,1,,,False,,False,,fbcsv-mls-1999-1999-07-01-Chicago Fire-FC Dallas,Regular
-2000-06-09,2000,MLS,True,Columbus Crew,FC Dallas,1,1,,,False,,False,,fbcsv-mls-2000-2000-06-09-Columbus Crew SC-FC Dallas,Regular
-2000-05-26,2000,MLS,True,Miami Fusion,Columbus Crew,2,4,,,False,,False,,fbcsv-mls-2000-2000-05-26-Miami Fusion-Columbus Crew SC,Regular
-2000-05-26,2000,MLS,True,Red Bull New York,Chicago Fire FC,4,1,,,False,,False,,fbcsv-mls-2000-2000-05-26-Red Bull New York-Chicago Fire,Regular
-2000-05-23,2000,MLS,True,Chicago Fire FC,FC Dallas,4,3,,,False,,False,,fbcsv-mls-2000-2000-05-23-Chicago Fire-FC Dallas,Regular
-1999-10-02,1999,MLS,True,Miami Fusion,Columbus Crew,4,1,,,False,,False,,fbcsv-mls-1999-1999-10-02-Miami Fusion-Columbus Crew SC,Regular
-1999-09-11,1999,MLS,True,Columbus Crew,Red Bull New York,1,2,,,False,,False,,fbcsv-mls-1999-1999-09-11-Columbus Crew SC-Red Bull New York,Regular
-1999-10-21,1999,MLS,True,Tampa Bay Mutiny,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1999-1999-10-21-Tampa Bay Mutiny-Columbus Crew SC,Playoff
-1999-09-25,1999,MLS,True,San Jose Earthquakes,Chicago Fire FC,2,0,,,False,,False,,fbcsv-mls-1999-1999-09-25-San Jose Earthquakes-Chicago Fire,Regular
-1999-10-16,1999,MLS,True,Columbus Crew,Tampa Bay Mutiny,2,0,,,False,,False,,fbcsv-mls-1999-1999-10-16-Columbus Crew SC-Tampa Bay Mutiny,Playoff
-1999-10-05,1999,MLS,True,Colorado Rapids,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-1999-1999-10-05-Colorado Rapids-Chicago Fire,Regular
-1999-10-15,1999,MLS,True,FC Dallas,Chicago Fire FC,2,1,,,False,,False,,fbcsv-mls-1999-1999-10-15-FC Dallas-Chicago Fire,Playoff
-1999-10-09,1999,MLS,True,Columbus Crew,Chicago Fire FC,2,3,,,False,,False,,fbcsv-mls-1999-1999-10-09-Columbus Crew SC-Chicago Fire,Regular
-2000-06-02,2000,MLS,True,Columbus Crew,D.C. United,1,1,,,False,,False,,fbcsv-mls-2000-2000-06-02-Columbus Crew SC-D.C. United,Regular
-2000-06-16,2000,MLS,True,Chicago Fire FC,D.C. United,3,2,,,False,,False,,fbcsv-mls-2000-2000-06-16-Chicago Fire-D.C. United,Regular
-2000-05-19,2000,MLS,True,Columbus Crew,FC Dallas,2,1,,,False,,False,,fbcsv-mls-2000-2000-05-19-Columbus Crew SC-FC Dallas,Regular
-2000-05-19,2000,MLS,True,Chicago Fire FC,New England Revolution,0,1,,,False,,False,,fbcsv-mls-2000-2000-05-19-Chicago Fire-New England Revolution,Regular
-2000-06-06,2000,MLS,True,FC Dallas,Columbus Crew,3,2,,,False,,False,,fbcsv-mls-2000-2000-06-06-FC Dallas-Columbus Crew SC,Regular
-2000-04-27,2000,MLS,True,Chicago Fire FC,Tampa Bay Mutiny,5,1,,,False,,False,,fbcsv-mls-2000-2000-04-27-Chicago Fire-Tampa Bay Mutiny,Regular
-2000-05-02,2000,MLS,True,Chicago Fire FC,Colorado Rapids,1,2,,,False,,False,,fbcsv-mls-2000-2000-05-02-Chicago Fire-Colorado Rapids,Regular
-2000-04-21,2000,MLS,True,New England Revolution,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2000-2000-04-21-New England Revolution-Chicago Fire,Regular
-2000-04-28,2000,MLS,True,FC Dallas,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-2000-2000-04-28-FC Dallas-Columbus Crew SC,Regular
-2000-06-03,2000,MLS,True,Chicago Fire FC,Sporting Kansas City,3,2,,,False,,False,,fbcsv-mls-2000-2000-06-03-Chicago Fire-Sporting Kansas City,Regular
-2000-06-06,2000,MLS,True,Chicago Fire FC,Miami Fusion,2,1,,,False,,False,,fbcsv-mls-2000-2000-06-06-Chicago Fire-Miami Fusion,Regular
-2000-06-16,2000,MLS,True,Colorado Rapids,Columbus Crew,0,0,,,False,,False,,fbcsv-mls-2000-2000-06-16-Colorado Rapids-Columbus Crew SC,Regular
-2000-06-09,2000,MLS,True,Miami Fusion,Chicago Fire FC,4,2,,,False,,False,,fbcsv-mls-2000-2000-06-09-Miami Fusion-Chicago Fire,Regular
-2000-03-17,2000,MLS,True,Tampa Bay Mutiny,Columbus Crew,5,1,,,False,,False,,fbcsv-mls-2000-2000-03-17-Tampa Bay Mutiny-Columbus Crew SC,Regular
-1999-10-30,1999,MLS,True,D.C. United,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1999-1999-10-30-D.C. United-Columbus Crew SC,Playoff
-1999-11-06,1999,MLS,True,Columbus Crew,D.C. United,5,1,,,False,,False,,fbcsv-mls-1999-1999-11-06-Columbus Crew SC-D.C. United,Playoff
-2000-03-24,2000,MLS,True,Columbus Crew,San Jose Earthquakes,2,1,,,False,,False,,fbcsv-mls-2000-2000-03-24-Columbus Crew SC-San Jose Earthquakes,Regular
-1999-11-12,1999,MLS,True,D.C. United,Columbus Crew,4,0,,,False,,False,,fbcsv-mls-1999-1999-11-12-D.C. United-Columbus Crew SC,Playoff
-1999-10-22,1999,MLS,True,Chicago Fire FC,FC Dallas,4,0,,,False,,False,,fbcsv-mls-1999-1999-10-22-Chicago Fire-FC Dallas,Playoff
-2000-03-31,2000,MLS,True,Columbus Crew,Chicago Fire FC,0,2,,,False,,False,,fbcsv-mls-2000-2000-03-31-Columbus Crew SC-Chicago Fire,Regular
-1999-09-22,1999,MLS,True,Chicago Fire FC,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1999-1999-09-22-Chicago Fire-Columbus Crew SC,Regular
-1999-09-25,1999,MLS,True,Columbus Crew,Miami Fusion,2,1,,,False,,False,,fbcsv-mls-1999-1999-09-25-Columbus Crew SC-Miami Fusion,Regular
-1999-09-18,1999,MLS,True,Chicago Fire FC,Tampa Bay Mutiny,2,1,,,False,,False,,fbcsv-mls-1999-1999-09-18-Chicago Fire-Tampa Bay Mutiny,Regular
-1999-09-17,1999,MLS,True,New England Revolution,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-1999-1999-09-17-New England Revolution-Columbus Crew SC,Regular
-1999-10-26,1999,MLS,True,FC Dallas,Chicago Fire FC,3,2,,,False,,False,,fbcsv-mls-1999-1999-10-26-FC Dallas-Chicago Fire,Playoff
-2000-03-17,2000,MLS,True,FC Dallas,Chicago Fire FC,4,2,,,False,,False,,fbcsv-mls-2000-2000-03-17-FC Dallas-Chicago Fire,Regular
-2000-04-07,2000,MLS,True,Columbus Crew,LA Galaxy,2,2,,,False,,False,,fbcsv-mls-2000-2000-04-07-Columbus Crew SC-LA Galaxy,Regular
-2000-03-24,2000,MLS,True,Sporting Kansas City,Chicago Fire FC,4,3,,,False,,False,,fbcsv-mls-2000-2000-03-24-Sporting Kansas City-Chicago Fire,Regular
-2000-04-14,2000,MLS,True,Chicago Fire FC,Miami Fusion,1,0,,,False,,False,,fbcsv-mls-2000-2000-04-14-Chicago Fire-Miami Fusion,Regular
-2000-04-07,2000,MLS,True,D.C. United,Chicago Fire FC,3,2,,,False,,False,,fbcsv-mls-2000-2000-04-07-D.C. United-Chicago Fire,Regular
-2000-04-21,2000,MLS,True,Columbus Crew,Colorado Rapids,2,3,,,False,,False,,fbcsv-mls-2000-2000-04-21-Columbus Crew SC-Colorado Rapids,Regular
-1999-08-13,1999,MLS,True,D.C. United,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1999-1999-08-13-D.C. United-Columbus Crew SC,Regular
-1999-08-17,1999,MLS,True,Red Bull New York,Columbus Crew,2,4,,,False,,False,,fbcsv-mls-1999-1999-08-17-Red Bull New York-Columbus Crew SC,Regular
-1999-08-14,1999,MLS,True,Chicago Fire FC,Miami Fusion,1,2,,,False,,False,,fbcsv-mls-1999-1999-08-14-Chicago Fire-Miami Fusion,Regular
-1999-08-21,1999,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,2,,,False,,False,,fbcsv-mls-1999-1999-08-21-Columbus Crew SC-Tampa Bay Mutiny,Regular
-1999-05-07,1999,MLS,True,Tampa Bay Mutiny,Chicago Fire FC,2,1,,,False,,False,,fbcsv-mls-1999-1999-05-07-Tampa Bay Mutiny-Chicago Fire,Regular
-1999-05-21,1999,MLS,True,Columbus Crew,Tampa Bay Mutiny,0,1,,,False,,False,,fbcsv-mls-1999-1999-05-21-Columbus Crew SC-Tampa Bay Mutiny,Regular
-1999-05-21,1999,MLS,True,Chicago Fire FC,Sporting Kansas City,3,1,,,False,,False,,fbcsv-mls-1999-1999-05-21-Chicago Fire-Sporting Kansas City,Regular
-1999-05-15,1999,MLS,True,Chicago Fire FC,Colorado Rapids,0,1,,,False,,False,,fbcsv-mls-1999-1999-05-15-Chicago Fire-Colorado Rapids,Regular
-1999-05-14,1999,MLS,True,Columbus Crew,New England Revolution,2,0,,,False,,False,,fbcsv-mls-1999-1999-05-14-Columbus Crew SC-New England Revolution,Regular
-1999-05-08,1999,MLS,True,San Jose Earthquakes,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1999-1999-05-08-San Jose Earthquakes-Columbus Crew SC,Regular
-1999-08-21,1999,MLS,True,FC Dallas,Chicago Fire FC,4,3,,,False,,False,,fbcsv-mls-1999-1999-08-21-FC Dallas-Chicago Fire,Regular
-1999-08-24,1999,MLS,True,Chicago Fire FC,Sporting Kansas City,2,0,,,False,,False,,fbcsv-mls-1999-1999-08-24-Chicago Fire-Sporting Kansas City,Regular
-1999-07-09,1999,MLS,True,Miami Fusion,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1999-1999-07-09-Miami Fusion-Columbus Crew SC,Regular
-1999-07-09,1999,MLS,True,Chicago Fire FC,Red Bull New York,2,0,,,False,,False,,fbcsv-mls-1999-1999-07-09-Chicago Fire-Red Bull New York,Regular
-1999-08-07,1999,MLS,True,Chicago Fire FC,Colorado Rapids,5,0,,,False,,False,,fbcsv-mls-1999-1999-08-07-Chicago Fire-Colorado Rapids,Regular
-1999-07-22,1999,MLS,True,Chicago Fire FC,San Jose Earthquakes,2,3,,,False,,False,,fbcsv-mls-1999-1999-07-22-Chicago Fire-San Jose Earthquakes,Regular
-1999-07-06,1999,MLS,True,Columbus Crew,D.C. United,1,2,,,False,,False,,fbcsv-mls-1999-1999-07-06-Columbus Crew SC-D.C. United,Regular
-1999-07-03,1999,MLS,True,FC Dallas,Chicago Fire FC,1,2,,,False,,False,,fbcsv-mls-1999-1999-07-03-FC Dallas-Chicago Fire,Regular
-1999-07-03,1999,MLS,True,Colorado Rapids,Columbus Crew,0,3,,,False,,False,,fbcsv-mls-1999-1999-07-03-Colorado Rapids-Columbus Crew SC,Regular
-1999-08-07,1999,MLS,True,Columbus Crew,Sporting Kansas City,2,1,,,False,,False,,fbcsv-mls-1999-1999-08-07-Columbus Crew SC-Sporting Kansas City,Regular
-1999-09-03,1999,MLS,True,Red Bull New York,Chicago Fire FC,1,2,,,False,,False,,fbcsv-mls-1999-1999-09-03-Red Bull New York-Chicago Fire,Regular
-1999-09-03,1999,MLS,True,Columbus Crew,Colorado Rapids,2,1,,,False,,False,,fbcsv-mls-1999-1999-09-03-Columbus Crew SC-Colorado Rapids,Regular
-1999-08-27,1999,MLS,True,Chicago Fire FC,New England Revolution,2,1,,,False,,False,,fbcsv-mls-1999-1999-08-27-Chicago Fire-New England Revolution,Regular
-1999-08-26,1999,MLS,True,Tampa Bay Mutiny,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1999-1999-08-26-Tampa Bay Mutiny-Columbus Crew SC,Regular
-1999-06-29,1999,MLS,True,Columbus Crew,San Jose Earthquakes,4,3,,,False,,False,,fbcsv-mls-1999-1999-06-29-Columbus Crew SC-San Jose Earthquakes,Regular
-2000-09-21,2000,MLS,True,Chicago Fire FC,New England Revolution,6,0,,,False,,False,,fbcsv-mls-2000-2000-09-21-Chicago Fire-New England Revolution,Playoff
-2000-06-20,2000,MLS,True,LA Galaxy,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2000-2000-06-20-LA Galaxy-Chicago Fire,Regular
-1999-09-10,1999,MLS,True,LA Galaxy,Chicago Fire FC,1,0,,,False,,False,,fbcsv-mls-1999-1999-09-10-LA Galaxy-Chicago Fire,Regular
-1999-05-28,1999,MLS,True,Columbus Crew,LA Galaxy,2,1,,,False,,False,,fbcsv-mls-1999-1999-05-28-Columbus Crew SC-LA Galaxy,Regular
-1999-05-28,1999,MLS,True,D.C. United,Chicago Fire FC,3,1,,,False,,False,,fbcsv-mls-1999-1999-05-28-D.C. United-Chicago Fire,Regular
-1999-06-04,1999,MLS,True,D.C. United,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-1999-1999-06-04-D.C. United-Columbus Crew SC,Regular
-1999-06-04,1999,MLS,True,New England Revolution,Chicago Fire FC,2,0,,,False,,False,,fbcsv-mls-1999-1999-06-04-New England Revolution-Chicago Fire,Regular
-2000-05-05,2000,MLS,True,Miami Fusion,Chicago Fire FC,0,3,,,False,,False,,fbcsv-mls-2000-2000-05-05-Miami Fusion-Chicago Fire,Regular
-2000-04-14,2000,MLS,True,Red Bull New York,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-2000-2000-04-14-Red Bull New York-Columbus Crew SC,Regular
-2000-05-02,2000,MLS,True,D.C. United,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-2000-2000-05-02-D.C. United-Columbus Crew SC,Regular
-2000-05-05,2000,MLS,True,Columbus Crew,Red Bull New York,0,2,,,False,,False,,fbcsv-mls-2000-2000-05-05-Columbus Crew SC-Red Bull New York,Regular
-2000-05-12,2000,MLS,True,Tampa Bay Mutiny,Columbus Crew,3,1,,,False,,False,,fbcsv-mls-2000-2000-05-12-Tampa Bay Mutiny-Columbus Crew SC,Regular
-2000-05-12,2000,MLS,True,Chicago Fire FC,San Jose Earthquakes,4,1,,,False,,False,,fbcsv-mls-2000-2000-05-12-Chicago Fire-San Jose Earthquakes,Regular
-1999-06-11,1999,MLS,True,LA Galaxy,Chicago Fire FC,2,1,,,False,,False,,fbcsv-mls-1999-1999-06-11-LA Galaxy-Chicago Fire,Regular
-1999-04-27,1999,MLS,True,Sporting Kansas City,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-1999-1999-04-27-Sporting Kansas City-Columbus Crew SC,Regular
-1999-04-30,1999,MLS,True,Chicago Fire FC,D.C. United,3,2,,,False,,False,,fbcsv-mls-1999-1999-04-30-Chicago Fire-D.C. United,Regular
-1999-04-16,1999,MLS,True,New England Revolution,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-1999-1999-04-16-New England Revolution-Columbus Crew SC,Regular
-1999-04-23,1999,MLS,True,FC Dallas,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1999-1999-04-23-FC Dallas-Columbus Crew SC,Regular
-1999-06-15,1999,MLS,True,Columbus Crew,New England Revolution,2,1,,,False,,False,,fbcsv-mls-1999-1999-06-15-Columbus Crew SC-New England Revolution,Regular
-1999-06-12,1999,MLS,True,Columbus Crew,D.C. United,1,2,,,False,,False,,fbcsv-mls-1999-1999-06-12-Columbus Crew SC-D.C. United,Regular
-1999-06-25,1999,MLS,True,Columbus Crew,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1999-1999-06-25-Columbus Crew SC-Red Bull New York,Regular
-1999-06-25,1999,MLS,True,Colorado Rapids,Chicago Fire FC,2,0,,,False,,False,,fbcsv-mls-1999-1999-06-25-Colorado Rapids-Chicago Fire,Regular
-1999-06-18,1999,MLS,True,Chicago Fire FC,San Jose Earthquakes,2,0,,,False,,False,,fbcsv-mls-1999-1999-06-18-Chicago Fire-San Jose Earthquakes,Regular
-1999-04-16,1999,MLS,True,Chicago Fire FC,LA Galaxy,1,0,,,False,,False,,fbcsv-mls-1999-1999-04-16-Chicago Fire-LA Galaxy,Regular
-1999-03-19,1999,MLS,True,San Jose Earthquakes,Chicago Fire FC,1,3,,,False,,False,,fbcsv-mls-1999-1999-03-19-San Jose Earthquakes-Chicago Fire,Regular
-1999-04-09,1999,MLS,True,Chicago Fire FC,FC Dallas,0,1,,,False,,False,,fbcsv-mls-1999-1999-04-09-Chicago Fire-FC Dallas,Regular
-1999-04-07,1999,MLS,True,LA Galaxy,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1999-1999-04-07-LA Galaxy-Columbus Crew SC,Regular
-1999-04-02,1999,MLS,True,Tampa Bay Mutiny,Columbus Crew,2,3,,,False,,False,,fbcsv-mls-1999-1999-04-02-Tampa Bay Mutiny-Columbus Crew SC,Regular
-1998-09-26,1998,MLS,True,D.C. United,Columbus Crew,3,2,,,False,,False,,fbcsv-mls-1998-1998-09-26-D.C. United-Columbus Crew SC,Regular
-1999-03-26,1999,MLS,True,Sporting Kansas City,Chicago Fire FC,0,3,,,False,,False,,fbcsv-mls-1999-1999-03-26-Sporting Kansas City-Chicago Fire,Regular
-1999-04-02,1999,MLS,True,Miami Fusion,Chicago Fire FC,1,4,,,False,,False,,fbcsv-mls-1999-1999-04-02-Miami Fusion-Chicago Fire,Regular
-1998-10-24,1998,MLS,True,Chicago Fire FC,D.C. United,2,0,,,False,,False,,fbcsv-mls-1998-1998-10-24-Chicago Fire-D.C. United,Playoff
-1998-10-17,1998,MLS,True,Columbus Crew,D.C. United,4,2,,,False,,False,,fbcsv-mls-1998-1998-10-17-Columbus Crew SC-D.C. United,Playoff
-1998-09-26,1998,MLS,True,LA Galaxy,Chicago Fire FC,1,0,,,False,,False,,fbcsv-mls-1998-1998-09-26-LA Galaxy-Chicago Fire,Regular
-1998-10-20,1998,MLS,True,D.C. United,Columbus Crew,3,0,,,False,,False,,fbcsv-mls-1998-1998-10-20-D.C. United-Columbus Crew SC,Playoff
-1998-09-29,1998,MLS,True,Columbus Crew,Red Bull New York,5,3,,,False,,False,,fbcsv-mls-1998-1998-09-29-Columbus Crew SC-Red Bull New York,Playoff
-1998-09-30,1998,MLS,True,Chicago Fire FC,Colorado Rapids,2,1,,,False,,False,,fbcsv-mls-1998-1998-09-30-Chicago Fire-Colorado Rapids,Playoff
-1998-10-04,1998,MLS,True,Colorado Rapids,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-1998-1998-10-04-Colorado Rapids-Chicago Fire,Playoff
-1998-10-09,1998,MLS,True,LA Galaxy,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-1998-1998-10-09-LA Galaxy-Chicago Fire,Playoff
-1998-10-10,1998,MLS,True,D.C. United,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1998-1998-10-10-D.C. United-Columbus Crew SC,Playoff
-1998-09-08,1998,MLS,True,Columbus Crew,Miami Fusion,1,0,,,False,,False,,fbcsv-mls-1998-1998-09-08-Columbus Crew SC-Miami Fusion,Regular
-1998-09-11,1998,MLS,True,New England Revolution,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1998-1998-09-11-New England Revolution-Columbus Crew SC,Regular
-1998-09-22,1998,MLS,True,Chicago Fire FC,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1998-1998-09-22-Chicago Fire-New England Revolution,Regular
-1998-09-09,1998,MLS,True,FC Dallas,Chicago Fire FC,3,2,,,False,,False,,fbcsv-mls-1998-1998-09-09-FC Dallas-Chicago Fire,Regular
-1998-09-16,1998,MLS,True,Chicago Fire FC,Sporting Kansas City,1,0,,,False,,False,,fbcsv-mls-1998-1998-09-16-Chicago Fire-Sporting Kansas City,Regular
-1998-09-15,1998,MLS,True,Columbus Crew,Colorado Rapids,2,4,,,False,,False,,fbcsv-mls-1998-1998-09-15-Columbus Crew SC-Colorado Rapids,Regular
-1998-09-18,1998,MLS,True,Colorado Rapids,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1998-1998-09-18-Colorado Rapids-Columbus Crew SC,Regular
-1999-03-27,1999,MLS,True,Red Bull New York,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-1999-1999-03-27-Red Bull New York-Columbus Crew SC,Regular
-1998-09-23,1998,MLS,True,Columbus Crew,Tampa Bay Mutiny,3,4,,,False,,False,,fbcsv-mls-1998-1998-09-23-Columbus Crew SC-Tampa Bay Mutiny,Regular
-1998-09-05,1998,MLS,True,Columbus Crew,Red Bull New York,4,3,,,False,,False,,fbcsv-mls-1998-1998-09-05-Columbus Crew SC-Red Bull New York,Regular
-1998-09-01,1998,MLS,True,Chicago Fire FC,Miami Fusion,3,2,,,False,,False,,fbcsv-mls-1998-1998-09-01-Chicago Fire-Miami Fusion,Regular
-1998-08-28,1998,MLS,True,Sporting Kansas City,Chicago Fire FC,2,3,,,False,,False,,fbcsv-mls-1998-1998-08-28-Sporting Kansas City-Chicago Fire,Regular
-1998-08-28,1998,MLS,True,LA Galaxy,Columbus Crew,0,3,,,False,,False,,fbcsv-mls-1998-1998-08-28-LA Galaxy-Columbus Crew SC,Regular
-1998-07-03,1998,MLS,True,FC Dallas,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-1998-1998-07-03-FC Dallas-Chicago Fire,Regular
-1998-08-07,1998,MLS,True,Chicago Fire FC,LA Galaxy,1,2,,,False,,False,,fbcsv-mls-1998-1998-08-07-Chicago Fire-LA Galaxy,Regular
-1998-08-21,1998,MLS,True,Columbus Crew,Tampa Bay Mutiny,3,1,,,False,,False,,fbcsv-mls-1998-1998-08-21-Columbus Crew SC-Tampa Bay Mutiny,Regular
-1998-08-20,1998,MLS,True,Colorado Rapids,Chicago Fire FC,0,2,,,False,,False,,fbcsv-mls-1998-1998-08-20-Colorado Rapids-Chicago Fire,Regular
-1998-08-15,1998,MLS,True,Columbus Crew,Sporting Kansas City,5,3,,,False,,False,,fbcsv-mls-1998-1998-08-15-Columbus Crew SC-Sporting Kansas City,Regular
-1998-08-11,1998,MLS,True,Red Bull New York,Columbus Crew,3,1,,,False,,False,,fbcsv-mls-1998-1998-08-11-Red Bull New York-Columbus Crew SC,Regular
-1998-07-28,1998,MLS,True,Miami Fusion,Columbus Crew,3,2,,,False,,False,,fbcsv-mls-1998-1998-07-28-Miami Fusion-Columbus Crew SC,Regular
+1996-04-13,1996,MLS,True,Columbus Crew,D.C. United,4,0,,,False,,False,,fbcsv-mls-1996-1996-04-13-Columbus Crew SC-D.C. United,Regular
+1996-04-20,1996,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,2,,,False,,False,,fbcsv-mls-1996-1996-04-20-Columbus Crew SC-Tampa Bay Mutiny,Regular
+1996-04-27,1996,MLS,True,Red Bull New York,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1996-1996-04-27-Red Bull New York-Columbus Crew SC,Regular
+1996-05-02,1996,MLS,True,Sporting Kansas City,Columbus Crew,6,4,,,False,,False,,fbcsv-mls-1996-1996-05-02-Sporting Kansas City-Columbus Crew SC,Regular
+1996-05-05,1996,MLS,True,FC Dallas,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-1996-1996-05-05-FC Dallas-Columbus Crew SC,Regular
+1996-05-11,1996,MLS,True,Columbus Crew,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-05-11-Columbus Crew SC-New England Revolution,Regular
+1996-05-15,1996,MLS,True,D.C. United,Columbus Crew,5,2,,,False,,False,,fbcsv-mls-1996-1996-05-15-D.C. United-Columbus Crew SC,Regular
+1996-05-19,1996,MLS,True,Columbus Crew,Colorado Rapids,2,4,,,False,,False,,fbcsv-mls-1996-1996-05-19-Columbus Crew SC-Colorado Rapids,Regular
+1996-05-26,1996,MLS,True,LA Galaxy,Columbus Crew,3,2,,,False,,False,,fbcsv-mls-1996-1996-05-26-LA Galaxy-Columbus Crew SC,Regular
+1996-06-01,1996,MLS,True,San Jose Earthquakes,Columbus Crew,3,2,,,False,,False,,fbcsv-mls-1996-1996-06-01-San Jose Earthquakes-Columbus Crew SC,Regular
+1996-06-08,1996,MLS,True,Columbus Crew,Sporting Kansas City,3,4,,,False,,False,,fbcsv-mls-1996-1996-06-08-Columbus Crew SC-Sporting Kansas City,Regular
+1996-06-19,1996,MLS,True,Columbus Crew,Colorado Rapids,2,3,,,False,,False,,fbcsv-mls-1996-1996-06-19-Columbus Crew SC-Colorado Rapids,Regular
+1996-06-22,1996,MLS,True,Tampa Bay Mutiny,Columbus Crew,3,4,,,False,,False,,fbcsv-mls-1996-1996-06-22-Tampa Bay Mutiny-Columbus Crew SC,Regular
+1996-06-27,1996,MLS,True,New England Revolution,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1996-1996-06-27-New England Revolution-Columbus Crew SC,Regular
+1996-06-30,1996,MLS,True,Columbus Crew,Red Bull New York,0,4,,,False,,False,,fbcsv-mls-1996-1996-06-30-Columbus Crew SC-Red Bull New York,Regular
+1996-07-04,1996,MLS,True,Tampa Bay Mutiny,Columbus Crew,4,1,,,False,,False,,fbcsv-mls-1996-1996-07-04-Tampa Bay Mutiny-Columbus Crew SC,Regular
+1996-07-07,1996,MLS,True,Colorado Rapids,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1996-1996-07-07-Colorado Rapids-Columbus Crew SC,Regular
+1996-07-11,1996,MLS,True,Columbus Crew,New England Revolution,1,2,,,False,,False,,fbcsv-mls-1996-1996-07-11-Columbus Crew SC-New England Revolution,Regular
+1996-07-20,1996,MLS,True,Columbus Crew,San Jose Earthquakes,3,4,,,False,,False,,fbcsv-mls-1996-1996-07-20-Columbus Crew SC-San Jose Earthquakes,Regular
+1996-07-25,1996,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,0,,,False,,False,,fbcsv-mls-1996-1996-07-25-Columbus Crew SC-Tampa Bay Mutiny,Regular
+1996-07-28,1996,MLS,True,D.C. United,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1996-1996-07-28-D.C. United-Columbus Crew SC,Regular
+1996-07-31,1996,MLS,True,Columbus Crew,FC Dallas,1,2,,,False,,False,,fbcsv-mls-1996-1996-07-31-Columbus Crew SC-FC Dallas,Regular
+1996-08-04,1996,MLS,True,LA Galaxy,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1996-1996-08-04-LA Galaxy-Columbus Crew SC,Regular
+1996-08-10,1996,MLS,True,Columbus Crew,D.C. United,3,2,,,False,,False,,fbcsv-mls-1996-1996-08-10-Columbus Crew SC-D.C. United,Regular
+1996-08-14,1996,MLS,True,FC Dallas,Columbus Crew,2,3,,,False,,False,,fbcsv-mls-1996-1996-08-14-FC Dallas-Columbus Crew SC,Regular
+1996-08-18,1996,MLS,True,Columbus Crew,San Jose Earthquakes,2,0,,,False,,False,,fbcsv-mls-1996-1996-08-18-Columbus Crew SC-San Jose Earthquakes,Regular
+1996-08-24,1996,MLS,True,Columbus Crew,Sporting Kansas City,2,1,,,False,,False,,fbcsv-mls-1996-1996-08-24-Columbus Crew SC-Sporting Kansas City,Regular
+1996-08-28,1996,MLS,True,Columbus Crew,LA Galaxy,2,0,,,False,,False,,fbcsv-mls-1996-1996-08-28-Columbus Crew SC-LA Galaxy,Regular
+1996-09-07,1996,MLS,True,Sporting Kansas City,Columbus Crew,1,5,,,False,,False,,fbcsv-mls-1996-1996-09-07-Sporting Kansas City-Columbus Crew SC,Regular
+1996-09-15,1996,MLS,True,Columbus Crew,Red Bull New York,2,0,,,False,,False,,fbcsv-mls-1996-1996-09-15-Columbus Crew SC-Red Bull New York,Regular
+1996-09-18,1996,MLS,True,Red Bull New York,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-1996-1996-09-18-Red Bull New York-Columbus Crew SC,Regular
+1996-09-21,1996,MLS,True,New England Revolution,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-1996-1996-09-21-New England Revolution-Columbus Crew SC,Regular
+1996-09-25,1996,MLS,True,Columbus Crew,Tampa Bay Mutiny,0,2,,,False,,False,,fbcsv-mls-1996-1996-09-25-Columbus Crew SC-Tampa Bay Mutiny,Playoff
+1996-09-28,1996,MLS,True,Tampa Bay Mutiny,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1996-1996-09-28-Tampa Bay Mutiny-Columbus Crew SC,Playoff
+1996-10-02,1996,MLS,True,Tampa Bay Mutiny,Columbus Crew,4,1,,,False,,False,,fbcsv-mls-1996-1996-10-02-Tampa Bay Mutiny-Columbus Crew SC,Playoff
+1997-03-29,1997,MLS,True,Columbus Crew,Colorado Rapids,2,1,,,False,,False,,fbcsv-mls-1997-1997-03-29-Columbus Crew SC-Colorado Rapids,Regular
+1997-04-06,1997,MLS,True,Colorado Rapids,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1997-1997-04-06-Colorado Rapids-Columbus Crew SC,Regular
+1997-04-13,1997,MLS,True,Columbus Crew,FC Dallas,2,1,,,False,,False,,fbcsv-mls-1997-1997-04-13-Columbus Crew SC-FC Dallas,Regular
+1997-04-19,1997,MLS,True,Columbus Crew,San Jose Earthquakes,2,1,,,False,,False,,fbcsv-mls-1997-1997-04-19-Columbus Crew SC-San Jose Earthquakes,Regular
+1997-04-26,1997,MLS,True,Red Bull New York,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1997-1997-04-26-Red Bull New York-Columbus Crew SC,Regular
+1997-05-03,1997,MLS,True,San Jose Earthquakes,Columbus Crew,1,3,,,False,,False,,fbcsv-mls-1997-1997-05-03-San Jose Earthquakes-Columbus Crew SC,Regular
+1997-05-09,1997,MLS,True,New England Revolution,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1997-1997-05-09-New England Revolution-Columbus Crew SC,Regular
+1997-05-11,1997,MLS,True,Columbus Crew,Red Bull New York,3,0,,,False,,False,,fbcsv-mls-1997-1997-05-11-Columbus Crew SC-Red Bull New York,Regular
+1997-05-17,1997,MLS,True,Colorado Rapids,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1997-1997-05-17-Colorado Rapids-Columbus Crew SC,Regular
+1997-05-22,1997,MLS,True,Sporting Kansas City,Columbus Crew,3,1,,,False,,False,,fbcsv-mls-1997-1997-05-22-Sporting Kansas City-Columbus Crew SC,Regular
+1997-05-25,1997,MLS,True,LA Galaxy,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-1997-1997-05-25-LA Galaxy-Columbus Crew SC,Regular
+1997-05-29,1997,MLS,True,Columbus Crew,D.C. United,2,3,,,False,,False,,fbcsv-mls-1997-1997-05-29-Columbus Crew SC-D.C. United,Regular
+1997-06-07,1997,MLS,True,Tampa Bay Mutiny,Columbus Crew,3,1,,,False,,False,,fbcsv-mls-1997-1997-06-07-Tampa Bay Mutiny-Columbus Crew SC,Regular
+1997-06-15,1997,MLS,True,Columbus Crew,Colorado Rapids,0,2,,,False,,False,,fbcsv-mls-1997-1997-06-15-Columbus Crew SC-Colorado Rapids,Regular
+1997-06-21,1997,MLS,True,Columbus Crew,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1997-1997-06-21-Columbus Crew SC-Red Bull New York,Regular
+1997-07-04,1997,MLS,True,Columbus Crew,Sporting Kansas City,1,2,,,False,,False,,fbcsv-mls-1997-1997-07-04-Columbus Crew SC-Sporting Kansas City,Regular
+1997-07-13,1997,MLS,True,Columbus Crew,FC Dallas,1,2,,,False,,False,,fbcsv-mls-1997-1997-07-13-Columbus Crew SC-FC Dallas,Regular
+1997-07-20,1997,MLS,True,Columbus Crew,New England Revolution,1,0,,,False,,False,,fbcsv-mls-1997-1997-07-20-Columbus Crew SC-New England Revolution,Regular
+1997-07-25,1997,MLS,True,D.C. United,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1997-1997-07-25-D.C. United-Columbus Crew SC,Regular
+1997-07-27,1997,MLS,True,Columbus Crew,Tampa Bay Mutiny,0,1,,,False,,False,,fbcsv-mls-1997-1997-07-27-Columbus Crew SC-Tampa Bay Mutiny,Regular
+1997-07-30,1997,MLS,True,D.C. United,Columbus Crew,4,2,,,False,,False,,fbcsv-mls-1997-1997-07-30-D.C. United-Columbus Crew SC,Regular
 1997-08-02,1997,MLS,True,LA Galaxy,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1997-1997-08-02-LA Galaxy-Columbus Crew SC,Regular
-1998-07-24,1998,MLS,True,Columbus Crew,FC Dallas,1,2,,,False,,False,,fbcsv-mls-1998-1998-07-24-Columbus Crew SC-FC Dallas,Regular
-1998-07-24,1998,MLS,True,Red Bull New York,Chicago Fire FC,3,2,,,False,,False,,fbcsv-mls-1998-1998-07-24-Red Bull New York-Chicago Fire,Regular
-1998-07-28,1998,MLS,True,San Jose Earthquakes,Chicago Fire FC,3,0,,,False,,False,,fbcsv-mls-1998-1998-07-28-San Jose Earthquakes-Chicago Fire,Regular
-1998-08-07,1998,MLS,True,Columbus Crew,New England Revolution,6,1,,,False,,False,,fbcsv-mls-1998-1998-08-07-Columbus Crew SC-New England Revolution,Regular
-1998-07-02,1998,MLS,True,San Jose Earthquakes,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1998-1998-07-02-San Jose Earthquakes-Columbus Crew SC,Regular
-1998-07-17,1998,MLS,True,D.C. United,Chicago Fire FC,4,1,,,False,,False,,fbcsv-mls-1998-1998-07-17-D.C. United-Chicago Fire,Regular
-1998-06-19,1998,MLS,True,Columbus Crew,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1998-1998-06-19-Columbus Crew SC-Red Bull New York,Regular
-1998-07-08,1998,MLS,True,Columbus Crew,Chicago Fire FC,3,0,,,False,,False,,fbcsv-mls-1998-1998-07-08-Columbus Crew SC-Chicago Fire,Regular
-1998-06-10,1998,MLS,True,Chicago Fire FC,San Jose Earthquakes,5,2,,,False,,False,,fbcsv-mls-1998-1998-06-10-Chicago Fire-San Jose Earthquakes,Regular
-1998-06-12,1998,MLS,True,Columbus Crew,D.C. United,3,4,,,False,,False,,fbcsv-mls-1998-1998-06-12-Columbus Crew SC-D.C. United,Regular
-1998-08-14,1998,MLS,True,Chicago Fire FC,San Jose Earthquakes,2,1,,,False,,False,,fbcsv-mls-1998-1998-08-14-Chicago Fire-San Jose Earthquakes,Regular
-1998-07-18,1998,MLS,True,Red Bull New York,Columbus Crew,3,0,,,False,,False,,fbcsv-mls-1998-1998-07-18-Red Bull New York-Columbus Crew SC,Regular
-1998-06-23,1998,MLS,True,Chicago Fire FC,Sporting Kansas City,4,1,,,False,,False,,fbcsv-mls-1998-1998-06-23-Chicago Fire-Sporting Kansas City,Regular
-1998-06-30,1998,MLS,True,Chicago Fire FC,FC Dallas,4,1,,,False,,False,,fbcsv-mls-1998-1998-06-30-Chicago Fire-FC Dallas,Regular
-1998-06-16,1998,MLS,True,Chicago Fire FC,FC Dallas,1,0,,,False,,False,,fbcsv-mls-1998-1998-06-16-Chicago Fire-FC Dallas,Regular
-1998-06-13,1998,MLS,True,New England Revolution,Chicago Fire FC,1,3,,,False,,False,,fbcsv-mls-1998-1998-06-13-New England Revolution-Chicago Fire,Regular
-1998-09-12,1998,MLS,True,Chicago Fire FC,Colorado Rapids,3,1,,,False,,False,,fbcsv-mls-1998-1998-09-12-Chicago Fire-Colorado Rapids,Regular
-1998-06-05,1998,MLS,True,Chicago Fire FC,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1998-1998-06-05-Chicago Fire-Columbus Crew SC,Regular
-1998-05-29,1998,MLS,True,LA Galaxy,Chicago Fire FC,1,2,,,False,,False,,fbcsv-mls-1998-1998-05-29-LA Galaxy-Chicago Fire,Regular
-1998-05-29,1998,MLS,True,Columbus Crew,San Jose Earthquakes,4,1,,,False,,False,,fbcsv-mls-1998-1998-05-29-Columbus Crew SC-San Jose Earthquakes,Regular
-1998-05-26,1998,MLS,True,Sporting Kansas City,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1998-1998-05-26-Sporting Kansas City-Columbus Crew SC,Regular
+1997-08-09,1997,MLS,True,San Jose Earthquakes,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1997-1997-08-09-San Jose Earthquakes-Columbus Crew SC,Regular
+1997-08-16,1997,MLS,True,Columbus Crew,D.C. United,2,0,,,False,,False,,fbcsv-mls-1997-1997-08-16-Columbus Crew SC-D.C. United,Regular
+1997-08-23,1997,MLS,True,Columbus Crew,New England Revolution,2,1,,,False,,False,,fbcsv-mls-1997-1997-08-23-Columbus Crew SC-New England Revolution,Regular
+1997-08-30,1997,MLS,True,Columbus Crew,LA Galaxy,2,0,,,False,,False,,fbcsv-mls-1997-1997-08-30-Columbus Crew SC-LA Galaxy,Regular
+1997-09-06,1997,MLS,True,FC Dallas,Columbus Crew,3,0,,,False,,False,,fbcsv-mls-1997-1997-09-06-FC Dallas-Columbus Crew SC,Regular
+1997-09-12,1997,MLS,True,New England Revolution,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-1997-1997-09-12-New England Revolution-Columbus Crew SC,Regular
+1997-09-14,1997,MLS,True,Columbus Crew,Sporting Kansas City,4,0,,,False,,False,,fbcsv-mls-1997-1997-09-14-Columbus Crew SC-Sporting Kansas City,Regular
+1997-09-18,1997,MLS,True,Tampa Bay Mutiny,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1997-1997-09-18-Tampa Bay Mutiny-Columbus Crew SC,Regular
+1997-09-25,1997,MLS,True,Red Bull New York,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-1997-1997-09-25-Red Bull New York-Columbus Crew SC,Regular
+1997-09-28,1997,MLS,True,Columbus Crew,Tampa Bay Mutiny,2,1,,,False,,False,,fbcsv-mls-1997-1997-09-28-Columbus Crew SC-Tampa Bay Mutiny,Regular
+1997-10-05,1997,MLS,True,Tampa Bay Mutiny,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1997-1997-10-05-Tampa Bay Mutiny-Columbus Crew SC,Playoff
+1997-10-08,1997,MLS,True,Columbus Crew,Tampa Bay Mutiny,2,0,,,False,,False,,fbcsv-mls-1997-1997-10-08-Columbus Crew SC-Tampa Bay Mutiny,Playoff
+1997-10-12,1997,MLS,True,D.C. United,Columbus Crew,3,2,,,False,,False,,fbcsv-mls-1997-1997-10-12-D.C. United-Columbus Crew SC,Playoff
+1997-10-15,1997,MLS,True,Columbus Crew,D.C. United,0,1,,,False,,False,,fbcsv-mls-1997-1997-10-15-Columbus Crew SC-D.C. United,Playoff
+1998-03-20,1998,MLS,True,Miami Fusion,Chicago Fire FC,0,2,,,False,,False,,fbcsv-mls-1998-1998-03-20-Miami Fusion-Chicago Fire,Regular
+1998-03-20,1998,MLS,True,Tampa Bay Mutiny,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1998-1998-03-20-Tampa Bay Mutiny-Columbus Crew SC,Regular
+1998-03-28,1998,MLS,True,FC Dallas,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1998-1998-03-28-FC Dallas-Columbus Crew SC,Regular
+1998-04-03,1998,MLS,True,Chicago Fire FC,Tampa Bay Mutiny,2,0,,,False,,False,,fbcsv-mls-1998-1998-04-03-Chicago Fire-Tampa Bay Mutiny,Regular
+1998-04-03,1998,MLS,True,Columbus Crew,D.C. United,2,1,,,False,,False,,fbcsv-mls-1998-1998-04-03-Columbus Crew SC-D.C. United,Regular
+1998-04-07,1998,MLS,True,Sporting Kansas City,Chicago Fire FC,1,0,,,False,,False,,fbcsv-mls-1998-1998-04-07-Sporting Kansas City-Chicago Fire,Regular
+1998-04-10,1998,MLS,True,Columbus Crew,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1998-1998-04-10-Columbus Crew SC-New England Revolution,Regular
+1998-04-10,1998,MLS,True,San Jose Earthquakes,Chicago Fire FC,1,0,,,False,,False,,fbcsv-mls-1998-1998-04-10-San Jose Earthquakes-Chicago Fire,Regular
+1998-04-16,1998,MLS,True,Chicago Fire FC,Red Bull New York,0,1,,,False,,False,,fbcsv-mls-1998-1998-04-16-Chicago Fire-Red Bull New York,Regular
+1998-04-17,1998,MLS,True,Columbus Crew,Miami Fusion,5,1,,,False,,False,,fbcsv-mls-1998-1998-04-17-Columbus Crew SC-Miami Fusion,Regular
+1998-04-24,1998,MLS,True,Colorado Rapids,Chicago Fire FC,5,4,,,False,,False,,fbcsv-mls-1998-1998-04-24-Colorado Rapids-Chicago Fire,Regular
+1998-04-25,1998,MLS,True,D.C. United,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1998-1998-04-25-D.C. United-Columbus Crew SC,Regular
+1998-04-29,1998,MLS,True,Tampa Bay Mutiny,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-1998-1998-04-29-Tampa Bay Mutiny-Columbus Crew SC,Regular
+1998-05-01,1998,MLS,True,Chicago Fire FC,D.C. United,1,3,,,False,,False,,fbcsv-mls-1998-1998-05-01-Chicago Fire-D.C. United,Regular
 1998-05-08,1998,MLS,True,Miami Fusion,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1998-1998-05-08-Miami Fusion-Columbus Crew SC,Regular
 1998-05-15,1998,MLS,True,Tampa Bay Mutiny,Chicago Fire FC,1,2,,,False,,False,,fbcsv-mls-1998-1998-05-15-Tampa Bay Mutiny-Chicago Fire,Regular
 1998-05-16,1998,MLS,True,Columbus Crew,LA Galaxy,2,4,,,False,,False,,fbcsv-mls-1998-1998-05-16-Columbus Crew SC-LA Galaxy,Regular
 1998-05-19,1998,MLS,True,Chicago Fire FC,LA Galaxy,3,1,,,False,,False,,fbcsv-mls-1998-1998-05-19-Chicago Fire-LA Galaxy,Regular
 1998-05-21,1998,MLS,True,New England Revolution,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1998-1998-05-21-New England Revolution-Columbus Crew SC,Regular
 1998-05-22,1998,MLS,True,Chicago Fire FC,Colorado Rapids,5,0,,,False,,False,,fbcsv-mls-1998-1998-05-22-Chicago Fire-Colorado Rapids,Regular
-1998-04-16,1998,MLS,True,Chicago Fire FC,Red Bull New York,0,1,,,False,,False,,fbcsv-mls-1998-1998-04-16-Chicago Fire-Red Bull New York,Regular
-1998-05-01,1998,MLS,True,Chicago Fire FC,D.C. United,1,3,,,False,,False,,fbcsv-mls-1998-1998-05-01-Chicago Fire-D.C. United,Regular
-1998-04-29,1998,MLS,True,Tampa Bay Mutiny,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-1998-1998-04-29-Tampa Bay Mutiny-Columbus Crew SC,Regular
-1998-04-24,1998,MLS,True,Colorado Rapids,Chicago Fire FC,5,4,,,False,,False,,fbcsv-mls-1998-1998-04-24-Colorado Rapids-Chicago Fire,Regular
-1998-04-25,1998,MLS,True,D.C. United,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1998-1998-04-25-D.C. United-Columbus Crew SC,Regular
-1998-04-10,1998,MLS,True,San Jose Earthquakes,Chicago Fire FC,1,0,,,False,,False,,fbcsv-mls-1998-1998-04-10-San Jose Earthquakes-Chicago Fire,Regular
-1998-04-17,1998,MLS,True,Columbus Crew,Miami Fusion,5,1,,,False,,False,,fbcsv-mls-1998-1998-04-17-Columbus Crew SC-Miami Fusion,Regular
-1998-04-10,1998,MLS,True,Columbus Crew,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1998-1998-04-10-Columbus Crew SC-New England Revolution,Regular
-1998-04-03,1998,MLS,True,Columbus Crew,D.C. United,2,1,,,False,,False,,fbcsv-mls-1998-1998-04-03-Columbus Crew SC-D.C. United,Regular
-1998-04-03,1998,MLS,True,Chicago Fire FC,Tampa Bay Mutiny,2,0,,,False,,False,,fbcsv-mls-1998-1998-04-03-Chicago Fire-Tampa Bay Mutiny,Regular
-1998-04-07,1998,MLS,True,Sporting Kansas City,Chicago Fire FC,1,0,,,False,,False,,fbcsv-mls-1998-1998-04-07-Sporting Kansas City-Chicago Fire,Regular
-1998-03-28,1998,MLS,True,FC Dallas,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1998-1998-03-28-FC Dallas-Columbus Crew SC,Regular
-1996-07-20,1996,MLS,True,Columbus Crew,San Jose Earthquakes,3,4,,,False,,False,,fbcsv-mls-1996-1996-07-20-Columbus Crew SC-San Jose Earthquakes,Regular
-1998-03-20,1998,MLS,True,Tampa Bay Mutiny,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1998-1998-03-20-Tampa Bay Mutiny-Columbus Crew SC,Regular
-1998-03-20,1998,MLS,True,Miami Fusion,Chicago Fire FC,0,2,,,False,,False,,fbcsv-mls-1998-1998-03-20-Miami Fusion-Chicago Fire,Regular
-1997-10-05,1997,MLS,True,Tampa Bay Mutiny,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1997-1997-10-05-Tampa Bay Mutiny-Columbus Crew SC,Playoff
-1997-10-15,1997,MLS,True,Columbus Crew,D.C. United,0,1,,,False,,False,,fbcsv-mls-1997-1997-10-15-Columbus Crew SC-D.C. United,Playoff
-1997-10-12,1997,MLS,True,D.C. United,Columbus Crew,3,2,,,False,,False,,fbcsv-mls-1997-1997-10-12-D.C. United-Columbus Crew SC,Playoff
-1997-10-08,1997,MLS,True,Columbus Crew,Tampa Bay Mutiny,2,0,,,False,,False,,fbcsv-mls-1997-1997-10-08-Columbus Crew SC-Tampa Bay Mutiny,Playoff
-1997-09-18,1997,MLS,True,Tampa Bay Mutiny,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1997-1997-09-18-Tampa Bay Mutiny-Columbus Crew SC,Regular
-1997-09-28,1997,MLS,True,Columbus Crew,Tampa Bay Mutiny,2,1,,,False,,False,,fbcsv-mls-1997-1997-09-28-Columbus Crew SC-Tampa Bay Mutiny,Regular
-1997-09-25,1997,MLS,True,Red Bull New York,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-1997-1997-09-25-Red Bull New York-Columbus Crew SC,Regular
-1997-09-14,1997,MLS,True,Columbus Crew,Sporting Kansas City,4,0,,,False,,False,,fbcsv-mls-1997-1997-09-14-Columbus Crew SC-Sporting Kansas City,Regular
-1997-09-12,1997,MLS,True,New England Revolution,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-1997-1997-09-12-New England Revolution-Columbus Crew SC,Regular
-1997-08-30,1997,MLS,True,Columbus Crew,LA Galaxy,2,0,,,False,,False,,fbcsv-mls-1997-1997-08-30-Columbus Crew SC-LA Galaxy,Regular
-1997-09-06,1997,MLS,True,FC Dallas,Columbus Crew,3,0,,,False,,False,,fbcsv-mls-1997-1997-09-06-FC Dallas-Columbus Crew SC,Regular
-1997-08-23,1997,MLS,True,Columbus Crew,New England Revolution,2,1,,,False,,False,,fbcsv-mls-1997-1997-08-23-Columbus Crew SC-New England Revolution,Regular
-1997-08-16,1997,MLS,True,Columbus Crew,D.C. United,2,0,,,False,,False,,fbcsv-mls-1997-1997-08-16-Columbus Crew SC-D.C. United,Regular
-1997-08-09,1997,MLS,True,San Jose Earthquakes,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1997-1997-08-09-San Jose Earthquakes-Columbus Crew SC,Regular
-1997-07-13,1997,MLS,True,Columbus Crew,FC Dallas,1,2,,,False,,False,,fbcsv-mls-1997-1997-07-13-Columbus Crew SC-FC Dallas,Regular
-1997-07-30,1997,MLS,True,D.C. United,Columbus Crew,4,2,,,False,,False,,fbcsv-mls-1997-1997-07-30-D.C. United-Columbus Crew SC,Regular
-1997-07-27,1997,MLS,True,Columbus Crew,Tampa Bay Mutiny,0,1,,,False,,False,,fbcsv-mls-1997-1997-07-27-Columbus Crew SC-Tampa Bay Mutiny,Regular
-1996-09-28,1996,MLS,True,Tampa Bay Mutiny,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1996-1996-09-28-Tampa Bay Mutiny-Columbus Crew SC,Playoff
-1996-09-25,1996,MLS,True,Columbus Crew,Tampa Bay Mutiny,0,2,,,False,,False,,fbcsv-mls-1996-1996-09-25-Columbus Crew SC-Tampa Bay Mutiny,Playoff
-1997-05-11,1997,MLS,True,Columbus Crew,Red Bull New York,3,0,,,False,,False,,fbcsv-mls-1997-1997-05-11-Columbus Crew SC-Red Bull New York,Regular
-1997-07-04,1997,MLS,True,Columbus Crew,Sporting Kansas City,1,2,,,False,,False,,fbcsv-mls-1997-1997-07-04-Columbus Crew SC-Sporting Kansas City,Regular
-1997-07-25,1997,MLS,True,D.C. United,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1997-1997-07-25-D.C. United-Columbus Crew SC,Regular
-1997-05-17,1997,MLS,True,Colorado Rapids,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1997-1997-05-17-Colorado Rapids-Columbus Crew SC,Regular
-1997-06-21,1997,MLS,True,Columbus Crew,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1997-1997-06-21-Columbus Crew SC-Red Bull New York,Regular
-1997-05-22,1997,MLS,True,Sporting Kansas City,Columbus Crew,3,1,,,False,,False,,fbcsv-mls-1997-1997-05-22-Sporting Kansas City-Columbus Crew SC,Regular
-1997-07-20,1997,MLS,True,Columbus Crew,New England Revolution,1,0,,,False,,False,,fbcsv-mls-1997-1997-07-20-Columbus Crew SC-New England Revolution,Regular
-1997-05-29,1997,MLS,True,Columbus Crew,D.C. United,2,3,,,False,,False,,fbcsv-mls-1997-1997-05-29-Columbus Crew SC-D.C. United,Regular
-1997-05-25,1997,MLS,True,LA Galaxy,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-1997-1997-05-25-LA Galaxy-Columbus Crew SC,Regular
-1996-10-02,1996,MLS,True,Tampa Bay Mutiny,Columbus Crew,4,1,,,False,,False,,fbcsv-mls-1996-1996-10-02-Tampa Bay Mutiny-Columbus Crew SC,Playoff
-1997-04-13,1997,MLS,True,Columbus Crew,FC Dallas,2,1,,,False,,False,,fbcsv-mls-1997-1997-04-13-Columbus Crew SC-FC Dallas,Regular
-1997-04-19,1997,MLS,True,Columbus Crew,San Jose Earthquakes,2,1,,,False,,False,,fbcsv-mls-1997-1997-04-19-Columbus Crew SC-San Jose Earthquakes,Regular
-1997-05-09,1997,MLS,True,New England Revolution,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1997-1997-05-09-New England Revolution-Columbus Crew SC,Regular
-1997-04-06,1997,MLS,True,Colorado Rapids,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1997-1997-04-06-Colorado Rapids-Columbus Crew SC,Regular
-2000-09-18,2000,MLS,True,New England Revolution,Chicago Fire FC,2,1,,,False,,False,,fbcsv-mls-2000-2000-09-18-New England Revolution-Chicago Fire,Playoff
+1998-05-26,1998,MLS,True,Sporting Kansas City,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1998-1998-05-26-Sporting Kansas City-Columbus Crew SC,Regular
+1998-05-29,1998,MLS,True,Columbus Crew,San Jose Earthquakes,4,1,,,False,,False,,fbcsv-mls-1998-1998-05-29-Columbus Crew SC-San Jose Earthquakes,Regular
+1998-05-29,1998,MLS,True,LA Galaxy,Chicago Fire FC,1,2,,,False,,False,,fbcsv-mls-1998-1998-05-29-LA Galaxy-Chicago Fire,Regular
+1998-06-05,1998,MLS,True,Chicago Fire FC,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1998-1998-06-05-Chicago Fire-Columbus Crew SC,Regular
+1998-06-10,1998,MLS,True,Chicago Fire FC,San Jose Earthquakes,5,2,,,False,,False,,fbcsv-mls-1998-1998-06-10-Chicago Fire-San Jose Earthquakes,Regular
+1998-06-12,1998,MLS,True,Columbus Crew,D.C. United,3,4,,,False,,False,,fbcsv-mls-1998-1998-06-12-Columbus Crew SC-D.C. United,Regular
+1998-06-13,1998,MLS,True,New England Revolution,Chicago Fire FC,1,3,,,False,,False,,fbcsv-mls-1998-1998-06-13-New England Revolution-Chicago Fire,Regular
+1998-06-16,1998,MLS,True,Chicago Fire FC,FC Dallas,1,0,,,False,,False,,fbcsv-mls-1998-1998-06-16-Chicago Fire-FC Dallas,Regular
+1998-06-19,1998,MLS,True,Columbus Crew,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1998-1998-06-19-Columbus Crew SC-Red Bull New York,Regular
+1998-06-23,1998,MLS,True,Chicago Fire FC,Sporting Kansas City,4,1,,,False,,False,,fbcsv-mls-1998-1998-06-23-Chicago Fire-Sporting Kansas City,Regular
+1998-06-30,1998,MLS,True,Chicago Fire FC,FC Dallas,4,1,,,False,,False,,fbcsv-mls-1998-1998-06-30-Chicago Fire-FC Dallas,Regular
+1998-07-02,1998,MLS,True,San Jose Earthquakes,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1998-1998-07-02-San Jose Earthquakes-Columbus Crew SC,Regular
+1998-07-03,1998,MLS,True,FC Dallas,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-1998-1998-07-03-FC Dallas-Chicago Fire,Regular
+1998-07-08,1998,MLS,True,Columbus Crew,Chicago Fire FC,3,0,,,False,,False,,fbcsv-mls-1998-1998-07-08-Columbus Crew SC-Chicago Fire,Regular
+1998-07-17,1998,MLS,True,D.C. United,Chicago Fire FC,4,1,,,False,,False,,fbcsv-mls-1998-1998-07-17-D.C. United-Chicago Fire,Regular
+1998-07-18,1998,MLS,True,Red Bull New York,Columbus Crew,3,0,,,False,,False,,fbcsv-mls-1998-1998-07-18-Red Bull New York-Columbus Crew SC,Regular
+1998-07-24,1998,MLS,True,Columbus Crew,FC Dallas,1,2,,,False,,False,,fbcsv-mls-1998-1998-07-24-Columbus Crew SC-FC Dallas,Regular
+1998-07-24,1998,MLS,True,Red Bull New York,Chicago Fire FC,3,2,,,False,,False,,fbcsv-mls-1998-1998-07-24-Red Bull New York-Chicago Fire,Regular
+1998-07-28,1998,MLS,True,San Jose Earthquakes,Chicago Fire FC,3,0,,,False,,False,,fbcsv-mls-1998-1998-07-28-San Jose Earthquakes-Chicago Fire,Regular
+1998-07-28,1998,MLS,True,Miami Fusion,Columbus Crew,3,2,,,False,,False,,fbcsv-mls-1998-1998-07-28-Miami Fusion-Columbus Crew SC,Regular
+1998-08-07,1998,MLS,True,Chicago Fire FC,LA Galaxy,1,2,,,False,,False,,fbcsv-mls-1998-1998-08-07-Chicago Fire-LA Galaxy,Regular
+1998-08-07,1998,MLS,True,Columbus Crew,New England Revolution,6,1,,,False,,False,,fbcsv-mls-1998-1998-08-07-Columbus Crew SC-New England Revolution,Regular
+1998-08-11,1998,MLS,True,Red Bull New York,Columbus Crew,3,1,,,False,,False,,fbcsv-mls-1998-1998-08-11-Red Bull New York-Columbus Crew SC,Regular
+1998-08-14,1998,MLS,True,Chicago Fire FC,San Jose Earthquakes,2,1,,,False,,False,,fbcsv-mls-1998-1998-08-14-Chicago Fire-San Jose Earthquakes,Regular
+1998-08-15,1998,MLS,True,Columbus Crew,Sporting Kansas City,5,3,,,False,,False,,fbcsv-mls-1998-1998-08-15-Columbus Crew SC-Sporting Kansas City,Regular
+1998-08-20,1998,MLS,True,Colorado Rapids,Chicago Fire FC,0,2,,,False,,False,,fbcsv-mls-1998-1998-08-20-Colorado Rapids-Chicago Fire,Regular
+1998-08-21,1998,MLS,True,Columbus Crew,Tampa Bay Mutiny,3,1,,,False,,False,,fbcsv-mls-1998-1998-08-21-Columbus Crew SC-Tampa Bay Mutiny,Regular
+1998-08-28,1998,MLS,True,LA Galaxy,Columbus Crew,0,3,,,False,,False,,fbcsv-mls-1998-1998-08-28-LA Galaxy-Columbus Crew SC,Regular
+1998-08-28,1998,MLS,True,Sporting Kansas City,Chicago Fire FC,2,3,,,False,,False,,fbcsv-mls-1998-1998-08-28-Sporting Kansas City-Chicago Fire,Regular
+1998-09-01,1998,MLS,True,Chicago Fire FC,Miami Fusion,3,2,,,False,,False,,fbcsv-mls-1998-1998-09-01-Chicago Fire-Miami Fusion,Regular
+1998-09-05,1998,MLS,True,Columbus Crew,Red Bull New York,4,3,,,False,,False,,fbcsv-mls-1998-1998-09-05-Columbus Crew SC-Red Bull New York,Regular
+1998-09-08,1998,MLS,True,Columbus Crew,Miami Fusion,1,0,,,False,,False,,fbcsv-mls-1998-1998-09-08-Columbus Crew SC-Miami Fusion,Regular
+1998-09-09,1998,MLS,True,FC Dallas,Chicago Fire FC,3,2,,,False,,False,,fbcsv-mls-1998-1998-09-09-FC Dallas-Chicago Fire,Regular
+1998-09-11,1998,MLS,True,New England Revolution,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1998-1998-09-11-New England Revolution-Columbus Crew SC,Regular
+1998-09-12,1998,MLS,True,Chicago Fire FC,Colorado Rapids,3,1,,,False,,False,,fbcsv-mls-1998-1998-09-12-Chicago Fire-Colorado Rapids,Regular
+1998-09-15,1998,MLS,True,Columbus Crew,Colorado Rapids,2,4,,,False,,False,,fbcsv-mls-1998-1998-09-15-Columbus Crew SC-Colorado Rapids,Regular
+1998-09-16,1998,MLS,True,Chicago Fire FC,Sporting Kansas City,1,0,,,False,,False,,fbcsv-mls-1998-1998-09-16-Chicago Fire-Sporting Kansas City,Regular
+1998-09-18,1998,MLS,True,Colorado Rapids,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1998-1998-09-18-Colorado Rapids-Columbus Crew SC,Regular
+1998-09-22,1998,MLS,True,Chicago Fire FC,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1998-1998-09-22-Chicago Fire-New England Revolution,Regular
+1998-09-23,1998,MLS,True,Columbus Crew,Tampa Bay Mutiny,3,4,,,False,,False,,fbcsv-mls-1998-1998-09-23-Columbus Crew SC-Tampa Bay Mutiny,Regular
+1998-09-26,1998,MLS,True,D.C. United,Columbus Crew,3,2,,,False,,False,,fbcsv-mls-1998-1998-09-26-D.C. United-Columbus Crew SC,Regular
+1998-09-26,1998,MLS,True,LA Galaxy,Chicago Fire FC,1,0,,,False,,False,,fbcsv-mls-1998-1998-09-26-LA Galaxy-Chicago Fire,Regular
+1998-09-29,1998,MLS,True,Columbus Crew,Red Bull New York,5,3,,,False,,False,,fbcsv-mls-1998-1998-09-29-Columbus Crew SC-Red Bull New York,Playoff
+1998-09-30,1998,MLS,True,Chicago Fire FC,Colorado Rapids,2,1,,,False,,False,,fbcsv-mls-1998-1998-09-30-Chicago Fire-Colorado Rapids,Playoff
+1998-10-04,1998,MLS,True,Colorado Rapids,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-1998-1998-10-04-Colorado Rapids-Chicago Fire,Playoff
+1998-10-09,1998,MLS,True,LA Galaxy,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-1998-1998-10-09-LA Galaxy-Chicago Fire,Playoff
+1998-10-10,1998,MLS,True,D.C. United,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1998-1998-10-10-D.C. United-Columbus Crew SC,Playoff
+1998-10-17,1998,MLS,True,Columbus Crew,D.C. United,4,2,,,False,,False,,fbcsv-mls-1998-1998-10-17-Columbus Crew SC-D.C. United,Playoff
+1998-10-20,1998,MLS,True,D.C. United,Columbus Crew,3,0,,,False,,False,,fbcsv-mls-1998-1998-10-20-D.C. United-Columbus Crew SC,Playoff
+1998-10-24,1998,MLS,True,Chicago Fire FC,D.C. United,2,0,,,False,,False,,fbcsv-mls-1998-1998-10-24-Chicago Fire-D.C. United,Playoff
+1999-03-19,1999,MLS,True,San Jose Earthquakes,Chicago Fire FC,1,3,,,False,,False,,fbcsv-mls-1999-1999-03-19-San Jose Earthquakes-Chicago Fire,Regular
+1999-03-26,1999,MLS,True,Sporting Kansas City,Chicago Fire FC,0,3,,,False,,False,,fbcsv-mls-1999-1999-03-26-Sporting Kansas City-Chicago Fire,Regular
+1999-03-27,1999,MLS,True,Red Bull New York,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-1999-1999-03-27-Red Bull New York-Columbus Crew SC,Regular
+1999-04-02,1999,MLS,True,Miami Fusion,Chicago Fire FC,1,4,,,False,,False,,fbcsv-mls-1999-1999-04-02-Miami Fusion-Chicago Fire,Regular
+1999-04-02,1999,MLS,True,Tampa Bay Mutiny,Columbus Crew,2,3,,,False,,False,,fbcsv-mls-1999-1999-04-02-Tampa Bay Mutiny-Columbus Crew SC,Regular
+1999-04-07,1999,MLS,True,LA Galaxy,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1999-1999-04-07-LA Galaxy-Columbus Crew SC,Regular
+1999-04-09,1999,MLS,True,Chicago Fire FC,FC Dallas,0,1,,,False,,False,,fbcsv-mls-1999-1999-04-09-Chicago Fire-FC Dallas,Regular
+1999-04-16,1999,MLS,True,Chicago Fire FC,LA Galaxy,1,0,,,False,,False,,fbcsv-mls-1999-1999-04-16-Chicago Fire-LA Galaxy,Regular
+1999-04-16,1999,MLS,True,New England Revolution,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-1999-1999-04-16-New England Revolution-Columbus Crew SC,Regular
+1999-04-23,1999,MLS,True,FC Dallas,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1999-1999-04-23-FC Dallas-Columbus Crew SC,Regular
+1999-04-27,1999,MLS,True,Sporting Kansas City,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-1999-1999-04-27-Sporting Kansas City-Columbus Crew SC,Regular
+1999-04-30,1999,MLS,True,Chicago Fire FC,D.C. United,3,2,,,False,,False,,fbcsv-mls-1999-1999-04-30-Chicago Fire-D.C. United,Regular
+1999-05-07,1999,MLS,True,Tampa Bay Mutiny,Chicago Fire FC,2,1,,,False,,False,,fbcsv-mls-1999-1999-05-07-Tampa Bay Mutiny-Chicago Fire,Regular
+1999-05-08,1999,MLS,True,San Jose Earthquakes,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1999-1999-05-08-San Jose Earthquakes-Columbus Crew SC,Regular
+1999-05-14,1999,MLS,True,Columbus Crew,New England Revolution,2,0,,,False,,False,,fbcsv-mls-1999-1999-05-14-Columbus Crew SC-New England Revolution,Regular
+1999-05-15,1999,MLS,True,Chicago Fire FC,Colorado Rapids,0,1,,,False,,False,,fbcsv-mls-1999-1999-05-15-Chicago Fire-Colorado Rapids,Regular
+1999-05-21,1999,MLS,True,Chicago Fire FC,Sporting Kansas City,3,1,,,False,,False,,fbcsv-mls-1999-1999-05-21-Chicago Fire-Sporting Kansas City,Regular
+1999-05-21,1999,MLS,True,Columbus Crew,Tampa Bay Mutiny,0,1,,,False,,False,,fbcsv-mls-1999-1999-05-21-Columbus Crew SC-Tampa Bay Mutiny,Regular
+1999-05-28,1999,MLS,True,Columbus Crew,LA Galaxy,2,1,,,False,,False,,fbcsv-mls-1999-1999-05-28-Columbus Crew SC-LA Galaxy,Regular
+1999-05-28,1999,MLS,True,D.C. United,Chicago Fire FC,3,1,,,False,,False,,fbcsv-mls-1999-1999-05-28-D.C. United-Chicago Fire,Regular
+1999-06-04,1999,MLS,True,D.C. United,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-1999-1999-06-04-D.C. United-Columbus Crew SC,Regular
+1999-06-04,1999,MLS,True,New England Revolution,Chicago Fire FC,2,0,,,False,,False,,fbcsv-mls-1999-1999-06-04-New England Revolution-Chicago Fire,Regular
+1999-06-11,1999,MLS,True,LA Galaxy,Chicago Fire FC,2,1,,,False,,False,,fbcsv-mls-1999-1999-06-11-LA Galaxy-Chicago Fire,Regular
+1999-06-12,1999,MLS,True,Columbus Crew,D.C. United,1,2,,,False,,False,,fbcsv-mls-1999-1999-06-12-Columbus Crew SC-D.C. United,Regular
+1999-06-15,1999,MLS,True,Columbus Crew,New England Revolution,2,1,,,False,,False,,fbcsv-mls-1999-1999-06-15-Columbus Crew SC-New England Revolution,Regular
+1999-06-18,1999,MLS,True,Chicago Fire FC,San Jose Earthquakes,2,0,,,False,,False,,fbcsv-mls-1999-1999-06-18-Chicago Fire-San Jose Earthquakes,Regular
+1999-06-25,1999,MLS,True,Colorado Rapids,Chicago Fire FC,2,0,,,False,,False,,fbcsv-mls-1999-1999-06-25-Colorado Rapids-Chicago Fire,Regular
+1999-06-25,1999,MLS,True,Columbus Crew,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1999-1999-06-25-Columbus Crew SC-Red Bull New York,Regular
+1999-06-29,1999,MLS,True,Columbus Crew,San Jose Earthquakes,4,3,,,False,,False,,fbcsv-mls-1999-1999-06-29-Columbus Crew SC-San Jose Earthquakes,Regular
+1999-07-01,1999,MLS,True,Chicago Fire FC,FC Dallas,2,1,,,False,,False,,fbcsv-mls-1999-1999-07-01-Chicago Fire-FC Dallas,Regular
+1999-07-03,1999,MLS,True,Colorado Rapids,Columbus Crew,0,3,,,False,,False,,fbcsv-mls-1999-1999-07-03-Colorado Rapids-Columbus Crew SC,Regular
+1999-07-03,1999,MLS,True,FC Dallas,Chicago Fire FC,1,2,,,False,,False,,fbcsv-mls-1999-1999-07-03-FC Dallas-Chicago Fire,Regular
+1999-07-06,1999,MLS,True,Columbus Crew,D.C. United,1,2,,,False,,False,,fbcsv-mls-1999-1999-07-06-Columbus Crew SC-D.C. United,Regular
+1999-07-09,1999,MLS,True,Chicago Fire FC,Red Bull New York,2,0,,,False,,False,,fbcsv-mls-1999-1999-07-09-Chicago Fire-Red Bull New York,Regular
+1999-07-09,1999,MLS,True,Miami Fusion,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1999-1999-07-09-Miami Fusion-Columbus Crew SC,Regular
+1999-07-22,1999,MLS,True,Chicago Fire FC,San Jose Earthquakes,2,3,,,False,,False,,fbcsv-mls-1999-1999-07-22-Chicago Fire-San Jose Earthquakes,Regular
+1999-07-23,1999,MLS,True,Columbus Crew,FC Dallas,4,1,,,False,,False,,fbcsv-mls-1999-1999-07-23-Columbus Crew SC-FC Dallas,Regular
+1999-07-30,1999,MLS,True,Chicago Fire FC,LA Galaxy,0,1,,,False,,False,,fbcsv-mls-1999-1999-07-30-Chicago Fire-LA Galaxy,Regular
+1999-07-31,1999,MLS,True,Columbus Crew,Miami Fusion,4,0,,,False,,False,,fbcsv-mls-1999-1999-07-31-Columbus Crew SC-Miami Fusion,Regular
+1999-08-04,1999,MLS,True,Sporting Kansas City,Chicago Fire FC,1,2,,,False,,False,,fbcsv-mls-1999-1999-08-04-Sporting Kansas City-Chicago Fire,Regular
+1999-08-07,1999,MLS,True,Chicago Fire FC,Colorado Rapids,5,0,,,False,,False,,fbcsv-mls-1999-1999-08-07-Chicago Fire-Colorado Rapids,Regular
+1999-08-07,1999,MLS,True,Columbus Crew,Sporting Kansas City,2,1,,,False,,False,,fbcsv-mls-1999-1999-08-07-Columbus Crew SC-Sporting Kansas City,Regular
+1999-08-13,1999,MLS,True,D.C. United,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1999-1999-08-13-D.C. United-Columbus Crew SC,Regular
+1999-08-14,1999,MLS,True,Chicago Fire FC,Miami Fusion,1,2,,,False,,False,,fbcsv-mls-1999-1999-08-14-Chicago Fire-Miami Fusion,Regular
+1999-08-17,1999,MLS,True,Red Bull New York,Columbus Crew,2,4,,,False,,False,,fbcsv-mls-1999-1999-08-17-Red Bull New York-Columbus Crew SC,Regular
+1999-08-21,1999,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,2,,,False,,False,,fbcsv-mls-1999-1999-08-21-Columbus Crew SC-Tampa Bay Mutiny,Regular
+1999-08-21,1999,MLS,True,FC Dallas,Chicago Fire FC,4,3,,,False,,False,,fbcsv-mls-1999-1999-08-21-FC Dallas-Chicago Fire,Regular
+1999-08-24,1999,MLS,True,Chicago Fire FC,Sporting Kansas City,2,0,,,False,,False,,fbcsv-mls-1999-1999-08-24-Chicago Fire-Sporting Kansas City,Regular
+1999-08-26,1999,MLS,True,Tampa Bay Mutiny,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1999-1999-08-26-Tampa Bay Mutiny-Columbus Crew SC,Regular
+1999-08-27,1999,MLS,True,Chicago Fire FC,New England Revolution,2,1,,,False,,False,,fbcsv-mls-1999-1999-08-27-Chicago Fire-New England Revolution,Regular
+1999-09-03,1999,MLS,True,Columbus Crew,Colorado Rapids,2,1,,,False,,False,,fbcsv-mls-1999-1999-09-03-Columbus Crew SC-Colorado Rapids,Regular
+1999-09-03,1999,MLS,True,Red Bull New York,Chicago Fire FC,1,2,,,False,,False,,fbcsv-mls-1999-1999-09-03-Red Bull New York-Chicago Fire,Regular
+1999-09-10,1999,MLS,True,LA Galaxy,Chicago Fire FC,1,0,,,False,,False,,fbcsv-mls-1999-1999-09-10-LA Galaxy-Chicago Fire,Regular
+1999-09-11,1999,MLS,True,Columbus Crew,Red Bull New York,1,2,,,False,,False,,fbcsv-mls-1999-1999-09-11-Columbus Crew SC-Red Bull New York,Regular
+1999-09-17,1999,MLS,True,New England Revolution,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-1999-1999-09-17-New England Revolution-Columbus Crew SC,Regular
+1999-09-18,1999,MLS,True,Chicago Fire FC,Tampa Bay Mutiny,2,1,,,False,,False,,fbcsv-mls-1999-1999-09-18-Chicago Fire-Tampa Bay Mutiny,Regular
+1999-09-22,1999,MLS,True,Chicago Fire FC,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1999-1999-09-22-Chicago Fire-Columbus Crew SC,Regular
+1999-09-25,1999,MLS,True,Columbus Crew,Miami Fusion,2,1,,,False,,False,,fbcsv-mls-1999-1999-09-25-Columbus Crew SC-Miami Fusion,Regular
+1999-09-25,1999,MLS,True,San Jose Earthquakes,Chicago Fire FC,2,0,,,False,,False,,fbcsv-mls-1999-1999-09-25-San Jose Earthquakes-Chicago Fire,Regular
+1999-10-02,1999,MLS,True,Miami Fusion,Columbus Crew,4,1,,,False,,False,,fbcsv-mls-1999-1999-10-02-Miami Fusion-Columbus Crew SC,Regular
+1999-10-05,1999,MLS,True,Colorado Rapids,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-1999-1999-10-05-Colorado Rapids-Chicago Fire,Regular
+1999-10-09,1999,MLS,True,Columbus Crew,Chicago Fire FC,2,3,,,False,,False,,fbcsv-mls-1999-1999-10-09-Columbus Crew SC-Chicago Fire,Regular
+1999-10-15,1999,MLS,True,FC Dallas,Chicago Fire FC,2,1,,,False,,False,,fbcsv-mls-1999-1999-10-15-FC Dallas-Chicago Fire,Playoff
+1999-10-16,1999,MLS,True,Columbus Crew,Tampa Bay Mutiny,2,0,,,False,,False,,fbcsv-mls-1999-1999-10-16-Columbus Crew SC-Tampa Bay Mutiny,Playoff
+1999-10-21,1999,MLS,True,Tampa Bay Mutiny,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1999-1999-10-21-Tampa Bay Mutiny-Columbus Crew SC,Playoff
+1999-10-22,1999,MLS,True,Chicago Fire FC,FC Dallas,4,0,,,False,,False,,fbcsv-mls-1999-1999-10-22-Chicago Fire-FC Dallas,Playoff
+1999-10-26,1999,MLS,True,FC Dallas,Chicago Fire FC,3,2,,,False,,False,,fbcsv-mls-1999-1999-10-26-FC Dallas-Chicago Fire,Playoff
+1999-10-30,1999,MLS,True,D.C. United,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1999-1999-10-30-D.C. United-Columbus Crew SC,Playoff
+1999-11-06,1999,MLS,True,Columbus Crew,D.C. United,5,1,,,False,,False,,fbcsv-mls-1999-1999-11-06-Columbus Crew SC-D.C. United,Playoff
+1999-11-12,1999,MLS,True,D.C. United,Columbus Crew,4,0,,,False,,False,,fbcsv-mls-1999-1999-11-12-D.C. United-Columbus Crew SC,Playoff
+2000-03-17,2000,MLS,True,FC Dallas,Chicago Fire FC,4,2,,,False,,False,,fbcsv-mls-2000-2000-03-17-FC Dallas-Chicago Fire,Regular
+2000-03-17,2000,MLS,True,Tampa Bay Mutiny,Columbus Crew,5,1,,,False,,False,,fbcsv-mls-2000-2000-03-17-Tampa Bay Mutiny-Columbus Crew SC,Regular
+2000-03-24,2000,MLS,True,Columbus Crew,San Jose Earthquakes,2,1,,,False,,False,,fbcsv-mls-2000-2000-03-24-Columbus Crew SC-San Jose Earthquakes,Regular
+2000-03-24,2000,MLS,True,Sporting Kansas City,Chicago Fire FC,4,3,,,False,,False,,fbcsv-mls-2000-2000-03-24-Sporting Kansas City-Chicago Fire,Regular
+2000-03-31,2000,MLS,True,Columbus Crew,Chicago Fire FC,0,2,,,False,,False,,fbcsv-mls-2000-2000-03-31-Columbus Crew SC-Chicago Fire,Regular
+2000-04-07,2000,MLS,True,Columbus Crew,LA Galaxy,2,2,,,False,,False,,fbcsv-mls-2000-2000-04-07-Columbus Crew SC-LA Galaxy,Regular
+2000-04-07,2000,MLS,True,D.C. United,Chicago Fire FC,3,2,,,False,,False,,fbcsv-mls-2000-2000-04-07-D.C. United-Chicago Fire,Regular
+2000-04-14,2000,MLS,True,Chicago Fire FC,Miami Fusion,1,0,,,False,,False,,fbcsv-mls-2000-2000-04-14-Chicago Fire-Miami Fusion,Regular
+2000-04-14,2000,MLS,True,Red Bull New York,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-2000-2000-04-14-Red Bull New York-Columbus Crew SC,Regular
+2000-04-21,2000,MLS,True,Columbus Crew,Colorado Rapids,2,3,,,False,,False,,fbcsv-mls-2000-2000-04-21-Columbus Crew SC-Colorado Rapids,Regular
+2000-04-21,2000,MLS,True,New England Revolution,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2000-2000-04-21-New England Revolution-Chicago Fire,Regular
+2000-04-27,2000,MLS,True,Chicago Fire FC,Tampa Bay Mutiny,5,1,,,False,,False,,fbcsv-mls-2000-2000-04-27-Chicago Fire-Tampa Bay Mutiny,Regular
+2000-04-28,2000,MLS,True,FC Dallas,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-2000-2000-04-28-FC Dallas-Columbus Crew SC,Regular
+2000-05-02,2000,MLS,True,Chicago Fire FC,Colorado Rapids,1,2,,,False,,False,,fbcsv-mls-2000-2000-05-02-Chicago Fire-Colorado Rapids,Regular
+2000-05-02,2000,MLS,True,D.C. United,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-2000-2000-05-02-D.C. United-Columbus Crew SC,Regular
+2000-05-05,2000,MLS,True,Columbus Crew,Red Bull New York,0,2,,,False,,False,,fbcsv-mls-2000-2000-05-05-Columbus Crew SC-Red Bull New York,Regular
+2000-05-05,2000,MLS,True,Miami Fusion,Chicago Fire FC,0,3,,,False,,False,,fbcsv-mls-2000-2000-05-05-Miami Fusion-Chicago Fire,Regular
+2000-05-12,2000,MLS,True,Chicago Fire FC,San Jose Earthquakes,4,1,,,False,,False,,fbcsv-mls-2000-2000-05-12-Chicago Fire-San Jose Earthquakes,Regular
+2000-05-12,2000,MLS,True,Tampa Bay Mutiny,Columbus Crew,3,1,,,False,,False,,fbcsv-mls-2000-2000-05-12-Tampa Bay Mutiny-Columbus Crew SC,Regular
+2000-05-19,2000,MLS,True,Chicago Fire FC,New England Revolution,0,1,,,False,,False,,fbcsv-mls-2000-2000-05-19-Chicago Fire-New England Revolution,Regular
+2000-05-19,2000,MLS,True,Columbus Crew,FC Dallas,2,1,,,False,,False,,fbcsv-mls-2000-2000-05-19-Columbus Crew SC-FC Dallas,Regular
+2000-05-23,2000,MLS,True,Chicago Fire FC,FC Dallas,4,3,,,False,,False,,fbcsv-mls-2000-2000-05-23-Chicago Fire-FC Dallas,Regular
+2000-05-26,2000,MLS,True,Miami Fusion,Columbus Crew,2,4,,,False,,False,,fbcsv-mls-2000-2000-05-26-Miami Fusion-Columbus Crew SC,Regular
+2000-05-26,2000,MLS,True,Red Bull New York,Chicago Fire FC,4,1,,,False,,False,,fbcsv-mls-2000-2000-05-26-Red Bull New York-Chicago Fire,Regular
+2000-06-02,2000,MLS,True,Columbus Crew,D.C. United,1,1,,,False,,False,,fbcsv-mls-2000-2000-06-02-Columbus Crew SC-D.C. United,Regular
+2000-06-03,2000,MLS,True,Chicago Fire FC,Sporting Kansas City,3,2,,,False,,False,,fbcsv-mls-2000-2000-06-03-Chicago Fire-Sporting Kansas City,Regular
+2000-06-06,2000,MLS,True,Chicago Fire FC,Miami Fusion,2,1,,,False,,False,,fbcsv-mls-2000-2000-06-06-Chicago Fire-Miami Fusion,Regular
+2000-06-06,2000,MLS,True,FC Dallas,Columbus Crew,3,2,,,False,,False,,fbcsv-mls-2000-2000-06-06-FC Dallas-Columbus Crew SC,Regular
+2000-06-09,2000,MLS,True,Columbus Crew,FC Dallas,1,1,,,False,,False,,fbcsv-mls-2000-2000-06-09-Columbus Crew SC-FC Dallas,Regular
+2000-06-09,2000,MLS,True,Miami Fusion,Chicago Fire FC,4,2,,,False,,False,,fbcsv-mls-2000-2000-06-09-Miami Fusion-Chicago Fire,Regular
+2000-06-16,2000,MLS,True,Chicago Fire FC,D.C. United,3,2,,,False,,False,,fbcsv-mls-2000-2000-06-16-Chicago Fire-D.C. United,Regular
+2000-06-16,2000,MLS,True,Colorado Rapids,Columbus Crew,0,0,,,False,,False,,fbcsv-mls-2000-2000-06-16-Colorado Rapids-Columbus Crew SC,Regular
+2000-06-20,2000,MLS,True,LA Galaxy,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2000-2000-06-20-LA Galaxy-Chicago Fire,Regular
+2000-06-23,2000,MLS,True,Columbus Crew,New England Revolution,3,1,,,False,,False,,fbcsv-mls-2000-2000-06-23-Columbus Crew SC-New England Revolution,Regular
+2000-06-23,2000,MLS,True,San Jose Earthquakes,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2000-2000-06-23-San Jose Earthquakes-Chicago Fire,Regular
+2000-06-27,2000,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,2,,,False,,False,,fbcsv-mls-2000-2000-06-27-Columbus Crew SC-Tampa Bay Mutiny,Regular
+2000-06-30,2000,MLS,True,Columbus Crew,San Jose Earthquakes,2,1,,,False,,False,,fbcsv-mls-2000-2000-06-30-Columbus Crew SC-San Jose Earthquakes,Regular
+2000-07-03,2000,MLS,True,Colorado Rapids,Chicago Fire FC,2,1,,,False,,False,,fbcsv-mls-2000-2000-07-03-Colorado Rapids-Chicago Fire,Regular
+2000-07-03,2000,MLS,True,LA Galaxy,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-2000-2000-07-03-LA Galaxy-Columbus Crew SC,Regular
+2000-07-07,2000,MLS,True,Chicago Fire FC,Columbus Crew,3,1,,,False,,False,,fbcsv-mls-2000-2000-07-07-Chicago Fire-Columbus Crew SC,Regular
+2000-07-11,2000,MLS,True,Columbus Crew,New England Revolution,4,1,,,False,,False,,fbcsv-mls-2000-2000-07-11-Columbus Crew SC-New England Revolution,Regular
+2000-07-14,2000,MLS,True,Chicago Fire FC,Tampa Bay Mutiny,0,0,,,False,,False,,fbcsv-mls-2000-2000-07-14-Chicago Fire-Tampa Bay Mutiny,Regular
+2000-07-14,2000,MLS,True,Columbus Crew,Sporting Kansas City,2,0,,,False,,False,,fbcsv-mls-2000-2000-07-14-Columbus Crew SC-Sporting Kansas City,Regular
+2000-07-20,2000,MLS,True,Colorado Rapids,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2000-2000-07-20-Colorado Rapids-Chicago Fire,Regular
+2000-07-21,2000,MLS,True,Sporting Kansas City,Columbus Crew,3,1,,,False,,False,,fbcsv-mls-2000-2000-07-21-Sporting Kansas City-Columbus Crew SC,Regular
+2000-08-01,2000,MLS,True,San Jose Earthquakes,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-2000-2000-08-01-San Jose Earthquakes-Columbus Crew SC,Regular
+2000-08-01,2000,MLS,True,Tampa Bay Mutiny,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-2000-2000-08-01-Tampa Bay Mutiny-Chicago Fire,Regular
+2000-08-04,2000,MLS,True,New England Revolution,Columbus Crew,1,1,,,False,,False,,fbcsv-mls-2000-2000-08-04-New England Revolution-Columbus Crew SC,Regular
+2000-08-05,2000,MLS,True,Chicago Fire FC,Red Bull New York,3,1,,,False,,False,,fbcsv-mls-2000-2000-08-05-Chicago Fire-Red Bull New York,Regular
+2000-08-15,2000,MLS,True,Columbus Crew,Miami Fusion,2,0,,,False,,False,,fbcsv-mls-2000-2000-08-15-Columbus Crew SC-Miami Fusion,Regular
+2000-08-15,2000,MLS,True,FC Dallas,Chicago Fire FC,3,0,,,False,,False,,fbcsv-mls-2000-2000-08-15-FC Dallas-Chicago Fire,Regular
+2000-08-18,2000,MLS,True,Chicago Fire FC,LA Galaxy,2,1,,,False,,False,,fbcsv-mls-2000-2000-08-18-Chicago Fire-LA Galaxy,Regular
+2000-08-25,2000,MLS,True,Tampa Bay Mutiny,Chicago Fire FC,3,3,,,False,,False,,fbcsv-mls-2000-2000-08-25-Tampa Bay Mutiny-Chicago Fire,Regular
+2000-08-25,2000,MLS,True,New England Revolution,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-2000-2000-08-25-New England Revolution-Columbus Crew SC,Regular
+2000-08-29,2000,MLS,True,Chicago Fire FC,FC Dallas,4,0,,,False,,False,,fbcsv-mls-2000-2000-08-29-Chicago Fire-FC Dallas,Regular
+2000-08-29,2000,MLS,True,Columbus Crew,Tampa Bay Mutiny,3,4,,,False,,False,,fbcsv-mls-2000-2000-08-29-Columbus Crew SC-Tampa Bay Mutiny,Regular
+2000-09-01,2000,MLS,True,San Jose Earthquakes,Columbus Crew,3,0,,,False,,False,,fbcsv-mls-2000-2000-09-01-San Jose Earthquakes-Columbus Crew SC,Regular
+2000-09-02,2000,MLS,True,Chicago Fire FC,Colorado Rapids,2,1,,,False,,False,,fbcsv-mls-2000-2000-09-02-Chicago Fire-Colorado Rapids,Regular
+2000-09-05,2000,MLS,True,Chicago Fire FC,Columbus Crew,3,1,,,False,,False,,fbcsv-mls-2000-2000-09-05-Chicago Fire-Columbus Crew SC,Regular
+2000-09-08,2000,MLS,True,Columbus Crew,Chicago Fire FC,2,3,,,False,,False,,fbcsv-mls-2000-2000-09-08-Columbus Crew SC-Chicago Fire,Regular
 2000-09-14,2000,MLS,True,Chicago Fire FC,New England Revolution,2,1,,,False,,False,,fbcsv-mls-2000-2000-09-14-Chicago Fire-New England Revolution,Playoff
-1997-05-03,1997,MLS,True,San Jose Earthquakes,Columbus Crew,1,3,,,False,,False,,fbcsv-mls-1997-1997-05-03-San Jose Earthquakes-Columbus Crew SC,Regular
-1996-09-07,1996,MLS,True,Sporting Kansas City,Columbus Crew,1,5,,,False,,False,,fbcsv-mls-1996-1996-09-07-Sporting Kansas City-Columbus Crew SC,Regular
-1996-09-15,1996,MLS,True,Columbus Crew,Red Bull New York,2,0,,,False,,False,,fbcsv-mls-1996-1996-09-15-Columbus Crew SC-Red Bull New York,Regular
-1997-04-26,1997,MLS,True,Red Bull New York,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1997-1997-04-26-Red Bull New York-Columbus Crew SC,Regular
-1997-03-29,1997,MLS,True,Columbus Crew,Colorado Rapids,2,1,,,False,,False,,fbcsv-mls-1997-1997-03-29-Columbus Crew SC-Colorado Rapids,Regular
-1996-09-21,1996,MLS,True,New England Revolution,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-1996-1996-09-21-New England Revolution-Columbus Crew SC,Regular
-1996-09-18,1996,MLS,True,Red Bull New York,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-1996-1996-09-18-Red Bull New York-Columbus Crew SC,Regular
-1997-06-15,1997,MLS,True,Columbus Crew,Colorado Rapids,0,2,,,False,,False,,fbcsv-mls-1997-1997-06-15-Columbus Crew SC-Colorado Rapids,Regular
-1996-08-14,1996,MLS,True,FC Dallas,Columbus Crew,2,3,,,False,,False,,fbcsv-mls-1996-1996-08-14-FC Dallas-Columbus Crew SC,Regular
-1996-08-18,1996,MLS,True,Columbus Crew,San Jose Earthquakes,2,0,,,False,,False,,fbcsv-mls-1996-1996-08-18-Columbus Crew SC-San Jose Earthquakes,Regular
-1996-08-28,1996,MLS,True,Columbus Crew,LA Galaxy,2,0,,,False,,False,,fbcsv-mls-1996-1996-08-28-Columbus Crew SC-LA Galaxy,Regular
-1996-08-24,1996,MLS,True,Columbus Crew,Sporting Kansas City,2,1,,,False,,False,,fbcsv-mls-1996-1996-08-24-Columbus Crew SC-Sporting Kansas City,Regular
-1996-05-02,1996,MLS,True,Sporting Kansas City,Columbus Crew,6,4,,,False,,False,,fbcsv-mls-1996-1996-05-02-Sporting Kansas City-Columbus Crew SC,Regular
-1996-06-27,1996,MLS,True,New England Revolution,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1996-1996-06-27-New England Revolution-Columbus Crew SC,Regular
-1996-06-30,1996,MLS,True,Columbus Crew,Red Bull New York,0,4,,,False,,False,,fbcsv-mls-1996-1996-06-30-Columbus Crew SC-Red Bull New York,Regular
-1996-08-04,1996,MLS,True,LA Galaxy,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-1996-1996-08-04-LA Galaxy-Columbus Crew SC,Regular
-1996-08-10,1996,MLS,True,Columbus Crew,D.C. United,3,2,,,False,,False,,fbcsv-mls-1996-1996-08-10-Columbus Crew SC-D.C. United,Regular
-1996-07-31,1996,MLS,True,Columbus Crew,FC Dallas,1,2,,,False,,False,,fbcsv-mls-1996-1996-07-31-Columbus Crew SC-FC Dallas,Regular
-1996-07-28,1996,MLS,True,D.C. United,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1996-1996-07-28-D.C. United-Columbus Crew SC,Regular
-1996-07-25,1996,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,0,,,False,,False,,fbcsv-mls-1996-1996-07-25-Columbus Crew SC-Tampa Bay Mutiny,Regular
-1996-07-04,1996,MLS,True,Tampa Bay Mutiny,Columbus Crew,4,1,,,False,,False,,fbcsv-mls-1996-1996-07-04-Tampa Bay Mutiny-Columbus Crew SC,Regular
-1996-07-11,1996,MLS,True,Columbus Crew,New England Revolution,1,2,,,False,,False,,fbcsv-mls-1996-1996-07-11-Columbus Crew SC-New England Revolution,Regular
-1996-07-07,1996,MLS,True,Colorado Rapids,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-1996-1996-07-07-Colorado Rapids-Columbus Crew SC,Regular
-1996-05-05,1996,MLS,True,FC Dallas,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-1996-1996-05-05-FC Dallas-Columbus Crew SC,Regular
-1996-06-01,1996,MLS,True,San Jose Earthquakes,Columbus Crew,3,2,,,False,,False,,fbcsv-mls-1996-1996-06-01-San Jose Earthquakes-Columbus Crew SC,Regular
-1996-06-22,1996,MLS,True,Tampa Bay Mutiny,Columbus Crew,3,4,,,False,,False,,fbcsv-mls-1996-1996-06-22-Tampa Bay Mutiny-Columbus Crew SC,Regular
-1996-06-19,1996,MLS,True,Columbus Crew,Colorado Rapids,2,3,,,False,,False,,fbcsv-mls-1996-1996-06-19-Columbus Crew SC-Colorado Rapids,Regular
-1996-05-26,1996,MLS,True,LA Galaxy,Columbus Crew,3,2,,,False,,False,,fbcsv-mls-1996-1996-05-26-LA Galaxy-Columbus Crew SC,Regular
-1997-06-07,1997,MLS,True,Tampa Bay Mutiny,Columbus Crew,3,1,,,False,,False,,fbcsv-mls-1997-1997-06-07-Tampa Bay Mutiny-Columbus Crew SC,Regular
-1996-05-19,1996,MLS,True,Columbus Crew,Colorado Rapids,2,4,,,False,,False,,fbcsv-mls-1996-1996-05-19-Columbus Crew SC-Colorado Rapids,Regular
-1996-05-11,1996,MLS,True,Columbus Crew,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-05-11-Columbus Crew SC-New England Revolution,Regular
-1996-05-15,1996,MLS,True,D.C. United,Columbus Crew,5,2,,,False,,False,,fbcsv-mls-1996-1996-05-15-D.C. United-Columbus Crew SC,Regular
-1996-04-13,1996,MLS,True,Columbus Crew,D.C. United,4,0,,,False,,False,,fbcsv-mls-1996-1996-04-13-Columbus Crew SC-D.C. United,Regular
-1996-06-08,1996,MLS,True,Columbus Crew,Sporting Kansas City,3,4,,,False,,False,,fbcsv-mls-1996-1996-06-08-Columbus Crew SC-Sporting Kansas City,Regular
-1996-04-27,1996,MLS,True,Red Bull New York,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1996-1996-04-27-Red Bull New York-Columbus Crew SC,Regular
-1996-04-20,1996,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,2,,,False,,False,,fbcsv-mls-1996-1996-04-20-Columbus Crew SC-Tampa Bay Mutiny,Regular
+2000-09-18,2000,MLS,True,New England Revolution,Chicago Fire FC,2,1,,,False,,False,,fbcsv-mls-2000-2000-09-18-New England Revolution-Chicago Fire,Playoff
+2000-09-21,2000,MLS,True,Chicago Fire FC,New England Revolution,6,0,,,False,,False,,fbcsv-mls-2000-2000-09-21-Chicago Fire-New England Revolution,Playoff
+2000-09-25,2000,MLS,True,Chicago Fire FC,Red Bull New York,3,0,,,False,,False,,fbcsv-mls-2000-2000-09-25-Chicago Fire-Red Bull New York,Playoff
+2000-09-29,2000,MLS,True,Red Bull New York,Chicago Fire FC,2,0,,,False,,False,,fbcsv-mls-2000-2000-09-29-Red Bull New York-Chicago Fire,Playoff
+2000-10-05,2000,MLS,True,Chicago Fire FC,Red Bull New York,3,2,,,False,,False,,fbcsv-mls-2000-2000-10-05-Chicago Fire-Red Bull New York,Playoff
+2000-10-14,2000,MLS,True,Chicago Fire FC,Sporting Kansas City,0,1,,,False,,False,,fbcsv-mls-2000-2000-10-14-Chicago Fire-Sporting Kansas City,Playoff
+2001-04-06,2001,MLS,True,Columbus Crew,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2001-2001-04-06-Columbus Crew SC-Chicago Fire,Regular
+2001-04-13,2001,MLS,True,Chicago Fire FC,D.C. United,2,0,,,False,,False,,fbcsv-mls-2001-2001-04-13-Chicago Fire-D.C. United,Regular
+2001-04-13,2001,MLS,True,Tampa Bay Mutiny,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-2001-2001-04-13-Tampa Bay Mutiny-Columbus Crew SC,Regular
+2001-04-20,2001,MLS,True,Columbus Crew,Sporting Kansas City,0,3,,,False,,False,,fbcsv-mls-2001-2001-04-20-Columbus Crew SC-Sporting Kansas City,Regular
+2001-04-20,2001,MLS,True,FC Dallas,Chicago Fire FC,3,2,,,False,,False,,fbcsv-mls-2001-2001-04-20-FC Dallas-Chicago Fire,Regular
+2001-04-27,2001,MLS,True,Tampa Bay Mutiny,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-2001-2001-04-27-Tampa Bay Mutiny-Chicago Fire,Regular
+2001-05-04,2001,MLS,True,Chicago Fire FC,Tampa Bay Mutiny,2,0,,,False,,False,,fbcsv-mls-2001-2001-05-04-Chicago Fire-Tampa Bay Mutiny,Regular
+2001-05-04,2001,MLS,True,Columbus Crew,Miami Fusion,0,0,,,False,,False,,fbcsv-mls-2001-2001-05-04-Columbus Crew SC-Miami Fusion,Regular
+2001-05-11,2001,MLS,True,FC Dallas,Columbus Crew,4,0,,,False,,False,,fbcsv-mls-2001-2001-05-11-FC Dallas-Columbus Crew SC,Regular
+2001-05-11,2001,MLS,True,New England Revolution,Chicago Fire FC,2,1,,,False,,False,,fbcsv-mls-2001-2001-05-11-New England Revolution-Chicago Fire,Regular
+2001-05-15,2001,MLS,True,New England Revolution,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-2001-2001-05-15-New England Revolution-Columbus Crew SC,Regular
+2001-05-18,2001,MLS,True,Chicago Fire FC,Sporting Kansas City,2,0,,,False,,False,,fbcsv-mls-2001-2001-05-18-Chicago Fire-Sporting Kansas City,Regular
+2001-05-18,2001,MLS,True,Columbus Crew,D.C. United,2,1,,,False,,False,,fbcsv-mls-2001-2001-05-18-Columbus Crew SC-D.C. United,Regular
+2001-05-25,2001,MLS,True,Chicago Fire FC,San Jose Earthquakes,1,1,,,False,,False,,fbcsv-mls-2001-2001-05-25-Chicago Fire-San Jose Earthquakes,Regular
+2001-05-25,2001,MLS,True,Columbus Crew,Colorado Rapids,3,3,,,False,,False,,fbcsv-mls-2001-2001-05-25-Columbus Crew SC-Colorado Rapids,Regular
+2001-05-29,2001,MLS,True,Chicago Fire FC,LA Galaxy,3,4,,,False,,False,,fbcsv-mls-2001-2001-05-29-Chicago Fire-LA Galaxy,Regular
+2001-06-01,2001,MLS,True,Columbus Crew,LA Galaxy,1,1,,,False,,False,,fbcsv-mls-2001-2001-06-01-Columbus Crew SC-LA Galaxy,Regular
+2001-06-01,2001,MLS,True,D.C. United,Chicago Fire FC,1,2,,,False,,False,,fbcsv-mls-2001-2001-06-01-D.C. United-Chicago Fire,Regular
+2001-06-08,2001,MLS,True,Chicago Fire FC,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-2001-2001-06-08-Chicago Fire-Columbus Crew SC,Regular
+2001-06-15,2001,MLS,True,Columbus Crew,Tampa Bay Mutiny,6,1,,,False,,False,,fbcsv-mls-2001-2001-06-15-Columbus Crew SC-Tampa Bay Mutiny,Regular
+2001-06-22,2001,MLS,True,Chicago Fire FC,New England Revolution,1,1,,,False,,False,,fbcsv-mls-2001-2001-06-22-Chicago Fire-New England Revolution,Regular
+2001-06-22,2001,MLS,True,FC Dallas,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-2001-2001-06-22-FC Dallas-Columbus Crew SC,Regular
+2001-06-29,2001,MLS,True,Chicago Fire FC,Red Bull New York,3,1,,,False,,False,,fbcsv-mls-2001-2001-06-29-Chicago Fire-Red Bull New York,Regular
+2001-06-29,2001,MLS,True,Miami Fusion,Columbus Crew,4,3,,,False,,False,,fbcsv-mls-2001-2001-06-29-Miami Fusion-Columbus Crew SC,Regular
+2001-07-03,2001,MLS,True,LA Galaxy,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-2001-2001-07-03-LA Galaxy-Columbus Crew SC,Regular
+2001-07-03,2001,MLS,True,Sporting Kansas City,Chicago Fire FC,0,7,,,False,,False,,fbcsv-mls-2001-2001-07-03-Sporting Kansas City-Chicago Fire,Regular
+2001-07-06,2001,MLS,True,Columbus Crew,FC Dallas,2,2,,,False,,False,,fbcsv-mls-2001-2001-07-06-Columbus Crew SC-FC Dallas,Regular
+2001-07-06,2001,MLS,True,Tampa Bay Mutiny,Chicago Fire FC,2,3,,,False,,False,,fbcsv-mls-2001-2001-07-06-Tampa Bay Mutiny-Chicago Fire,Regular
+2001-07-13,2001,MLS,True,Chicago Fire FC,Colorado Rapids,1,0,,,False,,False,,fbcsv-mls-2001-2001-07-13-Chicago Fire-Colorado Rapids,Regular
+2001-07-17,2001,MLS,True,Columbus Crew,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-2001-2001-07-17-Columbus Crew SC-Red Bull New York,Regular
+2001-07-17,2001,MLS,True,Miami Fusion,Chicago Fire FC,2,1,,,False,,False,,fbcsv-mls-2001-2001-07-17-Miami Fusion-Chicago Fire,Regular
+2001-07-20,2001,MLS,True,Chicago Fire FC,FC Dallas,2,1,,,False,,False,,fbcsv-mls-2001-2001-07-20-Chicago Fire-FC Dallas,Regular
+2001-07-20,2001,MLS,True,Columbus Crew,San Jose Earthquakes,2,1,,,False,,False,,fbcsv-mls-2001-2001-07-20-Columbus Crew SC-San Jose Earthquakes,Regular
+2001-07-31,2001,MLS,True,Columbus Crew,Chicago Fire FC,3,0,,,False,,False,,fbcsv-mls-2001-2001-07-31-Columbus Crew SC-Chicago Fire,Regular
+2001-08-03,2001,MLS,True,Colorado Rapids,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2001-2001-08-03-Colorado Rapids-Chicago Fire,Regular
+2001-08-03,2001,MLS,True,Sporting Kansas City,Columbus Crew,1,3,,,False,,False,,fbcsv-mls-2001-2001-08-03-Sporting Kansas City-Columbus Crew SC,Regular
+2001-08-10,2001,MLS,True,Chicago Fire FC,Tampa Bay Mutiny,3,1,,,False,,False,,fbcsv-mls-2001-2001-08-10-Chicago Fire-Tampa Bay Mutiny,Regular
+2001-08-10,2001,MLS,True,San Jose Earthquakes,Columbus Crew,2,2,,,False,,False,,fbcsv-mls-2001-2001-08-10-San Jose Earthquakes-Columbus Crew SC,Regular
+2001-08-14,2001,MLS,True,Chicago Fire FC,Miami Fusion,1,2,,,False,,False,,fbcsv-mls-2001-2001-08-14-Chicago Fire-Miami Fusion,Regular
+2001-08-14,2001,MLS,True,Columbus Crew,FC Dallas,3,0,,,False,,False,,fbcsv-mls-2001-2001-08-14-Columbus Crew SC-FC Dallas,Regular
+2001-08-17,2001,MLS,True,San Jose Earthquakes,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-2001-2001-08-17-San Jose Earthquakes-Chicago Fire,Regular
+2001-08-18,2001,MLS,True,Red Bull New York,Columbus Crew,0,1,,,False,,False,,fbcsv-mls-2001-2001-08-18-Red Bull New York-Columbus Crew SC,Regular
+2001-08-24,2001,MLS,True,D.C. United,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-2001-2001-08-24-D.C. United-Columbus Crew SC,Regular
+2001-08-24,2001,MLS,True,LA Galaxy,Chicago Fire FC,1,3,,,False,,False,,fbcsv-mls-2001-2001-08-24-LA Galaxy-Chicago Fire,Regular
+2001-08-28,2001,MLS,True,Chicago Fire FC,Columbus Crew,2,1,,,False,,False,,fbcsv-mls-2001-2001-08-28-Chicago Fire-Columbus Crew SC,Regular
+2001-08-31,2001,MLS,True,Columbus Crew,New England Revolution,4,1,,,False,,False,,fbcsv-mls-2001-2001-08-31-Columbus Crew SC-New England Revolution,Regular
+2001-08-31,2001,MLS,True,Red Bull New York,Chicago Fire FC,0,1,,,False,,False,,fbcsv-mls-2001-2001-08-31-Red Bull New York-Chicago Fire,Regular
+2001-09-07,2001,MLS,True,Chicago Fire FC,FC Dallas,2,2,,,False,,False,,fbcsv-mls-2001-2001-09-07-Chicago Fire-FC Dallas,Regular
+2001-09-08,2001,MLS,True,Tampa Bay Mutiny,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-2001-2001-09-08-Tampa Bay Mutiny-Columbus Crew SC,Regular
+2001-09-20,2001,MLS,True,Chicago Fire FC,FC Dallas,2,0,,,False,,False,,fbcsv-mls-2001-2001-09-20-Chicago Fire-FC Dallas,Playoff
+2001-09-22,2001,MLS,True,Columbus Crew,San Jose Earthquakes,1,3,,,False,,False,,fbcsv-mls-2001-2001-09-22-Columbus Crew SC-San Jose Earthquakes,Playoff
+2001-09-23,2001,MLS,True,FC Dallas,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2001-2001-09-23-FC Dallas-Chicago Fire,Playoff
+2001-09-26,2001,MLS,True,San Jose Earthquakes,Columbus Crew,3,0,,,False,,False,,fbcsv-mls-2001-2001-09-26-San Jose Earthquakes-Columbus Crew SC,Playoff
+2001-09-29,2001,MLS,True,Chicago Fire FC,FC Dallas,2,0,,,False,,False,,fbcsv-mls-2001-2001-09-29-Chicago Fire-FC Dallas,Playoff
+2001-10-10,2001,MLS,True,Chicago Fire FC,LA Galaxy,1,1,,,False,,False,,fbcsv-mls-2001-2001-10-10-Chicago Fire-LA Galaxy,Playoff
