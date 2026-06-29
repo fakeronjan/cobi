@@ -2749,7 +2749,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2013-09-29,2013,MLS,True,Seattle Sounders FC,Red Bull New York,1,1,,,False,,False,Lumen Field,359462,
 2013-09-29,2013,MLS,True,Chivas USA,San Jose Earthquakes,0,1,,,False,,False,Dignity Health Sports Park,359461,
 2013-10-04,2013,MLS,True,D.C. United,Chicago Fire FC,0,3,,,False,,False,RFK Stadium,359460,
-2013-10-04,2013,MLS,True,Houston Dynamo FC,CF Montréal,1,0,,,False,,False,Shell Energy Stadium,359459,
 2013-10-05,2013,MLS,True,Red Bull New York,New England Revolution,2,2,,,False,,False,Sports Illustrated Stadium,359458,
 2013-10-05,2013,MLS,True,Columbus Crew,Sporting Kansas City,0,1,,,False,,False,Historic Crew Stadium,359456,
 2013-10-05,2013,MLS,True,Philadelphia Union,Toronto FC,1,0,,,False,,False,Subaru Park,359457,
@@ -9302,6 +9301,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2001-10-14,2001,MLS,True,San Jose Earthquakes,Miami Fusion,4,0,,,False,,False,,fbcsv-mls-2001-2001-10-14-San Jose Earthquakes-Miami Fusion,Playoff
 1996-10-20,1996,MLS,True,LA Galaxy,D.C. United,2,3,,,False,,True,Foxboro Stadium,wikipedia-1996-mls-cup,Final
 2001-10-21,2001,MLS,True,LA Galaxy,San Jose Earthquakes,1,2,,,False,,True,Crew Stadium,wikipedia-2001-mls-cup,Final
+2013-10-04,2013,MLS,True,Houston Dynamo FC,CF Montréal,1,0,,,False,,False,Shell Energy Stadium,359459,
 1996-04-13,1996,MLS,True,Columbus Crew,D.C. United,4,0,,,False,,False,,fbcsv-mls-1996-1996-04-13-Columbus Crew SC-D.C. United,Regular
 1996-04-20,1996,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,2,,,False,,False,,fbcsv-mls-1996-1996-04-20-Columbus Crew SC-Tampa Bay Mutiny,Regular
 1996-04-27,1996,MLS,True,Red Bull New York,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1996-1996-04-27-Red Bull New York-Columbus Crew SC,Regular
