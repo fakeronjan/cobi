@@ -1154,6 +1154,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2008-05-24,2008,MLS,True,FC Dallas,Real Salt Lake,2,1,,,False,,False,Pizza Hut Park,237809,
 2008-05-24,2008,MLS,True,Colorado Rapids,Chivas USA,1,2,,,False,,False,Dick's Sporting Goods Park,237810,
 2008-05-24,2008,MLS,True,LA Galaxy,Sporting Kansas City,3,1,,,False,,False,Dignity Health Sports Park,237811,
+2008-05-25,2008,MLS,True,Red Bull New York,Chicago Fire FC,1,5,,,False,,False,Giants Stadium,237812,
 2008-05-28,2008,MLS,True,FC Dallas,Houston Dynamo FC,2,2,,,False,,False,Pizza Hut Park,240761,
 2008-05-29,2008,MLS,True,New England Revolution,D.C. United,2,2,,,False,,False,Gillette Stadium,237813,
 2008-05-31,2008,MLS,True,Toronto FC,LA Galaxy,2,0,,,False,,False,BMO Field,237814,
@@ -9301,7 +9302,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2001-10-14,2001,MLS,True,San Jose Earthquakes,Miami Fusion,4,0,,,False,,False,,fbcsv-mls-2001-2001-10-14-San Jose Earthquakes-Miami Fusion,Playoff
 1996-10-20,1996,MLS,True,LA Galaxy,D.C. United,2,3,,,False,,True,Foxboro Stadium,wikipedia-1996-mls-cup,Final
 2001-10-21,2001,MLS,True,LA Galaxy,San Jose Earthquakes,1,2,,,False,,True,Crew Stadium,wikipedia-2001-mls-cup,Final
-2008-05-25,2008,MLS,True,Red Bull New York,Chicago Fire FC,1,5,,,False,,False,Giants Stadium,237812,
 1996-04-13,1996,MLS,True,Columbus Crew,D.C. United,4,0,,,False,,False,,fbcsv-mls-1996-1996-04-13-Columbus Crew SC-D.C. United,Regular
 1996-04-20,1996,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,2,,,False,,False,,fbcsv-mls-1996-1996-04-20-Columbus Crew SC-Tampa Bay Mutiny,Regular
 1996-04-27,1996,MLS,True,Red Bull New York,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1996-1996-04-27-Red Bull New York-Columbus Crew SC,Regular
