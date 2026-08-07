@@ -5792,7 +5792,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2021-10-16,2021,MLS,True,Houston Dynamo FC,Seattle Sounders FC,2,1,,,False,,False,Shell Energy Stadium,598074,
 2021-10-16,2021,MLS,True,Austin FC,Minnesota United FC,0,1,,,False,,False,Q2 Stadium,598075,
 2021-10-16,2021,MLS,True,Real Salt Lake,Colorado Rapids,3,1,,,False,,False,America First Field,598076,
-2021-10-16,2021,MLS,True,LA Galaxy,Portland Timbers,2,1,,,False,,False,Dignity Health Sports Park,598077,
 2021-10-17,2021,MLS,True,Red Bull New York,New York City FC,1,0,,,False,,False,Sports Illustrated Stadium,598078,
 2021-10-17,2021,MLS,True,Vancouver Whitecaps,Sporting Kansas City,2,1,,,False,,False,BC Place,598079,
 2021-10-20,2021,MLS,True,Atlanta United FC,New York City FC,1,1,,,False,,False,Mercedes-Benz Stadium,598080,
@@ -9353,6 +9352,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2001-10-14,2001,MLS,True,San Jose Earthquakes,Miami Fusion,4,0,,,False,,False,,fbcsv-mls-2001-2001-10-14-San Jose Earthquakes-Miami Fusion,Playoff
 1996-10-20,1996,MLS,True,LA Galaxy,D.C. United,2,3,,,False,,True,Foxboro Stadium,wikipedia-1996-mls-cup,Final
 2001-10-21,2001,MLS,True,LA Galaxy,San Jose Earthquakes,1,2,,,False,,True,Crew Stadium,wikipedia-2001-mls-cup,Final
+2021-10-16,2021,MLS,True,LA Galaxy,Portland Timbers,2,1,,,False,,False,Dignity Health Sports Park,598077,
 1996-04-13,1996,MLS,True,Columbus Crew,D.C. United,4,0,,,False,,False,,fbcsv-mls-1996-1996-04-13-Columbus Crew SC-D.C. United,Regular
 1996-04-20,1996,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,2,,,False,,False,,fbcsv-mls-1996-1996-04-20-Columbus Crew SC-Tampa Bay Mutiny,Regular
 1996-04-27,1996,MLS,True,Red Bull New York,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1996-1996-04-27-Red Bull New York-Columbus Crew SC,Regular
