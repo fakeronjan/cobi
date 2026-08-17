@@ -8231,6 +8231,10 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-08-15,2026,MLS,True,Real Salt Lake,Minnesota United FC,1,1,,,False,,False,America First Field,761719,
 2026-08-15,2026,MLS,True,LAFC,San Diego FC,0,1,,,False,,False,BMO Stadium,761720,
 2026-08-15,2026,MLS,True,San Jose Earthquakes,St. Louis CITY SC,1,3,,,False,,False,PayPal Park,761721,
+2026-08-16,2026,MLS,True,Chicago Fire FC,Portland Timbers,2,1,,,False,,False,Soldier Field,761723,
+2026-08-16,2026,MLS,True,New York City FC,Philadelphia Union,2,3,,,False,,False,Yankee Stadium,761722,
+2026-08-16,2026,MLS,True,Austin FC,FC Dallas,1,2,,,False,,False,Q2 Stadium,761717,
+2026-08-16,2026,MLS,True,Seattle Sounders FC,Vancouver Whitecaps,0,2,,,False,,False,Lumen Field,761724,
 1996-04-06,1996,MLS,True,San Jose Earthquakes,D.C. United,1,0,,,False,,False,,fbcsv-mls-1996-1996-04-06-San Jose Earthquakes-D.C. United,Regular
 1996-04-13,1996,MLS,True,LA Galaxy,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1996-1996-04-13-LA Galaxy-Red Bull New York,Regular
 1996-04-13,1996,MLS,True,Tampa Bay Mutiny,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-04-13-Tampa Bay Mutiny-New England Revolution,Regular
