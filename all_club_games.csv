@@ -8235,6 +8235,21 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-08-16,2026,MLS,True,New York City FC,Philadelphia Union,2,3,,,False,,False,Yankee Stadium,761722,
 2026-08-16,2026,MLS,True,Austin FC,FC Dallas,1,2,,,False,,False,Q2 Stadium,761717,
 2026-08-16,2026,MLS,True,Seattle Sounders FC,Vancouver Whitecaps,0,2,,,False,,False,Lumen Field,761724,
+2026-08-19,2026,MLS,True,Columbus Crew,CF Montréal,1,2,,,False,,False,ScottsMiracle-Gro Field,761726,
+2026-08-19,2026,MLS,True,D.C. United,New England Revolution,0,3,,,False,,False,Audi Field,761725,
+2026-08-19,2026,MLS,True,FC Cincinnati,New York City FC,2,1,,,False,,False,TQL Stadium,761730,
+2026-08-19,2026,MLS,True,Orlando City SC,Chicago Fire FC,1,2,,,False,,False,Inter&Co Stadium,761729,
+2026-08-19,2026,MLS,True,Philadelphia Union,Inter Miami CF,2,2,,,False,,False,Subaru Park,761727,
+2026-08-19,2026,MLS,True,Red Bull New York,Nashville SC,0,1,,,False,,False,Red Bull Arena,761728,
+2026-08-19,2026,MLS,True,Toronto FC,Charlotte FC,3,3,,,False,,False,BMO Field,761731,
+2026-08-19,2026,MLS,True,Sporting Kansas City,St. Louis CITY SC,1,1,,,False,,False,Sporting Park,761732,
+2026-08-19,2026,MLS,True,Minnesota United FC,Atlanta United FC,1,2,,,False,,False,Allianz Field,761733,
+2026-08-19,2026,MLS,True,Colorado Rapids,LAFC,1,0,,,False,,False,Dick's Sporting Goods Park,761734,
+2026-08-19,2026,MLS,True,Real Salt Lake,FC Dallas,3,4,,,False,,False,America First Field,761735,
+2026-08-19,2026,MLS,True,Seattle Sounders FC,Austin FC,1,2,,,False,,False,Lumen Field,761736,
+2026-08-19,2026,MLS,True,LA Galaxy,San Jose Earthquakes,1,0,,,False,,False,Dignity Health Sports Park,761738,
+2026-08-19,2026,MLS,True,Portland Timbers,San Diego FC,3,1,,,False,,False,Providence Park,761737,
+2026-08-19,2026,MLS,True,Vancouver Whitecaps,Houston Dynamo FC,0,1,,,False,,False,BC Place,761739,
 1996-04-06,1996,MLS,True,San Jose Earthquakes,D.C. United,1,0,,,False,,False,,fbcsv-mls-1996-1996-04-06-San Jose Earthquakes-D.C. United,Regular
 1996-04-13,1996,MLS,True,LA Galaxy,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1996-1996-04-13-LA Galaxy-Red Bull New York,Regular
 1996-04-13,1996,MLS,True,Tampa Bay Mutiny,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-04-13-Tampa Bay Mutiny-New England Revolution,Regular
