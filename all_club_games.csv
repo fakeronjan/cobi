@@ -8250,6 +8250,19 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-08-19,2026,MLS,True,LA Galaxy,San Jose Earthquakes,1,0,,,False,,False,Dignity Health Sports Park,761738,
 2026-08-19,2026,MLS,True,Portland Timbers,San Diego FC,3,1,,,False,,False,Providence Park,761737,
 2026-08-19,2026,MLS,True,Vancouver Whitecaps,Houston Dynamo FC,0,1,,,False,,False,BC Place,761739,
+2026-08-22,2026,MLS,True,CF Montréal,LA Galaxy,2,2,,,False,,False,Stade Saputo,761745,
+2026-08-22,2026,MLS,True,Charlotte FC,D.C. United,3,1,,,False,,False,Bank of America Stadium,761741,
+2026-08-22,2026,MLS,True,FC Cincinnati,Seattle Sounders FC,1,1,,,False,,False,TQL Stadium,761743,
+2026-08-22,2026,MLS,True,Inter Miami CF,Toronto FC,1,2,,,False,,False,Nu Stadium,761742,
+2026-08-22,2026,MLS,True,Orlando City SC,Real Salt Lake,2,1,,,False,,False,Inter&Co Stadium,761740,
+2026-08-22,2026,MLS,True,Red Bull New York,Chicago Fire FC,1,1,,,False,,False,Red Bull Arena,761744,
+2026-08-22,2026,MLS,True,Nashville SC,Columbus Crew,3,2,,,False,,False,GEODIS Park,761746,
+2026-08-22,2026,MLS,True,St. Louis CITY SC,Houston Dynamo FC,2,1,,,False,,False,Energizer Park,761747,
+2026-08-22,2026,MLS,True,Austin FC,Philadelphia Union,1,1,,,False,,False,Q2 Stadium,761748,
+2026-08-22,2026,MLS,True,Vancouver Whitecaps,FC Dallas,5,0,,,False,,False,BC Place,761749,
+2026-08-22,2026,MLS,True,LAFC,Portland Timbers,1,1,,,False,,False,BMO Stadium,761751,
+2026-08-22,2026,MLS,True,San Diego FC,Colorado Rapids,3,0,,,False,,False,Snapdragon Stadium,761750,
+2026-08-22,2026,MLS,True,San Jose Earthquakes,Minnesota United FC,1,5,,,False,,False,PayPal Park,761752,
 1996-04-06,1996,MLS,True,San Jose Earthquakes,D.C. United,1,0,,,False,,False,,fbcsv-mls-1996-1996-04-06-San Jose Earthquakes-D.C. United,Regular
 1996-04-13,1996,MLS,True,LA Galaxy,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1996-1996-04-13-LA Galaxy-Red Bull New York,Regular
 1996-04-13,1996,MLS,True,Tampa Bay Mutiny,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-04-13-Tampa Bay Mutiny-New England Revolution,Regular
