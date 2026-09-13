@@ -8308,6 +8308,18 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-09-09,2026,MLS,True,Portland Timbers,St. Louis CITY SC,2,2,,,False,,False,Providence Park,761796,
 2026-09-09,2026,MLS,True,San Diego FC,San Jose Earthquakes,2,3,,,False,,False,Snapdragon Stadium,761797,
 2026-09-09,2026,MLS,True,Vancouver Whitecaps,LA Galaxy,3,0,,,False,,False,BC Place,761799,
+2026-09-12,2026,MLS,True,Columbus Crew,Red Bull New York,0,1,,,False,,False,ScottsMiracle-Gro Field,761804,
+2026-09-12,2026,MLS,True,D.C. United,Atlanta United FC,0,0,,,False,,False,Audi Field,761803,
+2026-09-12,2026,MLS,True,FC Cincinnati,Charlotte FC,3,3,,,False,,False,TQL Stadium,761802,
+2026-09-12,2026,MLS,True,Inter Miami CF,Nashville SC,2,2,,,False,,False,Nu Stadium,761800,
+2026-09-12,2026,MLS,True,Orlando City SC,Toronto FC,3,0,,,False,,False,Inter&Co Stadium,761801,
+2026-09-12,2026,MLS,True,FC Dallas,Portland Timbers,2,1,,,False,,False,Toyota Stadium,761805,
+2026-09-12,2026,MLS,True,Sporting Kansas City,LAFC,3,1,,,False,,False,Sporting Park,761806,
+2026-09-12,2026,MLS,True,St. Louis CITY SC,Minnesota United FC,4,2,,,False,,False,Energizer Park,761807,
+2026-09-12,2026,MLS,True,Colorado Rapids,CF Montréal,1,0,,,False,,False,Dick's Sporting Goods Park,761808,
+2026-09-12,2026,MLS,True,Real Salt Lake,New York City FC,0,2,,,False,,False,America First Field,761809,
+2026-09-12,2026,MLS,True,LA Galaxy,Seattle Sounders FC,1,1,,,False,,False,Dignity Health Sports Park,761811,
+2026-09-12,2026,MLS,True,San Jose Earthquakes,Houston Dynamo FC,1,0,,,False,,False,PayPal Park,761810,
 1996-04-06,1996,MLS,True,San Jose Earthquakes,D.C. United,1,0,,,False,,False,,fbcsv-mls-1996-1996-04-06-San Jose Earthquakes-D.C. United,Regular
 1996-04-13,1996,MLS,True,LA Galaxy,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1996-1996-04-13-LA Galaxy-Red Bull New York,Regular
 1996-04-13,1996,MLS,True,Tampa Bay Mutiny,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-04-13-Tampa Bay Mutiny-New England Revolution,Regular
