@@ -833,7 +833,7 @@ def run_pipeline(scrape=True):
     # 1996-1999: Shield winner is derived from MLS_EARLY_STANDINGS (Wikipedia
     # season totals) since our gap-fill source doesn't preserve the SOW
     # signal needed for era-accurate pts.
-    def _regular_season_end_date(season_games):
+    def _regular_season_end_date(season_games, is_current_year):
         """Return the date of Decision Day (regular-season finale) or None.
 
         Returns None for in-progress seasons (no Sept-Nov games yet, or no
@@ -855,7 +855,25 @@ def run_pipeline(scrape=True):
         big_days = daily[daily >= 6]
         if big_days.empty:
             return None
-        return big_days.index.max()
+        ds_date = big_days.index.max()
+        # MLS also bunches every team into one "full round" day well before
+        # the real finale (makeup rounds after int'l breaks, etc - e.g. 2025
+        # had >=6-game days on 9/13, 9/20, 9/27 and 10/4 before the real
+        # Decision Day on 10/18). The >= 6-games-in-a-day + 7-day-gate combo
+        # above can't tell "latest full round we've seen because the season
+        # is over" from "latest full round we've seen because the next one
+        # hasn't happened/been scraped yet." The real Decision Day is the one
+        # day every club converges on the SAME season game count - checked
+        # here only for the current in-progress season (past seasons already
+        # resolve correctly and 2020's COVID-shortened schedule never
+        # converges, so don't gate on this retroactively).
+        if is_current_year:
+            reg = season_games[season_games['date'].dt.date <= ds_date]
+            counts = pd.concat([reg['home_team'], reg['away_team']]).value_counts()
+            active = counts[counts >= 10]
+            if len(active) > 1 and (active.max() - active.min()) > 2:
+                return None
+        return ds_date
 
     def _points(row, team):
         """3 for win (incl. shootout), 1 for draw, 0 for loss."""
@@ -885,7 +903,7 @@ def run_pipeline(scrape=True):
                 trophy_records.append({'year': str(y), 'team': champ, 'honor': "Supporters Shield Champion"})
                 trophy_records.append({'year': str(y), 'team': ru,    'honor': "Supporters Shield Runner-Up"})
                 continue
-            ds_date = _regular_season_end_date(g)
+            ds_date = _regular_season_end_date(g, year_int == current_year)
             if ds_date is None:
                 continue
             if (date.today() - ds_date).days < 7:
