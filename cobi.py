@@ -285,10 +285,16 @@ CURRENT_YEAR = _today.year
 # ESPN FETCH HELPERS
 # ============================================================
 
-def espn_fetch_year(slug, year, max_retries=3, sleep=0.5):
-    """Pull a full calendar year of events from ESPN's scoreboard endpoint."""
+def espn_fetch_day(slug, day, max_retries=3, sleep=0.3):
+    """Pull one day of events from ESPN's scoreboard endpoint.
+
+    Single dates only: since ~2026-09-14 ESPN answers any `dates=A-B` range
+    (even two days) with 400 "Failed to get events endpoint." The old
+    full-year query failed that way on every run while the cron stayed green,
+    so a failure here raises instead of being swallowed.
+    """
     url = f"{ESPN_BASE}/{slug}/scoreboard"
-    params = {'dates': f'{year}0101-{year}1231', 'limit': 1000}
+    params = {'dates': day.strftime('%Y%m%d')}
     for attempt in range(max_retries):
         try:
             r = requests.get(url, params=params, timeout=30)
@@ -297,10 +303,8 @@ def espn_fetch_year(slug, year, max_retries=3, sleep=0.5):
             return r.json()
         except Exception as e:
             if attempt == max_retries - 1:
-                print(f"  [warn] {slug} {year}: {e}")
-                return {}
+                raise RuntimeError(f"ESPN {slug} scoreboard fetch failed for {day}: {e}") from e
             time.sleep(2 ** attempt)
-    return {}
 
 
 def espn_extract_matches(payload, competition_label, league_match_flag):
@@ -400,17 +404,33 @@ def _season_for_match(competition, match_date):
     return str(match_date.year)
 
 
-def scrape_espn_all(start_year=None, end_year=None):
-    end_year = end_year or CURRENT_YEAR
+# Re-fetch this many days before the latest game already in the database, so
+# late score corrections and games ESPN files under a neighboring day still land.
+ESPN_REFETCH_DAYS = 14
+
+
+def scrape_espn_all(path='all_club_games.csv'):
+    """Fetch recent ESPN matches day by day. History lives in the committed
+    games file (union_with_existing keeps it), so only the tail is re-queried:
+    from ESPN_REFETCH_DAYS before the latest stored game through today."""
     all_rows = []
     for label, slug, first_year, league_flag in ESPN_COMPETITIONS:
-        fy = max(first_year, start_year or first_year)
-        print(f"[ESPN] {label} ({slug}) - {fy}-{end_year}")
-        for year in range(fy, end_year + 1):
-            payload = espn_fetch_year(slug, year)
-            rows = espn_extract_matches(payload, label, league_flag)
-            print(f"  {year}: {len(rows)} matches")
-            all_rows.extend(rows)
+        start = date(first_year, 1, 1)
+        if os.path.exists(path):
+            prev = pd.read_csv(path, usecols=['date', 'competition'])
+            prev = prev[prev['competition'] == label]
+            if not prev.empty:
+                start = pd.to_datetime(prev['date']).max().date() - timedelta(days=ESPN_REFETCH_DAYS)
+        print(f"[ESPN] {label} ({slug}) - {start} to {_today}")
+        seen = set()
+        d = start
+        while d <= _today:
+            for row in espn_extract_matches(espn_fetch_day(slug, d), label, league_flag):
+                if row['event_id'] not in seen:
+                    seen.add(row['event_id'])
+                    all_rows.append(row)
+            d += timedelta(days=1)
+        print(f"  {len(seen)} completed matches")
     return pd.DataFrame(all_rows)
 
 
@@ -471,11 +491,10 @@ def union_with_existing(fresh_df, path='all_club_games.csv'):
     new games or CORRECT existing ones, but must never DELETE games we already
     have just because this run's live fetch came back short.
 
-    ESPN's scoreboard API is re-queried for the FULL history every run and is
-    not perfectly stable - a transient failure or partial response for an old
-    season silently drops those games from `fresh_df`. Without this union, that
-    shrinks the date set, which (a) erases real history and (b) desyncs the
-    positional-id ratings cache. Fresh rows win for games present in both (so
+    Each run only re-fetches the recent tail from ESPN (see scrape_espn_all),
+    so this file is the only copy of older history. Without this union, a
+    short fetch would shrink the date set, which (a) erases real history and
+    (b) desyncs the positional-id ratings cache. Fresh rows win for games present in both (so
     score/metadata corrections still land); DB-only games are preserved.
     """
     if not os.path.exists(path):
@@ -491,7 +510,7 @@ def union_with_existing(fresh_df, path='all_club_games.csv'):
     preserved = sum(1 for k in map(tuple, prev_df[key].astype(str).values) if k not in fresh_keys)
     if preserved:
         print(f"[db-union] preserved {preserved:,} games already in the database "
-              f"that this run's fetch did not return (flaky source - not deleting history)")
+              f"outside this run's fetch window")
     return combined
 
 
