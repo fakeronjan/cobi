@@ -1,0 +1,123 @@
+date,home_team,away_team,stage,event_id
+2026-09-26,Atlanta United FC,New York City FC,regular-season,761830
+2026-09-26,Vancouver Whitecaps,D.C. United,regular-season,761842
+2026-09-26,San Jose Earthquakes,Portland Timbers,regular-season,761843
+2026-09-26,Real Salt Lake,New England Revolution,regular-season,761840
+2026-09-26,Seattle Sounders FC,Minnesota United FC,regular-season,761837
+2026-09-26,Nashville SC,Toronto FC,regular-season,761838
+2026-09-26,Houston Dynamo FC,Sporting Kansas City,regular-season,761836
+2026-09-26,LA Galaxy,Colorado Rapids,regular-season,761841
+2026-09-26,Austin FC,San Diego FC,regular-season,761839
+2026-09-26,Red Bull New York,St. Louis CITY SC,regular-season,761833
+2026-09-26,Philadelphia Union,Orlando City SC,regular-season,761834
+2026-09-26,Charlotte FC,Chicago Fire FC,regular-season,761832
+2026-09-26,CF Montréal,FC Cincinnati,regular-season,761831
+2026-09-26,FC Dallas,LAFC,regular-season,761835
+2026-09-27,Columbus Crew,Inter Miami CF,regular-season,761844
+2026-10-01,Seattle Sounders FC,Sporting Kansas City,regular-season,761798
+2026-10-06,Chicago Fire FC,Vancouver Whitecaps,regular-season,761660
+2026-10-10,Red Bull New York,San Diego FC,regular-season,761853
+2026-10-10,LAFC,Vancouver Whitecaps,regular-season,761858
+2026-10-10,Colorado Rapids,San Jose Earthquakes,regular-season,761857
+2026-10-10,Sporting Kansas City,Portland Timbers,regular-season,761855
+2026-10-10,Minnesota United FC,Houston Dynamo FC,regular-season,761854
+2026-10-10,Philadelphia Union,Real Salt Lake,regular-season,761849
+2026-10-10,Austin FC,Nashville SC,regular-season,761856
+2026-10-10,New England Revolution,Seattle Sounders FC,regular-season,761851
+2026-10-10,Inter Miami CF,D.C. United,regular-season,761847
+2026-10-10,Charlotte FC,FC Dallas,regular-season,761852
+2026-10-10,Atlanta United FC,FC Cincinnati,regular-season,761850
+2026-10-10,Chicago Fire FC,New York City FC,regular-season,761846
+2026-10-10,Toronto FC,CF Montréal,regular-season,761845
+2026-10-10,Orlando City SC,Columbus Crew,regular-season,761848
+2026-10-11,St. Louis CITY SC,LA Galaxy,regular-season,761859
+2026-10-14,San Diego FC,Houston Dynamo FC,regular-season,761872
+2026-10-14,LAFC,Austin FC,regular-season,761873
+2026-10-14,LA Galaxy,Portland Timbers,regular-season,761874
+2026-10-14,Real Salt Lake,San Jose Earthquakes,regular-season,761870
+2026-10-14,Colorado Rapids,Minnesota United FC,regular-season,761871
+2026-10-14,St. Louis CITY SC,Vancouver Whitecaps,regular-season,761868
+2026-10-14,Nashville SC,Sporting Kansas City,regular-season,761866
+2026-10-14,Chicago Fire FC,Philadelphia Union,regular-season,761869
+2026-10-14,Toronto FC,Orlando City SC,regular-season,761860
+2026-10-14,Inter Miami CF,New York City FC,regular-season,761861
+2026-10-14,FC Cincinnati,New England Revolution,regular-season,761862
+2026-10-14,D.C. United,Red Bull New York,regular-season,761863
+2026-10-14,Columbus Crew,Charlotte FC,regular-season,761865
+2026-10-14,CF Montréal,Atlanta United FC,regular-season,761864
+2026-10-14,FC Dallas,Seattle Sounders FC,regular-season,761867
+2026-10-17,Houston Dynamo FC,FC Dallas,regular-season,761883
+2026-10-17,San Jose Earthquakes,Nashville SC,regular-season,761886
+2026-10-17,Portland Timbers,Colorado Rapids,regular-season,761888
+2026-10-17,LA Galaxy,San Diego FC,regular-season,761887
+2026-10-17,Sporting Kansas City,Real Salt Lake,regular-season,761884
+2026-10-17,Austin FC,Vancouver Whitecaps,regular-season,761882
+2026-10-17,Seattle Sounders FC,CF Montréal,regular-season,761885
+2026-10-17,Orlando City SC,D.C. United,regular-season,761881
+2026-10-17,New York City FC,LAFC,regular-season,761877
+2026-10-17,New England Revolution,Chicago Fire FC,regular-season,761879
+2026-10-17,Atlanta United FC,Inter Miami CF,regular-season,761880
+2026-10-17,Minnesota United FC,St. Louis CITY SC,regular-season,761876
+2026-10-17,Philadelphia Union,Charlotte FC,regular-season,761875
+2026-10-17,Red Bull New York,Toronto FC,regular-season,761878
+2026-10-18,FC Cincinnati,Columbus Crew,regular-season,761889
+2026-10-21,FC Cincinnati,D.C. United,regular-season,761773
+2026-10-24,San Diego FC,Seattle Sounders FC,regular-season,761901
+2026-10-24,Portland Timbers,Charlotte FC,regular-season,761902
+2026-10-24,Sporting Kansas City,Austin FC,regular-season,761899
+2026-10-24,Real Salt Lake,St. Louis CITY SC,regular-season,761898
+2026-10-24,Houston Dynamo FC,Minnesota United FC,regular-season,761896
+2026-10-24,FC Dallas,San Jose Earthquakes,regular-season,761900
+2026-10-24,Colorado Rapids,Vancouver Whitecaps,regular-season,761897
+2026-10-24,Orlando City SC,New York City FC,regular-season,761892
+2026-10-24,D.C. United,FC Cincinnati,regular-season,761895
+2026-10-24,Atlanta United FC,Chicago Fire FC,regular-season,761893
+2026-10-24,Red Bull New York,Inter Miami CF,regular-season,761891
+2026-10-24,Columbus Crew,Toronto FC,regular-season,761890
+2026-10-24,CF Montréal,Nashville SC,regular-season,761903
+2026-10-24,Philadelphia Union,New England Revolution,regular-season,761894
+2026-10-25,LAFC,LA Galaxy,regular-season,761904
+2026-10-28,Minnesota United FC,Sporting Kansas City,regular-season,761913
+2026-10-28,Seattle Sounders FC,Houston Dynamo FC,regular-season,761916
+2026-10-28,San Jose Earthquakes,Colorado Rapids,regular-season,761917
+2026-10-28,St. Louis CITY SC,Portland Timbers,regular-season,761915
+2026-10-28,Vancouver Whitecaps,San Diego FC,regular-season,761918
+2026-10-28,FC Dallas,Columbus Crew,regular-season,761912
+2026-10-28,Nashville SC,Philadelphia Union,regular-season,761914
+2026-10-28,Austin FC,Real Salt Lake,regular-season,761910
+2026-10-28,Charlotte FC,CF Montréal,regular-season,761907
+2026-10-28,Inter Miami CF,FC Cincinnati,regular-season,761908
+2026-10-28,Chicago Fire FC,Orlando City SC,regular-season,761911
+2026-10-28,New York City FC,Atlanta United FC,regular-season,761905
+2026-10-28,Toronto FC,D.C. United,regular-season,761906
+2026-10-28,New England Revolution,Red Bull New York,regular-season,761909
+2026-10-31,Charlotte FC,Orlando City SC,regular-season,761922
+2026-10-31,Columbus Crew,D.C. United,regular-season,761924
+2026-10-31,New York City FC,CF Montréal,regular-season,761930
+2026-10-31,Sporting Kansas City,FC Dallas,regular-season,761928
+2026-10-31,St. Louis CITY SC,San Diego FC,regular-season,761926
+2026-10-31,LA Galaxy,Austin FC,regular-season,761925
+2026-10-31,San Jose Earthquakes,Real Salt Lake,regular-season,761929
+2026-10-31,Colorado Rapids,Chicago Fire FC,regular-season,761923
+2026-10-31,FC Cincinnati,Philadelphia Union,regular-season,761919
+2026-11-01,Portland Timbers,Houston Dynamo FC,regular-season,761933
+2026-11-01,New England Revolution,Inter Miami CF,regular-season,761932
+2026-11-01,LAFC,Minnesota United FC,regular-season,761921
+2026-11-01,Vancouver Whitecaps,Seattle Sounders FC,regular-season,761927
+2026-11-01,Atlanta United FC,Toronto FC,regular-season,761931
+2026-11-01,Nashville SC,Red Bull New York,regular-season,761920
+2026-11-07,Real Salt Lake,LA Galaxy,regular-season,761946
+2026-11-07,Minnesota United FC,San Jose Earthquakes,regular-season,761945
+2026-11-07,Houston Dynamo FC,St. Louis CITY SC,regular-season,761944
+2026-11-07,FC Dallas,Colorado Rapids,regular-season,761943
+2026-11-07,Austin FC,Portland Timbers,regular-season,761942
+2026-11-07,Red Bull New York,Atlanta United FC,regular-season,761939
+2026-11-07,Philadelphia Union,Toronto FC,regular-season,761941
+2026-11-07,Inter Miami CF,Charlotte FC,regular-season,761938
+2026-11-07,FC Cincinnati,Nashville SC,regular-season,761937
+2026-11-07,D.C. United,New York City FC,regular-season,761936
+2026-11-07,Chicago Fire FC,Columbus Crew,regular-season,761935
+2026-11-07,CF Montréal,Vancouver Whitecaps,regular-season,761934
+2026-11-07,San Diego FC,Sporting Kansas City,regular-season,761947
+2026-11-07,Orlando City SC,New England Revolution,regular-season,761940
+2026-11-07,Seattle Sounders FC,LAFC,regular-season,761948

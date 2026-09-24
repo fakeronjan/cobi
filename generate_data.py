@@ -12,6 +12,8 @@ import glob
 from bisect import bisect_right
 from datetime import date, datetime, timezone
 
+import title_odds
+
 os.makedirs('docs/data/teams', exist_ok=True)
 os.makedirs('docs/data/seasons', exist_ok=True)
 
@@ -213,7 +215,7 @@ MLS_CONFERENCE_HISTORY = {
     'LAFC':                      [(2018, 9999, 'West')],
     'Miami Fusion':              [(1998, 2001, 'East')],
     'Minnesota United FC':       [(2017, 9999, 'West')],
-    'Nashville SC':              [(2020, 2020, 'East'), (2021, 2023, 'West'), (2024, 9999, 'East')],
+    'Nashville SC':              [(2020, 2021, 'East'), (2022, 2022, 'West'), (2023, 9999, 'East')],  # per ESPN standings
     'New England Revolution':    [(1996, 9999, 'East')],
     'New York City FC':          [(2015, 9999, 'East')],
     'Orlando City SC':           [(2015, 9999, 'East')],
@@ -310,6 +312,18 @@ if 'shootout_winner' in games_raw.columns:
 games_raw['snap_season'] = games_raw['date'].dt.year.astype(str)
 
 games_lg = games_raw[games_raw['competition'] == 'MLS'].copy()
+games_lg['stage'] = games_lg['stage'].fillna('') if 'stage' in games_lg.columns else ''
+
+# Current-season fixtures still to play (cobi.py writes these from ESPN).
+if os.path.exists('mls_schedule.csv'):
+    schedule = pd.read_csv('mls_schedule.csv', parse_dates=['date'])
+    schedule['home_team'] = schedule['home_team'].map(canonical_team)
+    schedule['away_team'] = schedule['away_team'].map(canonical_team)
+    schedule['stage'] = schedule['stage'].fillna('')
+else:
+    schedule = pd.DataFrame(columns=['date', 'home_team', 'away_team', 'stage', 'event_id'])
+_rs_fixture_years = set(
+    schedule.loc[schedule['stage'] == 'regular-season', 'date'].dt.year.astype(int))
 
 # Teams that played at least one MLS league game in each calendar year.
 # Used to filter snapshots so a defunct team's stale rating doesn't linger
@@ -338,18 +352,48 @@ def _decision_day(year_games):
     return big.index.max() if not big.empty else daily.idxmax()
 
 
+# 2019+ games carry ESPN's stage slug, which is ground truth: Decision Day is
+# the last 'regular-season' game, and only once no regular-season fixtures
+# remain on the schedule. (The >= 6-games heuristic read 9/19/2026, a
+# mid-season full round, as Decision Day and filed later games as playoffs.)
+def _staged_year(y, sg):
+    return y >= title_odds.FIRST_SEASON and (sg['stage'] != '').all()
+
+
 _decision_day_by_year = {}
 for y, sg in games_lg.groupby(games_lg['date'].dt.year):
-    dd = _decision_day(sg)
+    y = int(y)
+    if _staged_year(y, sg):
+        if y in _rs_fixture_years:
+            continue  # regular season still in progress
+        rs = sg[sg['stage'] == 'regular-season']
+        dd = rs['date'].max().date() if not rs.empty else None
+    else:
+        dd = _decision_day(sg)
     if dd is not None:
-        _decision_day_by_year[int(y)] = dd
+        _decision_day_by_year[y] = dd
 
-# is_playoff flag per game (date > Decision Day)
+_staged_years = {int(y) for y, sg in games_lg.groupby(games_lg['date'].dt.year)
+                 if _staged_year(int(y), sg)}
+
+
 def _is_playoff_row(row):
+    if row['date'].year in _staged_years:
+        return title_odds.stage_round(row['stage']) is not None
     dd = _decision_day_by_year.get(row['date'].year)
     return dd is not None and row['date'].date() > dd
 
+
+def _is_regular_row(row):
+    # Staged years: only 'regular-season' counts, so the 2020 MLS is Back
+    # knockout rounds and All-Star games stay out of W-D-L.
+    if row['date'].year in _staged_years:
+        return row['stage'] == 'regular-season'
+    return not _is_playoff_row(row)
+
+
 games_lg['is_playoff'] = games_lg.apply(_is_playoff_row, axis=1)
+games_lg['is_regular'] = games_lg.apply(_is_regular_row, axis=1)
 
 
 def _result(home_team, home_score, away_score, shootout_winner, perspective_team):
@@ -377,7 +421,7 @@ team_persp = pd.concat([home_persp, away_persp], ignore_index=True, sort=False)
 team_persp = team_persp.sort_values(['team', 'snap_season', 'date'])
 
 # Regular-season-only counts (for the W-D-L / Pts column)
-reg = team_persp[~team_persp['is_playoff']].copy()
+reg = team_persp[team_persp['is_regular']].copy()
 reg['w'] = (reg['result'] == 'W').astype(int)
 reg['d'] = (reg['result'] == 'D').astype(int)
 reg['l'] = (reg['result'] == 'L').astype(int)
@@ -551,6 +595,33 @@ cur_po = {
 }
 
 
+# ── MLS Cup odds (2019+) ─────────────────────────────────────────────────────
+# Monte Carlo of the remaining season + bracket at every snapshot; see
+# title_odds.py. Pre-2019 snapshots get None (rendered '-').
+print("Computing MLS Cup odds...")
+_to_ratings = df[['date', 'season', 'team', 'rating_o', 'rating_d']].copy()
+_to_ratings['date'] = pd.to_datetime(_to_ratings['date'])
+_to_ratings['season'] = _to_ratings['season'].astype(int)
+_to_df = title_odds.compute(games_lg, schedule, _to_ratings, conference_for,
+                            int(df['season'].astype(int).max()))
+_to_df['date'] = _to_df['date'].dt.date.astype(str)
+_to_df = _to_df[_to_df['title_odds'] > 0].copy()
+_to_df['rank'] = (_to_df.groupby('date')['title_odds']
+                  .rank(ascending=False, method='min').astype(int))
+_title_odds = {(d, t): (p, r) for d, t, p, r in
+               _to_df[['date', 'team', 'title_odds', 'rank']].itertuples(index=False)}
+_title_odds_seasons = {str(x) for x in range(title_odds.FIRST_SEASON, int(df['season'].astype(int).max()) + 1)}
+
+
+def title_odds_fields(team, season, date_str, prefix=''):
+    """{title_odds, title_odds_rank} for a snapshot: probability 0-1 (0.0 once
+    a team has no path left), None before FIRST_SEASON."""
+    if str(season) not in _title_odds_seasons or not date_str:
+        return {prefix + 'title_odds': None, prefix + 'title_odds_rank': None}
+    p, r = _title_odds.get((str(date_str), team), (0.0, None))
+    return {prefix + 'title_odds': round(float(p), 4), prefix + 'title_odds_rank': r}
+
+
 # ── 1. Current standings ─────────────────────────────────────────────────────
 print("Writing current_standings.json...")
 standings_data = {
@@ -575,6 +646,7 @@ standings_data = {
             'mls_cup_finish':            clean(r.get('mls_cup_finish', '')),
             'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
             'mls_cup_conf_finalist':     is_cup_conf_finalist(r['team'], r['season']),
+            **title_odds_fields(r['team'], r['season'], latest_date_str),
         }
         for _, r in latest.iterrows()
     ],
@@ -588,6 +660,10 @@ with open('docs/data/current_standings.json', 'w') as f:
 # final's score. Schema mirrors ZIDANE's champions.json but only one trophy.
 print("Writing champions.json...")
 trophies = pd.read_csv('cobi_trophies.csv')
+
+# End-of-regular-season snapshot date per season (for rs_title_odds).
+_eors_date = {season: str(df.loc[df['ranking_id'] == rid, 'date'].iloc[0])
+              for season, rid in season_last_reg_snap.items()}
 
 eoy_lookup = {}
 for (team, season), grp in df.groupby(['team', 'season']):
@@ -620,6 +696,8 @@ for (team, season), grp in df.groupby(['team', 'season']):
         'short_season_tag':           SHORT_SEASONS.get(s_int, {}).get('tag', '')      if s_int in SHORT_SEASONS else '',
         'short_season_category':      SHORT_SEASONS.get(s_int, {}).get('category', '') if s_int in SHORT_SEASONS else '',
         'short_season_note':          SHORT_SEASONS.get(s_int, {}).get('note', '')     if s_int in SHORT_SEASONS else '',
+        **title_odds_fields(team, str(season), str(last['date'])),
+        **title_odds_fields(team, str(season), _eors_date.get(str(season), ''), prefix='rs_'),
     }
 
 
@@ -871,6 +949,7 @@ for team in all_teams:
                 'mls_cup_finish':            clean(r.get('mls_cup_finish', '')),
                 'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
                 'mls_cup_conf_finalist':     is_cup_conf_finalist(team, str(season)),
+                **title_odds_fields(team, str(season), str(r['date'])),
             }
             for _, r in sdf.sort_values('date').iterrows()
         ]
@@ -948,6 +1027,7 @@ for season in all_seasons:
                 'mls_cup_finish':            clean(r.get('mls_cup_finish', '')),
                 'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
                 'mls_cup_conf_finalist':     is_cup_conf_finalist(r['team'], season),
+                **title_odds_fields(r['team'], season, str(snap_date)),
             })
         # If the snapshot is BOTH EORS and EOS (rare - mid-1990s seasons
         # that ended on Decision Day with no playoff round in our data, or

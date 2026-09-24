@@ -395,6 +395,40 @@ def espn_extract_matches(payload, competition_label, league_match_flag):
             'neutral':         neutral,
             'venue':           venue_obj.get('fullName') or '',
             'event_id':        ev.get('id') or '',
+            # ESPN's season slug names the stage: 'regular-season',
+            # '<conf>-playoffs---wild-card' / '---round-one' / '---final',
+            # 'mls-cup', etc. Ground truth for the RS/playoff split and the
+            # bracket round (2019+ backfilled by backfill_stage.py).
+            'stage':           (ev.get('season') or {}).get('slug') or '',
+        })
+    return rows
+
+
+def espn_extract_fixtures(payload):
+    """Scheduled (not yet played) events, for the title-odds simulation's
+    remaining schedule. Postponed/canceled events are skipped; ESPN lists
+    the rescheduled game as its own event."""
+    rows = []
+    for ev in payload.get('events', []) or []:
+        status = (ev.get('status') or {}).get('type', {}) or {}
+        if status.get('state') != 'pre' or status.get('name') != 'STATUS_SCHEDULED':
+            continue
+        comp = (ev.get('competitions') or [{}])[0]
+        teams = comp.get('competitors') or []
+        home = next((t for t in teams if t.get('homeAway') == 'home'), None)
+        away = next((t for t in teams if t.get('homeAway') == 'away'), None)
+        if not home or not away:
+            continue
+        try:
+            kickoff_utc = datetime.fromisoformat((ev.get('date') or '').replace('Z', '+00:00'))
+        except ValueError:
+            continue
+        rows.append({
+            'date':      (kickoff_utc - timedelta(hours=7)).date().isoformat(),
+            'home_team': canonical_team((home.get('team') or {}).get('displayName') or ''),
+            'away_team': canonical_team((away.get('team') or {}).get('displayName') or ''),
+            'stage':     (ev.get('season') or {}).get('slug') or '',
+            'event_id':  ev.get('id') or '',
         })
     return rows
 
@@ -409,11 +443,17 @@ def _season_for_match(competition, match_date):
 ESPN_REFETCH_DAYS = 14
 
 
+SCHEDULE_PATH = 'mls_schedule.csv'
+
+
 def scrape_espn_all(path='all_club_games.csv'):
     """Fetch recent ESPN matches day by day. History lives in the committed
     games file (union_with_existing keeps it), so only the tail is re-queried:
-    from ESPN_REFETCH_DAYS before the latest stored game through today."""
+    from ESPN_REFETCH_DAYS before the latest stored game through today.
+    Also walks the rest of the calendar year for scheduled fixtures and
+    writes them to SCHEDULE_PATH (the title-odds remaining schedule)."""
     all_rows = []
+    fixtures = []
     for label, slug, first_year, league_flag in ESPN_COMPETITIONS:
         start = date(first_year, 1, 1)
         if os.path.exists(path):
@@ -424,13 +464,21 @@ def scrape_espn_all(path='all_club_games.csv'):
         print(f"[ESPN] {label} ({slug}) - {start} to {_today}")
         seen = set()
         d = start
-        while d <= _today:
-            for row in espn_extract_matches(espn_fetch_day(slug, d), label, league_flag):
-                if row['event_id'] not in seen:
-                    seen.add(row['event_id'])
-                    all_rows.append(row)
+        year_end = date(_today.year, 12, 31)
+        while d <= year_end:
+            payload = espn_fetch_day(slug, d)
+            if d <= _today:
+                for row in espn_extract_matches(payload, label, league_flag):
+                    if row['event_id'] not in seen:
+                        seen.add(row['event_id'])
+                        all_rows.append(row)
+            for fx in espn_extract_fixtures(payload):
+                if fx['event_id'] not in seen:
+                    fixtures.append(fx)
             d += timedelta(days=1)
-        print(f"  {len(seen)} completed matches")
+        print(f"  {len(seen)} completed matches, {len(fixtures)} scheduled fixtures")
+    fx_df = pd.DataFrame(fixtures, columns=['date', 'home_team', 'away_team', 'stage', 'event_id'])
+    fx_df.drop_duplicates('event_id').sort_values('date').to_csv(SCHEDULE_PATH, index=False)
     return pd.DataFrame(all_rows)
 
 
@@ -887,6 +935,13 @@ def run_pipeline(scrape=True):
         # resolve correctly and 2020's COVID-shortened schedule never
         # converges, so don't gate on this retroactively).
         if is_current_year:
+            # Ground truth first: ESPN still lists regular-season fixtures, so
+            # the season isn't over. The convergence check below alone passed
+            # mid-season 2026 (every team at 25-27 games after a full round).
+            if os.path.exists(SCHEDULE_PATH):
+                fx = pd.read_csv(SCHEDULE_PATH)
+                if (fx['stage'] == 'regular-season').any():
+                    return None
             reg = season_games[season_games['date'].dt.date <= ds_date]
             counts = pd.concat([reg['home_team'], reg['away_team']]).value_counts()
             active = counts[counts >= 10]
