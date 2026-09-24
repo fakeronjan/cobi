@@ -602,6 +602,17 @@ def run_pipeline(scrape=True):
     # on-disk CSV ends up MLS-only regardless of whether we re-scraped.
     pre_count = len(df)
     df = df[df['competition'] == 'MLS'].copy()
+    # All-Star exhibitions (MLS All-Stars vs Liga MX All-Stars / a European
+    # club, 2004-2026) aren't league matches. They formed an isolated pair in
+    # the solve, shifting the zero-sum level and taking a slot in the 100-
+    # game-day window, and their dates made snapshots where MLS ratings moved
+    # with no MLS match played. Match on team name too: ESPN labeled the
+    # 2026 game 'regular-season'.
+    exhibition = (df['home_team'].astype(str).str.contains('All-Stars') |
+                  df['away_team'].astype(str).str.contains('All-Stars'))
+    if 'stage' in df.columns:
+        exhibition |= df['stage'].fillna('').eq('all-star-game')
+    df = df[~exhibition].copy()
     # Apply same-franchise alias map so rebrands (Chicago Fire → Chicago Fire
     # FC, Columbus Crew SC → Columbus Crew) become one continuous team in the
     # ratings. Both load-time AND scrape-time normalize, so the on-disk CSV

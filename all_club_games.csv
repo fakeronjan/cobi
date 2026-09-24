@@ -1630,7 +1630,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2010-07-24,2010,MLS,True,Columbus Crew,Houston Dynamo FC,3,0,,,False,,False,Historic Crew Stadium,289802,
 2010-07-24,2010,MLS,True,Real Salt Lake,Chivas USA,1,1,,,False,,False,America First Field,289804,
 2010-07-25,2010,MLS,True,Seattle Sounders FC,Colorado Rapids,2,1,,,False,,False,Qwest Field,289805,
-2010-07-28,2010,MLS,True,MLS All-Stars,Manchester United,2,5,,,False,,False,Reliant Stadium,305012,
 2010-07-31,2010,MLS,True,Philadelphia Union,New England Revolution,1,1,,,False,,False,Subaru Park,289806,
 2010-07-31,2010,MLS,True,Colorado Rapids,FC Dallas,1,1,,,False,,False,Dick's Sporting Goods Park,289807,
 2010-07-31,2010,MLS,True,Houston Dynamo FC,Red Bull New York,2,2,,,False,,False,Robertson Stadium,289808,
@@ -2114,7 +2113,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-08-19,2026,MLS,True,Seattle Sounders FC,Austin FC,1,2,,,False,,False,Lumen Field,761736,regular-season
 2026-07-25,2026,MLS,True,LAFC,Sporting Kansas City,4,0,,,False,,False,BMO Stadium,761694,regular-season
 2026-07-25,2026,MLS,True,San Jose Earthquakes,LA Galaxy,1,1,,,False,,False,Stanford Stadium,761693,regular-season
-2026-07-29,2026,MLS,True,MLS All-Stars,Liga MX All-Stars,4,3,,,False,,False,Bank of America Stadium,401864004,regular-season
 2026-07-31,2026,MLS,True,New York City FC,Toronto FC,1,1,,,False,,False,Yankee Stadium,761695,regular-season
 2026-08-01,2026,MLS,True,CF Montréal,New England Revolution,2,2,,,False,,False,Stade Saputo,761697,regular-season
 2026-08-01,2026,MLS,True,D.C. United,Nashville SC,2,2,,,False,,False,Audi Field,761699,regular-season
@@ -2195,7 +2193,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2011-07-23,2011,MLS,True,Colorado Rapids,New England Revolution,2,2,,,False,,False,Dick's Sporting Goods Park,314271,
 2011-07-23,2011,MLS,True,Real Salt Lake,San Jose Earthquakes,4,0,,,False,,False,America First Field,314272,
 2011-07-23,2011,MLS,True,Chivas USA,Houston Dynamo FC,3,0,,,False,,False,StubHub Center,314274,
-2011-07-27,2011,MLS,True,MLS All-Stars,Manchester United,0,4,,,False,,False,Red Bull Arena,326602,
 2011-07-16,2011,MLS,True,Houston Dynamo FC,Sporting Kansas City,1,1,,,False,,False,Robertson Stadium,314260,
 2011-07-30,2011,MLS,True,Sporting Kansas City,New England Revolution,1,1,,,False,,False,Children's Mercy Park,314276,
 2011-09-14,2011,MLS,True,Columbus Crew,Houston Dynamo FC,2,2,,,False,,False,Historic Crew Stadium,314336,
@@ -2543,7 +2540,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2012-08-05,2012,MLS,True,Portland Timbers,FC Dallas,1,1,,,False,,False,Providence Park,336290,
 2012-07-21,2012,MLS,True,LA Galaxy,Chivas USA,3,1,,,False,,False,Dignity Health Sports Park,336273,
 2012-07-21,2012,MLS,True,Real Salt Lake,Colorado Rapids,2,0,,,False,,False,America First Field,336272,
-2012-07-25,2012,MLS,True,MLS All-Stars,Chelsea,3,2,,,False,,False,Subaru Park,349922,
 2012-08-22,2012,MLS,True,D.C. United,Chicago Fire FC,4,2,,,False,,False,RFK Stadium,336313,
 2012-08-19,2012,MLS,True,Houston Dynamo FC,Columbus Crew,2,2,,,False,,False,Shell Energy Stadium,336312,
 2012-08-11,2012,MLS,True,San Jose Earthquakes,Seattle Sounders FC,2,1,,,False,,False,Buck Shaw Stadium,336298,
@@ -2864,7 +2860,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2025-07-19,2025,MLS,True,LAFC,LA Galaxy,3,3,,,False,,False,BMO Stadium,727151,regular-season
 2025-07-19,2025,MLS,True,Portland Timbers,Minnesota United FC,1,1,,,False,,False,Providence Park,727152,regular-season
 2025-07-19,2025,MLS,True,San Diego FC,Vancouver Whitecaps,1,1,,,False,,False,Snapdragon Stadium,727153,regular-season
-2025-07-23,2025,MLS,True,MLS All-Stars,Liga MX All-Stars,3,1,,,False,,False,Q2 Stadium,735090,all-star-game
 2025-07-25,2025,MLS,True,New England Revolution,CF Montréal,1,3,,,False,,False,Gillette Stadium,727154,regular-season
 2025-09-20,2025,MLS,True,Minnesota United FC,Chicago Fire FC,0,3,,,False,,False,Allianz Field,727257,regular-season
 2025-09-20,2025,MLS,True,Houston Dynamo FC,Portland Timbers,1,0,,,False,,False,Shell Energy Stadium,727255,regular-season
@@ -4091,7 +4086,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2013-07-27,2013,MLS,True,Vancouver Whitecaps,Philadelphia Union,0,1,,,False,,False,BC Place,359553,
 2013-07-27,2013,MLS,True,Houston Dynamo FC,Chicago Fire FC,1,1,,,False,,False,Shell Energy Stadium,359550,
 2013-07-27,2013,MLS,True,San Jose Earthquakes,Portland Timbers,2,1,,,False,,False,Buck Shaw Stadium,359548,
-2013-07-31,2013,MLS,True,MLS All-Stars,AS Roma,1,3,,,False,,False,Children's Mercy Park,375711,
 2013-07-20,2013,MLS,True,Toronto FC,Red Bull New York,0,0,,,False,,False,BMO Field,359563,
 2013-07-28,2013,MLS,True,Seattle Sounders FC,Chivas USA,2,1,,,False,,False,Lumen Field,359547,
 2013-08-03,2013,MLS,True,Sporting Kansas City,Red Bull New York,2,3,,,False,,False,Children's Mercy Park,359544,
@@ -4433,7 +4427,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2014-08-02,2014,MLS,True,San Jose Earthquakes,Seattle Sounders FC,1,0,,,False,,False,Levi's Stadium,384690,
 2014-08-03,2014,MLS,True,Houston Dynamo FC,D.C. United,1,0,,,False,,False,Shell Energy Stadium,384686,
 2014-08-03,2014,MLS,True,Chivas USA,FC Dallas,0,1,,,False,,False,Dignity Health Sports Park,384685,
-2014-08-06,2014,MLS,True,MLS All-Stars,Bayern Munich,2,1,,,False,,False,Providence Park,402987,
 2014-08-08,2014,MLS,True,LA Galaxy,San Jose Earthquakes,2,2,,,False,,False,Dignity Health Sports Park,384684,
 2014-08-09,2014,MLS,True,Philadelphia Union,CF Montréal,2,1,,,False,,False,Subaru Park,384679,
 2014-08-09,2014,MLS,True,Columbus Crew,Toronto FC,2,3,,,False,,False,Historic Crew Stadium,384683,
@@ -4781,7 +4774,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2015-07-26,2015,MLS,True,New York City FC,Orlando City SC,5,3,,,False,,False,Yankee Stadium,412302,
 2015-07-26,2015,MLS,True,D.C. United,Philadelphia Union,3,2,,,False,,False,RFK Stadium,412301,
 2015-07-26,2015,MLS,True,Vancouver Whitecaps,San Jose Earthquakes,3,1,,,False,,False,BC Place,412303,
-2015-07-29,2015,MLS,True,MLS All-Stars,Tottenham Hotspur,2,1,,,False,,False,Dick's Sporting Goods Park,426425,
 2015-07-18,2015,MLS,True,Sporting Kansas City,CF Montréal,2,1,,,False,,False,Children's Mercy Park,412315,
 2015-07-18,2015,MLS,True,Orlando City SC,Red Bull New York,0,2,,,False,,False,Camping World Stadium,412311,
 2015-08-01,2015,MLS,True,New York City FC,CF Montréal,2,3,,,False,,False,Yankee Stadium,412298,
@@ -5137,7 +5129,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2016-07-23,2016,MLS,True,Houston Dynamo FC,Vancouver Whitecaps,0,0,,,False,,False,Shell Energy Stadium,440753,
 2016-07-24,2016,MLS,True,Red Bull New York,New York City FC,4,1,,,False,,False,Sports Illustrated Stadium,440746,
 2016-07-24,2016,MLS,True,Sporting Kansas City,Seattle Sounders FC,3,0,,,False,,False,Children's Mercy Park,440745,
-2016-07-28,2016,MLS,True,MLS All-Stars,Arsenal,1,2,,,False,,False,PayPal Park,443635,
 2016-07-30,2016,MLS,True,New York City FC,Colorado Rapids,5,1,,,False,,False,Yankee Stadium,440961,
 2016-07-31,2016,MLS,True,Sporting Kansas City,Portland Timbers,1,0,,,False,,False,Children's Mercy Park,440744,
 2016-07-31,2016,MLS,True,Seattle Sounders FC,LA Galaxy,1,1,,,False,,False,Lumen Field,440743,
@@ -5527,7 +5518,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2017-07-29,2017,MLS,True,Sporting Kansas City,Chicago Fire FC,3,2,,,False,,False,Children's Mercy Park,471520,
 2017-07-29,2017,MLS,True,LA Galaxy,Seattle Sounders FC,0,0,,,False,,False,Dignity Health Sports Park,471524,
 2017-07-30,2017,MLS,True,Toronto FC,New York City FC,4,0,,,False,,False,BMO Field,471516,
-2017-08-02,2017,MLS,True,MLS All-Stars,Real Madrid,1,1,2.0,4.0,True,Real Madrid,False,Soldier Field,478652,
 2017-08-05,2017,MLS,True,D.C. United,Toronto FC,1,1,,,False,,False,RFK Stadium,471513,
 2017-08-05,2017,MLS,True,CF Montréal,Orlando City SC,2,1,,,False,,False,Stade Saputo,471512,
 2017-08-26,2017,MLS,True,Chicago Fire FC,Minnesota United FC,1,2,,,False,,False,SeatGeek Stadium,471468,
@@ -5926,7 +5916,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2018-07-28,2018,MLS,True,Portland Timbers,Houston Dynamo FC,2,1,,,False,,False,Providence Park,502504,
 2018-07-29,2018,MLS,True,Seattle Sounders FC,New York City FC,3,1,,,False,,False,Lumen Field,502501,
 2018-07-29,2018,MLS,True,LA Galaxy,Orlando City SC,4,3,,,False,,False,Dignity Health Sports Park,502500,
-2018-08-01,2018,MLS,True,MLS All-Stars,Juventus,1,1,3.0,5.0,True,Juventus,False,Mercedes-Benz Stadium,509724,
 2018-08-04,2018,MLS,True,Atlanta United FC,Toronto FC,2,2,,,False,,False,Mercedes-Benz Stadium,502499,
 2018-08-04,2018,MLS,True,CF Montréal,D.C. United,1,1,,,False,,False,Stade Saputo,502497,
 2018-08-04,2018,MLS,True,Orlando City SC,New England Revolution,3,3,,,False,,False,Inter&Co Stadium,502498,
@@ -6364,7 +6353,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2019-07-27,2019,MLS,True,Toronto FC,FC Cincinnati,2,1,,,False,,False,BMO Field,533139,regular-season
 2019-07-27,2019,MLS,True,San Jose Earthquakes,Colorado Rapids,3,1,,,False,,False,PayPal Park,533135,regular-season
 2019-07-27,2019,MLS,True,Portland Timbers,LA Galaxy,4,0,,,False,,False,Providence Park,533134,regular-season
-2019-07-31,2019,MLS,True,MLS All-Stars,Atlético Madrid,0,3,,,False,,False,Inter&Co Stadium,539388,all-star-game
 2019-08-03,2019,MLS,True,Atlanta United FC,LA Galaxy,3,0,,,False,,False,Mercedes-Benz Stadium,533133,regular-season
 2019-08-03,2019,MLS,True,Red Bull New York,Toronto FC,2,0,,,False,,False,Sports Illustrated Stadium,533132,regular-season
 2019-08-03,2019,MLS,True,New England Revolution,LAFC,0,2,,,False,,False,Gillette Stadium,533130,regular-season
@@ -6638,7 +6626,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2023-08-26,2023,MLS,True,Red Bull New York,Inter Miami CF,0,2,,,False,,False,Sports Illustrated Stadium,659930,regular-season
 2023-08-26,2023,MLS,True,Orlando City SC,St. Louis CITY SC,2,1,,,False,,False,Inter&Co Stadium,659929,regular-season
 2023-08-26,2023,MLS,True,FC Cincinnati,New York City FC,3,0,,,False,,False,TQL Stadium,659931,regular-season
-2023-07-19,2023,MLS,True,MLS All-Stars,Arsenal,0,5,,,False,,False,Audi Field,660069,all-star-game
 2023-08-20,2023,MLS,True,Columbus Crew,FC Cincinnati,3,0,,,False,,False,ScottsMiracle-Gro Field,659916,regular-season
 2023-08-20,2023,MLS,True,Red Bull New York,D.C. United,1,0,,,False,,False,Sports Illustrated Stadium,659918,regular-season
 2023-07-12,2023,MLS,True,Vancouver Whitecaps,Austin FC,2,1,,,False,,False,BC Place,659899,regular-season
@@ -6858,7 +6845,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2024-07-20,2024,MLS,True,Seattle Sounders FC,LAFC,0,3,,,False,,False,Lumen Field,692966,regular-season
 2024-07-20,2024,MLS,True,Vancouver Whitecaps,Houston Dynamo FC,3,4,,,False,,False,BC Place,692954,regular-season
 2024-07-20,2024,MLS,True,LA Galaxy,Portland Timbers,3,2,,,False,,False,Dignity Health Sports Park,692967,regular-season
-2024-07-24,2024,MLS,True,MLS All-Stars,Liga MX All-Stars,1,4,,,False,,False,ScottsMiracle-Gro Field,699799,all-star-game
 2024-08-24,2024,MLS,True,Minnesota United FC,Seattle Sounders FC,2,3,,,False,,False,Allianz Field,692968,regular-season
 2024-08-24,2024,MLS,True,CF Montréal,New England Revolution,0,5,,,False,,False,Stade Saputo,692970,regular-season
 2024-08-24,2024,MLS,True,Charlotte FC,Red Bull New York,1,1,,,False,,False,Bank of America Stadium,692971,regular-season
@@ -7046,7 +7032,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2024-07-17,2024,MLS,True,FC Cincinnati,Chicago Fire FC,0,1,,,False,,False,TQL Stadium,692942,regular-season
 2024-07-17,2024,MLS,True,Columbus Crew,Charlotte FC,1,1,,,False,,False,ScottsMiracle-Gro Field,692941,regular-season
 2024-07-17,2024,MLS,True,Atlanta United FC,New York City FC,2,2,,,False,,False,Mercedes-Benz Stadium,692943,regular-season
-2022-08-10,2022,MLS,True,MLS All-Stars,Liga MX All-Stars,2,1,,,False,,False,Allianz Field,623639,all-star-game
 2022-08-13,2022,MLS,True,FC Cincinnati,Atlanta United FC,2,2,,,False,,False,TQL Stadium,623505,regular-season
 2022-08-13,2022,MLS,True,New England Revolution,D.C. United,1,0,,,False,,False,Gillette Stadium,623502,regular-season
 2022-08-13,2022,MLS,True,Philadelphia Union,Chicago Fire FC,4,1,,,False,,False,Subaru Park,623504,regular-season
@@ -7752,7 +7737,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2021-09-18,2021,MLS,True,Toronto FC,Nashville SC,2,1,,,False,,False,BMO Field,598017,regular-season
 2021-09-18,2021,MLS,True,Austin FC,San Jose Earthquakes,3,4,,,False,,False,Q2 Stadium,598021,regular-season
 2021-09-18,2021,MLS,True,Minnesota United FC,LA Galaxy,3,0,,,False,,False,Allianz Field,598019,regular-season
-2021-08-25,2021,MLS,True,MLS All-Stars,Liga MX All-Stars,1,1,3.0,2.0,True,MLS All-Stars,False,BMO Stadium,606311,all-star-game
 2021-09-18,2021,MLS,True,Houston Dynamo FC,FC Dallas,3,2,,,False,,False,Shell Energy Stadium,598020,regular-season
 2021-08-21,2021,MLS,True,Vancouver Whitecaps,LAFC,2,1,,,False,,False,BC Place,597967,regular-season
 2021-08-21,2021,MLS,True,Austin FC,Portland Timbers,3,1,,,False,,False,Q2 Stadium,597966,regular-season
@@ -8383,7 +8367,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2004-07-28,2004,MLS,True,Columbus Crew,FC Dallas,2,1,,,False,,False,Historic Crew Stadium,143981,
 2004-07-28,2004,MLS,True,Sporting Kansas City,Red Bull New York,1,2,,,False,,False,Arrowhead Stadium,143982,
 2004-07-28,2004,MLS,True,Colorado Rapids,Chicago Fire FC,2,0,,,False,,False,,152311,
-2004-07-31,2004,MLS,True,East All-Stars,West All-Stars,3,2,,,False,,False,RFK Stadium,152312,
 2004-08-07,2004,MLS,True,San Jose Earthquakes,D.C. United,2,0,,,False,,False,Spartan Stadium,143991,
 2004-10-22,2004,MLS,True,Colorado Rapids,LA Galaxy,1,0,,,False,,False,Empower Field at Mile High,167858,
 2004-10-23,2004,MLS,True,New England Revolution,Columbus Crew,1,0,,,False,,False,Gillette Stadium,167852,
