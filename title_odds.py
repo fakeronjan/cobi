@@ -21,7 +21,11 @@ import numpy as np
 import pandas as pd
 
 FIRST_SEASON = 2019
+# Simulation counts (fleet standard): regular-season dates 10k; once the
+# regular season is over, 100k (10k leaves a visible ~1-point day-to-day
+# wobble in playoff odds).
 N_SIMS = 10000
+N_SIMS_PLAYOFFS = 100_000
 HFA = 0.5          # cobi.home_field_adv
 OFF_SHARE = 0.5    # cobi.od_off_share
 ET_FACTOR = 1 / 3  # extra time = 30 of 90 minutes
@@ -318,7 +322,9 @@ def compute(games, fixtures, ratings_df, conference_for, current_season, log=pri
         sim = SeasonSim(season, g, fx, conference_for, ratings, mu_games)
         dates = sorted(ratings)
         for d in dates:
-            for team, p in sim.odds_at(d).items():
+            rs_left = ((sim.rs['date'] > d) | sim.rs['home_score'].isna()).any()
+            n = N_SIMS if rs_left else N_SIMS_PLAYOFFS
+            for team, p in sim.odds_at(d, n_sims=n).items():
                 out.append((season, d, team, p))
         log(f"  {season}: {len(dates)} snapshots")
     return pd.DataFrame(out, columns=['season', 'date', 'team', 'title_odds'])
