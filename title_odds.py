@@ -35,6 +35,17 @@ LAMBDA_MIN, LAMBDA_MAX = 0.15, 5.0
 # best overall (1.0427 vs 1.0553 unshrunk), and fitting on 2019-22 alone also
 # picks 0.5, which then beats unshrunk on held-out 2023-25 (1.0534 vs 1.0625).
 RATING_SCALE = 0.5
+# Ratings aren't fixed for the rest of the season: each simulation gives
+# every team a random rating offset for the remaining matches, SD =
+# DRIFT_SD0 * (share of regular season left)**DRIFT_K, fit to how far MLS
+# ratings actually moved from each date to the end of the regular season
+# (split evenly between attack and defense, so net rating moves by the
+# full offset). Zero once the regular season is over. (Same fix as DILLON.)
+# OFF for MLS: measured drift (SD 0.518 * left**0.51) was slightly worse at
+# every checkpoint over 2019-25 (champion -log p 2.39 -> 2.42 at mid-
+# season). Only 7 seasons, no team ever above 20% early (parity), and
+# RATING_SCALE already halves ratings. Set DRIFT_SD0 to 0.518 to re-enable.
+DRIFT_SD0, DRIFT_K = 0.0, 0.51
 
 # ── Playoff formats ─────────────────────────────────────────────────────────
 # Per-conference bracket as (match_id, round, kind, slot_a, slot_b). A slot is
@@ -208,12 +219,25 @@ class SeasonSim:
         mu = self._mu(d)
         h_home, h_away = HFA * OFF_SHARE, HFA * (1 - OFF_SHARE)
 
-        def lam(att, dfn, edge):
-            return np.clip(mu + RATING_SCALE * (O[att] - D[dfn]) + edge, LAMBDA_MIN, LAMBDA_MAX)
+        E = None   # per-sim rating offsets, set once the remaining schedule is known
+
+        def lam(att, dfn, edge, rows=None):
+            """rows: None = no per-sim offsets; 'rs' = (sims x matches) for
+            the regular-season matrix; 'sim' = one match per sim."""
+            x = mu + RATING_SCALE * (O[att] - D[dfn]) + edge
+            if E is not None and rows == 'rs':
+                x = x + RATING_SCALE * (E[:, att] - E[:, dfn]) / 2
+            elif E is not None and rows == 'sim':
+                x = x + RATING_SCALE * (E[np.arange(len(att)), att] - E[np.arange(len(att)), dfn]) / 2
+            return np.clip(x, LAMBDA_MIN, LAMBDA_MAX)
 
         # ── regular season ──
         done = self.rs[(self.rs['date'] <= d) & self.rs['home_score'].notna()]
         rest = self.rs[(self.rs['date'] > d) | self.rs['home_score'].isna()]
+        frac_left = len(rest) / max(len(self.rs), 1)
+        sd = DRIFT_SD0 * frac_left ** DRIFT_K if frac_left > 0 else 0.0
+        if sd > 0:
+            E = rng.normal(0.0, sd, (n_sims, T))
         pts = np.zeros(T); w = np.zeros(T); gf = np.zeros(T); ga = np.zeros(T)
         agf = np.zeros(T); aga = np.zeros(T); gp = np.zeros(T)
         for h, a, hs, as_ in done[['h', 'a', 'home_score', 'away_score']].itertuples(index=False):
@@ -231,8 +255,8 @@ class SeasonSim:
         if len(rest):
             h = rest['h'].to_numpy(); a = rest['a'].to_numpy()
             G = len(rest)
-            hg = rng.poisson(lam(h, a, h_home), size=(n_sims, G))
-            ag = rng.poisson(lam(a, h, -h_away), size=(n_sims, G))
+            hg = rng.poisson(lam(h, a, h_home, 'rs'), size=(n_sims, G))
+            ag = rng.poisson(lam(a, h, -h_away, 'rs'), size=(n_sims, G))
             Hm = np.zeros((G, T)); Hm[np.arange(G), h] = 1
             Am = np.zeros((G, T)); Am[np.arange(G), a] = 1
             hw = (hg > ag).astype(float); aw = (ag > hg).astype(float); dr = (hg == ag).astype(float)
@@ -300,11 +324,11 @@ class SeasonSim:
         def one_game(a, b, a_hosts, pens_only):
             ea = np.where(a_hosts, h_home, -h_away)
             eb = np.where(a_hosts, -h_away, h_home)
-            ga_ = rng.poisson(lam(a, b, ea)); gb_ = rng.poisson(lam(b, a, eb))
+            ga_ = rng.poisson(lam(a, b, ea, 'sim')); gb_ = rng.poisson(lam(b, a, eb, 'sim'))
             if not pens_only:
                 lv = ga_ == gb_
-                ga_ = ga_ + np.where(lv, rng.poisson(lam(a, b, ea) * ET_FACTOR), 0)
-                gb_ = gb_ + np.where(lv, rng.poisson(lam(b, a, eb) * ET_FACTOR), 0)
+                ga_ = ga_ + np.where(lv, rng.poisson(lam(a, b, ea, 'sim') * ET_FACTOR), 0)
+                gb_ = gb_ + np.where(lv, rng.poisson(lam(b, a, eb, 'sim') * ET_FACTOR), 0)
             coin = rng.random(len(a)) < 0.5
             return np.where(ga_ > gb_, True, np.where(gb_ > ga_, False, coin))
 
