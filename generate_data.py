@@ -602,8 +602,9 @@ print("Computing MLS Cup odds...")
 _to_ratings = df[['date', 'season', 'team', 'rating_o', 'rating_d']].copy()
 _to_ratings['date'] = pd.to_datetime(_to_ratings['date'])
 _to_ratings['season'] = _to_ratings['season'].astype(int)
-_to_df = title_odds.compute(games_lg, schedule, _to_ratings, conference_for,
+_po_odds, _brackets = title_odds.compute(games_lg, schedule, _to_ratings, conference_for,
                             int(df['season'].astype(int).max()))
+_to_df = _po_odds.rename(columns={'champ': 'title_odds'})[['season', 'date', 'team', 'title_odds']].copy()
 _to_df['date'] = _to_df['date'].dt.date.astype(str)
 _to_df = _to_df[_to_df['title_odds'] > 0].copy()
 _to_df['rank'] = (_to_df.groupby('date')['title_odds']
@@ -1078,5 +1079,89 @@ meta = {
 }
 with open('docs/data/meta.json', 'w') as f:
     json.dump(meta, f, separators=(',', ':'))
+
+# ── 7. Playoff odds tab (docs/data/playoff_odds/) ────────────────────────────
+# Same schema as LOBO/DUNCAN: per season, a snapshot for every date from
+# Decision Day on, with seeds, results so far, and the chance to get past
+# each round (last = title odds). Single matches also carry the score and
+# whether penalties decided it; best-of-3 rounds carry the series record.
+print("Writing playoff_odds/...")
+os.makedirs('docs/data/playoff_odds', exist_ok=True)
+_rt = df.set_index(['date', 'team'])
+_po_odds['d'] = _po_odds['date'].dt.date
+_po_idx = _po_odds.set_index(['d', 'team'])
+
+
+def _int_or_none(v):
+    return None if pd.isna(v) else int(v)
+
+
+_po_seasons = []
+for season in sorted(_brackets, reverse=True):
+    names, short = title_odds.round_names(season)
+    n_rounds = len(names)
+    enter = title_odds.entry_rounds(season)
+    sg = games_lg[(games_lg['date'].dt.year == season) & games_lg['stage'].map(
+        lambda x: title_odds.stage_round(x) is not None)]
+    snaps = []
+    for d, (seeds, matchups, n_sims) in sorted(_brackets[season].items()):
+        d_date = d.date()
+        series = {}
+        for rnd, kind, ta, tb, games_, decided in matchups:
+            for me, opp in ((ta, tb), (tb, ta)):
+                w = sum(1 for g in games_ if g[0] == me); l = len(games_) - w
+                entry = {'round': short[rnd - 1], 'opp': display_name(opp, str(season)),
+                         'w': w, 'l': l, 'best_of': 3 if kind == 'bo3' else 1,
+                         'done': decided is not None, 'won': decided == me}
+                if kind != 'bo3' and games_:
+                    gw, gf, ga, pens = games_[0]
+                    if me != ta:
+                        gf, ga = ga, gf
+                    entry['score'] = f"{gf}-{ga}"
+                    entry['pens'] = bool(pens)
+                series.setdefault(me, []).append(entry)
+        teams_ = []
+        for team, seed in seeds.items():
+            if seed not in enter or (d_date, team) not in _po_idx.index:
+                continue
+            pr = _po_idx.loc[(d_date, team)]
+            adv = [float(pr[f'r{k}']) for k in range(2, n_rounds + 1)] + [float(pr['champ'])]
+            if (d_date, team) not in _rt.index:
+                continue
+            r = _rt.loc[(d_date, team)]
+            ser = series.get(team, [])
+            teams_.append({
+                'team': display_name(team, str(season)), 'seed': seed, 'enter': int(enter[seed]),
+                'rating': round(float(r['rating']), 2), 'rank': _int_or_none(r['rank']),
+                'rating_o': round(float(r['rating_o']), 2), 'rank_o': _int_or_none(r['rank_o']),
+                'rating_d': round(float(r['rating_d']), 2), 'rank_d': _int_or_none(r['rank_d']),
+                'adv': [round(x, 4) for x in adv],
+                'eliminated': any(x['done'] and not x['won'] for x in ser)
+                              and not any(not x['done'] for x in ser),
+                'series': ser,
+            })
+        day = sg[sg['date'].dt.date == d_date]
+        played = [x for x in matchups if x[4]]
+        if any(t['adv'][-1] >= 1.0 for t in teams_):
+            stage = 'Champion'
+        elif not played:
+            stage = 'Before playoffs'
+        else:
+            live = [x for x in matchups if x[5] is None]
+            stage = names[min(x[0] for x in live) - 1] if live else names[max(x[0] for x in played) - 1]
+        snaps.append({
+            'date': str(d_date), 'stage': stage, 'n_sims': int(n_sims),
+            'results': [{'home': display_name(x.home_team, str(season)), 'away': display_name(x.away_team, str(season)),
+                         'hp': int(x.home_score), 'vp': int(x.away_score),
+                         'pens': bool(x.home_score == x.away_score)}
+                        for x in day.itertuples(index=False)] if played else [],
+            'teams': teams_,
+        })
+    _po_seasons.append({'season': int(season), 'rounds': names, 'rounds_short': short, 'snapshots': snaps})
+    with open(f"docs/data/playoff_odds/{season}.json", 'w') as f:
+        json.dump(_po_seasons[-1], f, separators=(',', ':'))
+with open('docs/data/playoff_odds/index.json', 'w') as f:
+    json.dump({'n_sims': title_odds.N_SIMS, 'current_season': int(df['season'].astype(int).max()),
+               'seasons': [x['season'] for x in _po_seasons]}, f, separators=(',', ':'))
 
 print(f"\n[done] {len(all_teams)} teams, {len(all_seasons)} seasons. JSON written to docs/data/")

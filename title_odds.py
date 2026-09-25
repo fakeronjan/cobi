@@ -91,6 +91,37 @@ def bracket_for(season, conference):
     return FORMAT_18
 
 
+def round_order(season):
+    """Round tags first to last (the MLS Cup final is 'final')."""
+    if season == 2020:
+        return ['playin', 'r1', 'sf', 'cf', 'final']
+    if season <= 2022:
+        return ['r1', 'sf', 'cf', 'final']
+    return ['wc', 'r1', 'sf', 'cf', 'final']
+
+
+def round_names(season):
+    """(full, short) names for every round, first to last."""
+    full = {'playin': 'Play-In Round', 'wc': 'Wild Card', 'r1': 'Round One',
+            'sf': 'Conference Semifinals', 'cf': 'Conference Finals', 'final': 'MLS Cup'}
+    short = {'playin': 'Play-In', 'wc': 'Wild Card', 'r1': 'R1', 'sf': 'R2',
+             'cf': 'Conf Final', 'final': 'Final'}
+    order = round_order(season)
+    return [full[t] for t in order], [short[t] for t in order]
+
+
+def entry_rounds(season):
+    """Seed label ('E1', 'W8', ...) -> round number that seed enters."""
+    order = round_order(season)
+    out = {}
+    for c in ('East', 'West'):
+        for _, tag, _, *slots in bracket_for(season, c):
+            for sl in slots:
+                if isinstance(sl, int):
+                    out.setdefault(f"{c[0]}{sl}", order.index(tag) + 1)
+    return out
+
+
 def uses_ppg(season):
     """2020 seeded on points per game (uneven schedules)."""
     return season == 2020
@@ -233,6 +264,27 @@ class SeasonSim:
             seeds[c] = cidx[order % k]  # (n_sims, k) team idx, best first
 
         # ── playoffs ──
+        order_tags = round_order(self.season)
+        n_rounds = len(order_tags)
+        self.used_actual = 0      # validation: real playoff games the bracket consumed
+        self.rs_complete = rest.empty
+        self.seeds = {}
+        if self.rs_complete:
+            for c, arr in seeds.items():
+                for k, t in enumerate(arr[0]):
+                    self.seeds[self.teams[t]] = f"{c[0]}{k + 1}"
+        self.matchups = []        # (round, kind, team_a, team_b, games, decided winner)
+        reach = np.zeros((n_rounds + 2, T))   # [0] playoffs, [k] reach round k, [-1] champion
+        entered = np.zeros((n_sims, T), dtype=bool)
+
+        def enter(t, rnd):
+            new = ~entered[sim_ix, t]
+            entered[sim_ix, t] = True
+            np.add.at(reach[0], t[new], 1)
+            for k in range(2, rnd):   # a bye counts as getting through
+                np.add.at(reach[k], t[new], 1)
+            np.add.at(reach[rnd], t, 1)
+
         ps_done = self.ps[self.ps['date'] <= d]
         by_pair = {}
         for r in ps_done.itertuples(index=False):
@@ -256,15 +308,30 @@ class SeasonSim:
             coin = rng.random(len(a)) < 0.5
             return np.where(ga_ > gb_, True, np.where(gb_ > ga_, False, coin))
 
-        def play(kind, a, sa, b, sb, host_a):
+        def play(kind, a, sa, b, sb, host_a, rnd):
             """a/b team idx arrays, sa/sb their seeds; returns winner arrays."""
+            enter(a, rnd); enter(b, rnd)
             played = actual(a, b)
             tA = self.teams[a[0]]
+            if played and self.rs_complete:
+                tB = self.teams[b[0]]
+                games_ = [(r.winner, int(r.home_score if r.home_team == tA else r.away_score),
+                           int(r.away_score if r.home_team == tA else r.home_score),
+                           r.home_score == r.away_score) for r in played[:3 if kind == 'bo3' else 1]]
+                wins = [x[0] for x in games_]
+                if kind == 'bo3':
+                    decided = tA if wins.count(tA) >= 2 else (tB if wins.count(tB) >= 2 else None)
+                else:
+                    decided = wins[0]
+                self.matchups.append((rnd, kind, tA, tB, games_, decided))
+            elif self.rs_complete and np.all(a == a[0]) and np.all(b == b[0]):
+                self.matchups.append((rnd, kind, tA, self.teams[b[0]], [], None))
             if kind == 'bo3':
                 wa = np.zeros(len(a), dtype=int); wb = np.zeros(len(a), dtype=int)
                 for g in range(3):
                     if g < len(played):
                         won = np.full(len(a), played[g].winner == tA)
+                        self.used_actual += 1
                     else:
                         hosts = host_a if g != 1 else ~host_a
                         won = one_game(a, b, hosts, pens_only=True)
@@ -274,6 +341,7 @@ class SeasonSim:
             else:
                 if played:
                     a_wins = np.full(len(a), played[-1].winner == tA)
+                    self.used_actual += 1
                 else:
                     a_wins = one_game(a, b, host_a, pens_only=(kind == 'single_pk'))
             return (np.where(a_wins, a, b), np.where(a_wins, sa, sb))
@@ -286,19 +354,26 @@ class SeasonSim:
                 if isinstance(x, int):
                     return S[:, x - 1], np.full(n_sims, x)
                 return res[x[2:]]
-            for mid, _rnd, kind, xa, xb in bracket_for(self.season, c):
+            for mid, tag, kind, xa, xb in bracket_for(self.season, c):
                 a, sa = slot(xa); b, sb = slot(xb)
-                res[mid] = play(kind, a, sa, b, sb, host_a=sa < sb)
+                res[mid] = play(kind, a, sa, b, sb, host_a=sa < sb,
+                                rnd=order_tags.index(tag) + 1)
             conf_champ[c] = res['cf']
         e, _ = conf_champ['East']; wt, _ = conf_champ['West']
         host_e = seed_pts[sim_ix, e] >= seed_pts[sim_ix, wt]
-        champ, _ = play('single_et', e, np.zeros(n_sims), wt, np.zeros(n_sims), host_e)
-        probs = np.bincount(champ, minlength=T) / n_sims
-        return dict(zip(self.teams, probs))
+        champ, _ = play('single_et', e, np.zeros(n_sims), wt, np.zeros(n_sims), host_e,
+                        rnd=n_rounds)
+        np.add.at(reach[-1], champ, 1)
+        reach /= n_sims
+        cols = ['playoffs'] + [f'r{k}' for k in range(2, n_rounds + 1)] + ['champ']
+        rows = np.vstack([reach[0]] + [reach[k] for k in range(2, n_rounds + 1)] + [reach[-1]])
+        return pd.DataFrame(rows.T, index=self.teams, columns=cols)
 
 
 def compute(games, fixtures, ratings_df, conference_for, current_season, log=print):
-    """Return DataFrame(season, date, team, title_odds) for FIRST_SEASON+.
+    """Return (odds, brackets) for FIRST_SEASON+: odds = long DataFrame
+    (season, date, team, playoffs, r2.., champ); brackets = {season: {date:
+    (seeds, matchups, n_sims)}} for snapshots after the regular season.
 
     games:      MLS matches with date (Timestamp), stage, scores, shootout_winner
     fixtures:   scheduled current-season matches (date, home_team, away_team, stage)
@@ -308,6 +383,7 @@ def compute(games, fixtures, ratings_df, conference_for, current_season, log=pri
     games['stage'] = games['stage'].fillna('')
     mu_games = games[games['stage'] == 'regular-season']
     out = []
+    brackets = {}
     for season in range(FIRST_SEASON, current_season + 1):
         g = games[games['date'].dt.year == season]
         if g.empty:
@@ -324,7 +400,13 @@ def compute(games, fixtures, ratings_df, conference_for, current_season, log=pri
         for d in dates:
             rs_left = ((sim.rs['date'] > d) | sim.rs['home_score'].isna()).any()
             n = N_SIMS if rs_left else N_SIMS_PLAYOFFS
-            for team, p in sim.odds_at(d, n_sims=n).items():
-                out.append((season, d, team, p))
+            o = sim.odds_at(d, n_sims=n)
+            if sim.rs_complete:
+                brackets.setdefault(season, {})[d] = (dict(sim.seeds), list(sim.matchups), n)
+            o.index.name = 'team'
+            o = o.reset_index()
+            o['season'] = season
+            o['date'] = d
+            out.append(o)
         log(f"  {season}: {len(dates)} snapshots")
-    return pd.DataFrame(out, columns=['season', 'date', 'team', 'title_odds'])
+    return pd.concat(out, ignore_index=True), brackets
