@@ -598,6 +598,30 @@ def run_pipeline(scrape=True):
             df.loc[mask, 'shootout_winner'] = sw
             df.loc[mask, 'penalties'] = True
 
+    # Neutral sites ESPN doesn't flag: the MLS is Back bubble (Orlando, 2020),
+    # the Canadian clubs' COVID-era "home" matches in other clubs' US
+    # stadiums (2020-21), and the pre-2012 MLS Cups at predetermined sites
+    # (1997, 2002 and 2011 were in the home side's own stadium). Secondary
+    # home venues (Stade Olympique etc.) stay home.
+    CANADIAN_HOMES = {'Toronto FC': {'BMO Field'},
+                      'Vancouver Whitecaps': {'BC Place'},
+                      'CF Montréal': {'Stade Saputo', 'Stade Olympique (Montreal)'}}
+    NEUTRAL_FINALS = {('1998-10-24', 'Chicago Fire FC'), ('1999-11-20', 'D.C. United'),
+                      ('2000-10-14', 'Chicago Fire FC'), ('2003-11-23', 'Chicago Fire FC'),
+                      ('2004-11-14', 'Sporting Kansas City'), ('2005-11-13', 'New England Revolution'),
+                      ('2006-11-12', 'New England Revolution'), ('2007-11-18', 'New England Revolution'),
+                      ('2008-11-23', 'Red Bull New York'), ('2009-11-22', 'Real Salt Lake'),
+                      ('2010-11-21', 'Colorado Rapids')}
+    _d = df['date'].astype(str).str[:10]
+    _v = df['venue'].fillna('')
+    _home_ok = [v in CANADIAN_HOMES.get(canonical_team(h), {v})
+                for h, v in zip(df['home_team'], _v)]
+    neutral_fix = ((df['season'] == 2020) & (_v == 'ESPN Wide World of Sports Complex')) | \
+                  (df['season'].isin([2020, 2021]) & (_v != '') & ~np.array(_home_ok)) | \
+                  pd.Series([(d, canonical_team(h)) in NEUTRAL_FINALS
+                             for d, h in zip(_d, df['home_team'])], index=df.index)
+    df['neutral'] = df['neutral'].fillna(False).astype(bool) | neutral_fix
+
     # Defensive: drop any non-MLS rows lingering from pre-refactor data so the
     # on-disk CSV ends up MLS-only regardless of whether we re-scraped.
     pre_count = len(df)
