@@ -590,7 +590,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 1998-10-10,1998,MLS,True,D.C. United,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1998-1998-10-10-D.C. United-Columbus Crew SC,Playoff
 1998-10-17,1998,MLS,True,Columbus Crew,D.C. United,4,2,,,False,,False,,fbcsv-mls-1998-1998-10-17-Columbus Crew SC-D.C. United,Playoff
 1998-10-20,1998,MLS,True,D.C. United,Columbus Crew,3,0,,,False,,False,,fbcsv-mls-1998-1998-10-20-D.C. United-Columbus Crew SC,Playoff
-1998-10-24,1998,MLS,True,Chicago Fire FC,D.C. United,2,0,,,False,,False,,fbcsv-mls-1998-1998-10-24-Chicago Fire-D.C. United,Playoff
+1998-10-24,1998,MLS,True,Chicago Fire FC,D.C. United,2,0,,,False,,True,,fbcsv-mls-1998-1998-10-24-Chicago Fire-D.C. United,Playoff
 1999-03-19,1999,MLS,True,FC Dallas,Sporting Kansas City,4,0,,,False,,False,,fbcsv-mls-1999-1999-03-19-FC Dallas-Sporting Kansas City,Regular
 1999-03-19,1999,MLS,True,San Jose Earthquakes,Chicago Fire FC,1,3,,,False,,False,,fbcsv-mls-1999-1999-03-19-San Jose Earthquakes-Chicago Fire,Regular
 1999-03-19,1999,MLS,True,LA Galaxy,Colorado Rapids,2,1,,,False,,False,,fbcsv-mls-1999-1999-03-19-LA Galaxy-Colorado Rapids,Regular
@@ -796,7 +796,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 1999-11-06,1999,MLS,True,Columbus Crew,D.C. United,5,1,,,False,,False,,fbcsv-mls-1999-1999-11-06-Columbus Crew SC-D.C. United,Playoff
 1999-11-10,1999,MLS,True,LA Galaxy,FC Dallas,3,1,,,False,,False,,fbcsv-mls-1999-1999-11-10-LA Galaxy-FC Dallas,Playoff
 1999-11-12,1999,MLS,True,D.C. United,Columbus Crew,4,0,,,False,,False,,fbcsv-mls-1999-1999-11-12-D.C. United-Columbus Crew SC,Playoff
-1999-11-20,1999,MLS,True,D.C. United,LA Galaxy,2,0,,,False,,False,,fbcsv-mls-1999-1999-11-20-D.C. United-LA Galaxy,Playoff
+1999-11-20,1999,MLS,True,D.C. United,LA Galaxy,2,0,,,False,,True,,fbcsv-mls-1999-1999-11-20-D.C. United-LA Galaxy,Playoff
 2000-03-17,2000,MLS,True,FC Dallas,Chicago Fire FC,4,2,,,False,,False,,fbcsv-mls-2000-2000-03-17-FC Dallas-Chicago Fire,Regular
 2000-03-17,2000,MLS,True,LA Galaxy,Colorado Rapids,2,1,,,False,,False,,fbcsv-mls-2000-2000-03-17-LA Galaxy-Colorado Rapids,Regular
 2000-03-17,2000,MLS,True,Miami Fusion,New England Revolution,1,1,,,False,,False,,fbcsv-mls-2000-2000-03-17-Miami Fusion-New England Revolution,Regular
@@ -1003,7 +1003,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2000-09-29,2000,MLS,True,Red Bull New York,Chicago Fire FC,2,0,,,False,,False,,fbcsv-mls-2000-2000-09-29-Red Bull New York-Chicago Fire,Playoff
 2000-10-05,2000,MLS,True,Chicago Fire FC,Red Bull New York,3,2,,,False,,False,,fbcsv-mls-2000-2000-10-05-Chicago Fire-Red Bull New York,Playoff
 2000-10-05,2000,MLS,True,Sporting Kansas City,LA Galaxy,1,0,,,False,,False,,fbcsv-mls-2000-2000-10-05-Sporting Kansas City-LA Galaxy,Playoff
-2000-10-14,2000,MLS,True,Chicago Fire FC,Sporting Kansas City,0,1,,,False,,False,,fbcsv-mls-2000-2000-10-14-Chicago Fire-Sporting Kansas City,Playoff
+2000-10-14,2000,MLS,True,Chicago Fire FC,Sporting Kansas City,0,1,,,False,,True,,fbcsv-mls-2000-2000-10-14-Chicago Fire-Sporting Kansas City,Playoff
 2001-04-06,2001,MLS,True,Columbus Crew,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2001-2001-04-06-Columbus Crew SC-Chicago Fire,Regular
 2001-04-06,2001,MLS,True,D.C. United,Sporting Kansas City,3,2,,,False,,False,,fbcsv-mls-2001-2001-04-06-D.C. United-Sporting Kansas City,Regular
 2001-04-06,2001,MLS,True,FC Dallas,Tampa Bay Mutiny,2,4,,,False,,False,,fbcsv-mls-2001-2001-04-06-FC Dallas-Tampa Bay Mutiny,Regular
@@ -1318,7 +1318,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 1998-10-10,1998,MLS,True,D.C. United,Columbus Crew,2,0,,,False,,False,,fbcsv-mls-1998-1998-10-10-D.C. United-Columbus Crew SC,Playoff
 1998-10-17,1998,MLS,True,Columbus Crew,D.C. United,4,2,,,False,,False,,fbcsv-mls-1998-1998-10-17-Columbus Crew SC-D.C. United,Playoff
 1998-10-20,1998,MLS,True,D.C. United,Columbus Crew,3,0,,,False,,False,,fbcsv-mls-1998-1998-10-20-D.C. United-Columbus Crew SC,Playoff
-1998-10-24,1998,MLS,True,Chicago Fire FC,D.C. United,2,0,,,False,,False,,fbcsv-mls-1998-1998-10-24-Chicago Fire-D.C. United,Playoff
+1998-10-24,1998,MLS,True,Chicago Fire FC,D.C. United,2,0,,,False,,True,,fbcsv-mls-1998-1998-10-24-Chicago Fire-D.C. United,Playoff
 1999-03-19,1999,MLS,True,San Jose Earthquakes,Chicago Fire FC,1,3,,,False,,False,,fbcsv-mls-1999-1999-03-19-San Jose Earthquakes-Chicago Fire,Regular
 1999-03-26,1999,MLS,True,Sporting Kansas City,Chicago Fire FC,0,3,,,False,,False,,fbcsv-mls-1999-1999-03-26-Sporting Kansas City-Chicago Fire,Regular
 1999-03-27,1999,MLS,True,Red Bull New York,Columbus Crew,1,0,,,False,,False,,fbcsv-mls-1999-1999-03-27-Red Bull New York-Columbus Crew SC,Regular
@@ -1455,7 +1455,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2000-09-25,2000,MLS,True,Chicago Fire FC,Red Bull New York,3,0,,,False,,False,,fbcsv-mls-2000-2000-09-25-Chicago Fire-Red Bull New York,Playoff
 2000-09-29,2000,MLS,True,Red Bull New York,Chicago Fire FC,2,0,,,False,,False,,fbcsv-mls-2000-2000-09-29-Red Bull New York-Chicago Fire,Playoff
 2000-10-05,2000,MLS,True,Chicago Fire FC,Red Bull New York,3,2,,,False,,False,,fbcsv-mls-2000-2000-10-05-Chicago Fire-Red Bull New York,Playoff
-2000-10-14,2000,MLS,True,Chicago Fire FC,Sporting Kansas City,0,1,,,False,,False,,fbcsv-mls-2000-2000-10-14-Chicago Fire-Sporting Kansas City,Playoff
+2000-10-14,2000,MLS,True,Chicago Fire FC,Sporting Kansas City,0,1,,,False,,True,,fbcsv-mls-2000-2000-10-14-Chicago Fire-Sporting Kansas City,Playoff
 2001-04-06,2001,MLS,True,Columbus Crew,Chicago Fire FC,1,1,,,False,,False,,fbcsv-mls-2001-2001-04-06-Columbus Crew SC-Chicago Fire,Regular
 2001-04-13,2001,MLS,True,Chicago Fire FC,D.C. United,2,0,,,False,,False,,fbcsv-mls-2001-2001-04-13-Chicago Fire-D.C. United,Regular
 2001-04-13,2001,MLS,True,Tampa Bay Mutiny,Columbus Crew,1,2,,,False,,False,,fbcsv-mls-2001-2001-04-13-Tampa Bay Mutiny-Columbus Crew SC,Regular
@@ -1810,7 +1810,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2010-10-16,2010,MLS,True,Real Salt Lake,FC Dallas,2,0,,,False,,False,America First Field,289903,
 2010-10-16,2010,MLS,True,San Jose Earthquakes,Houston Dynamo FC,0,1,,,False,,False,Buck Shaw Stadium,289904,
 2010-10-20,2010,MLS,True,San Jose Earthquakes,Chivas USA,3,0,,,False,,False,Buck Shaw Stadium,289906,
-2010-11-21,2010,MLS,True,Colorado Rapids,FC Dallas,2,1,,,False,,False,BMO Field,309816,
+2010-11-21,2010,MLS,True,Colorado Rapids,FC Dallas,2,1,,,False,,True,BMO Field,309816,
 2011-03-15,2011,MLS,True,Seattle Sounders FC,LA Galaxy,0,1,,,False,,False,Qwest Field,312218,
 2010-10-16,2010,MLS,True,Toronto FC,Columbus Crew,2,2,,,False,,False,BMO Field,289900,
 2010-09-05,2010,MLS,True,Houston Dynamo FC,San Jose Earthquakes,1,2,,,False,,False,Robertson Stadium,289854,
@@ -3083,7 +3083,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2007-07-14,2007,MLS,True,Chivas USA,Columbus Crew,2,1,,,False,,False,Dignity Health Sports Park,215298,
 2008-08-30,2008,MLS,True,FC Dallas,Columbus Crew,1,2,,,False,,False,Pizza Hut Park,237900,
 2007-11-08,2007,MLS,True,New England Revolution,Chicago Fire FC,1,0,,,False,,False,Gillette Stadium,231503,
-2007-11-18,2007,MLS,True,New England Revolution,Houston Dynamo FC,1,2,,,False,,False,RFK Stadium,231621,
+2007-11-18,2007,MLS,True,New England Revolution,Houston Dynamo FC,1,2,,,False,,True,RFK Stadium,231621,
 2008-06-28,2008,MLS,True,Sporting Kansas City,Real Salt Lake,1,0,,,False,,False,Community America Ballpark,237845,
 2008-06-28,2008,MLS,True,Chicago Fire FC,San Jose Earthquakes,0,0,,,False,,False,SeatGeek Stadium,237846,
 2008-06-28,2008,MLS,True,Chivas USA,Red Bull New York,1,1,,,False,,False,StubHub Center,237847,
@@ -3588,7 +3588,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2003-11-09,2003,MLS,True,San Jose Earthquakes,LA Galaxy,5,2,,,False,,False,Spartan Stadium,130761,
 2003-11-14,2003,MLS,True,Chicago Fire FC,New England Revolution,1,0,,,False,,False,Soldier Field,131171,
 2003-11-15,2003,MLS,True,San Jose Earthquakes,Sporting Kansas City,3,2,,,False,,False,Spartan Stadium,131172,
-2003-11-23,2003,MLS,True,Chicago Fire FC,San Jose Earthquakes,1,5,,,False,,False,Dignity Health Sports Park,131427,
+2003-11-23,2003,MLS,True,Chicago Fire FC,San Jose Earthquakes,1,5,,,False,,True,Dignity Health Sports Park,131427,
 2003-08-30,2003,MLS,True,San Jose Earthquakes,Colorado Rapids,1,2,,,False,,False,Spartan Stadium,95816,
 2004-04-03,2004,MLS,True,D.C. United,San Jose Earthquakes,2,1,,,False,,False,RFK Stadium,143898,
 2003-08-30,2003,MLS,True,LA Galaxy,FC Dallas,2,1,,,False,,False,Dignity Health Sports Park,95815,
@@ -7378,7 +7378,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2005-10-08,2005,MLS,True,Chicago Fire FC,Columbus Crew,1,2,,,False,,False,Soldier Field,181814,
 2006-04-15,2006,MLS,True,Sporting Kansas City,New England Revolution,1,0,,,False,,False,Arrowhead Stadium,195756,
 2006-04-22,2006,MLS,True,Red Bull New York,D.C. United,1,4,,,False,,False,Giants Stadium,195760,
-2005-11-13,2005,MLS,True,New England Revolution,LA Galaxy,0,1,,,False,,False,Pizza Hut Park,190418,
+2005-11-13,2005,MLS,True,New England Revolution,LA Galaxy,0,1,,,False,,True,Pizza Hut Park,190418,
 2006-04-01,2006,MLS,True,FC Dallas,Chicago Fire FC,3,2,,,False,,False,Pizza Hut Park,195741,
 2006-04-01,2006,MLS,True,Sporting Kansas City,Columbus Crew,3,1,,,False,,False,Arrowhead Stadium,195742,
 2006-04-01,2006,MLS,True,LA Galaxy,New England Revolution,0,1,,,False,,False,Dignity Health Sports Park,195743,
@@ -7390,7 +7390,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2006-10-29,2006,MLS,True,D.C. United,Red Bull New York,1,1,,,False,,False,RFK Stadium,207065,
 2006-11-05,2006,MLS,True,D.C. United,New England Revolution,0,1,,,False,,False,RFK Stadium,210699,
 2006-11-05,2006,MLS,True,Houston Dynamo FC,Colorado Rapids,3,1,,,False,,False,Robertson Stadium,210700,
-2006-11-12,2006,MLS,True,New England Revolution,Houston Dynamo FC,1,1,,,True,Houston Dynamo FC,False,Pizza Hut Park,210889,
+2006-11-12,2006,MLS,True,New England Revolution,Houston Dynamo FC,1,1,,,True,Houston Dynamo FC,True,Pizza Hut Park,210889,
 2007-04-07,2007,MLS,True,Colorado Rapids,D.C. United,2,1,,,False,,False,Dick's Sporting Goods Park,215212,
 2007-04-07,2007,MLS,True,Real Salt Lake,FC Dallas,2,2,,,False,,False,Rice-Eccles Stadium,215213,
 2005-11-06,2005,MLS,True,New England Revolution,Chicago Fire FC,1,0,,,False,,False,Gillette Stadium,190271,
@@ -7769,7 +7769,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2021-08-21,2021,MLS,True,Minnesota United FC,Sporting Kansas City,0,0,,,False,,False,Allianz Field,597957,regular-season
 2021-08-20,2021,MLS,True,LA Galaxy,San Jose Earthquakes,1,2,,,False,,False,Dignity Health Sports Park,597955,regular-season
 2021-07-31,2021,MLS,True,Austin FC,Colorado Rapids,0,1,,,False,,False,Q2 Stadium,597898,regular-season
-2021-07-31,2021,MLS,True,Vancouver Whitecaps,Minnesota United FC,2,2,,,False,,False,America First Field,597899,regular-season
+2021-07-31,2021,MLS,True,Vancouver Whitecaps,Minnesota United FC,2,2,,,False,,True,America First Field,597899,regular-season
 2021-08-01,2021,MLS,True,Philadelphia Union,Chicago Fire FC,1,1,,,False,,False,Subaru Park,597901,regular-season
 2021-08-01,2021,MLS,True,Toronto FC,Nashville SC,1,1,,,False,,False,BMO Field,597902,regular-season
 2021-08-04,2021,MLS,True,New England Revolution,Nashville SC,0,0,,,False,,False,Gillette Stadium,597905,regular-season
@@ -7988,7 +7988,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2008-09-07,2008,MLS,True,Houston Dynamo FC,Sporting Kansas City,3,1,,,False,,False,Robertson Stadium,237910,
 2008-09-13,2008,MLS,True,Toronto FC,Columbus Crew,1,1,,,False,,False,BMO Field,237912,
 2008-10-04,2008,MLS,True,D.C. United,Chivas USA,0,3,,,False,,False,RFK Memorial Stadium,237934,
-2008-11-23,2008,MLS,True,Red Bull New York,Columbus Crew,1,3,,,False,,False,Dignity Health Sports Park,258848,
+2008-11-23,2008,MLS,True,Red Bull New York,Columbus Crew,1,3,,,False,,True,Dignity Health Sports Park,258848,
 2009-03-21,2009,MLS,True,Houston Dynamo FC,Columbus Crew,1,1,,,False,,False,Robertson Stadium,260858,
 2008-10-23,2008,MLS,True,Chicago Fire FC,Red Bull New York,5,2,,,False,,False,SeatGeek Stadium,237953,
 2008-10-25,2008,MLS,True,New England Revolution,Sporting Kansas City,1,3,,,False,,False,Gillette Stadium,237954,
@@ -8482,7 +8482,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2005-05-21,2005,MLS,True,Red Bull New York,New England Revolution,2,2,,,False,,False,Giants Stadium,181667,
 2005-05-21,2005,MLS,True,LA Galaxy,San Jose Earthquakes,2,1,,,False,,False,Dignity Health Sports Park,181671,
 2005-05-21,2005,MLS,True,Chicago Fire FC,Colorado Rapids,2,1,,,False,,False,Soldier Field,181670,
-2004-11-14,2004,MLS,True,Sporting Kansas City,D.C. United,2,3,,,False,,False,Dignity Health Sports Park,168975,
+2004-11-14,2004,MLS,True,Sporting Kansas City,D.C. United,2,3,,,False,,True,Dignity Health Sports Park,168975,
 2005-05-14,2005,MLS,True,Columbus Crew,Sporting Kansas City,0,4,,,False,,False,Historic Crew Stadium,181662,
 2004-08-29,2004,MLS,True,Red Bull New York,Columbus Crew,1,1,,,False,,False,Giants Stadium,144011,
 2005-05-07,2005,MLS,True,Red Bull New York,San Jose Earthquakes,0,1,,,False,,False,Giants Stadium,181656,
@@ -8568,27 +8568,27 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2020-10-07,2020,MLS,True,San Jose Earthquakes,Vancouver Whitecaps,3,0,,,False,,False,PayPal Park,585537,regular-season
 2020-10-10,2020,MLS,True,Inter Miami CF,Houston Dynamo FC,1,0,,,False,,False,Chase Stadium,585539,regular-season
 2020-10-10,2020,MLS,True,Atlanta United FC,Red Bull New York,0,1,,,False,,False,Mercedes-Benz Stadium,585540,regular-season
-2020-10-10,2020,MLS,True,Vancouver Whitecaps,Real Salt Lake,2,1,,,False,,False,Providence Park,585542,regular-season
+2020-10-10,2020,MLS,True,Vancouver Whitecaps,Real Salt Lake,2,1,,,False,,True,Providence Park,585542,regular-season
 2020-10-11,2020,MLS,True,New York City FC,New England Revolution,1,2,,,False,,False,Yankee Stadium,585544,regular-season
 2020-10-11,2020,MLS,True,LAFC,Seattle Sounders FC,3,1,,,False,,False,BMO Stadium,585543,regular-season
 2020-10-11,2020,MLS,True,FC Cincinnati,Toronto FC,0,1,,,False,,False,Nippert Stadium,585545,regular-season
 2020-10-18,2020,MLS,True,FC Cincinnati,D.C. United,1,2,,,False,,False,Nippert Stadium,585595,regular-season
-2020-10-18,2020,MLS,True,Toronto FC,Atlanta United FC,1,0,,,False,,False,Pratt & Whitney Stadium at Rentschler Field,585598,regular-season
+2020-10-18,2020,MLS,True,Toronto FC,Atlanta United FC,1,0,,,False,,True,Pratt & Whitney Stadium at Rentschler Field,585598,regular-season
 2020-10-18,2020,MLS,True,Minnesota United FC,Houston Dynamo FC,2,2,,,False,,False,Allianz Field,585599,regular-season
 2020-10-28,2020,MLS,True,Red Bull New York,New England Revolution,1,0,,,False,,False,Sports Illustrated Stadium,585564,regular-season
 2020-10-28,2020,MLS,True,FC Cincinnati,Sporting Kansas City,0,1,,,False,,False,Nippert Stadium,585565,regular-season
 2020-10-28,2020,MLS,True,Orlando City SC,Atlanta United FC,4,1,,,False,,False,Inter&Co Stadium,585568,regular-season
 2020-10-28,2020,MLS,True,Philadelphia Union,Chicago Fire FC,2,1,,,False,,False,Subaru Park,585566,regular-season
 2020-10-07,2020,MLS,True,Seattle Sounders FC,Real Salt Lake,2,1,,,False,,False,Lumen Field,585535,regular-season
-2020-10-28,2020,MLS,True,Toronto FC,New York City FC,0,1,,,False,,False,Pratt & Whitney Stadium at Rentschler Field,585567,regular-season
+2020-10-28,2020,MLS,True,Toronto FC,New York City FC,0,1,,,False,,True,Pratt & Whitney Stadium at Rentschler Field,585567,regular-season
 2020-10-07,2020,MLS,True,Sporting Kansas City,Chicago Fire FC,1,0,,,False,,False,Children's Mercy Park,585533,regular-season
 2020-10-07,2020,MLS,True,Houston Dynamo FC,FC Dallas,2,0,,,False,,False,Shell Energy Stadium,585516,regular-season
 2020-10-14,2020,MLS,True,FC Dallas,Sporting Kansas City,1,0,,,False,,False,Toyota Stadium,585560,regular-season
 2020-10-14,2020,MLS,True,Real Salt Lake,Portland Timbers,2,1,,,False,,False,America First Field,585561,regular-season
-2020-10-14,2020,MLS,True,Vancouver Whitecaps,LAFC,2,1,,,False,,False,Providence Park,585563,regular-season
+2020-10-14,2020,MLS,True,Vancouver Whitecaps,LAFC,2,1,,,False,,True,Providence Park,585563,regular-season
 2020-10-14,2020,MLS,True,LA Galaxy,San Jose Earthquakes,0,4,,,False,,False,Dignity Health Sports Park,585587,regular-season
 2020-10-17,2020,MLS,True,Chicago Fire FC,Sporting Kansas City,2,2,,,False,,False,Soldier Field,585588,regular-season
-2020-10-17,2020,MLS,True,CF Montréal,Inter Miami CF,2,1,,,False,,False,Sports Illustrated Stadium,585589,regular-season
+2020-10-17,2020,MLS,True,CF Montréal,Inter Miami CF,2,1,,,False,,True,Sports Illustrated Stadium,585589,regular-season
 2020-10-18,2020,MLS,True,Columbus Crew,New York City FC,3,1,,,False,,False,Historic Crew Stadium,585596,regular-season
 2020-10-11,2020,MLS,True,Sporting Kansas City,Nashville SC,2,1,,,False,,False,Children's Mercy Park,585547,regular-season
 2020-10-18,2020,MLS,True,Red Bull New York,Orlando City SC,1,1,,,False,,False,Sports Illustrated Stadium,585594,regular-season
@@ -8628,10 +8628,10 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2020-10-31,2020,MLS,True,Nashville SC,Chicago Fire FC,1,1,,,False,,False,"Nissan Stadium, Nashville",585576,regular-season
 2020-11-01,2020,MLS,True,Columbus Crew,Philadelphia Union,2,1,,,False,,False,Historic Crew Stadium,585579,regular-season
 2020-11-01,2020,MLS,True,Atlanta United FC,FC Cincinnati,2,0,,,False,,False,Mercedes-Benz Stadium,585577,regular-season
-2020-10-27,2020,MLS,True,Vancouver Whitecaps,Seattle Sounders FC,0,2,,,False,,False,Providence Park,585532,regular-season
-2020-10-27,2020,MLS,True,CF Montréal,Nashville SC,0,1,,,False,,False,Sports Illustrated Stadium,585531,regular-season
+2020-10-27,2020,MLS,True,Vancouver Whitecaps,Seattle Sounders FC,0,2,,,False,,True,Providence Park,585532,regular-season
+2020-10-27,2020,MLS,True,CF Montréal,Nashville SC,0,1,,,False,,True,Sports Illustrated Stadium,585531,regular-season
 2020-10-25,2020,MLS,True,LAFC,LA Galaxy,2,0,,,False,,False,BMO Stadium,585530,regular-season
-2020-10-24,2020,MLS,True,Vancouver Whitecaps,San Jose Earthquakes,2,1,,,False,,False,Providence Park,585529,regular-season
+2020-10-24,2020,MLS,True,Vancouver Whitecaps,San Jose Earthquakes,2,1,,,False,,True,Providence Park,585529,regular-season
 2020-10-18,2020,MLS,True,Portland Timbers,LAFC,1,1,,,False,,False,Providence Park,585601,regular-season
 2020-10-18,2020,MLS,True,LA Galaxy,Vancouver Whitecaps,1,0,,,False,,False,Dignity Health Sports Park,585603,regular-season
 2020-10-18,2020,MLS,True,San Jose Earthquakes,Seattle Sounders FC,0,0,,,False,,False,PayPal Park,585602,regular-season
@@ -8639,7 +8639,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2020-10-22,2020,MLS,True,Seattle Sounders FC,Portland Timbers,1,1,,,False,,False,Lumen Field,585528,regular-season
 2020-10-14,2020,MLS,True,Houston Dynamo FC,Nashville SC,1,3,,,False,,False,Shell Energy Stadium,585557,regular-season
 2020-10-14,2020,MLS,True,D.C. United,Philadelphia Union,2,2,,,False,,False,Audi Field,585558,regular-season
-2020-10-14,2020,MLS,True,Toronto FC,Red Bull New York,1,1,,,False,,False,Pratt & Whitney Stadium at Rentschler Field,585552,regular-season
+2020-10-14,2020,MLS,True,Toronto FC,Red Bull New York,1,1,,,False,,True,Pratt & Whitney Stadium at Rentschler Field,585552,regular-season
 2020-11-04,2020,MLS,True,LA Galaxy,Seattle Sounders FC,1,1,,,False,,False,Dignity Health Sports Park,585855,regular-season
 2020-11-04,2020,MLS,True,San Jose Earthquakes,LAFC,3,2,,,False,,False,PayPal Park,585590,regular-season
 2020-11-08,2020,MLS,True,Chicago Fire FC,New York City FC,3,4,,,False,,False,Soldier Field,585605,regular-season
@@ -8649,7 +8649,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2020-11-08,2020,MLS,True,Orlando City SC,Nashville SC,2,3,,,False,,False,Inter&Co Stadium,585606,regular-season
 2020-11-08,2020,MLS,True,Philadelphia Union,New England Revolution,2,0,,,False,,False,Subaru Park,585591,regular-season
 2020-11-08,2020,MLS,True,Houston Dynamo FC,Colorado Rapids,1,2,,,False,,False,Shell Energy Stadium,585608,regular-season
-2020-11-01,2020,MLS,True,Toronto FC,Inter Miami CF,2,1,,,False,,False,Pratt & Whitney Stadium at Rentschler Field,585583,regular-season
+2020-11-01,2020,MLS,True,Toronto FC,Inter Miami CF,2,1,,,False,,True,Pratt & Whitney Stadium at Rentschler Field,585583,regular-season
 2020-12-03,2020,MLS,True,Sporting Kansas City,Minnesota United FC,0,3,,,False,,False,Children's Mercy Park,588152,western-conference-playoffs---semifinals
 2020-12-07,2020,MLS,True,Seattle Sounders FC,Minnesota United FC,3,2,,,False,,False,Lumen Field,588172,western-conference-playoffs---finals
 2021-04-24,2021,MLS,True,LAFC,Seattle Sounders FC,1,1,,,False,,False,BMO Stadium,597716,regular-season
@@ -8662,7 +8662,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2020-11-22,2020,MLS,True,Sporting Kansas City,San Jose Earthquakes,3,3,3.0,0.0,True,Sporting Kansas City,False,Children's Mercy Park,588156,western-conference-playoffs---first-round
 2020-11-22,2020,MLS,True,Minnesota United FC,Colorado Rapids,3,0,,,False,,False,Allianz Field,588167,western-conference-playoffs---first-round
 2020-11-22,2020,MLS,True,Portland Timbers,FC Dallas,1,1,7.0,8.0,True,FC Dallas,False,Providence Park,588168,western-conference-playoffs---first-round
-2020-11-24,2020,MLS,True,Toronto FC,Nashville SC,0,1,,,False,,False,Pratt & Whitney Stadium at Rentschler Field,588155,eastern-conference-playoffs---first-round
+2020-11-24,2020,MLS,True,Toronto FC,Nashville SC,0,1,,,False,,True,Pratt & Whitney Stadium at Rentschler Field,588155,eastern-conference-playoffs---first-round
 2020-11-24,2020,MLS,True,Philadelphia Union,New England Revolution,0,2,,,False,,False,Subaru Park,588169,eastern-conference-playoffs---first-round
 2020-11-24,2020,MLS,True,Seattle Sounders FC,LAFC,3,1,,,False,,False,Lumen Field,588170,western-conference-playoffs---first-round
 2020-11-29,2020,MLS,True,Orlando City SC,New England Revolution,1,3,,,False,,False,Inter&Co Stadium,588154,eastern-conference-playoffs---semifinals
@@ -8683,14 +8683,14 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2021-04-17,2021,MLS,True,Nashville SC,FC Cincinnati,2,2,,,False,,False,"Nissan Stadium, Nashville",596667,regular-season
 2021-04-18,2021,MLS,True,Inter Miami CF,LA Galaxy,2,3,,,False,,False,Chase Stadium,596666,regular-season
 2021-04-18,2021,MLS,True,Columbus Crew,Philadelphia Union,0,0,,,False,,False,Historic Crew Stadium,596665,regular-season
-2021-04-18,2021,MLS,True,Vancouver Whitecaps,Portland Timbers,1,0,,,False,,False,America First Field,596664,regular-season
+2021-04-18,2021,MLS,True,Vancouver Whitecaps,Portland Timbers,1,0,,,False,,True,America First Field,596664,regular-season
 2021-04-23,2021,MLS,True,Sporting Kansas City,Orlando City SC,1,1,,,False,,False,Children's Mercy Park,596663,regular-season
 2021-04-24,2021,MLS,True,Nashville SC,CF Montréal,2,2,,,False,,False,"Nissan Stadium, Nashville",597715,regular-season
 2020-11-01,2020,MLS,True,New England Revolution,D.C. United,4,3,,,False,,False,Gillette Stadium,585582,regular-season
-2020-11-01,2020,MLS,True,CF Montréal,Orlando City SC,0,1,,,False,,False,Sports Illustrated Stadium,585580,regular-season
+2020-11-01,2020,MLS,True,CF Montréal,Orlando City SC,0,1,,,False,,True,Sports Illustrated Stadium,585580,regular-season
 2020-11-01,2020,MLS,True,New York City FC,Red Bull New York,5,2,,,False,,False,Yankee Stadium,585578,regular-season
 2020-10-11,2020,MLS,True,Portland Timbers,San Jose Earthquakes,3,0,,,False,,False,Providence Park,585551,regular-season
-2020-10-14,2020,MLS,True,CF Montréal,New England Revolution,2,3,,,False,,False,Sports Illustrated Stadium,585554,regular-season
+2020-10-14,2020,MLS,True,CF Montréal,New England Revolution,2,3,,,False,,True,Sports Illustrated Stadium,585554,regular-season
 2020-10-14,2020,MLS,True,FC Cincinnati,Columbus Crew,2,1,,,False,,False,Nippert Stadium,585553,regular-season
 2020-10-14,2020,MLS,True,Orlando City SC,New York City FC,1,1,,,False,,False,Inter&Co Stadium,585555,regular-season
 2021-04-17,2021,MLS,True,FC Dallas,Colorado Rapids,0,0,,,False,,False,Toyota Stadium,596669,regular-season
@@ -8700,19 +8700,19 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2021-04-25,2021,MLS,True,LA Galaxy,Red Bull New York,3,2,,,False,,False,Dignity Health Sports Park,596653,regular-season
 2021-05-01,2021,MLS,True,Red Bull New York,Chicago Fire FC,2,0,,,False,,False,Sports Illustrated Stadium,597717,regular-season
 2021-05-01,2021,MLS,True,Real Salt Lake,Sporting Kansas City,3,1,,,False,,False,America First Field,596652,regular-season
-2021-05-01,2021,MLS,True,CF Montréal,Columbus Crew,0,0,,,False,,False,Chase Stadium,597718,regular-season
+2021-05-01,2021,MLS,True,CF Montréal,Columbus Crew,0,0,,,False,,True,Chase Stadium,597718,regular-season
 2021-05-01,2021,MLS,True,Houston Dynamo FC,LAFC,1,1,,,False,,False,Shell Energy Stadium,597719,regular-season
 2021-05-01,2021,MLS,True,New England Revolution,Atlanta United FC,2,1,,,False,,False,Gillette Stadium,597720,regular-season
 2021-05-01,2021,MLS,True,Orlando City SC,FC Cincinnati,3,0,,,False,,False,Inter&Co Stadium,597722,regular-season
 2021-06-27,2021,MLS,True,Austin FC,Columbus Crew,0,0,,,False,,False,Q2 Stadium,597823,regular-season
 2021-05-01,2021,MLS,True,Philadelphia Union,New York City FC,0,2,,,False,,False,Subaru Park,597721,regular-season
 2020-12-06,2020,MLS,True,Columbus Crew,New England Revolution,1,0,,,False,,False,Historic Crew Stadium,588151,eastern-conference-playoffs---finals
-2021-04-24,2021,MLS,True,Toronto FC,Vancouver Whitecaps,2,2,,,False,,False,Inter&Co Stadium,596661,regular-season
+2021-04-24,2021,MLS,True,Toronto FC,Vancouver Whitecaps,2,2,,,False,,True,Inter&Co Stadium,596661,regular-season
 2021-04-24,2021,MLS,True,New York City FC,FC Cincinnati,5,0,,,False,,False,Yankee Stadium,596662,regular-season
 2020-12-12,2020,MLS,True,Columbus Crew,Seattle Sounders FC,3,0,,,False,,False,Historic Crew Stadium,588150,mls-cup
 2021-04-16,2021,MLS,True,Houston Dynamo FC,San Jose Earthquakes,2,1,,,False,,False,Shell Energy Stadium,596676,regular-season
 2021-04-16,2021,MLS,True,Seattle Sounders FC,Minnesota United FC,4,0,,,False,,False,Lumen Field,596675,regular-season
-2021-04-17,2021,MLS,True,CF Montréal,Toronto FC,4,2,,,False,,False,Chase Stadium,596673,regular-season
+2021-04-17,2021,MLS,True,CF Montréal,Toronto FC,4,2,,,False,,True,Chase Stadium,596673,regular-season
 2021-04-24,2021,MLS,True,San Jose Earthquakes,FC Dallas,3,1,,,False,,False,PayPal Park,596660,regular-season
 2020-11-21,2020,MLS,True,Columbus Crew,Red Bull New York,3,2,,,False,,False,Historic Crew Stadium,588166,eastern-conference-playoffs---first-round
 2021-06-27,2021,MLS,True,FC Dallas,New England Revolution,2,1,,,False,,False,Toyota Stadium,597824,regular-season
@@ -8725,14 +8725,14 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2021-05-09,2021,MLS,True,Portland Timbers,Seattle Sounders FC,1,2,,,False,,False,Providence Park,597740,regular-season
 2021-05-09,2021,MLS,True,Sporting Kansas City,Austin FC,2,1,,,False,,False,Children's Mercy Park,597741,regular-season
 2021-05-12,2021,MLS,True,Inter Miami CF,CF Montréal,0,2,,,False,,False,Chase Stadium,597742,regular-season
-2021-05-22,2021,MLS,True,CF Montréal,FC Cincinnati,1,2,,,False,,False,Chase Stadium,597761,regular-season
+2021-05-22,2021,MLS,True,CF Montréal,FC Cincinnati,1,2,,,False,,True,Chase Stadium,597761,regular-season
 2021-05-22,2021,MLS,True,Portland Timbers,LA Galaxy,3,0,,,False,,False,Providence Park,597762,regular-season
 2021-05-22,2021,MLS,True,Chicago Fire FC,Inter Miami CF,1,0,,,False,,False,Soldier Field,597763,regular-season
 2021-05-29,2021,MLS,True,Real Salt Lake,Minnesota United FC,1,1,,,False,,False,America First Field,597785,regular-season
 2021-05-30,2021,MLS,True,Philadelphia Union,Portland Timbers,3,0,,,False,,False,Subaru Park,597786,regular-season
 2021-05-30,2021,MLS,True,Seattle Sounders FC,Austin FC,0,0,,,False,,False,Lumen Field,597780,regular-season
 2021-06-12,2021,MLS,True,Sporting Kansas City,Austin FC,1,1,,,False,,False,Children's Mercy Park,597856,regular-season
-2021-05-08,2021,MLS,True,Vancouver Whitecaps,CF Montréal,2,0,,,False,,False,America First Field,597733,regular-season
+2021-05-08,2021,MLS,True,Vancouver Whitecaps,CF Montréal,2,0,,,False,,True,America First Field,597733,regular-season
 2021-06-18,2021,MLS,True,Red Bull New York,Nashville SC,2,0,,,False,,False,Sports Illustrated Stadium,597789,regular-season
 2021-05-08,2021,MLS,True,Nashville SC,New England Revolution,2,0,,,False,,False,"Nissan Stadium, Nashville",597737,regular-season
 2021-05-08,2021,MLS,True,Red Bull New York,Toronto FC,2,0,,,False,,False,Sports Illustrated Stadium,597731,regular-season
@@ -8746,9 +8746,9 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2021-05-12,2021,MLS,True,Houston Dynamo FC,Sporting Kansas City,1,0,,,False,,False,Shell Energy Stadium,597746,regular-season
 2021-05-16,2021,MLS,True,Seattle Sounders FC,LAFC,2,0,,,False,,False,Lumen Field,597760,regular-season
 2021-05-12,2021,MLS,True,Philadelphia Union,New England Revolution,1,1,,,False,,False,Subaru Park,597744,regular-season
-2021-05-12,2021,MLS,True,Toronto FC,Columbus Crew,2,0,,,False,,False,Inter&Co Stadium,597743,regular-season
+2021-05-12,2021,MLS,True,Toronto FC,Columbus Crew,2,0,,,False,,True,Inter&Co Stadium,597743,regular-season
 2021-05-02,2021,MLS,True,Seattle Sounders FC,LA Galaxy,3,0,,,False,,False,Lumen Field,597727,regular-season
-2021-05-02,2021,MLS,True,Vancouver Whitecaps,Colorado Rapids,0,1,,,False,,False,America First Field,597728,regular-season
+2021-05-02,2021,MLS,True,Vancouver Whitecaps,Colorado Rapids,0,1,,,False,,True,America First Field,597728,regular-season
 2021-05-07,2021,MLS,True,Real Salt Lake,San Jose Earthquakes,1,2,,,False,,False,America First Field,597729,regular-season
 2021-05-08,2021,MLS,True,Chicago Fire FC,Philadelphia Union,0,2,,,False,,False,Soldier Field,597730,regular-season
 2021-05-08,2021,MLS,True,Columbus Crew,D.C. United,3,1,,,False,,False,Historic Crew Stadium,597732,regular-season
@@ -8775,7 +8775,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2021-05-22,2021,MLS,True,LAFC,Colorado Rapids,2,1,,,False,,False,BMO Stadium,597770,regular-season
 2021-05-22,2021,MLS,True,Houston Dynamo FC,Vancouver Whitecaps,2,1,,,False,,False,Shell Energy Stadium,597768,regular-season
 2021-06-19,2021,MLS,True,New York City FC,New England Revolution,2,3,,,False,,False,Sports Illustrated Stadium,597798,regular-season
-2021-06-19,2021,MLS,True,Toronto FC,Orlando City SC,2,3,,,False,,False,Inter&Co Stadium,597790,regular-season
+2021-06-19,2021,MLS,True,Toronto FC,Orlando City SC,2,3,,,False,,True,Inter&Co Stadium,597790,regular-season
 2021-06-19,2021,MLS,True,D.C. United,Inter Miami CF,1,0,,,False,,False,Audi Field,597793,regular-season
 2021-06-19,2021,MLS,True,FC Dallas,Minnesota United FC,1,1,,,False,,False,Toyota Stadium,597794,regular-season
 2021-06-19,2021,MLS,True,Austin FC,San Jose Earthquakes,0,0,,,False,,False,Q2 Stadium,596650,regular-season
@@ -8796,10 +8796,10 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2021-06-23,2021,MLS,True,Sporting Kansas City,Colorado Rapids,3,1,,,False,,False,Children's Mercy Park,597808,regular-season
 2021-06-23,2021,MLS,True,Seattle Sounders FC,Real Salt Lake,2,1,,,False,,False,Lumen Field,597809,regular-season
 2021-06-23,2021,MLS,True,LAFC,FC Dallas,2,0,,,False,,False,BMO Stadium,597810,regular-season
-2021-06-23,2021,MLS,True,Vancouver Whitecaps,LA Galaxy,1,2,,,False,,False,America First Field,597811,regular-season
+2021-06-23,2021,MLS,True,Vancouver Whitecaps,LA Galaxy,1,2,,,False,,True,America First Field,597811,regular-season
 2021-06-25,2021,MLS,True,Inter Miami CF,Orlando City SC,1,2,,,False,,False,Chase Stadium,597812,regular-season
 2021-06-26,2021,MLS,True,Sporting Kansas City,LAFC,2,1,,,False,,False,Children's Mercy Park,597813,regular-season
-2021-06-26,2021,MLS,True,Toronto FC,FC Cincinnati,0,2,,,False,,False,Inter&Co Stadium,597814,regular-season
+2021-06-26,2021,MLS,True,Toronto FC,FC Cincinnati,0,2,,,False,,True,Inter&Co Stadium,597814,regular-season
 2021-06-26,2021,MLS,True,Chicago Fire FC,Philadelphia Union,3,3,,,False,,False,Soldier Field,597815,regular-season
 2021-06-26,2021,MLS,True,Nashville SC,CF Montréal,1,1,,,False,,False,"Nissan Stadium, Nashville",597817,regular-season
 2021-06-23,2021,MLS,True,New England Revolution,Red Bull New York,3,2,,,False,,False,Gillette Stadium,597800,regular-season
@@ -8807,13 +8807,13 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2021-07-07,2021,MLS,True,New England Revolution,Toronto FC,2,3,,,False,,False,Gillette Stadium,597838,regular-season
 2021-07-17,2021,MLS,True,Portland Timbers,FC Dallas,1,0,,,False,,False,Providence Park,597860,regular-season
 2021-07-18,2021,MLS,True,Minnesota United FC,Seattle Sounders FC,1,0,,,False,,False,Allianz Field,597861,regular-season
-2021-07-20,2021,MLS,True,Vancouver Whitecaps,Houston Dynamo FC,0,0,,,False,,False,America First Field,597871,regular-season
+2021-07-20,2021,MLS,True,Vancouver Whitecaps,Houston Dynamo FC,0,0,,,False,,True,America First Field,597871,regular-season
 2021-06-23,2021,MLS,True,Nashville SC,Toronto FC,3,2,,,False,,False,"Nissan Stadium, Nashville",597807,regular-season
 2021-07-21,2021,MLS,True,Columbus Crew,Nashville SC,0,0,,,False,,False,ScottsMiracle-Gro Field,597864,regular-season
 2021-06-23,2021,MLS,True,Houston Dynamo FC,Portland Timbers,2,2,,,False,,False,Shell Energy Stadium,597806,regular-season
 2021-06-23,2021,MLS,True,Chicago Fire FC,FC Cincinnati,0,1,,,False,,False,Soldier Field,597805,regular-season
 2021-07-03,2021,MLS,True,D.C. United,Toronto FC,7,1,,,False,,False,Audi Field,597826,regular-season
-2021-07-03,2021,MLS,True,CF Montréal,Inter Miami CF,1,0,,,False,,False,Sports Illustrated Stadium,597828,regular-season
+2021-07-03,2021,MLS,True,CF Montréal,Inter Miami CF,1,0,,,False,,True,Sports Illustrated Stadium,597828,regular-season
 2021-07-03,2021,MLS,True,Orlando City SC,Red Bull New York,1,2,,,False,,False,Inter&Co Stadium,597827,regular-season
 2021-07-03,2021,MLS,True,Chicago Fire FC,Atlanta United FC,3,0,,,False,,False,Soldier Field,597829,regular-season
 2021-07-03,2021,MLS,True,Minnesota United FC,San Jose Earthquakes,2,2,,,False,,False,Allianz Field,597830,regular-season
@@ -8826,7 +8826,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2021-06-26,2021,MLS,True,Real Salt Lake,Houston Dynamo FC,1,1,,,False,,False,America First Field,597816,regular-season
 2021-06-23,2021,MLS,True,New York City FC,Atlanta United FC,1,0,,,False,,False,Sports Illustrated Stadium,597802,regular-season
 2021-06-23,2021,MLS,True,Philadelphia Union,Columbus Crew,1,0,,,False,,False,Subaru Park,597801,regular-season
-2021-06-23,2021,MLS,True,CF Montréal,D.C. United,0,0,,,False,,False,Chase Stadium,597803,regular-season
+2021-06-23,2021,MLS,True,CF Montréal,D.C. United,0,0,,,False,,True,Chase Stadium,597803,regular-season
 2021-06-23,2021,MLS,True,Minnesota United FC,Austin FC,2,0,,,False,,False,Allianz Field,597804,regular-season
 2021-07-21,2021,MLS,True,Inter Miami CF,New England Revolution,0,5,,,False,,False,Chase Stadium,597862,regular-season
 2021-07-21,2021,MLS,True,New York City FC,CF Montréal,1,0,,,False,,False,Sports Illustrated Stadium,597865,regular-season
@@ -8848,7 +8848,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2021-05-15,2021,MLS,True,New York City FC,Toronto FC,1,1,,,False,,False,Yankee Stadium,597750,regular-season
 2021-07-08,2021,MLS,True,Nashville SC,Atlanta United FC,2,2,,,False,,False,"Nissan Stadium, Nashville",597848,regular-season
 2021-07-07,2021,MLS,True,LA Galaxy,FC Dallas,3,1,,,False,,False,Dignity Health Sports Park,597846,regular-season
-2021-07-07,2021,MLS,True,Vancouver Whitecaps,Real Salt Lake,0,4,,,False,,False,America First Field,597845,regular-season
+2021-07-07,2021,MLS,True,Vancouver Whitecaps,Real Salt Lake,0,4,,,False,,True,America First Field,597845,regular-season
 2021-07-07,2021,MLS,True,Seattle Sounders FC,Houston Dynamo FC,2,0,,,False,,False,Lumen Field,597844,regular-season
 2021-07-21,2021,MLS,True,Chicago Fire FC,D.C. United,2,2,,,False,,False,Soldier Field,597867,regular-season
 2021-07-21,2021,MLS,True,FC Cincinnati,Atlanta United FC,1,1,,,False,,False,TQL Stadium,597863,regular-season
@@ -8860,9 +8860,9 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2021-07-01,2021,MLS,True,Austin FC,Portland Timbers,4,1,,,False,,False,Q2 Stadium,597832,regular-season
 2021-07-22,2021,MLS,True,Austin FC,Seattle Sounders FC,0,1,,,False,,False,Q2 Stadium,597874,regular-season
 2021-07-04,2021,MLS,True,LA Galaxy,Sporting Kansas City,0,2,,,False,,False,Dignity Health Sports Park,597836,regular-season
-2021-07-17,2021,MLS,True,Vancouver Whitecaps,LA Galaxy,2,1,,,False,,False,America First Field,597858,regular-season
+2021-07-17,2021,MLS,True,Vancouver Whitecaps,LA Galaxy,2,1,,,False,,True,America First Field,597858,regular-season
 2021-07-17,2021,MLS,True,Nashville SC,Chicago Fire FC,5,1,,,False,,False,"Nissan Stadium, Nashville",597855,regular-season
-2021-07-07,2021,MLS,True,CF Montréal,New York City FC,2,1,,,False,,False,Inter&Co Stadium,597839,regular-season
+2021-07-07,2021,MLS,True,CF Montréal,New York City FC,2,1,,,False,,True,Inter&Co Stadium,597839,regular-season
 2021-07-07,2021,MLS,True,Chicago Fire FC,Orlando City SC,3,1,,,False,,False,Soldier Field,597841,regular-season
 2021-07-07,2021,MLS,True,Austin FC,LAFC,0,2,,,False,,False,Q2 Stadium,597842,regular-season
 2021-07-07,2021,MLS,True,Colorado Rapids,Minnesota United FC,2,0,,,False,,False,Dick's Sporting Goods Park,597843,regular-season
@@ -9075,7 +9075,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2022-08-06,2022,MLS,True,D.C. United,Red Bull New York,0,0,,,False,,False,Audi Field,623493,regular-season
 2020-11-08,2020,MLS,True,Real Salt Lake,Sporting Kansas City,0,2,,,False,,False,America First Field,585611,regular-season
 2020-11-08,2020,MLS,True,Seattle Sounders FC,San Jose Earthquakes,4,1,,,False,,False,Lumen Field,585610,regular-season
-2020-11-08,2020,MLS,True,Vancouver Whitecaps,LA Galaxy,3,0,,,False,,False,Providence Park,585609,regular-season
+2020-11-08,2020,MLS,True,Vancouver Whitecaps,LA Galaxy,3,0,,,False,,True,Providence Park,585609,regular-season
 2024-03-30,2024,MLS,True,LA Galaxy,Seattle Sounders FC,1,0,,,False,,False,Dignity Health Sports Park,692686,regular-season
 2024-04-27,2024,MLS,True,Columbus Crew,CF Montréal,0,0,,,False,,False,ScottsMiracle-Gro Field,692734,regular-season
 2024-04-27,2024,MLS,True,Austin FC,LA Galaxy,2,0,,,False,,False,Q2 Stadium,692730,regular-season
@@ -9532,12 +9532,12 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2019-09-22,2019,MLS,True,Red Bull New York,Philadelphia Union,2,0,,,False,,False,Sports Illustrated Stadium,533029,regular-season
 2019-09-21,2019,MLS,True,New England Revolution,Real Salt Lake,0,0,,,False,,False,Gillette Stadium,533038,regular-season
 2020-10-04,2020,MLS,True,Real Salt Lake,LAFC,1,3,,,False,,False,America First Field,585508,regular-season
-2020-07-20,2020,MLS,True,Philadelphia Union,Orlando City SC,1,1,,,False,,False,ESPN Wide World of Sports Complex,573297,regular-season
-2020-07-21,2020,MLS,True,Atlanta United FC,Columbus Crew,0,1,,,False,,False,ESPN Wide World of Sports Complex,573299,regular-season
+2020-07-20,2020,MLS,True,Philadelphia Union,Orlando City SC,1,1,,,False,,True,ESPN Wide World of Sports Complex,573297,regular-season
+2020-07-21,2020,MLS,True,Atlanta United FC,Columbus Crew,0,1,,,False,,True,ESPN Wide World of Sports Complex,573299,regular-season
 2020-09-13,2020,MLS,True,LAFC,Portland Timbers,4,2,,,False,,False,BMO Stadium,577239,regular-season
 2020-09-13,2020,MLS,True,San Jose Earthquakes,LA Galaxy,0,0,,,False,,False,PayPal Park,577240,regular-season
 2020-09-16,2020,MLS,True,FC Dallas,Colorado Rapids,4,1,,,False,,False,Toyota Stadium,577192,regular-season
-2020-07-20,2020,MLS,True,Inter Miami CF,New York City FC,0,1,,,False,,False,ESPN Wide World of Sports Complex,573296,regular-season
+2020-07-20,2020,MLS,True,Inter Miami CF,New York City FC,0,1,,,False,,True,ESPN Wide World of Sports Complex,573296,regular-season
 2019-09-29,2019,MLS,True,FC Cincinnati,Orlando City SC,1,1,,,False,,False,Nippert Stadium,533020,regular-season
 2019-09-21,2019,MLS,True,Vancouver Whitecaps,Columbus Crew,1,1,,,False,,False,BC Place,533039,regular-season
 2019-09-18,2019,MLS,True,Seattle Sounders FC,FC Dallas,0,0,,,False,,False,Lumen Field,533041,regular-season
@@ -9572,11 +9572,11 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2019-10-06,2019,MLS,True,FC Dallas,Sporting Kansas City,6,0,,,False,,False,Toyota Stadium,533010,regular-season
 2020-03-07,2020,MLS,True,Real Salt Lake,Red Bull New York,1,1,,,False,,False,America First Field,560538,regular-season
 2020-03-07,2020,MLS,True,D.C. United,Inter Miami CF,2,1,,,False,,False,Audi Field,561817,regular-season
-2020-07-13,2020,MLS,True,LA Galaxy,Portland Timbers,1,2,,,False,,False,ESPN Wide World of Sports Complex,573281,regular-season
-2020-07-14,2020,MLS,True,Chicago Fire FC,Seattle Sounders FC,2,1,,,False,,False,ESPN Wide World of Sports Complex,573282,regular-season
-2020-07-14,2020,MLS,True,New York City FC,Orlando City SC,1,3,,,False,,False,ESPN Wide World of Sports Complex,573283,regular-season
+2020-07-13,2020,MLS,True,LA Galaxy,Portland Timbers,1,2,,,False,,True,ESPN Wide World of Sports Complex,573281,regular-season
+2020-07-14,2020,MLS,True,Chicago Fire FC,Seattle Sounders FC,2,1,,,False,,True,ESPN Wide World of Sports Complex,573282,regular-season
+2020-07-14,2020,MLS,True,New York City FC,Orlando City SC,1,3,,,False,,True,ESPN Wide World of Sports Complex,573283,regular-season
 2019-10-06,2019,MLS,True,Toronto FC,Columbus Crew,1,0,,,False,,False,BMO Field,533001,regular-season
-2020-07-14,2020,MLS,True,Philadelphia Union,Inter Miami CF,2,1,,,False,,False,ESPN Wide World of Sports Complex,573284,regular-season
+2020-07-14,2020,MLS,True,Philadelphia Union,Inter Miami CF,2,1,,,False,,True,ESPN Wide World of Sports Complex,573284,regular-season
 2019-10-06,2019,MLS,True,Seattle Sounders FC,Minnesota United FC,1,0,,,False,,False,Lumen Field,533004,regular-season
 2019-10-06,2019,MLS,True,Philadelphia Union,New York City FC,1,2,,,False,,False,Subaru Park,533006,regular-season
 2020-02-29,2020,MLS,True,Orlando City SC,Real Salt Lake,0,0,,,False,,False,Inter&Co Stadium,560547,regular-season
@@ -9595,17 +9595,17 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2019-10-06,2019,MLS,True,LAFC,Colorado Rapids,3,1,,,False,,False,BMO Stadium,533000,regular-season
 2019-10-06,2019,MLS,True,Orlando City SC,Chicago Fire FC,2,5,,,False,,False,Inter&Co Stadium,532999,regular-season
 2019-10-06,2019,MLS,True,Portland Timbers,San Jose Earthquakes,3,1,,,False,,False,Providence Park,533009,regular-season
-2020-07-15,2020,MLS,True,Vancouver Whitecaps,San Jose Earthquakes,3,4,,,False,,False,ESPN Wide World of Sports Complex,573286,regular-season
-2020-07-16,2020,MLS,True,Atlanta United FC,FC Cincinnati,0,1,,,False,,False,ESPN Wide World of Sports Complex,573287,regular-season
-2020-07-16,2020,MLS,True,CF Montréal,Toronto FC,3,4,,,False,,False,ESPN Wide World of Sports Complex,573285,regular-season
+2020-07-15,2020,MLS,True,Vancouver Whitecaps,San Jose Earthquakes,3,4,,,False,,True,ESPN Wide World of Sports Complex,573286,regular-season
+2020-07-16,2020,MLS,True,Atlanta United FC,FC Cincinnati,0,1,,,False,,True,ESPN Wide World of Sports Complex,573287,regular-season
+2020-07-16,2020,MLS,True,CF Montréal,Toronto FC,3,4,,,False,,True,ESPN Wide World of Sports Complex,573285,regular-season
 2020-03-08,2020,MLS,True,LAFC,Philadelphia Union,3,3,,,False,,False,BMO Stadium,561813,regular-season
-2020-07-08,2020,MLS,True,Orlando City SC,Inter Miami CF,2,1,,,False,,False,ESPN Wide World of Sports Complex,571505,regular-season
-2020-07-09,2020,MLS,True,New York City FC,Philadelphia Union,0,1,,,False,,False,ESPN Wide World of Sports Complex,571507,regular-season
-2020-07-09,2020,MLS,True,CF Montréal,New England Revolution,0,1,,,False,,False,ESPN Wide World of Sports Complex,573273,regular-season
-2020-07-10,2020,MLS,True,Seattle Sounders FC,San Jose Earthquakes,0,0,,,False,,False,ESPN Wide World of Sports Complex,573274,regular-season
-2020-07-11,2020,MLS,True,Atlanta United FC,Red Bull New York,0,1,,,False,,False,ESPN Wide World of Sports Complex,573275,regular-season
-2020-07-11,2020,MLS,True,FC Cincinnati,Columbus Crew,0,4,,,False,,False,ESPN Wide World of Sports Complex,573276,regular-season
-2020-07-12,2020,MLS,True,Real Salt Lake,Colorado Rapids,2,0,,,False,,False,ESPN Wide World of Sports Complex,573279,regular-season
+2020-07-08,2020,MLS,True,Orlando City SC,Inter Miami CF,2,1,,,False,,True,ESPN Wide World of Sports Complex,571505,regular-season
+2020-07-09,2020,MLS,True,New York City FC,Philadelphia Union,0,1,,,False,,True,ESPN Wide World of Sports Complex,571507,regular-season
+2020-07-09,2020,MLS,True,CF Montréal,New England Revolution,0,1,,,False,,True,ESPN Wide World of Sports Complex,573273,regular-season
+2020-07-10,2020,MLS,True,Seattle Sounders FC,San Jose Earthquakes,0,0,,,False,,True,ESPN Wide World of Sports Complex,573274,regular-season
+2020-07-11,2020,MLS,True,Atlanta United FC,Red Bull New York,0,1,,,False,,True,ESPN Wide World of Sports Complex,573275,regular-season
+2020-07-11,2020,MLS,True,FC Cincinnati,Columbus Crew,0,4,,,False,,True,ESPN Wide World of Sports Complex,573276,regular-season
+2020-07-12,2020,MLS,True,Real Salt Lake,Colorado Rapids,2,0,,,False,,True,ESPN Wide World of Sports Complex,573279,regular-season
 2019-10-06,2019,MLS,True,D.C. United,FC Cincinnati,0,0,,,False,,False,Audi Field,533002,regular-season
 2019-10-06,2019,MLS,True,CF Montréal,Red Bull New York,3,0,,,False,,False,Stade Saputo,533007,regular-season
 2019-10-06,2019,MLS,True,Atlanta United FC,New England Revolution,3,1,,,False,,False,Mercedes-Benz Stadium,533005,regular-season
@@ -9617,23 +9617,23 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2020-03-07,2020,MLS,True,Seattle Sounders FC,Columbus Crew,1,1,,,False,,False,Lumen Field,561815,regular-season
 2020-03-07,2020,MLS,True,LA Galaxy,Vancouver Whitecaps,0,1,,,False,,False,Dignity Health Sports Park,560533,regular-season
 2020-03-07,2020,MLS,True,Colorado Rapids,Orlando City SC,2,1,,,False,,False,Dick's Sporting Goods Park,560534,regular-season
-2020-07-16,2020,MLS,True,Columbus Crew,Red Bull New York,2,0,,,False,,False,ESPN Wide World of Sports Complex,573289,regular-season
-2020-07-17,2020,MLS,True,D.C. United,New England Revolution,1,1,,,False,,False,ESPN Wide World of Sports Complex,573288,regular-season
-2020-07-17,2020,MLS,True,Sporting Kansas City,Colorado Rapids,3,2,,,False,,False,ESPN Wide World of Sports Complex,573290,regular-season
-2020-07-17,2020,MLS,True,Real Salt Lake,Minnesota United FC,0,0,,,False,,False,ESPN Wide World of Sports Complex,573291,regular-season
-2020-07-18,2020,MLS,True,Portland Timbers,Houston Dynamo FC,2,1,,,False,,False,ESPN Wide World of Sports Complex,573292,regular-season
-2020-07-18,2020,MLS,True,LAFC,LA Galaxy,6,2,,,False,,False,ESPN Wide World of Sports Complex,573293,regular-season
-2020-07-19,2020,MLS,True,Chicago Fire FC,San Jose Earthquakes,0,2,,,False,,False,ESPN Wide World of Sports Complex,573294,regular-season
+2020-07-16,2020,MLS,True,Columbus Crew,Red Bull New York,2,0,,,False,,True,ESPN Wide World of Sports Complex,573289,regular-season
+2020-07-17,2020,MLS,True,D.C. United,New England Revolution,1,1,,,False,,True,ESPN Wide World of Sports Complex,573288,regular-season
+2020-07-17,2020,MLS,True,Sporting Kansas City,Colorado Rapids,3,2,,,False,,True,ESPN Wide World of Sports Complex,573290,regular-season
+2020-07-17,2020,MLS,True,Real Salt Lake,Minnesota United FC,0,0,,,False,,True,ESPN Wide World of Sports Complex,573291,regular-season
+2020-07-18,2020,MLS,True,Portland Timbers,Houston Dynamo FC,2,1,,,False,,True,ESPN Wide World of Sports Complex,573292,regular-season
+2020-07-18,2020,MLS,True,LAFC,LA Galaxy,6,2,,,False,,True,ESPN Wide World of Sports Complex,573293,regular-season
+2020-07-19,2020,MLS,True,Chicago Fire FC,San Jose Earthquakes,0,2,,,False,,True,ESPN Wide World of Sports Complex,573294,regular-season
 2020-09-16,2020,MLS,True,San Jose Earthquakes,Portland Timbers,1,1,,,False,,False,PayPal Park,577194,regular-season
-2020-07-19,2020,MLS,True,Seattle Sounders FC,Vancouver Whitecaps,3,0,,,False,,False,ESPN Wide World of Sports Complex,573295,regular-season
+2020-07-19,2020,MLS,True,Seattle Sounders FC,Vancouver Whitecaps,3,0,,,False,,True,ESPN Wide World of Sports Complex,573295,regular-season
 2020-03-07,2020,MLS,True,FC Dallas,CF Montréal,2,2,,,False,,False,Toyota Stadium,561818,regular-season
-2020-07-13,2020,MLS,True,Toronto FC,D.C. United,2,2,,,False,,False,ESPN Wide World of Sports Complex,573277,regular-season
-2020-07-12,2020,MLS,True,Sporting Kansas City,Minnesota United FC,1,2,,,False,,False,ESPN Wide World of Sports Complex,573278,regular-season
+2020-07-13,2020,MLS,True,Toronto FC,D.C. United,2,2,,,False,,True,ESPN Wide World of Sports Complex,573277,regular-season
+2020-07-12,2020,MLS,True,Sporting Kansas City,Minnesota United FC,1,2,,,False,,True,ESPN Wide World of Sports Complex,573278,regular-season
 2020-03-07,2020,MLS,True,Toronto FC,New York City FC,1,0,,,False,,False,BMO Field,560537,regular-season
 2020-03-07,2020,MLS,True,Atlanta United FC,FC Cincinnati,2,1,,,False,,False,Mercedes-Benz Stadium,560536,regular-season
 2020-03-07,2020,MLS,True,San Jose Earthquakes,Minnesota United FC,2,5,,,False,,False,PayPal Park,561816,regular-season
 2020-03-07,2020,MLS,True,Sporting Kansas City,Houston Dynamo FC,4,0,,,False,,False,Children's Mercy Park,560535,regular-season
-2020-07-13,2020,MLS,True,LAFC,Houston Dynamo FC,3,3,,,False,,False,ESPN Wide World of Sports Complex,573280,regular-season
+2020-07-13,2020,MLS,True,LAFC,Houston Dynamo FC,3,3,,,False,,True,ESPN Wide World of Sports Complex,573280,regular-season
 2020-09-16,2020,MLS,True,Vancouver Whitecaps,CF Montréal,3,1,,,False,,False,BC Place,577581,regular-season
 2020-09-18,2020,MLS,True,Seattle Sounders FC,LAFC,3,0,,,False,,False,Lumen Field,584198,regular-season
 2020-09-19,2020,MLS,True,Sporting Kansas City,FC Dallas,2,3,,,False,,False,Children's Mercy Park,584200,regular-season
@@ -9654,8 +9654,8 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2020-09-02,2020,MLS,True,Houston Dynamo FC,Minnesota United FC,3,0,,,False,,False,Shell Energy Stadium,577210,regular-season
 2020-07-25,2020,MLS,True,Orlando City SC,CF Montréal,1,0,,,False,,False,,571933,mls-is-back---round-of-16
 2020-09-02,2020,MLS,True,New England Revolution,New York City FC,0,2,,,False,,False,Gillette Stadium,577211,regular-season
-2020-07-23,2020,MLS,True,LAFC,Portland Timbers,2,2,,,False,,False,ESPN Wide World of Sports Complex,573306,regular-season
-2020-07-23,2020,MLS,True,Chicago Fire FC,Vancouver Whitecaps,0,2,,,False,,False,ESPN Wide World of Sports Complex,573304,regular-season
+2020-07-23,2020,MLS,True,LAFC,Portland Timbers,2,2,,,False,,True,ESPN Wide World of Sports Complex,573306,regular-season
+2020-07-23,2020,MLS,True,Chicago Fire FC,Vancouver Whitecaps,0,2,,,False,,True,ESPN Wide World of Sports Complex,573304,regular-season
 2020-08-20,2020,MLS,True,New England Revolution,Philadelphia Union,0,0,,,False,,False,Gillette Stadium,577178,regular-season
 2020-08-21,2020,MLS,True,FC Cincinnati,D.C. United,0,0,,,False,,False,Nippert Stadium,577175,regular-season
 2020-08-21,2020,MLS,True,Minnesota United FC,Sporting Kansas City,1,2,,,False,,False,Allianz Field,577176,regular-season
@@ -9667,11 +9667,11 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2020-08-22,2020,MLS,True,Inter Miami CF,Orlando City SC,3,2,,,False,,False,Chase Stadium,577181,regular-season
 2020-08-01,2020,MLS,True,San Jose Earthquakes,Minnesota United FC,1,4,,,False,,False,,571922,mls-is-back---quarterfinals
 2020-07-30,2020,MLS,True,Philadelphia Union,Sporting Kansas City,3,1,,,False,,False,,571925,mls-is-back---quarterfinals
-2020-07-21,2020,MLS,True,CF Montréal,D.C. United,1,0,,,False,,False,ESPN Wide World of Sports Complex,573300,regular-season
-2020-07-22,2020,MLS,True,Real Salt Lake,Sporting Kansas City,0,2,,,False,,False,ESPN Wide World of Sports Complex,573301,regular-season
-2020-07-22,2020,MLS,True,FC Cincinnati,Red Bull New York,2,0,,,False,,False,ESPN Wide World of Sports Complex,573302,regular-season
-2020-07-22,2020,MLS,True,Colorado Rapids,Minnesota United FC,2,2,,,False,,False,ESPN Wide World of Sports Complex,573303,regular-season
-2020-07-23,2020,MLS,True,LA Galaxy,Houston Dynamo FC,1,1,,,False,,False,ESPN Wide World of Sports Complex,573305,regular-season
+2020-07-21,2020,MLS,True,CF Montréal,D.C. United,1,0,,,False,,True,ESPN Wide World of Sports Complex,573300,regular-season
+2020-07-22,2020,MLS,True,Real Salt Lake,Sporting Kansas City,0,2,,,False,,True,ESPN Wide World of Sports Complex,573301,regular-season
+2020-07-22,2020,MLS,True,FC Cincinnati,Red Bull New York,2,0,,,False,,True,ESPN Wide World of Sports Complex,573302,regular-season
+2020-07-22,2020,MLS,True,Colorado Rapids,Minnesota United FC,2,2,,,False,,True,ESPN Wide World of Sports Complex,573303,regular-season
+2020-07-23,2020,MLS,True,LA Galaxy,Houston Dynamo FC,1,1,,,False,,True,ESPN Wide World of Sports Complex,573305,regular-season
 2020-09-02,2020,MLS,True,Nashville SC,Orlando City SC,1,1,,,False,,False,"Nissan Stadium, Nashville",577213,regular-season
 2020-09-02,2020,MLS,True,Sporting Kansas City,FC Dallas,1,1,,,False,,False,Children's Mercy Park,577212,regular-season
 2020-09-02,2020,MLS,True,Real Salt Lake,Seattle Sounders FC,2,2,,,False,,False,America First Field,577214,regular-season
@@ -9691,7 +9691,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2022-04-30,2022,MLS,True,Sporting Kansas City,FC Dallas,2,2,,,False,,False,Children's Mercy Park,623287,regular-season
 2022-04-30,2022,MLS,True,Colorado Rapids,Portland Timbers,2,0,,,False,,False,Dick's Sporting Goods Park,623288,regular-season
 2020-08-29,2020,MLS,True,Atlanta United FC,Orlando City SC,1,3,,,False,,False,Mercedes-Benz Stadium,577196,regular-season
-2020-07-21,2020,MLS,True,Toronto FC,New England Revolution,0,0,,,False,,False,ESPN Wide World of Sports Complex,573298,regular-season
+2020-07-21,2020,MLS,True,Toronto FC,New England Revolution,0,0,,,False,,True,ESPN Wide World of Sports Complex,573298,regular-season
 2020-08-28,2020,MLS,True,CF Montréal,Toronto FC,0,1,,,False,,False,Stade Saputo,577576,regular-season
 2020-08-26,2020,MLS,True,Orlando City SC,Nashville SC,3,1,,,False,,False,Inter&Co Stadium,577190,regular-season
 2020-09-02,2020,MLS,True,Portland Timbers,LA Galaxy,2,3,,,False,,False,Providence Park,577216,regular-season
@@ -9728,7 +9728,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2020-09-23,2020,MLS,True,New England Revolution,CF Montréal,3,1,,,False,,False,Gillette Stadium,584217,regular-season
 2020-09-27,2020,MLS,True,Minnesota United FC,Real Salt Lake,0,0,,,False,,False,Allianz Field,584231,regular-season
 2020-09-27,2020,MLS,True,FC Dallas,Orlando City SC,0,0,,,False,,False,Toyota Stadium,584232,regular-season
-2020-09-27,2020,MLS,True,Vancouver Whitecaps,Portland Timbers,0,1,,,False,,False,Providence Park,584234,regular-season
+2020-09-27,2020,MLS,True,Vancouver Whitecaps,Portland Timbers,0,1,,,False,,True,Providence Park,584234,regular-season
 2020-09-09,2020,MLS,True,Colorado Rapids,Houston Dynamo FC,1,1,,,False,,False,Dick's Sporting Goods Park,577229,regular-season
 2020-09-27,2020,MLS,True,LA Galaxy,Seattle Sounders FC,1,3,,,False,,False,Dignity Health Sports Park,584235,regular-season
 2020-09-09,2020,MLS,True,Minnesota United FC,FC Dallas,3,2,,,False,,False,Allianz Field,577228,regular-season
@@ -9771,21 +9771,21 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2020-09-23,2020,MLS,True,Inter Miami CF,Red Bull New York,1,4,,,False,,False,Chase Stadium,584218,regular-season
 2020-09-23,2020,MLS,True,Sporting Kansas City,Orlando City SC,1,2,,,False,,False,Children's Mercy Park,584213,regular-season
 2020-09-23,2020,MLS,True,FC Cincinnati,Philadelphia Union,0,0,,,False,,False,Nippert Stadium,584214,regular-season
-2020-10-03,2020,MLS,True,CF Montréal,Chicago Fire FC,2,2,,,False,,False,Sports Illustrated Stadium,585499,regular-season
+2020-10-03,2020,MLS,True,CF Montréal,Chicago Fire FC,2,2,,,False,,True,Sports Illustrated Stadium,585499,regular-season
 2020-10-03,2020,MLS,True,New England Revolution,Nashville SC,0,0,,,False,,False,Gillette Stadium,585498,regular-season
-2020-10-03,2020,MLS,True,Toronto FC,Philadelphia Union,2,1,,,False,,False,Pratt & Whitney Stadium at Rentschler Field,585500,regular-season
+2020-10-03,2020,MLS,True,Toronto FC,Philadelphia Union,2,1,,,False,,True,Pratt & Whitney Stadium at Rentschler Field,585500,regular-season
 2020-10-03,2020,MLS,True,Houston Dynamo FC,Sporting Kansas City,1,2,,,False,,False,Shell Energy Stadium,585502,regular-season
 2020-10-03,2020,MLS,True,Inter Miami CF,New York City FC,2,3,,,False,,False,Chase Stadium,585503,regular-season
 2020-10-03,2020,MLS,True,Minnesota United FC,FC Cincinnati,2,0,,,False,,False,Allianz Field,585501,regular-season
 2020-10-03,2020,MLS,True,FC Dallas,Columbus Crew,2,2,,,False,,False,Toyota Stadium,585504,regular-season
 2020-08-18,2020,MLS,True,Toronto FC,Vancouver Whitecaps,3,0,,,False,,False,BMO Field,577573,regular-season
 2020-10-03,2020,MLS,True,Seattle Sounders FC,Vancouver Whitecaps,3,1,,,False,,False,Lumen Field,585506,regular-season
-2020-09-20,2020,MLS,True,CF Montréal,Philadelphia Union,1,4,,,False,,False,Sports Illustrated Stadium,584210,regular-season
+2020-09-20,2020,MLS,True,CF Montréal,Philadelphia Union,1,4,,,False,,True,Sports Illustrated Stadium,584210,regular-season
 2020-09-27,2020,MLS,True,Philadelphia Union,Inter Miami CF,3,0,,,False,,False,Subaru Park,584230,regular-season
 2020-09-27,2020,MLS,True,Red Bull New York,CF Montréal,4,1,,,False,,False,Sports Illustrated Stadium,584227,regular-season
 2020-09-23,2020,MLS,True,Atlanta United FC,FC Dallas,1,0,,,False,,False,Mercedes-Benz Stadium,584211,regular-season
 2020-09-23,2020,MLS,True,New York City FC,Toronto FC,0,1,,,False,,False,Sports Illustrated Stadium,584212,regular-season
 2020-09-23,2020,MLS,True,Chicago Fire FC,Houston Dynamo FC,4,0,,,False,,False,Soldier Field,584215,regular-season
 2020-09-23,2020,MLS,True,Columbus Crew,Minnesota United FC,2,1,,,False,,False,Historic Crew Stadium,584216,regular-season
-2020-09-27,2020,MLS,True,Toronto FC,Columbus Crew,3,1,,,False,,False,Pratt & Whitney Stadium at Rentschler Field,584229,regular-season
-2009-11-22,2009,MLS,True,Real Salt Lake,LA Galaxy,1,1,5.0,4.0,True,Real Salt Lake,False,Qwest Field,285079,
+2020-09-27,2020,MLS,True,Toronto FC,Columbus Crew,3,1,,,False,,True,Pratt & Whitney Stadium at Rentschler Field,584229,regular-season
+2009-11-22,2009,MLS,True,Real Salt Lake,LA Galaxy,1,1,5.0,4.0,True,Real Salt Lake,True,Qwest Field,285079,
