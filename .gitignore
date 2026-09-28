@@ -12,3 +12,6 @@ Backup*/
 
 # Engine-migration backup snapshots (never commit)
 *-bak
+
+# Per-season title-odds cache (Actions cache, regenerable)
+title_odds_cache/

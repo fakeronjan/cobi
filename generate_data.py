@@ -605,7 +605,7 @@ print("Computing MLS Cup odds...")
 _to_ratings = df[['date', 'season', 'team', 'rating_o', 'rating_d']].copy()
 _to_ratings['date'] = pd.to_datetime(_to_ratings['date'])
 _to_ratings['season'] = _to_ratings['season'].astype(int)
-_po_odds, _brackets = title_odds.compute(games_lg, schedule, _to_ratings, conference_for,
+_po_odds, _brackets = title_odds.compute_cached(games_lg, schedule, _to_ratings, conference_for,
                             int(df['season'].astype(int).max()))
 _to_df = _po_odds.rename(columns={'champ': 'title_odds'})[['season', 'date', 'team', 'title_odds']].copy()
 _to_df['date'] = _to_df['date'].dt.date.astype(str)
