@@ -1,5 +1,4 @@
 date,home_team,away_team,stage,event_id
-2026-09-27,Columbus Crew,Inter Miami CF,regular-season,761844
 2026-09-30,Red Bull New York,St. Louis CITY SC,regular-season,761833
 2026-10-01,Seattle Sounders FC,Sporting Kansas City,regular-season,761798
 2026-10-06,Chicago Fire FC,Vancouver Whitecaps,regular-season,761660
@@ -7,9 +6,9 @@ date,home_team,away_team,stage,event_id
 2026-10-10,Colorado Rapids,San Jose Earthquakes,regular-season,761857
 2026-10-10,Sporting Kansas City,Portland Timbers,regular-season,761855
 2026-10-10,Minnesota United FC,Houston Dynamo FC,regular-season,761854
-2026-10-10,Austin FC,Nashville SC,regular-season,761856
-2026-10-10,Philadelphia Union,Real Salt Lake,regular-season,761849
 2026-10-10,Red Bull New York,San Diego FC,regular-season,761853
+2026-10-10,Philadelphia Union,Real Salt Lake,regular-season,761849
+2026-10-10,Austin FC,Nashville SC,regular-season,761856
 2026-10-10,New England Revolution,Seattle Sounders FC,regular-season,761851
 2026-10-10,Inter Miami CF,D.C. United,regular-season,761847
 2026-10-10,Charlotte FC,FC Dallas,regular-season,761852
