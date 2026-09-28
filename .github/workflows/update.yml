@@ -2,7 +2,7 @@ name: Update COBI Ratings
 
 on:
   schedule:
-    - cron: '33 16 * * *'  # 16:33 UTC daily - after the US-sport block (DILLON 15:53, SALAAM 16:13)
+    - cron: '33 19 * * *'  # backstop, 19:33 UTC. The droplet (157.245.209.249) dispatches this at 16:33 UTC; GitHub's own cron starts hours late, see /opt/fleet-dispatch there
   workflow_dispatch:        # manual trigger from GitHub UI
 
 permissions:
