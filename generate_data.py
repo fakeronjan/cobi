@@ -322,6 +322,9 @@ if os.path.exists('mls_schedule.csv'):
     schedule['stage'] = schedule['stage'].fillna('')
 else:
     schedule = pd.DataFrame(columns=['date', 'home_team', 'away_team', 'stage', 'event_id'])
+# Explicit: after MLS Cup the file is header-only, and parse_dates leaves an
+# empty column as object dtype (no .dt).
+schedule['date'] = pd.to_datetime(schedule['date'])
 _rs_fixture_years = set(
     schedule.loc[schedule['stage'] == 'regular-season', 'date'].dt.year.astype(int))
 
