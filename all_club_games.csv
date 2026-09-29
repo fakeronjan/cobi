@@ -1166,18 +1166,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2001-10-14,2001,MLS,True,San Jose Earthquakes,Miami Fusion,4,0,,,False,,False,,fbcsv-mls-2001-2001-10-14-San Jose Earthquakes-Miami Fusion,Playoff
 1996-10-20,1996,MLS,True,LA Galaxy,D.C. United,2,3,,,False,,True,Foxboro Stadium,wikipedia-1996-mls-cup,Final
 2001-10-21,2001,MLS,True,LA Galaxy,San Jose Earthquakes,1,2,,,False,,True,Crew Stadium,wikipedia-2001-mls-cup,Final
-2026-09-12,2026,MLS,True,Columbus Crew,Red Bull New York,0,1,,,False,,False,ScottsMiracle-Gro Field,761804,regular-season
-2026-09-12,2026,MLS,True,D.C. United,Atlanta United FC,0,0,,,False,,False,Audi Field,761803,regular-season
-2026-09-12,2026,MLS,True,FC Cincinnati,Charlotte FC,3,3,,,False,,False,TQL Stadium,761802,regular-season
-2026-09-12,2026,MLS,True,Inter Miami CF,Nashville SC,2,2,,,False,,False,Nu Stadium,761800,regular-season
-2026-09-12,2026,MLS,True,Orlando City SC,Toronto FC,3,0,,,False,,False,Inter&Co Stadium,761801,regular-season
-2026-09-12,2026,MLS,True,FC Dallas,Portland Timbers,2,1,,,False,,False,Toyota Stadium,761805,regular-season
-2026-09-12,2026,MLS,True,Sporting Kansas City,LAFC,3,1,,,False,,False,Sporting Park,761806,regular-season
-2026-09-12,2026,MLS,True,St. Louis CITY SC,Minnesota United FC,4,2,,,False,,False,Energizer Park,761807,regular-season
-2026-09-12,2026,MLS,True,Colorado Rapids,CF Montréal,1,0,,,False,,False,Dick's Sporting Goods Park,761808,regular-season
-2026-09-12,2026,MLS,True,Real Salt Lake,New York City FC,0,2,,,False,,False,America First Field,761809,regular-season
-2026-09-12,2026,MLS,True,LA Galaxy,Seattle Sounders FC,1,1,,,False,,False,Dignity Health Sports Park,761811,regular-season
-2026-09-12,2026,MLS,True,San Jose Earthquakes,Houston Dynamo FC,1,0,,,False,,False,PayPal Park,761810,regular-season
 1996-04-13,1996,MLS,True,Columbus Crew,D.C. United,4,0,,,False,,False,,fbcsv-mls-1996-1996-04-13-Columbus Crew SC-D.C. United,Regular
 1996-04-20,1996,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,2,,,False,,False,,fbcsv-mls-1996-1996-04-20-Columbus Crew SC-Tampa Bay Mutiny,Regular
 1996-04-27,1996,MLS,True,Red Bull New York,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1996-1996-04-27-Red Bull New York-Columbus Crew SC,Regular
@@ -1511,6 +1499,18 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2001-09-26,2001,MLS,True,San Jose Earthquakes,Columbus Crew,3,0,,,False,,False,,fbcsv-mls-2001-2001-09-26-San Jose Earthquakes-Columbus Crew SC,Playoff
 2001-09-29,2001,MLS,True,Chicago Fire FC,FC Dallas,2,0,,,False,,False,,fbcsv-mls-2001-2001-09-29-Chicago Fire-FC Dallas,Playoff
 2001-10-10,2001,MLS,True,Chicago Fire FC,LA Galaxy,1,1,,,False,,False,,fbcsv-mls-2001-2001-10-10-Chicago Fire-LA Galaxy,Playoff
+2026-09-12,2026,MLS,True,Columbus Crew,Red Bull New York,0,1,,,False,,False,ScottsMiracle-Gro Field,761804,regular-season
+2026-09-12,2026,MLS,True,D.C. United,Atlanta United FC,0,0,,,False,,False,Audi Field,761803,regular-season
+2026-09-12,2026,MLS,True,FC Cincinnati,Charlotte FC,3,3,,,False,,False,TQL Stadium,761802,regular-season
+2026-09-12,2026,MLS,True,Inter Miami CF,Nashville SC,2,2,,,False,,False,Nu Stadium,761800,regular-season
+2026-09-12,2026,MLS,True,Orlando City SC,Toronto FC,3,0,,,False,,False,Inter&Co Stadium,761801,regular-season
+2026-09-12,2026,MLS,True,FC Dallas,Portland Timbers,2,1,,,False,,False,Toyota Stadium,761805,regular-season
+2026-09-12,2026,MLS,True,Sporting Kansas City,LAFC,3,1,,,False,,False,Sporting Park,761806,regular-season
+2026-09-12,2026,MLS,True,St. Louis CITY SC,Minnesota United FC,4,2,,,False,,False,Energizer Park,761807,regular-season
+2026-09-12,2026,MLS,True,Colorado Rapids,CF Montréal,1,0,,,False,,False,Dick's Sporting Goods Park,761808,regular-season
+2026-09-12,2026,MLS,True,Real Salt Lake,New York City FC,0,2,,,False,,False,America First Field,761809,regular-season
+2026-09-12,2026,MLS,True,LA Galaxy,Seattle Sounders FC,1,1,,,False,,False,Dignity Health Sports Park,761811,regular-season
+2026-09-12,2026,MLS,True,San Jose Earthquakes,Houston Dynamo FC,1,0,,,False,,False,PayPal Park,761810,regular-season
 2026-09-09,2026,MLS,True,Atlanta United FC,Orlando City SC,2,3,,,False,,False,Mercedes-Benz Stadium,761787,regular-season
 2026-09-09,2026,MLS,True,CF Montréal,Charlotte FC,1,2,,,False,,False,Stade Saputo,761785,regular-season
 2026-09-09,2026,MLS,True,D.C. United,Columbus Crew,2,1,,,False,,False,Audi Field,761789,regular-season
