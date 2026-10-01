@@ -1,5 +1,4 @@
 date,home_team,away_team,stage,event_id
-2026-09-30,Red Bull New York,St. Louis CITY SC,regular-season,761833
 2026-10-01,Seattle Sounders FC,Sporting Kansas City,regular-season,761798
 2026-10-06,Chicago Fire FC,Vancouver Whitecaps,regular-season,761660
 2026-10-10,LAFC,Vancouver Whitecaps,regular-season,761858
@@ -22,9 +21,9 @@ date,home_team,away_team,stage,event_id
 2026-10-14,LAFC,Austin FC,regular-season,761873
 2026-10-14,LA Galaxy,Portland Timbers,regular-season,761874
 2026-10-14,Real Salt Lake,San Jose Earthquakes,regular-season,761870
-2026-10-14,Colorado Rapids,Minnesota United FC,regular-season,761871
-2026-10-14,FC Dallas,Seattle Sounders FC,regular-season,761867
 2026-10-14,St. Louis CITY SC,Vancouver Whitecaps,regular-season,761868
+2026-10-14,FC Dallas,Seattle Sounders FC,regular-season,761867
+2026-10-14,Colorado Rapids,Minnesota United FC,regular-season,761871
 2026-10-14,Toronto FC,Orlando City SC,regular-season,761860
 2026-10-14,Inter Miami CF,New York City FC,regular-season,761861
 2026-10-14,FC Cincinnati,New England Revolution,regular-season,761862
@@ -55,21 +54,21 @@ date,home_team,away_team,stage,event_id
 2026-10-24,Real Salt Lake,St. Louis CITY SC,regular-season,761898
 2026-10-24,Houston Dynamo FC,Minnesota United FC,regular-season,761896
 2026-10-24,Colorado Rapids,Vancouver Whitecaps,regular-season,761897
-2026-10-24,D.C. United,FC Cincinnati,regular-season,761895
 2026-10-24,Orlando City SC,New York City FC,regular-season,761892
-2026-10-24,CF Montréal,Nashville SC,regular-season,761903
-2026-10-24,Columbus Crew,Toronto FC,regular-season,761890
 2026-10-24,Philadelphia Union,New England Revolution,regular-season,761894
+2026-10-24,D.C. United,FC Cincinnati,regular-season,761895
 2026-10-24,Atlanta United FC,Chicago Fire FC,regular-season,761893
 2026-10-24,Red Bull New York,Inter Miami CF,regular-season,761891
+2026-10-24,Columbus Crew,Toronto FC,regular-season,761890
+2026-10-24,CF Montréal,Nashville SC,regular-season,761903
 2026-10-25,LAFC,LA Galaxy,regular-season,761904
-2026-10-28,Vancouver Whitecaps,San Diego FC,regular-season,761918
 2026-10-28,Seattle Sounders FC,Houston Dynamo FC,regular-season,761916
 2026-10-28,San Jose Earthquakes,Colorado Rapids,regular-season,761917
 2026-10-28,St. Louis CITY SC,Portland Timbers,regular-season,761915
 2026-10-28,Nashville SC,Philadelphia Union,regular-season,761914
 2026-10-28,Minnesota United FC,Sporting Kansas City,regular-season,761913
 2026-10-28,FC Dallas,Columbus Crew,regular-season,761912
+2026-10-28,Vancouver Whitecaps,San Diego FC,regular-season,761918
 2026-10-28,Toronto FC,D.C. United,regular-season,761906
 2026-10-28,New York City FC,Atlanta United FC,regular-season,761905
 2026-10-28,New England Revolution,Red Bull New York,regular-season,761909
@@ -92,18 +91,18 @@ date,home_team,away_team,stage,event_id
 2026-11-01,New England Revolution,Inter Miami CF,regular-season,761932
 2026-11-01,LAFC,Minnesota United FC,regular-season,761921
 2026-11-01,Portland Timbers,Houston Dynamo FC,regular-season,761933
+2026-11-07,Austin FC,Portland Timbers,regular-season,761942
 2026-11-07,Real Salt Lake,LA Galaxy,regular-season,761946
 2026-11-07,Minnesota United FC,San Jose Earthquakes,regular-season,761945
 2026-11-07,Houston Dynamo FC,St. Louis CITY SC,regular-season,761944
 2026-11-07,FC Dallas,Colorado Rapids,regular-season,761943
-2026-11-07,Austin FC,Portland Timbers,regular-season,761942
 2026-11-07,Red Bull New York,Atlanta United FC,regular-season,761939
-2026-11-07,D.C. United,New York City FC,regular-season,761936
+2026-11-07,San Diego FC,Sporting Kansas City,regular-season,761947
 2026-11-07,Orlando City SC,New England Revolution,regular-season,761940
 2026-11-07,Inter Miami CF,Charlotte FC,regular-season,761938
 2026-11-07,FC Cincinnati,Nashville SC,regular-season,761937
+2026-11-07,D.C. United,New York City FC,regular-season,761936
 2026-11-07,Chicago Fire FC,Columbus Crew,regular-season,761935
 2026-11-07,CF Montréal,Vancouver Whitecaps,regular-season,761934
-2026-11-07,San Diego FC,Sporting Kansas City,regular-season,761947
 2026-11-07,Philadelphia Union,Toronto FC,regular-season,761941
 2026-11-07,Seattle Sounders FC,LAFC,regular-season,761948
