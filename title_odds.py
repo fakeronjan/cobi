@@ -26,11 +26,9 @@ import numpy as np
 import pandas as pd
 
 FIRST_SEASON = 2019
-# Simulation counts (fleet standard): regular-season dates 10k; once the
-# regular season is over, 100k (10k leaves a visible ~1-point day-to-day
-# wobble in playoff odds).
-N_SIMS = 10000
-N_SIMS_PLAYOFFS = 100_000
+# Simulation count (fleet standard since 2026-10-02): 10k for every date,
+# playoffs included.
+N_SIMS = 10_000
 HFA = 0.5          # cobi.home_field_adv
 OFF_SHARE = 0.5    # cobi.od_off_share
 ET_FACTOR = 1 / 3  # extra time = 30 of 90 minutes
@@ -427,8 +425,7 @@ def compute(games, fixtures, ratings_df, conference_for, current_season, seasons
         sim = SeasonSim(season, g, fx, conference_for, ratings, mu_games)
         dates = sorted(ratings)
         for d in dates:
-            rs_left = ((sim.rs['date'] > d) | sim.rs['home_score'].isna()).any()
-            n = N_SIMS if rs_left else N_SIMS_PLAYOFFS
+            n = N_SIMS
             o = sim.odds_at(d, n_sims=n)
             if sim.rs_complete:
                 brackets.setdefault(season, {})[d] = (dict(sim.seeds), list(sim.matchups), n)
