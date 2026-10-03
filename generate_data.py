@@ -615,15 +615,39 @@ _to_df['rank'] = (_to_df.groupby('date')['title_odds']
 _title_odds = {(d, t): (p, r) for d, t, p, r in
                _to_df[['date', 'team', 'title_odds', 'rank']].itertuples(index=False)}
 _title_odds_seasons = {str(x) for x in range(title_odds.FIRST_SEASON, int(df['season'].astype(int).max()) + 1)}
+# Playoff odds (share of sims making the playoffs, wild card round included)
+# + per-date rank, for the combined Playoff / Cup Odds column; and the Proj
+# Points percentiles while the regular season is going.
+_pl_df = _po_odds[['date', 'team', 'playoffs']].copy()
+_pl_df['date'] = _pl_df['date'].dt.date.astype(str)
+_pl_df = _pl_df[_pl_df['playoffs'] > 0].copy()
+_pl_df['rank'] = _pl_df.groupby('date')['playoffs'].rank(ascending=False, method='min').astype(int)
+_playoff_odds = {(d, t): (p, r) for d, t, p, r in _pl_df[['date', 'team', 'playoffs', 'rank']].itertuples(index=False)}
+_proj = {}
+if 'proj_w50' in _po_odds.columns:
+    _pj = _po_odds.dropna(subset=['proj_w50'])
+    for d, t, a, b, c, mx in _pj[['date', 'team', 'proj_w20', 'proj_w50', 'proj_w80', 'proj_max']].itertuples(index=False):
+        _proj[(str(d.date()), t)] = {'proj': [int(a), int(b), int(c)], 'proj_max': int(mx)}
+
+
+def proj_fields(team, date_str):
+    """Proj Points bar fields for a Standings snapshot (none once the
+    regular season is over)."""
+    return _proj.get((str(date_str), team), {})
 
 
 def title_odds_fields(team, season, date_str, prefix=''):
     """{title_odds, title_odds_rank} for a snapshot: probability 0-1 (0.0 once
     a team has no path left), None before FIRST_SEASON."""
     if str(season) not in _title_odds_seasons or not date_str:
-        return {prefix + 'title_odds': None, prefix + 'title_odds_rank': None}
+        out = {prefix + 'title_odds': None, prefix + 'title_odds_rank': None}
+        return out if prefix else {**out, 'playoff_odds': None, 'playoff_odds_rank': None}
     p, r = _title_odds.get((str(date_str), team), (0.0, None))
-    return {prefix + 'title_odds': round(float(p), 4), prefix + 'title_odds_rank': r}
+    out = {prefix + 'title_odds': round(float(p), 4), prefix + 'title_odds_rank': r}
+    if not prefix:
+        pp, pr = _playoff_odds.get((str(date_str), team), (0.0, None))
+        out.update(playoff_odds=round(float(pp), 4), playoff_odds_rank=pr)
+    return out
 
 
 # ── 1. Current standings ─────────────────────────────────────────────────────
@@ -651,6 +675,7 @@ standings_data = {
             'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
             'mls_cup_conf_finalist':     is_cup_conf_finalist(r['team'], r['season']),
             **title_odds_fields(r['team'], r['season'], latest_date_str),
+            **proj_fields(r['team'], latest_date_str),
         }
         for _, r in latest.iterrows()
     ],
@@ -1032,6 +1057,7 @@ for season in all_seasons:
                 'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
                 'mls_cup_conf_finalist':     is_cup_conf_finalist(r['team'], season),
                 **title_odds_fields(r['team'], season, str(snap_date)),
+                **proj_fields(r['team'], str(snap_date)),
             })
         # If the snapshot is BOTH EORS and EOS (rare - mid-1990s seasons
         # that ended on Decision Day with no playoff round in our data, or

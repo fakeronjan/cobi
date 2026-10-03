@@ -281,6 +281,11 @@ class SeasonSim:
             AGA += hg @ Am
             GP += np.ones((n_sims, G)) @ (Hm + Am)
         primary = P / np.maximum(GP, 1) if uses_ppg(self.season) else P
+        # Projected points (Standings' Proj Points bar): 20th/50th/80th
+        # percentile of simulated final points while games remain; the bar
+        # runs to the most points possible (3 per match). No random draws.
+        proj = ((np.quantile(P, [0.2, 0.5, 0.8], axis=0, method='inverted_cdf'), 3 * GP[0])
+                if len(rest) else None)
         seed_pts = primary  # also decides MLS Cup hosting
 
         # ── seeding ──
@@ -425,7 +430,10 @@ class SeasonSim:
         reach /= n_sims
         cols = ['playoffs'] + [f'r{k}' for k in range(2, n_rounds + 1)] + ['champ']
         rows = np.vstack([reach[0]] + [reach[k] for k in range(2, n_rounds + 1)] + [reach[-1]])
-        return pd.DataFrame(rows.T, index=self.teams, columns=cols)
+        res = pd.DataFrame(rows.T, index=self.teams, columns=cols)
+        if proj is not None:
+            (res['proj_w20'], res['proj_w50'], res['proj_w80']), res['proj_max'] = proj
+        return res
 
 
 def compute(games, fixtures, ratings_df, conference_for, current_season, seasons=None, log=print):
