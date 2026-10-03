@@ -624,9 +624,9 @@ _pl_df = _pl_df[_pl_df['playoffs'] > 0].copy()
 _pl_df['rank'] = _pl_df.groupby('date')['playoffs'].rank(ascending=False, method='min').astype(int)
 _playoff_odds = {(d, t): (p, r) for d, t, p, r in _pl_df[['date', 'team', 'playoffs', 'rank']].itertuples(index=False)}
 _proj = {}
-if 'proj_w50' in _po_odds.columns:
-    _pj = _po_odds.dropna(subset=['proj_w50'])
-    for d, t, a, b, c, mx in _pj[['date', 'team', 'proj_w20', 'proj_w50', 'proj_w80', 'proj_max']].itertuples(index=False):
+if 'proj_mid' in _po_odds.columns:
+    _pj = _po_odds.dropna(subset=['proj_mid'])
+    for d, t, a, b, c, mx in _pj[['date', 'team', 'proj_lo', 'proj_mid', 'proj_hi', 'proj_max']].itertuples(index=False):
         _proj[(str(d.date()), t)] = {'proj': [int(a), int(b), int(c)], 'proj_max': int(mx)}
 
 
