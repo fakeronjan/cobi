@@ -1,0 +1,156 @@
+{
+ "2019": {
+  "East": [
+   "New York City FC",
+   "Atlanta United FC",
+   "Philadelphia Union",
+   "Toronto FC",
+   "D.C. United",
+   "Red Bull New York",
+   "New England Revolution"
+  ],
+  "West": [
+   "LAFC",
+   "Seattle Sounders FC",
+   "Real Salt Lake",
+   "Minnesota United FC",
+   "LA Galaxy",
+   "Portland Timbers",
+   "FC Dallas"
+  ]
+ },
+ "2020": {
+  "East": [
+   "Philadelphia Union",
+   "Toronto FC",
+   "Columbus Crew",
+   "Orlando City SC",
+   "New York City FC",
+   "Red Bull New York",
+   "Nashville SC",
+   "New England Revolution"
+  ],
+  "West": [
+   "Sporting Kansas City",
+   "Seattle Sounders FC",
+   "Portland Timbers",
+   "Minnesota United FC",
+   "Colorado Rapids",
+   "FC Dallas",
+   "LAFC",
+   "San Jose Earthquakes"
+  ]
+ },
+ "2021": {
+  "East": [
+   "New England Revolution",
+   "Philadelphia Union",
+   "Nashville SC",
+   "New York City FC",
+   "Atlanta United FC",
+   "Orlando City SC",
+   "Red Bull New York"
+  ],
+  "West": [
+   "Colorado Rapids",
+   "Seattle Sounders FC",
+   "Sporting Kansas City",
+   "Portland Timbers",
+   "Minnesota United FC",
+   "Vancouver Whitecaps",
+   "Real Salt Lake"
+  ]
+ },
+ "2022": {
+  "East": [
+   "Philadelphia Union",
+   "CF Montr\u00e9al",
+   "New York City FC",
+   "Red Bull New York",
+   "FC Cincinnati",
+   "Inter Miami CF",
+   "Orlando City SC"
+  ],
+  "West": [
+   "LAFC",
+   "Austin FC",
+   "FC Dallas",
+   "LA Galaxy",
+   "Nashville SC",
+   "Minnesota United FC",
+   "Real Salt Lake"
+  ]
+ },
+ "2023": {
+  "East": [
+   "FC Cincinnati",
+   "Orlando City SC",
+   "Columbus Crew",
+   "Philadelphia Union",
+   "New England Revolution",
+   "Atlanta United FC",
+   "Nashville SC",
+   "Red Bull New York",
+   "Charlotte FC"
+  ],
+  "West": [
+   "St. Louis CITY SC",
+   "Seattle Sounders FC",
+   "LAFC",
+   "Houston Dynamo FC",
+   "Real Salt Lake",
+   "Vancouver Whitecaps",
+   "FC Dallas",
+   "Sporting Kansas City",
+   "San Jose Earthquakes"
+  ]
+ },
+ "2024": {
+  "East": [
+   "Inter Miami CF",
+   "Columbus Crew",
+   "FC Cincinnati",
+   "Orlando City SC",
+   "Charlotte FC",
+   "New York City FC",
+   "Red Bull New York",
+   "CF Montr\u00e9al",
+   "Atlanta United FC"
+  ],
+  "West": [
+   "LAFC",
+   "LA Galaxy",
+   "Real Salt Lake",
+   "Seattle Sounders FC",
+   "Houston Dynamo FC",
+   "Minnesota United FC",
+   "Colorado Rapids",
+   "Vancouver Whitecaps",
+   "Portland Timbers"
+  ]
+ },
+ "2025": {
+  "East": [
+   "Philadelphia Union",
+   "FC Cincinnati",
+   "Inter Miami CF",
+   "Charlotte FC",
+   "New York City FC",
+   "Nashville SC",
+   "Columbus Crew",
+   "Chicago Fire FC",
+   "Orlando City SC"
+  ],
+  "West": [
+   "San Diego FC",
+   "Vancouver Whitecaps",
+   "LAFC",
+   "Minnesota United FC",
+   "Seattle Sounders FC",
+   "Austin FC",
+   "FC Dallas",
+   "Portland Timbers",
+   "Real Salt Lake"
+  ]
+ }
+}

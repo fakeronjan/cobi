@@ -18,6 +18,7 @@ for 2019+), so the regular-season/playoff split and each playoff game's round
 are ground truth rather than date heuristics.
 """
 import hashlib
+import json as _json
 import multiprocessing as _mp
 import os as _os
 import pickle
@@ -49,6 +50,15 @@ RATING_SCALE = 0.5
 # season). Only 7 seasons, no team ever above 20% early (parity), and
 # RATING_SCALE already halves ratings. Set DRIFT_SD0 to 0.518 to re-enable.
 DRIFT_SD0, DRIFT_K = 0.0, 0.51
+
+# The real playoff seeds: {season: {'East'/'West': [seed 1, seed 2, ...]}}.
+# Once the regular season is over these ARE the seeds: MLS's last tiebreaker
+# (disciplinary points) isn't in our data, so exact ties otherwise fall to a
+# coin flip per sim. From Wikipedia's playoff brackets; cobi.py adds each
+# new season.
+_SEEDS = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), 'mls_playoff_seeds.json')
+REAL_SEEDS = ({int(k): v for k, v in _json.load(open(_SEEDS)).items()}
+              if _os.path.exists(_SEEDS) else {})
 
 # ── Playoff formats ─────────────────────────────────────────────────────────
 # Per-conference bracket as (match_id, round, kind, slot_a, slot_b). A slot is
@@ -289,6 +299,11 @@ class SeasonSim:
             flat = [(-kk).ravel() for kk in keys] + [np.repeat(sim_ix, k)]
             order = np.lexsort(flat).reshape(n_sims, k)
             seeds[c] = cidx[order % k]  # (n_sims, k) team idx, best first
+        if rest.empty and self.season in REAL_SEEDS:
+            for c, real in REAL_SEEDS[self.season].items():
+                top = [self.idx[t] for t in real]
+                full = top + [t for t in seeds[c][0] if t not in top]
+                seeds[c] = np.broadcast_to(np.array(full), (n_sims, len(full)))
 
         # ── playoffs ──
         order_tags = round_order(self.season)
@@ -311,6 +326,13 @@ class SeasonSim:
             for k in range(2, rnd):   # a bye counts as getting through
                 np.add.at(reach[k], t[new], 1)
             np.add.at(reach[rnd], t, 1)
+
+        # Every real playoff match's host, in order per pair (played or not as
+        # of d: set by the seeding, not the result). A real match uses them.
+        real_hosts = {}
+        for r in self.ps.itertuples(index=False):
+            real_hosts.setdefault(frozenset((r.home_team, r.away_team)), []).append(r.home_team)
+        self.host_miss = 0
 
         ps_done = self.ps[self.ps['date'] <= d]
         by_pair = {}
@@ -340,6 +362,12 @@ class SeasonSim:
             enter(a, rnd); enter(b, rnd)
             played = actual(a, b)
             tA = self.teams[a[0]]
+            fixed = np.all(a == a[0]) and np.all(b == b[0])
+            hosts = real_hosts.get(frozenset((tA, self.teams[b[0]])), []) if fixed else []
+            if hosts:
+                real_a = hosts[0] == tA          # single match, and bo3 game 1, at home field
+                self.host_miss += bool(np.asarray(host_a)[0]) != real_a
+                host_a = np.full(len(a), real_a)
             if played and self.rs_complete:
                 tB = self.teams[b[0]]
                 games_ = [(r.winner, int(r.home_score if r.home_team == tA else r.away_score),
@@ -360,8 +388,11 @@ class SeasonSim:
                         won = np.full(len(a), played[g].winner == tA)
                         self.used_actual += 1
                     else:
-                        hosts = host_a if g != 1 else ~host_a
-                        won = one_game(a, b, hosts, pens_only=True)
+                        if g < len(hosts):
+                            at = np.full(len(a), hosts[g] == tA)
+                        else:
+                            at = host_a if g != 1 else ~host_a
+                        won = one_game(a, b, at, pens_only=True)
                     live = (wa < 2) & (wb < 2)
                     wa += (won & live); wb += (~won & live)
                 a_wins = wa >= 2
@@ -460,6 +491,7 @@ def _fingerprint(season, games, fixtures, ratings_df, conference_for, current_se
         h.update(fixtures.sort_values(list(fixtures.columns), kind='stable').to_csv(index=False).encode())
     teams = sorted(set(g['home_team']) | set(g['away_team']))
     h.update(repr([(t, conference_for(t, season)) for t in teams]).encode())
+    h.update(repr(REAL_SEEDS.get(season)).encode())     # this season's real seeds only
     return h.hexdigest()
 
 
