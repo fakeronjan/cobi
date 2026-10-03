@@ -45,11 +45,15 @@ RATING_SCALE = 0.5
 # ratings actually moved from each date to the end of the regular season
 # (split evenly between attack and defense, so net rating moves by the
 # full offset). Zero once the regular season is over. (Same fix as DILLON.)
-# OFF for MLS: measured drift (SD 0.518 * left**0.51) was slightly worse at
-# every checkpoint over 2019-25 (champion -log p 2.39 -> 2.42 at mid-
-# season). Only 7 seasons, no team ever above 20% early (parity), and
-# RATING_SCALE already halves ratings. Set DRIFT_SD0 to 0.518 to re-enable.
-DRIFT_SD0, DRIFT_K = 0.0, 0.51
+# ON since 2026-10-03 (was off from 2026-09-25). Rechecked over 2019-25 with
+# more than champion odds: without drift, final points fell outside the
+# 10th-90th projection band 30% of the time in the first quarter (should
+# be <= ~20%); with it, 23%, and playoff-qualification log loss improves
+# early (0.586 -> 0.571), flat later. Champion -log p is slightly worse
+# early (2.49 -> 2.55), but that rests on 7 champions. 0.518 is the measured
+# rating movement, not tuned to these checks (0.75 would hit the band
+# target, but that would be fitting to the test).
+DRIFT_SD0, DRIFT_K = 0.518, 0.51
 
 # The real playoff seeds: {season: {'East'/'West': [seed 1, seed 2, ...]}}.
 # Once the regular season is over these ARE the seeds: MLS's last tiebreaker
