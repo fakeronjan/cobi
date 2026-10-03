@@ -979,6 +979,7 @@ for team in all_teams:
                 'supporters_shield_finish':  clean(r.get('supporters_shield_finish', '')),
                 'mls_cup_conf_finalist':     is_cup_conf_finalist(team, str(season)),
                 **title_odds_fields(team, str(season), str(r['date'])),
+                **proj_fields(team, str(r['date'])),
             }
             for _, r in sdf.sort_values('date').iterrows()
         ]
