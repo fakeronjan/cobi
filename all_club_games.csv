@@ -31,6 +31,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-09-27,2026,MLS,True,Columbus Crew,Inter Miami CF,2,1,,,False,,False,ScottsMiracle-Gro Field,761844,regular-season
 2026-09-30,2026,MLS,True,Red Bull New York,St. Louis CITY SC,0,3,,,False,,False,Sports Illustrated Stadium,761833,regular-season
 2026-10-01,2026,MLS,True,Seattle Sounders FC,Sporting Kansas City,2,1,,,False,,False,Lumen Field,761798,regular-season
+2026-10-06,2026,MLS,True,Chicago Fire FC,Vancouver Whitecaps,3,1,,,False,,False,Soldier Field,761660,regular-season
 1996-04-06,1996,MLS,True,San Jose Earthquakes,D.C. United,1,0,,,False,,False,,fbcsv-mls-1996-1996-04-06-San Jose Earthquakes-D.C. United,Regular
 1996-04-13,1996,MLS,True,LA Galaxy,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1996-1996-04-13-LA Galaxy-Red Bull New York,Regular
 1996-04-13,1996,MLS,True,Tampa Bay Mutiny,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-04-13-Tampa Bay Mutiny-New England Revolution,Regular
