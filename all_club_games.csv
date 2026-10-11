@@ -1164,7 +1164,6 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2001-10-14,2001,MLS,True,San Jose Earthquakes,Miami Fusion,4,0,,,False,,False,,fbcsv-mls-2001-2001-10-14-San Jose Earthquakes-Miami Fusion,Playoff
 1996-10-20,1996,MLS,True,LA Galaxy,D.C. United,2,3,,,False,,True,Foxboro Stadium,wikipedia-1996-mls-cup,Final
 2001-10-21,2001,MLS,True,LA Galaxy,San Jose Earthquakes,1,2,,,False,,True,Crew Stadium,wikipedia-2001-mls-cup,Final
-2026-09-23,2026,MLS,True,Seattle Sounders FC,Real Salt Lake,2,0,,,False,,False,Lumen Field,761543,regular-season
 1996-04-13,1996,MLS,True,Columbus Crew,D.C. United,4,0,,,False,,False,,fbcsv-mls-1996-1996-04-13-Columbus Crew SC-D.C. United,Regular
 1996-04-20,1996,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,2,,,False,,False,,fbcsv-mls-1996-1996-04-20-Columbus Crew SC-Tampa Bay Mutiny,Regular
 1996-04-27,1996,MLS,True,Red Bull New York,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1996-1996-04-27-Red Bull New York-Columbus Crew SC,Regular
@@ -1498,6 +1497,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2001-09-26,2001,MLS,True,San Jose Earthquakes,Columbus Crew,3,0,,,False,,False,,fbcsv-mls-2001-2001-09-26-San Jose Earthquakes-Columbus Crew SC,Playoff
 2001-09-29,2001,MLS,True,Chicago Fire FC,FC Dallas,2,0,,,False,,False,,fbcsv-mls-2001-2001-09-29-Chicago Fire-FC Dallas,Playoff
 2001-10-10,2001,MLS,True,Chicago Fire FC,LA Galaxy,1,1,,,False,,False,,fbcsv-mls-2001-2001-10-10-Chicago Fire-LA Galaxy,Playoff
+2026-09-23,2026,MLS,True,Seattle Sounders FC,Real Salt Lake,2,0,,,False,,False,Lumen Field,761543,regular-season
 2026-09-18,2026,MLS,True,New York City FC,Red Bull New York,0,1,,,False,,False,Yankee Stadium,761815,regular-season
 2026-09-19,2026,MLS,True,CF Montréal,Columbus Crew,0,2,,,False,,False,Stade Saputo,761818,regular-season
 2026-09-19,2026,MLS,True,D.C. United,Charlotte FC,1,2,,,False,,False,Audi Field,761819,regular-season
