@@ -1,20 +1,19 @@
 date,home_team,away_team,stage,event_id
-2026-10-11,St. Louis CITY SC,LA Galaxy,regular-season,761859
+2026-10-14,CF Montréal,Atlanta United FC,regular-season,761864
 2026-10-14,San Diego FC,Houston Dynamo FC,regular-season,761872
 2026-10-14,LAFC,Austin FC,regular-season,761873
 2026-10-14,LA Galaxy,Portland Timbers,regular-season,761874
 2026-10-14,Real Salt Lake,San Jose Earthquakes,regular-season,761870
 2026-10-14,St. Louis CITY SC,Vancouver Whitecaps,regular-season,761868
 2026-10-14,Nashville SC,Sporting Kansas City,regular-season,761866
-2026-10-14,FC Dallas,Seattle Sounders FC,regular-season,761867
 2026-10-14,Colorado Rapids,Minnesota United FC,regular-season,761871
+2026-10-14,Chicago Fire FC,Philadelphia Union,regular-season,761869
 2026-10-14,Toronto FC,Orlando City SC,regular-season,761860
 2026-10-14,Inter Miami CF,New York City FC,regular-season,761861
 2026-10-14,FC Cincinnati,New England Revolution,regular-season,761862
 2026-10-14,D.C. United,Red Bull New York,regular-season,761863
 2026-10-14,Columbus Crew,Charlotte FC,regular-season,761865
-2026-10-14,CF Montréal,Atlanta United FC,regular-season,761864
-2026-10-14,Chicago Fire FC,Philadelphia Union,regular-season,761869
+2026-10-14,FC Dallas,Seattle Sounders FC,regular-season,761867
 2026-10-17,Houston Dynamo FC,FC Dallas,regular-season,761883
 2026-10-17,Seattle Sounders FC,CF Montréal,regular-season,761885
 2026-10-17,San Jose Earthquakes,Nashville SC,regular-season,761886
@@ -22,10 +21,10 @@ date,home_team,away_team,stage,event_id
 2026-10-17,LA Galaxy,San Diego FC,regular-season,761887
 2026-10-17,Sporting Kansas City,Real Salt Lake,regular-season,761884
 2026-10-17,Austin FC,Vancouver Whitecaps,regular-season,761882
-2026-10-17,Atlanta United FC,Inter Miami CF,regular-season,761880
+2026-10-17,New England Revolution,Chicago Fire FC,regular-season,761879
 2026-10-17,Orlando City SC,D.C. United,regular-season,761881
 2026-10-17,New York City FC,LAFC,regular-season,761877
-2026-10-17,New England Revolution,Chicago Fire FC,regular-season,761879
+2026-10-17,Atlanta United FC,Inter Miami CF,regular-season,761880
 2026-10-17,Minnesota United FC,St. Louis CITY SC,regular-season,761876
 2026-10-17,Philadelphia Union,Charlotte FC,regular-season,761875
 2026-10-17,Red Bull New York,Toronto FC,regular-season,761878
