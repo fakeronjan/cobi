@@ -15,3 +15,7 @@ Backup*/
 
 # Per-season title-odds cache (Actions cache, regenerable)
 title_odds_cache/
+
+# Ratings cache (Actions cache) and its derived output, both rebuilt every run
+cobi_ratings.csv.gz
+cobi_ratings_final.csv
