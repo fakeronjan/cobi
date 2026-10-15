@@ -26,8 +26,28 @@ jobs:
           pip install cython numpy
           pip install --no-build-isolation -r requirements.txt
 
+      # Ratings cache lives in the Actions cache, not git (a regenerable
+      # incremental scratchpad that was re-committed every run, ~11MB/month).
+      # Rolling key + prefix restore-keys: every run writes a fresh entry and
+      # restores the most recent prior one. A miss is safe: cobi.py rebuilds
+      # from scratch.
+      - name: Restore ratings cache
+        uses: actions/cache/restore@v4
+        with:
+          path: cobi_ratings.csv.gz
+          key: cobi-ratings-${{ github.run_id }}
+          restore-keys: cobi-ratings-
+
       - name: Run ratings engine
         run: python cobi.py
+
+      # Only reached if cobi.py succeeded, so a failed run never saves a
+      # partial cache.
+      - name: Save ratings cache
+        uses: actions/cache/save@v4
+        with:
+          path: cobi_ratings.csv.gz
+          key: cobi-ratings-${{ github.run_id }}
 
       # Once the regular season ends: the real playoff seeds (warns, then
       # fails the run if they can't be fetched and checked)
@@ -57,7 +77,7 @@ jobs:
         run: |
           git config user.name  "COBI Bot"
           git config user.email "cobi-bot@users.noreply.github.com"
-          git add all_club_games.csv cobi_ratings.csv.gz cobi_ratings_final.csv cobi_standings.csv cobi_trophies.csv mls_schedule.csv mls_playoff_seeds.json docs/data/
+          git add all_club_games.csv cobi_standings.csv cobi_trophies.csv mls_schedule.csv mls_playoff_seeds.json docs/data/
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
