@@ -1,6 +1,4 @@
 date,season,competition,league_match,home_team,away_team,home_score,away_score,home_pen,away_pen,penalties,shootout_winner,neutral,venue,event_id,stage
-2026-09-30,2026,MLS,True,Red Bull New York,St. Louis CITY SC,0,3,,,False,,False,Sports Illustrated Stadium,761833,regular-season
-2026-10-01,2026,MLS,True,Seattle Sounders FC,Sporting Kansas City,2,1,,,False,,False,Lumen Field,761798,regular-season
 2026-10-06,2026,MLS,True,Chicago Fire FC,Vancouver Whitecaps,3,1,,,False,,False,Soldier Field,761660,regular-season
 2026-10-10,2026,MLS,True,Toronto FC,CF Montréal,2,1,,,False,,False,BMO Field,761845,regular-season
 2026-10-10,2026,MLS,True,Chicago Fire FC,New York City FC,2,1,,,False,,False,Soldier Field,761846,regular-season
@@ -33,6 +31,19 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-10-14,2026,MLS,True,LAFC,Austin FC,3,1,,,False,,False,BMO Stadium,761873,regular-season
 2026-10-14,2026,MLS,True,San Diego FC,Houston Dynamo FC,3,3,,,False,,False,Snapdragon Stadium,761872,regular-season
 2026-10-17,2026,MLS,True,Philadelphia Union,Charlotte FC,2,2,,,False,,False,Subaru Park,761875,regular-season
+2026-10-17,2026,MLS,True,Minnesota United FC,St. Louis CITY SC,3,2,,,False,,False,Allianz Field,761876,regular-season
+2026-10-17,2026,MLS,True,Atlanta United FC,Inter Miami CF,1,3,,,False,,False,Mercedes-Benz Stadium,761880,regular-season
+2026-10-17,2026,MLS,True,New England Revolution,Chicago Fire FC,1,0,,,False,,False,Gillette Stadium,761879,regular-season
+2026-10-17,2026,MLS,True,New York City FC,LAFC,1,1,,,False,,False,Citi Field,761877,regular-season
+2026-10-17,2026,MLS,True,Orlando City SC,D.C. United,4,1,,,False,,False,Inter&Co Stadium,761881,regular-season
+2026-10-17,2026,MLS,True,Red Bull New York,Toronto FC,0,2,,,False,,False,Sports Illustrated Stadium,761878,regular-season
+2026-10-17,2026,MLS,True,Austin FC,Vancouver Whitecaps,1,2,,,False,,False,Q2 Stadium,761882,regular-season
+2026-10-17,2026,MLS,True,Houston Dynamo FC,FC Dallas,2,2,,,False,,False,Shell Energy Stadium,761883,regular-season
+2026-10-17,2026,MLS,True,Sporting Kansas City,Real Salt Lake,1,3,,,False,,False,Sporting Park,761884,regular-season
+2026-10-17,2026,MLS,True,LA Galaxy,San Diego FC,2,2,,,False,,False,Dignity Health Sports Park,761887,regular-season
+2026-10-17,2026,MLS,True,Portland Timbers,Colorado Rapids,0,0,,,False,,False,Providence Park,761888,regular-season
+2026-10-17,2026,MLS,True,San Jose Earthquakes,Nashville SC,1,1,,,False,,False,PayPal Park,761886,regular-season
+2026-10-17,2026,MLS,True,Seattle Sounders FC,CF Montréal,1,1,,,False,,False,Lumen Field,761885,regular-season
 1996-04-06,1996,MLS,True,San Jose Earthquakes,D.C. United,1,0,,,False,,False,,fbcsv-mls-1996-1996-04-06-San Jose Earthquakes-D.C. United,Regular
 1996-04-13,1996,MLS,True,LA Galaxy,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1996-1996-04-13-LA Galaxy-Red Bull New York,Regular
 1996-04-13,1996,MLS,True,Tampa Bay Mutiny,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-04-13-Tampa Bay Mutiny-New England Revolution,Regular
@@ -1167,6 +1178,8 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2001-10-14,2001,MLS,True,San Jose Earthquakes,Miami Fusion,4,0,,,False,,False,,fbcsv-mls-2001-2001-10-14-San Jose Earthquakes-Miami Fusion,Playoff
 1996-10-20,1996,MLS,True,LA Galaxy,D.C. United,2,3,,,False,,True,Foxboro Stadium,wikipedia-1996-mls-cup,Final
 2001-10-21,2001,MLS,True,LA Galaxy,San Jose Earthquakes,1,2,,,False,,True,Crew Stadium,wikipedia-2001-mls-cup,Final
+2026-09-30,2026,MLS,True,Red Bull New York,St. Louis CITY SC,0,3,,,False,,False,Sports Illustrated Stadium,761833,regular-season
+2026-10-01,2026,MLS,True,Seattle Sounders FC,Sporting Kansas City,2,1,,,False,,False,Lumen Field,761798,regular-season
 1996-04-13,1996,MLS,True,Columbus Crew,D.C. United,4,0,,,False,,False,,fbcsv-mls-1996-1996-04-13-Columbus Crew SC-D.C. United,Regular
 1996-04-20,1996,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,2,,,False,,False,,fbcsv-mls-1996-1996-04-20-Columbus Crew SC-Tampa Bay Mutiny,Regular
 1996-04-27,1996,MLS,True,Red Bull New York,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1996-1996-04-27-Red Bull New York-Columbus Crew SC,Regular
