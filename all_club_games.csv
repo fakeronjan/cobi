@@ -44,6 +44,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-10-17,2026,MLS,True,Portland Timbers,Colorado Rapids,0,0,,,False,,False,Providence Park,761888,regular-season
 2026-10-17,2026,MLS,True,San Jose Earthquakes,Nashville SC,1,1,,,False,,False,PayPal Park,761886,regular-season
 2026-10-17,2026,MLS,True,Seattle Sounders FC,CF Montréal,1,1,,,False,,False,Lumen Field,761885,regular-season
+2026-10-18,2026,MLS,True,FC Cincinnati,Columbus Crew,0,2,,,False,,False,TQL Stadium,761889,regular-season
 1996-04-06,1996,MLS,True,San Jose Earthquakes,D.C. United,1,0,,,False,,False,,fbcsv-mls-1996-1996-04-06-San Jose Earthquakes-D.C. United,Regular
 1996-04-13,1996,MLS,True,LA Galaxy,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1996-1996-04-13-LA Galaxy-Red Bull New York,Regular
 1996-04-13,1996,MLS,True,Tampa Bay Mutiny,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-04-13-Tampa Bay Mutiny-New England Revolution,Regular
