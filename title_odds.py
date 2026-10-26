@@ -227,7 +227,9 @@ class SeasonSim:
             return 1.5
         return float((g['home_score'].sum() + g['away_score'].sum()) / (2 * len(g)))
 
-    def odds_at(self, d, n_sims=N_SIMS):
+    def odds_at(self, d, n_sims=N_SIMS, capture=None):
+        """capture: an optional dict filled with per-simulation results (Daily
+        Matchups). Draws no extra random numbers, so the odds are unchanged."""
         T = len(self.teams)
         rng = np.random.default_rng(int(d.strftime('%Y%m%d')))
         rt = self.ratings.get(d, {})
@@ -274,6 +276,9 @@ class SeasonSim:
             G = len(rest)
             hg = rng.poisson(lam(h, a, h_home, 'rs'), size=(n_sims, G))
             ag = rng.poisson(lam(a, h, -h_away, 'rs'), size=(n_sims, G))
+            if capture is not None:
+                capture.update(rest=rest.reset_index(drop=True), hg=hg.astype(np.int16),
+                               ag=ag.astype(np.int16), E=E, P=P)   # P += below is in place: final points
             Hm = np.zeros((G, T)); Hm[np.arange(G), h] = 1
             Am = np.zeros((G, T)); Am[np.arange(G), a] = 1
             hw = (hg > ag).astype(float); aw = (ag > hg).astype(float); dr = (hg == ag).astype(float)
@@ -327,6 +332,10 @@ class SeasonSim:
         self.matchups = []        # (round, kind, team_a, team_b, games, decided winner)
         reach = np.zeros((n_rounds + 2, T))   # [0] playoffs, [k] reach round k, [-1] champion
         entered = np.zeros((n_sims, T), dtype=bool)
+        if capture is not None:
+            # (team_a, team_b, a wins in each sim, kind, round) for each fixed
+            # matchup's next game
+            capture['ps_next'] = []
 
         def enter(t, rnd):
             new = ~entered[sim_ix, t]
@@ -402,6 +411,8 @@ class SeasonSim:
                         else:
                             at = host_a if g != 1 else ~host_a
                         won = one_game(a, b, at, pens_only=True)
+                        if capture is not None and fixed and g == len(played) and max(wa[0], wb[0]) < 2:
+                            capture['ps_next'].append((tA, self.teams[b[0]], won, kind, rnd))
                     live = (wa < 2) & (wb < 2)
                     wa += (won & live); wb += (~won & live)
                 a_wins = wa >= 2
@@ -411,6 +422,8 @@ class SeasonSim:
                     self.used_actual += 1
                 else:
                     a_wins = one_game(a, b, host_a, pens_only=(kind == 'single_pk'))
+                    if capture is not None and fixed:
+                        capture['ps_next'].append((tA, self.teams[b[0]], a_wins, kind, rnd))
             return (np.where(a_wins, a, b), np.where(a_wins, sa, sb))
 
         conf_champ = {}
@@ -431,6 +444,8 @@ class SeasonSim:
         champ, _ = play('single_et', e, np.zeros(n_sims), wt, np.zeros(n_sims), host_e,
                         rnd=n_rounds)
         np.add.at(reach[-1], champ, 1)
+        if capture is not None:
+            capture.update(teams=self.teams, made=entered.copy(), champ=champ)
         reach /= n_sims
         cols = ['playoffs'] + [f'r{k}' for k in range(2, n_rounds + 1)] + ['champ']
         rows = np.vstack([reach[0]] + [reach[k] for k in range(2, n_rounds + 1)] + [reach[-1]])

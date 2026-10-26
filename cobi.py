@@ -307,6 +307,28 @@ def espn_fetch_day(slug, day, max_retries=3, sleep=0.3):
             time.sleep(2 ** attempt)
 
 
+# Kickoff (UTC) per ESPN event seen this run, saved to KICKOFF_PATH for
+# Daily Matchups (2019+ backfilled from the same scoreboard endpoint).
+KICKOFF_PATH = 'mls_kickoffs.csv'
+_KICKOFFS = {}
+
+
+def _note_kickoff(ev):
+    raw = ev.get('date') or ''
+    if ev.get('id') and raw:
+        _KICKOFFS[str(ev['id'])] = pd.Timestamp(raw).tz_convert('UTC').strftime('%Y-%m-%dT%H:%MZ')
+
+
+def save_kickoffs():
+    if not _KICKOFFS:
+        return
+    new = pd.DataFrame(sorted(_KICKOFFS.items()), columns=['event_id', 'kickoff'])
+    old = pd.read_csv(KICKOFF_PATH, dtype=str) if os.path.exists(KICKOFF_PATH) else new.iloc[:0]
+    df = pd.concat([old, new], ignore_index=True).drop_duplicates('event_id', keep='last')
+    df.sort_values('event_id').to_csv(KICKOFF_PATH, index=False)
+    print(f"  {len(new)} kickoffs this run -> {KICKOFF_PATH} ({len(df):,} events)")
+
+
 def espn_extract_matches(payload, competition_label, league_match_flag):
     """Convert ESPN scoreboard payload into unified match rows."""
     rows = []
@@ -362,6 +384,7 @@ def espn_extract_matches(payload, competition_label, league_match_flag):
                     shootout_winner = (away.get('team') or {}).get('displayName')
 
         raw_date = ev.get('date') or comp.get('date') or ''
+        _note_kickoff(ev)
         try:
             # ESPN's `date` field is the kickoff in UTC. Naively .date()-ing
             # it puts any 7pm-or-later US-local kickoff on the next UTC day
@@ -423,6 +446,7 @@ def espn_extract_fixtures(payload):
             kickoff_utc = datetime.fromisoformat((ev.get('date') or '').replace('Z', '+00:00'))
         except ValueError:
             continue
+        _note_kickoff(ev)
         rows.append({
             'date':      (kickoff_utc - timedelta(hours=7)).date().isoformat(),
             'home_team': canonical_team((home.get('team') or {}).get('displayName') or ''),
@@ -479,6 +503,7 @@ def scrape_espn_all(path='all_club_games.csv'):
         print(f"  {len(seen)} completed matches, {len(fixtures)} scheduled fixtures")
     fx_df = pd.DataFrame(fixtures, columns=['date', 'home_team', 'away_team', 'stage', 'event_id'])
     fx_df.drop_duplicates('event_id').sort_values('date').to_csv(SCHEDULE_PATH, index=False)
+    save_kickoffs()
     return pd.DataFrame(all_rows)
 
 

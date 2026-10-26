@@ -1194,4 +1194,48 @@ with open('docs/data/playoff_odds/index.json', 'w') as f:
     json.dump({'n_sims': title_odds.N_SIMS, 'current_season': int(df['season'].astype(int).max()),
                'seasons': [x['season'] for x in _po_seasons]}, f, separators=(',', ':'))
 
+# ── Daily Matchups (docs/data/daily_matchups/) ───────────────────────────────
+# Every MLS match of a day from the ratings going into it: home / draw / away
+# probabilities, line, O/U, and each club's playoff and MLS Cup odds with a
+# win, a draw, and a loss. 2019 on (the Cup odds' range); finished seasons
+# are cached (daily_matchups.py). The live season previews only its next
+# match day.
+import daily_matchups
+
+print("Writing daily_matchups/...")
+_dm_kick = {}
+if os.path.exists('mls_kickoffs.csv'):
+    _k = pd.read_csv('mls_kickoffs.csv', dtype=str)
+    _dm_kick = dict(zip(_k['event_id'], _k['kickoff']))
+_dm_ratings = df[['date', 'season', 'team', 'rating', 'rank', 'rating_o', 'rating_d']].copy()
+_dm_ratings['date'] = pd.to_datetime(_dm_ratings['date'])
+_dm_ratings['season'] = _dm_ratings['season'].astype(int)
+_dm_games = games_lg.copy()
+_dm_games['event_id'] = _dm_games['event_id'].astype(str).str.replace(r'\.0$', '', regex=True)
+_dm_fx = schedule.copy()
+_dm_fx['event_id'] = _dm_fx['event_id'].astype(str).str.replace(r'\.0$', '', regex=True)
+_dm_cur = int(df['season'].astype(int).max())
+_dm_fx = _dm_fx[_dm_fx['date'].dt.year == _dm_cur] if len(_dm_fx) else None
+_dm_seasons = list(range(title_odds.FIRST_SEASON, _dm_cur + 1))
+_dm_all = daily_matchups.build_cached(_dm_seasons, _dm_games, _dm_fx, _dm_ratings, conference_for,
+                                      _dm_cur, _dm_kick)
+_dm_all = {s: d for s, d in _dm_all.items() if d}
+_dm_live = _dm_cur if _dm_fx is not None and len(_dm_fx) else None
+daily_matchups.add_juice(_dm_all, {s for s in _dm_all if s != _dm_live})
+# Era names for display; 'home'/'away' stay canonical so club links resolve.
+for _s, _days in _dm_all.items():
+    for _day in _days:
+        for _g in _day['games']:
+            for _side in ('home', 'away'):
+                _dn = display_name(_g[_side], str(_s))
+                if _dn != _g[_side]:
+                    _g[_side + '_display'] = _dn
+os.makedirs('docs/data/daily_matchups', exist_ok=True)
+for _s, _days in _dm_all.items():
+    with open(f'docs/data/daily_matchups/{_s}.json', 'w') as f:
+        json.dump({'season': _s, 'days': _days}, f, separators=(',', ':'))
+with open('docs/data/daily_matchups/index.json', 'w') as f:
+    json.dump({'seasons': sorted(_dm_all, reverse=True), 'live_season': _dm_live}, f, separators=(',', ':'))
+print(f"  {len(_dm_all)} seasons of daily matchups written")
+
 print(f"\n[done] {len(all_teams)} teams, {len(all_seasons)} seasons. JSON written to docs/data/")
