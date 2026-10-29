@@ -46,6 +46,20 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-10-24,2026,MLS,True,Portland Timbers,Charlotte FC,3,2,,,False,,False,Providence Park,761902,regular-season
 2026-10-24,2026,MLS,True,San Diego FC,Seattle Sounders FC,2,2,,,False,,False,Snapdragon Stadium,761901,regular-season
 2026-10-25,2026,MLS,True,LAFC,LA Galaxy,2,2,,,False,,False,BMO Stadium,761904,regular-season
+2026-10-28,2026,MLS,True,Charlotte FC,CF Montréal,4,0,,,False,,False,Bank of America Stadium,761907,regular-season
+2026-10-28,2026,MLS,True,Inter Miami CF,FC Cincinnati,2,2,,,False,,False,Nu Stadium,761908,regular-season
+2026-10-28,2026,MLS,True,New England Revolution,Red Bull New York,3,2,,,False,,False,Gillette Stadium,761909,regular-season
+2026-10-28,2026,MLS,True,New York City FC,Atlanta United FC,2,1,,,False,,False,Citi Field,761905,regular-season
+2026-10-28,2026,MLS,True,Toronto FC,D.C. United,2,1,,,False,,False,BMO Field,761906,regular-season
+2026-10-28,2026,MLS,True,Austin FC,Real Salt Lake,1,2,,,False,,False,Q2 Stadium,761910,regular-season
+2026-10-28,2026,MLS,True,Chicago Fire FC,Orlando City SC,2,2,,,False,,False,Soldier Field,761911,regular-season
+2026-10-28,2026,MLS,True,FC Dallas,Columbus Crew,0,2,,,False,,False,Toyota Stadium,761912,regular-season
+2026-10-28,2026,MLS,True,Minnesota United FC,Sporting Kansas City,3,1,,,False,,False,Allianz Field,761913,regular-season
+2026-10-28,2026,MLS,True,Nashville SC,Philadelphia Union,0,0,,,False,,False,GEODIS Park,761914,regular-season
+2026-10-28,2026,MLS,True,St. Louis CITY SC,Portland Timbers,2,3,,,False,,False,Energizer Park,761915,regular-season
+2026-10-28,2026,MLS,True,San Jose Earthquakes,Colorado Rapids,2,2,,,False,,False,PayPal Park,761917,regular-season
+2026-10-28,2026,MLS,True,Seattle Sounders FC,Houston Dynamo FC,0,1,,,False,,False,Lumen Field,761916,regular-season
+2026-10-28,2026,MLS,True,Vancouver Whitecaps,San Diego FC,4,1,,,False,,False,BC Place,761918,regular-season
 1996-04-06,1996,MLS,True,San Jose Earthquakes,D.C. United,1,0,,,False,,False,,fbcsv-mls-1996-1996-04-06-San Jose Earthquakes-D.C. United,Regular
 1996-04-13,1996,MLS,True,LA Galaxy,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1996-1996-04-13-LA Galaxy-Red Bull New York,Regular
 1996-04-13,1996,MLS,True,Tampa Bay Mutiny,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-04-13-Tampa Bay Mutiny-New England Revolution,Regular
