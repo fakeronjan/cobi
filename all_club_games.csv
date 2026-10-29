@@ -1,5 +1,4 @@
 date,season,competition,league_match,home_team,away_team,home_score,away_score,home_pen,away_pen,penalties,shootout_winner,neutral,venue,event_id,stage
-2026-10-11,2026,MLS,True,St. Louis CITY SC,LA Galaxy,6,2,,,False,,False,Energizer Park,761859,regular-season
 2026-10-14,2026,MLS,True,CF Montréal,Atlanta United FC,0,3,,,False,,False,Stade Saputo,761864,regular-season
 2026-10-14,2026,MLS,True,Columbus Crew,Charlotte FC,3,1,,,False,,False,ScottsMiracle-Gro Field,761865,regular-season
 2026-10-14,2026,MLS,True,D.C. United,Red Bull New York,2,1,,,False,,False,Audi Field,761863,regular-season
@@ -1194,6 +1193,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2001-10-14,2001,MLS,True,San Jose Earthquakes,Miami Fusion,4,0,,,False,,False,,fbcsv-mls-2001-2001-10-14-San Jose Earthquakes-Miami Fusion,Playoff
 1996-10-20,1996,MLS,True,LA Galaxy,D.C. United,2,3,,,False,,True,Foxboro Stadium,wikipedia-1996-mls-cup,Final
 2001-10-21,2001,MLS,True,LA Galaxy,San Jose Earthquakes,1,2,,,False,,True,Crew Stadium,wikipedia-2001-mls-cup,Final
+2026-10-11,2026,MLS,True,St. Louis CITY SC,LA Galaxy,6,2,,,False,,False,Energizer Park,761859,regular-season
 1996-04-13,1996,MLS,True,Columbus Crew,D.C. United,4,0,,,False,,False,,fbcsv-mls-1996-1996-04-13-Columbus Crew SC-D.C. United,Regular
 1996-04-20,1996,MLS,True,Columbus Crew,Tampa Bay Mutiny,1,2,,,False,,False,,fbcsv-mls-1996-1996-04-20-Columbus Crew SC-Tampa Bay Mutiny,Regular
 1996-04-27,1996,MLS,True,Red Bull New York,Columbus Crew,0,2,,,False,,False,,fbcsv-mls-1996-1996-04-27-Red Bull New York-Columbus Crew SC,Regular
