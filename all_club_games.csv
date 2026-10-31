@@ -59,6 +59,12 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-10-28,2026,MLS,True,San Jose Earthquakes,Colorado Rapids,2,2,,,False,,False,PayPal Park,761917,regular-season
 2026-10-28,2026,MLS,True,Seattle Sounders FC,Houston Dynamo FC,0,1,,,False,,False,Lumen Field,761916,regular-season
 2026-10-28,2026,MLS,True,Vancouver Whitecaps,San Diego FC,4,1,,,False,,False,BC Place,761918,regular-season
+2026-10-31,2026,MLS,True,Charlotte FC,Orlando City SC,4,0,,,False,,False,Bank of America Stadium,761922,regular-season
+2026-10-31,2026,MLS,True,Columbus Crew,D.C. United,3,0,,,False,,False,ScottsMiracle-Gro Field,761924,regular-season
+2026-10-31,2026,MLS,True,FC Cincinnati,Philadelphia Union,1,0,,,False,,False,TQL Stadium,761919,regular-season
+2026-10-31,2026,MLS,True,New York City FC,CF Montréal,1,1,,,False,,False,Citi Field,761930,regular-season
+2026-10-31,2026,MLS,True,Sporting Kansas City,FC Dallas,1,1,,,False,,False,Sporting Park,761928,regular-season
+2026-10-31,2026,MLS,True,St. Louis CITY SC,San Diego FC,0,1,,,False,,False,Energizer Park,761926,regular-season
 1996-04-06,1996,MLS,True,San Jose Earthquakes,D.C. United,1,0,,,False,,False,,fbcsv-mls-1996-1996-04-06-San Jose Earthquakes-D.C. United,Regular
 1996-04-13,1996,MLS,True,LA Galaxy,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1996-1996-04-13-LA Galaxy-Red Bull New York,Regular
 1996-04-13,1996,MLS,True,Tampa Bay Mutiny,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-04-13-Tampa Bay Mutiny-New England Revolution,Regular
