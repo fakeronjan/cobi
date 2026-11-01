@@ -533,7 +533,7 @@ season,competition,team,gp,w,d,l,gf,ga,gd,pts
 2025,MLS,CF Montréal,34,6,10,18,34,60,-26,28
 2025,MLS,D.C. United,34,5,11,18,30,66,-36,26
 2026,MLS,Nashville SC,32,21,8,3,66,23,43,71
-2026,MLS,Vancouver Whitecaps,32,17,7,8,67,33,34,58
+2026,MLS,Vancouver Whitecaps,33,18,7,8,72,34,38,61
 2026,MLS,New England Revolution,32,18,4,10,54,44,10,58
 2026,MLS,Inter Miami CF,32,15,11,6,75,55,20,56
 2026,MLS,Chicago Fire FC,33,16,7,10,61,50,11,55
@@ -547,8 +547,8 @@ season,competition,team,gp,w,d,l,gf,ga,gd,pts
 2026,MLS,FC Cincinnati,33,12,10,11,67,73,-6,46
 2026,MLS,Columbus Crew,33,13,5,15,55,49,6,44
 2026,MLS,LA Galaxy,33,11,11,11,49,55,-6,44
-2026,MLS,Seattle Sounders FC,32,11,10,11,41,40,1,43
 2026,MLS,Colorado Rapids,33,12,7,14,46,47,-1,43
+2026,MLS,Seattle Sounders FC,33,11,10,12,42,45,-3,43
 2026,MLS,Orlando City SC,33,12,7,14,62,78,-16,43
 2026,MLS,Real Salt Lake,33,12,6,15,51,51,0,42
 2026,MLS,Portland Timbers,32,11,7,14,57,60,-3,40
