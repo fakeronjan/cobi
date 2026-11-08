@@ -152,5 +152,29 @@
    "Portland Timbers",
    "Real Salt Lake"
   ]
+ },
+ "2026": {
+  "East": [
+   "Nashville SC",
+   "Inter Miami CF",
+   "New England Revolution",
+   "Chicago Fire FC",
+   "Charlotte FC",
+   "Philadelphia Union",
+   "Columbus Crew",
+   "Orlando City SC",
+   "FC Cincinnati"
+  ],
+  "West": [
+   "Vancouver Whitecaps",
+   "FC Dallas",
+   "St. Louis CITY SC",
+   "San Jose Earthquakes",
+   "Houston Dynamo FC",
+   "LAFC",
+   "Portland Timbers",
+   "Seattle Sounders FC",
+   "Real Salt Lake"
+  ]
  }
 }
