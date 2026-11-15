@@ -946,6 +946,14 @@ def run_pipeline(scrape=True):
                     continue
                 if (today - last_date).days < 7:
                     continue
+                # Structural checks: 2026's Decision Day was 11/7 with the
+                # playoffs after it, so "last game of the year" crowned a
+                # regular-season winner. The last game has to be a playoff
+                # game and ESPN can't list any MLS fixtures still to play.
+                if str(last.get('stage') or '') in ('regular-season', 'Regular'):
+                    continue
+                if os.path.exists(SCHEDULE_PATH) and not pd.read_csv(SCHEDULE_PATH).empty:
+                    continue
             champ, ru = _winner_loser_single(last)
             if champ is None:
                 continue
