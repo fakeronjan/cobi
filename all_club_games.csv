@@ -18,6 +18,7 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-11-19,2026,MLS,True,Seattle Sounders FC,Real Salt Lake,1,1,2.0,4.0,True,Real Salt Lake,False,Lumen Field,401933555,western-conference-playoffs---wild-card
 2026-11-21,2026,MLS,True,New England Revolution,Philadelphia Union,2,0,,,False,,False,Gillette Stadium,401933733,eastern-conference-playoffs---round-one
 2026-11-21,2026,MLS,True,FC Dallas,Portland Timbers,3,0,,,False,,False,Toyota Stadium,401933732,western-conference-playoffs---round-one
+2026-11-21,2026,MLS,True,Inter Miami CF,Columbus Crew,0,3,,,False,,False,Nu Stadium,401933739,eastern-conference-playoffs---round-one
 1996-04-06,1996,MLS,True,San Jose Earthquakes,D.C. United,1,0,,,False,,False,,fbcsv-mls-1996-1996-04-06-San Jose Earthquakes-D.C. United,Regular
 1996-04-13,1996,MLS,True,LA Galaxy,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1996-1996-04-13-LA Galaxy-Red Bull New York,Regular
 1996-04-13,1996,MLS,True,Tampa Bay Mutiny,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-04-13-Tampa Bay Mutiny-New England Revolution,Regular
