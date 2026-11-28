@@ -9,6 +9,8 @@ date,season,competition,league_match,home_team,away_team,home_score,away_score,h
 2026-11-22,2026,MLS,True,Vancouver Whitecaps,Real Salt Lake,2,0,,,False,,False,BC Place,401933729,western-conference-playoffs---round-one
 2026-11-23,2026,MLS,True,St. Louis CITY SC,LAFC,3,2,,,False,,False,Energizer Park,401933728,western-conference-playoffs---round-one
 2026-11-24,2026,MLS,True,San Jose Earthquakes,Houston Dynamo FC,2,1,,,False,,False,PayPal Park,401933738,western-conference-playoffs---round-one
+2026-11-27,2026,MLS,True,Columbus Crew,Inter Miami CF,1,0,,,False,,False,ScottsMiracle-Gro Field,401933727,eastern-conference-playoffs---round-one
+2026-11-27,2026,MLS,True,Real Salt Lake,Vancouver Whitecaps,0,1,,,False,,False,America First Field,401933725,western-conference-playoffs---round-one
 1996-04-06,1996,MLS,True,San Jose Earthquakes,D.C. United,1,0,,,False,,False,,fbcsv-mls-1996-1996-04-06-San Jose Earthquakes-D.C. United,Regular
 1996-04-13,1996,MLS,True,LA Galaxy,Red Bull New York,2,1,,,False,,False,,fbcsv-mls-1996-1996-04-13-LA Galaxy-Red Bull New York,Regular
 1996-04-13,1996,MLS,True,Tampa Bay Mutiny,New England Revolution,3,2,,,False,,False,,fbcsv-mls-1996-1996-04-13-Tampa Bay Mutiny-New England Revolution,Regular
